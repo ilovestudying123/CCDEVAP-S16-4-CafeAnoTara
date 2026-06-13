@@ -1,20 +1,21 @@
 .title{
     text-align: left;
-    color:blueviolet;
-    background-color: black;
+    color:black;
+    background-color: white;
     font-size: 350%;
     margin: 0;
 }
 
 nav, nav a{
     text-decoration: none;
-    color: blueviolet;
+    color: black;
     text-align: right;
-    background-color: black;
+    background-color: white;
     font-size: 140%;
 }
 
 .header{
-    background-color: black;
+    background-color: white;
     padding: 1.7%;
+    outline: 2px solid black;
 }
