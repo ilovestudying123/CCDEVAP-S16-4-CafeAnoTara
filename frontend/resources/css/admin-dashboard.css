@@ -1,0 +1,42 @@
+.body-box {
+    display: flex;
+    gap: 3%;
+    margin-top: 2%;
+    padding: 3% 2%;
+    justify-content: center;
+    border: 2px solid #333;
+}
+
+.preview-box {
+    font-size: 280%;
+    border: 2px solid #333;
+    width: 600px;
+    height: 300px;
+    padding: 0 2%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.redirect {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.redirect a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.redirect img {
+    width: 60px;
+    padding-bottom: 20%;
+    cursor: pointer;
+}
+
+.preview-box p {
+    margin: 3%;
+}
