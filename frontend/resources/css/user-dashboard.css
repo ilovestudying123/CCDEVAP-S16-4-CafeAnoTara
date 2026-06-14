@@ -1,1 +1,49 @@
+.search-filter-sort {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
+.search-section {
+    flex: 6;
+}
+
+.search {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+}
+
+.search input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+.filter-section {
+    flex: 2;
+    width: fit-content;
+}
+
+.filter {
+    position: relative;
+    width: fit-content;
+}
+
+#filter-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 100;
+}
+
+.sort-section {
+    flex: 2;
+}
