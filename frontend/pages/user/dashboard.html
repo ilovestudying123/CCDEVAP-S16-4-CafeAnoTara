@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../../resources/css/user-dashboard.css">
+    <script src="../../resources/js/user-dashboard.js"></script>
 </head>
 <body>
     <div class="search-filter-sort">
@@ -21,14 +22,16 @@
             <div id="filter-options">
                 <!-- radio buttons for wifi speed -->
                 <p>Wifi Speed:</p>
-                <label><input type="radio" name="wifi" value=""> All Wifi Speeds</label>
-                <label><input type="radio" name="wifi" value="fast"> Fast Wifi</label>
+                <label><input type="radio" name="wifi" value=""> All Wifi Speeds</label> <br>
+                <label><input type="radio" name="wifi" value="fast"> Fast Wifi</label> <br>
                 <label><input type="radio" name="wifi" value="slow"> Slow Wifi</label>
                 
                 <!-- checkboxes for outlet availability -->
                 <p>Outlet Availability:</p>
-                <label><input type="checkbox" name="outlet" value="available"> Available</label>
+                <label><input type="checkbox" name="outlet" value="available"> Available</label> <br>
                 <label><input type="checkbox" name="outlet" value="unavailable"> Unavailable</label>
+                <br>
+                <br>
 
                 <!-- buttons for apply and clear filter -->
                 <div class="filter-buttons">
