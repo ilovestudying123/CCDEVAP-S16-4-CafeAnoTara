@@ -14,6 +14,10 @@ nav, nav a{
     font-size: 140%;
 }
 
+.nav-admin a {
+    font-size: 120%;
+}
+
 .header{
     background-color: white;
     padding: 1.7%;
