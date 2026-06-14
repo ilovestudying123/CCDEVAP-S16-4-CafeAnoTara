@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <section class="search-section">
+    <div class="search">
+        <input type="text" placeholder="Search...">
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></i></button>
+    </div>
+    </section>
+
+    <section class="filter-section">
+    <div class="filter">
+        <button id="filter-button" onclick="toggleFilter()"><i class="fa-solid fa-sliders"></i>Filter</button>
+        <div id="filter-options">
+            //radio buttons for wifi speed
+            <p>Wifi Speed:</p>
+            <label><input type="radio" name="wifi" value=""> All Wifi Speeds</label>
+            <label><input type="radio" name="wifi" value="fast"> Fast Wifi</label>
+            <label><input type="radio" name="wifi" value="slow"> Slow Wifi</label>
+            
+            //checkboxes for outlet availability
+            <p>Outlet Availability:</p>
+            <label><input type="checkbox" name="outlet" value="available"> Available</label>
+            <label><input type="checkbox" name="outlet" value="unavailable"> Unavailable</label>
+
+            //buttons for apply and clear filter
+            <div class="filter-buttons">
+                <button type="button" onclick="applyFilter()">Apply</button>
+                <button type="button" onclick="clearFilter()">Clear</button>
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+    // button for sort
+    <section class="sort-section">
+    <div class="sort-button">
+        <button type="button" onclick="toggleSort()"><i class="fa-solid fa-sort"></i>Sort</button>
+    </div>
+    </section>
+
+
+</body>
+</html>
