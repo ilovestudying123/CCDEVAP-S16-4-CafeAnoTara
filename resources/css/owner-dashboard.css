@@ -1,0 +1,106 @@
+body {
+    background: #fdfdfd;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.body-box {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 1.1fr;
+    gap: 25px;
+    width: 100%;
+    max-width: 1500px;
+    padding: 40px 30px;
+    background-color: black;
+    margin: 0 auto;
+}
+
+.box {
+    border: 1px solid #333;
+    background: #fff;
+    overflow: hidden; 
+}
+
+.pad {
+    padding: 20px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.info-column, .img-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.cafe-name{
+    font-size: 350%;
+    color:black;
+    margin-bottom: 0%;
+}
+
+.header-text{
+    font-size: 170%;
+    color:black;
+    margin: 0%;
+}
+
+.desc-text{
+    font-size: 140%;
+    color:black;
+    margin-top: 0%;
+    color: gray;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5%; 
+    background-color: white;
+}
+
+.main-img {
+    height: 400px; 
+}
+
+.mini-img {
+    height: 185px; 
+}
+
+.rating {
+    font-size: 260%;
+    margin-top: 10px;
+}
+
+.star {
+    color: #f39c12;
+}
+
+.count {
+    font-size: 350%;
+}
+
+.review-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.review-redirect {
+    display: flex;
+}
+
+.arrow-btn {
+    width: 60px;
+}
