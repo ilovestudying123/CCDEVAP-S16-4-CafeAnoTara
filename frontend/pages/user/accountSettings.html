@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Settings</title>
-    <link rel="stylesheet" href="accountSettings.css" <-- Link to CSS file for styling -->>
+    <link rel="stylesheet" href="accountSettings.css" <-- Link to your CSS file for styling -->>
     <script src="editAccountSettings.js" defer></script>
 </head>
 <body>
@@ -13,30 +13,33 @@
         <form>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username">
-            <br>
+            <br><br>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email">
-            <br>
+            <br><br>
 
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName">
 
             <label for="lastName">Last Name:</label>
             <input type="text" id="lastName" name="lastName">
-            <br>
+            <br><br>
 
             <label for="contactNumber">Contact Number:</label>
             <input type="text" id="contactNumber" name="contactNumber">
-            <br>
+            <br><br>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password">
-            <br>
-	        <button onclick="editDetails();">Edit Details</button>
-            <button type="submit">Save Changes</button>
+            <br><br><br>
+            <button type="button" onclick="goToEditPage()">Edit</button>
 
-
+            <script>
+            function goToEditPage() {
+                window.location.href = "editAccountDetails.html";
+            }
+            </script>
         </form>
     </div>
 </body>
