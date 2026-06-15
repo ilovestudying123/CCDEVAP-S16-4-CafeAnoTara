@@ -2,43 +2,44 @@
 <html>
 <head>
     <title>Edit Account Details</title>
+    <script src="accountSettings.js" defer></script>
 </head>
 <body>
 
     <h1>Edit Account Details</h1>
 
     <form>
+    <input type="checkbox" onclick="toggle('username', this)">
+    <label>Username:</label>
+    <input type="text" id="username" value="j_delacruz123" disabled>
+    <br><br>
 
-        <input type="checkbox" onchange="username.disabled = !this.checked">
-        <label>Username:</label>
-        <input type="text" id="username" name="username" disabled>
-        <br><br>
+    <input type="checkbox" onclick="toggle('email', this)">
+    <label>Email:</label>
+    <input type="email" id="email" value="juan.delacruz@gmail.com" disabled>
+    <br><br>
 
-        <input type="checkbox" onchange="email.disabled = !this.checked">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" disabled>
-        <br><br>
+    <input type="checkbox" onclick="toggle('firstName', this)">
+    <label>First Name:</label>
+    <input type="text" id="firstName" value="Juan" disabled>
+    <br><br>
 
-        <input type="checkbox" onchange="firstName.disabled = !this.checked">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" disabled>
+    <input type="checkbox" onclick="toggle('lastName', this)">
+    <label>Last Name:</label>
+    <input type="text" id="lastName" value="Dela Cruz" disabled>
+    <br><br>
 
-        <input type="checkbox" onchange="lastName.disabled = !this.checked">
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" disabled>
-        <br><br>
+    <input type="checkbox" onclick="toggle('contactNumber', this)">
+    <label>Contact Number:</label>
+    <input type="text" id="contactNumber" value="09123456789" disabled>
+    <br><br>
 
-        <input type="checkbox" onchange="contactNumber.disabled = !this.checked">
-        <label for="contactNumber">Contact Number:</label>
-        <input type="text" id="contactNumber" name="contactNumber" disabled>
-        <br><br>
+    <input type="checkbox" onclick="toggle('password', this)">
+    <label>Password:</label>
+    <input type="password" id="password" value="juan2345!" disabled>
+    <br><br>
 
-        <input type="checkbox" onchange="password.disabled = !this.checked">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" disabled>
-        <br><br>
-
-        <button type="submit">Save Changes</button>
+    <button type="button" onclick="saveChanges();">Save Changes</button>
 
     </form>
 
