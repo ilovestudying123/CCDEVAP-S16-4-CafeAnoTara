@@ -1,0 +1,144 @@
+.body-box {
+    padding: 20px;
+}
+
+.cafe-name{
+    margin-top: 1%;
+    margin-bottom: 0%;
+    font-size: 350%;
+    color:black;
+    padding: 0% 0% 0% 2%;
+}
+
+.filter-btn, .sort-btn{
+    color:black;
+    background-color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 200%;
+    cursor: pointer;
+}
+
+.grid-btn{
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-right: 2%;
+    margin-bottom: 3%;
+}
+
+.rating-box{
+    outline: 2px solid black;
+    padding: 2%;
+    margin-top: 10%;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.review-card {
+    display: flex;
+    gap: 25px; 
+    align-items: flex-start; 
+}
+
+.review-img img {
+    width: 300px; 
+    height: auto;
+    display: block;
+    border: 1px solid black;
+}
+
+.review-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 8px;
+}
+
+.review-title {
+    font-size: 270%;
+    margin: 0;
+}
+
+#report-btn {
+    background-color: black;
+    color: white;
+    border: 1px solid black; 
+    padding: 10px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 120%;
+}
+
+.rating, .review-body {
+    margin: 0 0 8px 0;
+}
+
+.rating{
+    font-size: 200%;
+}
+
+.review-body{
+    font-size: 170%;
+}
+
+.review-reply {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px; 
+    align-items: center;
+    width: 100%;
+    max-width: 800px; 
+}
+
+#reply-text {
+    flex-grow: 1;
+    height: 36px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid black; 
+    resize: none; 
+    font-size: 150%;
+}
+
+#submit-btn {
+    background-color: black;
+    color: white;
+    border: 1px solid black; 
+    padding: 10px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 120%;
+}
+
+@media (max-width: 768px) {
+    .review-card {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .review-img img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .review-text {
+        width: 100%;
+    }
+
+    .review-reply {
+        max-width: 100%;
+    }
+
+    .rating-box{
+        width: 100%;
+    }
+}
