@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../resources/css/user-search.css">
+</head>
+<body>
+    <div class="body">
+    <div class="search-filter-sort">
+    <section class="search-section">
+        <div class="search">
+            <button id="search-button" type="submit" onclick=""><i class="fa-solid fa-magnifying-glass"></i></i></button>
+            <input id="search-box" type="text" placeholder="Search...">
+        </div>
+        </section>
+
+        <section class="filter-section">
+        <div class="filter">
+            <button id="filter-button" onclick="toggleFilter()"><i class="fa-solid fa-sliders"></i>Filter</button>
+            <div id="filter-options">
+                <!-- radio buttons for wifi speed -->
+                <p>Wifi Speed:</p>
+                <label><input type="radio" name="wifi" value=""> All Wifi Speeds</label> <br>
+                <label><input type="radio" name="wifi" value="fast"> Fast Wifi</label> <br>
+                <label><input type="radio" name="wifi" value="slow"> Slow Wifi</label>
+                
+                <!-- checkboxes for outlet availability -->
+                <p>Outlet Availability:</p>
+                <label><input type="checkbox" name="outlet" value="available"> Available</label> <br>
+                <label><input type="checkbox" name="outlet" value="unavailable"> Unavailable</label>
+                <br>
+                <br>
+
+                <!-- buttons for apply and clear filter -->
+                <div class="filter-buttons">
+                    <button type="button" onclick="applyFilter()">Apply</button>
+                    <button type="button" onclick="clearFilter()">Clear</button>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- button for sort -->
+        <section class="sort-section">
+        <div class="sort-button">
+            <button id="sort-button" type="button" onclick="toggleSort()"><i class="fa-solid fa-sort"></i>Sort</button>
+        </div>
+    </div>
+    </section>
+
+    <section class="cafe-listing">
+        <div class="cafe-listings">
+            <div class="cafe-lists-header">
+                <h2>Cafe Listings</h2>
+            </div>
+
+            <div class="listing-box">
+                <div class="cafe-list">
+                    <div class="list-text">
+                        <p>Cafe W <i class="fa-solid fa-star"></i>3.6/5</p>
+                        <p>123 Main Street, Bonficio Global City, Taguig City</p>
+                    </div>
+                </div>
+
+                <div class="listing-box">
+                <div class="cafe-list">
+                    <div class="list-text">
+                        <p>Cafe W <i class="fa-solid fa-star"></i>3.6/5</p>
+                        <p>123 Main Street, Bonficio Global City, Taguig City</p>
+                    </div>
+                </div>
+
+                <div class="listing-box">
+                <div class="cafe-list">
+                    <div class="list-text">
+                        <p>Cafe W <i class="fa-solid fa-star"></i>3.6/5</p>
+                        <p>123 Main Street, Bonficio Global City, Taguig City</p>
+                    </div>
+                </div>
+
+                
+                <div class="listing-box">
+                <div class="cafe-list">
+                    <div class="list-text">
+                        <p>Cafe W <i class="fa-solid fa-star"></i>3.6/5</p>
+                        <p>123 Main Street, Bonficio Global City, Taguig City</p>
+                    </div>
+                </div>
+
+                <div class="listing-box">
+                <div class="cafe-list">
+                    <div class="list-text">
+                        <p>Cafe W <i class="fa-solid fa-star"></i>3.6/5</p>
+                        <p>123 Main Street, Bonficio Global City, Taguig City</p>
+                    </div>
+                </div>
+
+                <div class="listing-box">
+                <div class="cafe-list">
+                    <div class="list-text">
+                        <p>Cafe W <i class="fa-solid fa-star"></i>3.6/5</p>
+                        <p>123 Main Street, Bonficio Global City, Taguig City</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+   
+</body>
+</html>

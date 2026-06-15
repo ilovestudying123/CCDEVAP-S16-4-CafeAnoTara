@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../../resources/css/user-dashboard.css">
-    <script src="../../resources/js/user-dashboard.js"></script>
+    <script src="../../resources/js/user-search.js"></script>
 </head>
 <body>
     <div class="body">
     <div class="search-filter-sort">
     <section class="search-section">
         <div class="search">
-            <input type="text" placeholder="Search...">
-            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></i></button>
+             <button id="search-button" type="submit" onclick="goToSearchPage()"><i class="fa-solid fa-magnifying-glass"></i></i></button>
+            <input id="search-box" type="text" placeholder="Search...">
+
+            <script>
+            function goToSearchPage() {
+                window.location.href = "search.html";
+            }
+            </script>
         </div>
         </section>
 
@@ -46,7 +52,7 @@
         <!-- button for sort -->
         <section class="sort-section">
         <div class="sort-button">
-            <button type="button" onclick="toggleSort()"><i class="fa-solid fa-sort"></i>Sort</button>
+            <button id="sort-button" type="button" onclick="toggleSort()"><i class="fa-solid fa-sort"></i>Sort</button>
         </div>
     </div>
     </section>
@@ -90,7 +96,7 @@
         </div>
     </div>
     </section>
-
+    
 </div>
 </body>
 </html>
