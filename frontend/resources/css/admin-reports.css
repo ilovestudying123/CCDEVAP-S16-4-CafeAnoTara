@@ -1,0 +1,36 @@
+.body-box {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 2%;
+    padding: 3% 2%;
+    justify-content: center;
+    border: 2px solid #333;
+}
+
+.three-columns {
+    display: flex;
+    font-size: 280%;
+    gap: 50px;
+}
+
+.column-box {
+    flex: 1; /* each box gets equal width */
+    padding: 20px;
+    border: 2px solid #333;
+}
+
+.full-box {
+    padding: 20px;
+    border: 2px solid #333;
+}
+
+.title {
+    margin: 0;
+    font-size: 280%;
+    font-weight: bold;
+}
+
+ol {
+    font-size: 200%;
+}
