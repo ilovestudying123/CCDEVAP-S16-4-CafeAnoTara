@@ -4,9 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
-    <link rel="stylesheet" href="/">
+    <link rel="stylesheet" href="../../resources/css/admin-user-management.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="../../resources/js/script-header-admin.js"></script>
 </head>
 
 <body>
     <div id="header"></div>
+
+    <div class="body-box">
+        <div class="search-section">
+            <h1>Manage Users</h1>
+
+            <div class="search-box">
+                <div class="search-input">
+                    <img src="../../resources/imgs/magnifying-glass-solid.png" alt="search icon">
+                    <input type="text" placeholder="Search...">
+                </div>
+
+                <div class="filter">
+                    <button id="filter-button" onclick="toggleFilter()"><i class="fa-solid fa-sliders"></i> Filter</button>
+
+                    <div id="filter-options">
+                        <p>Role:</p>
+                        <label><input type="checkbox" name="role" value="admin"> Administrator</label><br>
+                        <label><input type="checkbox" name="role" value="owner"> Cafe Owner</label><br>
+                        <label><input type="checkbox" name="role" value="user"> User</label>
+
+                        <p>Status:</p>
+                        <label><input type="radio" name="status" value="active"> Active</label><br>
+                        <label><input type="radio" name="status" value="inactive"> Inactive</label>
+
+                        <div class="filter-buttons">
+                            <button type="button" onclick="applyFilter()">Apply</button>
+                            <button type="button" onclick="clearFilter()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" onclick="toggleSort()"><i class="fa-solid fa-sort"></i> Sort</button>
+            </div>
+        </div>
+        
+        <table>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Account Creation</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>Juan Dela Cruz</td>
+                <td>JuanDelaCruz@gmail.com</td>
+                <td>User</td>
+                <td>Active</td>
+                <td>10-22-2023</td>
+                <td>
+                    <a href="#" class="action-btn" onclick="return confirm('Are you sure you want to SUSPEND this user?')">Suspend</a>
+                </td>
+            </tr>
+            <tr>
+                <td>John Doe</td>
+                <td>JohnDoe@gmail.com</td>
+                <td>User</td>
+                <td>Inactive</td>
+                <td>2-14-2026</td>
+                <td>
+                    <a href="#" class="action-btn" onclick="return confirm('Are you sure you want to ACTIVATE this user?')">Activate</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Jane Doe</td>
+                <td>JaneDoe@gmail.com</td>
+                <td>User</td>
+                <td>Active</td>
+                <td>12-14-2020</td>
+                <td>
+                    <a href="#" class="action-btn" onclick="return confirm('Are you sure you want to SUSPEND this user?')">Suspend</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>

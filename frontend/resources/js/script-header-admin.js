@@ -9,3 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.error("Error loading header:", error));
 });
+
+function toggleFilter() {
+    const panel = document.getElementById('filter-options');
+    if (panel.style.display === 'block') {
+        panel.style.display = 'none';
+    } else {
+        panel.style.display = 'block';
+    }
+}
