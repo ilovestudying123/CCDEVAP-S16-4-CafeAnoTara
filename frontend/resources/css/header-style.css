@@ -1,25 +1,44 @@
 .title{
     text-align: left;
-    color:black;
-    background-color: white;
-    font-size: 350%;
     margin: 0;
+    color: #fffabc;
+    font-size: 350%;
 }
 
 nav, nav a{
     text-decoration: none;
-    color: black;
     text-align: right;
-    background-color: white;
     font-size: 140%;
+    color: #fffabc;
 }
 
 .nav-admin a {
     font-size: 120%;
+    color: #fffabc;
+}
+
+nav a:hover {
+    color: #fea959;
 }
 
 .header{
-    background-color: white;
-    padding: 1.7%;
-    outline: 2px solid black;
+    background-color: #725420;
+    padding: 2%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.name{
+    color: #fea959 !important;
+    font-size: 350%;
+}
+
+h1{
+    display: inline;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }

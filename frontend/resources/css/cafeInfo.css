@@ -6,18 +6,19 @@
     margin-top: 1%;
     margin-bottom: 0%;
     font-size: 350%;
-    color:black;
+    color: #725420;
     padding: 0% 0% 0% 2%;
 }
 
 .update-btn {
     color: white;
-    background-color: black;
+    background-color: #ce8139;
     padding: 12px 24px;
     border-radius: 30px;
     font-size: 200%;
     cursor: pointer;
     text-decoration: none;
+    outline: none;
 
     display: block; 
     width: fit-content;
@@ -26,10 +27,11 @@
 }
 
 .info-box {
-    outline: 2px solid black;
     padding: 30px;
     margin-top: 1%;
     display: flex;
+    background-color: #fdd6d6;
+    border-radius: 15px;
 }
 
 .pic-column {
@@ -39,7 +41,7 @@
 .cafe-pic img {
     width: 80%;
     height: auto;
-    border: 1px solid black;
+    border: 5px solid white;
     margin-right: 0%;
 }
 
@@ -65,10 +67,12 @@
 .header-text {
     font-weight: bold;
     font-size: 200%;
+    color: #725420;
 }
 
 .desc-text {
     font-size: 150%;
+    color: #ce8139;
 }
 
 .thumbnails-row {
@@ -80,7 +84,100 @@
 .thumb {
     width: calc(33.33% - 14px);
     height: auto;
-    border: 1px solid black;
+    border: 5px solid white;
     aspect-ratio: 4 / 3;
     object-fit: cover;
+}
+
+.form-btn{
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+
+    .body-box {
+        padding: 15px;
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .cafe-name {
+        grid-column: 1;
+        font-size: 300%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .update-btn {
+        grid-column: 2;
+        font-size: 200%;
+        padding: 8px 16px;
+        margin: 0;
+        border-radius: 20px;
+    }
+
+    .info-box {
+        grid-column: 1 / span 2;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        margin-top: 10px;
+        gap: 20px;
+    }
+
+    .pic-column {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .cafe-pic img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .info-column {
+        flex: unset;
+        width: 100%;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .grid-item {
+        gap: 4px;
+    }
+
+    .thumbnails-row {
+        margin-top: 25px;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .thumb {
+        width: calc(33.33% - 7px);
+        aspect-ratio: 1 / 1;
+    }
+    
+    .header-text {
+        font-size: 200%;
+    }
+
+    .desc-text {
+        font-size: 170%;
+    }
 }
