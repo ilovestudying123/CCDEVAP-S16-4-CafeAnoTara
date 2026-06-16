@@ -1,8 +1,29 @@
+.body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.firstPart {
+    display: flex;
+    gap: 20px;
+}
+
 .cafe {
-    width: 60%;
+    flex: 0 0 60%;
     border: 1.2px solid black;
     box-sizing: border-box;
     padding: 20px;
+    
+}
+
+.review {
+    flex: 0 0 25%;
+    border: 1.2px solid black;
+    box-sizing: border-box;
+    padding: 20px;
+    
 }
 
 .name-bookmark {
@@ -66,4 +87,43 @@
     object-fit: cover;
     object-position: center;
     display: block;
+}
+
+#review {
+    border: 1.2px solid black;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 500px;
+}
+
+.submit-review {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.star-rating {
+    font-size: 25px;
+}
+
+.star:hover {
+    fill: yellow;
+    color: yellow;
+    background-color: yellow;
+}
+
+#submit {
+    width: 90px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
 }

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../resources/css/user-cafeDetails.css">
 </head>
 <body>
-    
+<section class="firstPart">
     <section>
         <div class="cafe">
 
@@ -53,5 +53,28 @@
 
         </div>
     </section>
+
+    <section class="review">
+        <h3>Post a Review</h3>
+        <div class="add-review">
+            <form action="/submit-form" method="POST">
+                <p>
+                    <textarea id="review" name="userReview">Add a Review</textarea>
+                </p>
+            </form>
+        </div>
+        
+        <div class="submit-review">
+            <div class="star-rating">
+                <label class="star"><i class="fa-regular fa-star"></i></label>
+                <label class="star"><i class="fa-regular fa-star"></i></label>
+                <label class="star"><i class="fa-regular fa-star"></i></label>
+                <label class="star"><i class="fa-regular fa-star"></i></label>
+                <label class="star"><i class="fa-regular fa-star"></i></label>
+            </div>
+            <button id="submit" type="button" onclick="submitReview()">Submit</button>
+        </div>
+    </section>
+</section>
 </body>
 </html>
