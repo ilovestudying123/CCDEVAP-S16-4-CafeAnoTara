@@ -15,6 +15,7 @@
     border: 1.2px solid black;
     box-sizing: border-box;
     padding: 20px;
+    margin-left: 20px;
     
 }
 
@@ -63,6 +64,12 @@
 
 .cafe-description {
     flex: 1;
+}
+
+.desc-box {
+    width: 60%;
+    border: 1.2px solid black;
+    padding: 10px;
 }
 
 .cafe-images {
@@ -126,4 +133,65 @@ textarea {
     border-radius: 15px;
     background-color: black;
     color: white;
+}
+
+.cafe-ratings {
+    padding: 20px;
+    margin: auto;
+    width: 80%;
+    justify-content: center;
+}
+
+.star-buttons p {
+    font-size: 50px;
+}
+
+.star-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#filter-button {
+    padding: 7px;
+    border-radius: 15px;
+    font-size: 17px;
+}
+
+#sort-button {
+    padding: 7px;
+    border-radius: 15px;
+    font-size: 17px;
+}
+
+.reviews-scroll {
+    border-style: solid;
+    border-width: 1.2px;
+    padding: 10px;
+    margin: 20px auto;
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+}
+
+.user-reviews {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.user-reviews p {
+    font-size: 18px;
+}
+
+.review-box p {
+    font-size: 15px;
+}
+
+.review-box {
+    width: 90%;
+    border-style: solid;
+   border-width: 1.2px;
+   border-radius: 15px;
+   margin-bottom: 20px;
 }
