@@ -2,7 +2,6 @@
     width: 100%;
     max-width: 1500px;
     padding: 2%;
-    background-color: #fdd6d6;
     margin: 0 auto;
     margin-top: 2%;
     border-radius: 15px;
@@ -13,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
     width: 95%;
-    margin: 20px auto;
+    margin: 0px auto;
 }
 
 .search-section h1 {
@@ -81,43 +80,74 @@
     z-index: 100;
 }
 
-table {
-    width: 95%;
-    border-spacing: 0;
-    background-color: #fff;
-    margin: 0 auto;
+.card-holder {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #fdd6d6;
     border-radius: 15px;
-    overflow: hidden;
+    gap: 2%;
+    padding: 2% 3% 5% 2%;
+}
+
+section {
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
     box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+    padding: 2%;
 }
 
-tr:hover {
-    background-color: #fff3f3;;
+.cafe-card {
+    transition: ease all 0.3s;
 }
 
-th,td {
-    padding: 15px;
-    text-align: center;
+.cafe-card:hover {
+    scale: 102%;
 }
 
-th {
-    text-align: center;
-    font-weight: bold;
+.cafe-card img {
+    width: 216px;
+    height: 144px;
+}
+
+.cafe-card h1, .cafe-card p {
+    color: #725420;
+}
+
+.button-holder {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+.button-holder button{
+    border-radius: 40px;
+    font-size: 20px;
+    padding: 3% 0 3% 0;
+    width: 45%;
+}
+
+.reject-btn {
+    background-color: #fffabc;
+    border: 1px solid #725420;
+    color: #725420;
+    transition: ease all 0.3s;
+}
+
+.reject-btn:hover {
+    background-color: rgb(179, 28, 28);
+    border: 1px solid rgb(179, 28, 28);
+    color: #fffabc;
+}
+
+.approve-btn {
     background-color: #725420;
-    color: #fff;
+    border: 1px solid #725420;
+    color: #fffabc;
 }
 
-tr:nth-child(2) a,
-tr:nth-child(4) a {
-    color: red;
-    text-decoration: none;
-}
-
-tr:nth-child(3) a {
-    color: green;
-    text-decoration: none;
-}
-
-td:last-child:hover {
-    text-decoration: underline;
+.approve-btn:hover {
+    background-color: green;
+    border: 1px solid green;
+    color: #fffabc;
 }
