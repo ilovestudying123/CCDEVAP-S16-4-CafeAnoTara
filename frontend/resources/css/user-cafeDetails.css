@@ -1,0 +1,69 @@
+.cafe {
+    width: 60%;
+    border: 1.2px solid black;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.name-bookmark {
+    display: flex;
+    justify-content: space-between;
+}
+
+#bookmark-button {
+    font-size: 18px;
+    width: 35px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.cafe-details {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    gap: 20px;
+}
+
+.cafe-mainImg {
+    flex: 1;
+}
+
+.cafe-mainImg img{
+    border: 1.2px solid black;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.cafe-description {
+    flex: 1;
+}
+
+.cafe-images {
+   display: flex;
+    margin: 20px auto;
+    padding: 20px;
+    gap: 20px;
+    box-sizing: border-box;
+    overflow:hidden;
+}
+
+.images {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.images img {
+     border: 1.2px solid black;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
