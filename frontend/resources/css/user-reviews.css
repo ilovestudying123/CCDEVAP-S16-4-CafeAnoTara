@@ -1,0 +1,73 @@
+.reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px;
+}
+
+#filter-button {
+    padding: 7px;
+    border-radius: 15px;
+    font-size: 17px;
+    background-color: white;
+}
+
+#sort-button {
+    padding: 7px;
+    border-radius: 15px;
+    font-size: 17px;
+    background-color: white;
+}
+
+.posted-reviews {
+    width: 95%;
+    height: 500px;
+    margin: auto;
+    overflow: auto;
+    border: 1.2px solid black;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.review-box{
+    display: flex;
+    border: 1.2px solid black;
+    box-sizing: border-box;
+    padding: 10px;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.review-image {
+    flex: 0 0 20%;
+    overflow: hidden;
+}
+
+.review-image img {
+    border: 1.2px solid black;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.review-text {
+    flex: 0 0 70%;
+}
+
+#cafe-name {
+    font-size: 24px;
+}
+
+.review-icon {
+    flex: 0 0 10%;
+}
+
+.fa-star {
+    font-size: 20px;
+}
+
+.fa-ellipsis-vertical {
+    font-size: 25px;
+}
