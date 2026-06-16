@@ -39,6 +39,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
+    border-color: white;
     
 }
 
@@ -156,12 +158,14 @@ textarea {
     padding: 7px;
     border-radius: 15px;
     font-size: 17px;
+    background-color: white;
 }
 
 #sort-button {
     padding: 7px;
     border-radius: 15px;
     font-size: 17px;
+    background-color: white;
 }
 
 .reviews-scroll {
