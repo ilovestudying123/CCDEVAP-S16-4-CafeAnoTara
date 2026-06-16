@@ -6,17 +6,18 @@
     margin-top: 1%;
     margin-bottom: 0%;
     font-size: 350%;
-    color:black;
+    color:#725420;
     padding: 0% 0% 0% 2%;
 }
 
 .update-btn{
     color:white;
-    background-color: black;
+    background-color: #ce8139;
     padding: 12px 24px;
     border-radius: 30px;
     font-size: 200%;
     cursor: pointer;
+    border: none;
     
     display: block;
     margin-left: auto;
@@ -24,13 +25,14 @@
 }
 
 .info-box {
-    outline: 2px solid black;
     padding: 2%;
     margin-top: 1%;
     display: flex;
     gap: 30px;
     flex-wrap: wrap; 
     align-items: flex-start; 
+    background-color: #fdd6d6;
+    border-radius: 15px;
 }
 
 .pic-column {
@@ -44,6 +46,7 @@
     width: 400px;
     max-width: 100%; 
     height: auto;
+    border: 5px solid white;
 }
 
 .info-column {
@@ -65,7 +68,6 @@
 .form-btn {
     color: gray;
     background-color: white;
-    border: 2px solid black;
     padding: 12px 25px;
     border-radius: 30px;
     font-size: 130%;
@@ -73,6 +75,7 @@
     width: 100%;
     cursor: pointer;
     box-sizing: border-box;
+    border: none;
 }
 
 

@@ -6,17 +6,18 @@
     margin-top: 1%;
     margin-bottom: 0%;
     font-size: 350%;
-    color:black;
+    color:#725420;
     padding: 0% 0% 0% 2%;
 }
 
 .filter-btn, .sort-btn{
-    color:black;
-    background-color: white;
+    color:white;
+    background-color: #ce8139;
     padding: 12px 24px;
     border-radius: 30px;
-    font-size: 200%;
+    font-size: 150%;
     cursor: pointer;
+    border: none;
 }
 
 .grid-btn{
@@ -25,10 +26,12 @@
     gap: 15px;
     margin-right: 2%;
     margin-bottom: 3%;
+    border: none;
 }
 
 .rating-box{
-    outline: 2px solid black;
+    border-radius: 15px;
+    background-color: #fdd6d6;
     padding: 2%;
     margin-top: 10%;
     width: 70%;
@@ -45,13 +48,14 @@
     width: 300px; 
     height: auto;
     display: block;
-    border: 1px solid black;
+    border: 5px solid white;
 }
 
 .review-text {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    color: #ce8139;
 }
 
 .review-header {
@@ -65,10 +69,10 @@
 .review-title {
     font-size: 270%;
     margin: 0;
+    color:#725420;
 }
 
 #report-btn {
-    background-color: black;
     color: white;
     border: 1px solid black; 
     padding: 10px 24px;
@@ -76,6 +80,8 @@
     cursor: pointer;
     white-space: nowrap;
     font-size: 120%;
+    background-color: #ce8139;
+    border: none;
 }
 
 .rating, .review-body {
@@ -104,19 +110,46 @@
     height: 36px;
     padding: 8px 15px;
     border-radius: 20px;
-    border: 1px solid black; 
     resize: none; 
     font-size: 150%;
+    border: none;
 }
 
 #submit-btn {
-    background-color: black;
     color: white;
-    border: 1px solid black; 
+    background-color: #ce8139;
     padding: 10px 24px;
     border-radius: 25px;
     cursor: pointer;
     font-size: 120%;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    width: fit-content;
+}
+
+#dropdown-filter-options, #dropdown-sort-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 100;
+}
+
+#filter-button {
+    padding: 7px;
+    border-radius: 15px;
+}
+
+.fa-solid fa-sliders, .fa-solid fa-sort{
+    max-width: 20px;
 }
 
 @media (max-width: 768px) {
@@ -126,8 +159,9 @@
     }
 
     .review-img img {
-        width: 100%;
+        width: 90%;
         max-width: 100%;
+        margin: 0 auto;
     }
 
     .review-text {
@@ -136,6 +170,10 @@
 
     .review-reply {
         max-width: 100%;
+    }
+
+    #report-btn, .submit-btn{
+        font-size: 130%;
     }
 
     .rating-box{

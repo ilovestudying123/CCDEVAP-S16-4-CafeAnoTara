@@ -3,11 +3,13 @@
 <header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
-    <link rel="stylesheet" href="../../resources/css/owner-ratings.css">
+    <link rel="stylesheet" href="../../resources/css/owner-ratings.css?v=1">
 
     <div id="header"></div>
     <script src="../../resources/js/script-header-owner.js"></script>
+    <script src="../../resources/js/owner-ratings.js" defer></script>
 </header>
 
 <body>
@@ -15,8 +17,36 @@
         <h1 class="cafe-name">Coffee Bun</h1>
 
         <div class="grid-btn">
-            <button type="button" class="filter-btn">Filter</button>
-            <button type="button" class="sort-btn">Sort</button>
+            <div class="dropdown">
+                <button id="filter-btn" onclick="toggleFilter()" class="filter-btn"><i class="fa-solid fa-sliders"></i> Filter</button>
+                <div id="dropdown-filter-options">
+                    <p>Cafe Rating:</p>
+                    <label><input type="radio" name="stars" value="five">5 Stars</label> <br>
+                    <label><input type="radio" name="stars" value="four">4 Stars & Up</label> <br>
+                    <label><input type="radio" name="stars" value="three">3 Stars & Up</label> <br>
+                    <label><input type="radio" name="stars" value="two">2 Stars & Up</label> <br>
+                    <label><input type="radio" name="stars" value="one">1 Stars & Up</label> <br>
+
+                    <div class="filter-buttons">
+                        <button type="button" onclick="applyFilter()">Apply</button>
+                        <button type="button" onclick="clearFilter()">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button id="sort-btn" onclick="toggleSort()" class="sort-btn"><i class="fa-solid fa-sort"></i> Sort</button>
+                <div id="dropdown-sort-options">
+                    <p>Cafe Rating:</p>
+                    <label><input type="radio" name="newestOldest" value="new">Newest To Oldest</label> <br>
+                    <label><input type="radio" name="oldestNewest" value="old">Oldest To Newest</label> <br>
+
+                    <div class="filter-buttons">
+                        <button type="button" onclick="applySort()">Apply</button>
+                        <button type="button" onclick="clearSort()">Clear</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="reviews-list">

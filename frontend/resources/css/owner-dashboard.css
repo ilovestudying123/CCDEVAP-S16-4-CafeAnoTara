@@ -10,19 +10,22 @@ body {
     gap: 25px;
     width: 100%;
     max-width: 1500px;
-    padding: 40px 30px;
-    background-color: black;
+    padding: 2%;
+    background-color: #fdd6d6;
     margin: 0 auto;
+    margin-top: 2%;
+    border-radius: 15px;
 }
 
 .box {
-    border: 1px solid #333;
     background: #fff;
     overflow: hidden; 
 }
 
 .pad {
     padding: 20px;
+    background-color: white;
+    border-radius: 15px;
 }
 
 .col {
@@ -45,29 +48,27 @@ body {
 
 .cafe-name{
     font-size: 350%;
-    color:black;
+    color:#725420;
     margin-bottom: 0%;
 }
 
 .header-text{
     font-size: 170%;
-    color:black;
+    color:#725420;
     margin: 0%;
 }
 
 .desc-text{
     font-size: 140%;
-    color:black;
+    color:#ce8139;
     margin-top: 0%;
-    color: gray;
 }
 
 .info-box {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 5%; 
-    background-color: white;
+    padding: 5%;
 }
 
 .main-img {
@@ -81,6 +82,7 @@ body {
 .rating {
     font-size: 260%;
     margin-top: 10px;
+    color: #ce8139;
 }
 
 .star {
@@ -89,6 +91,7 @@ body {
 
 .count {
     font-size: 350%;
+    color:#ce8139;
 }
 
 .review-box {
@@ -103,4 +106,89 @@ body {
 
 .arrow-btn {
     width: 60px;
+}
+
+@media (max-width: 768px) {
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+
+    .body-box {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+        margin-top: 10px;
+        
+        width: 100%;
+        max-width: 100vw; 
+        overflow-x: hidden;
+    }
+
+    .col {
+        display: contents; 
+    }
+
+    .main-img {
+        order: 1;
+        height: 250px; 
+        width: 100%;
+    }
+
+    .info-box {
+        order: 2;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .img-column {
+        order: 3;
+        grid-template-columns: 1fr 1fr; 
+        gap: 15px;
+        width: 100%;
+    }
+
+    .col:nth-of-type(1) .pad:not(.review-box), 
+    .box:has(.rating) { 
+        order: 4; 
+        width: 100%;
+    }
+
+    .review-box {
+        order: 5;
+        width: 100%;
+    }
+
+    .mini-img {
+        height: 120px; 
+        width: 100%;
+    }
+
+    .info-column {
+        grid-template-columns: 1fr 1fr; 
+        gap: 15px;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .cafe-name, .header-text, .desc-text {
+        white-space: normal;
+        word-break: break-word;
+    }
+    .cafe-name {
+        margin-top: 0%;
+        font-size: 300%;
+    }
+    .header-text{
+        font-size: 200%;
+    }
+    .desc-text {
+        font-size: 170%;
+    }
+    .rating {
+        font-size: 180%;
+    }
+    .count {
+        font-size: 220%;
+    }
 }
