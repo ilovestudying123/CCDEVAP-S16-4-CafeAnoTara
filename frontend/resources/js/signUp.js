@@ -1,7 +1,13 @@
 document.getElementById("signUpForm").addEventListener("submit", function(event){
-    event.preventDefault(); // prevent form from submitting
+    event.preventDefault();
 
-    if (checkUsername() && checkEmail() && checkPassword() && checkConfirmPassword()) {
+    let isValid =
+        checkUsername() &&
+        checkEmail() &&
+        checkPassword() &&
+        checkConfirmPassword();
+
+    if (isValid) {
         saveAccount();
     }
 });
@@ -14,11 +20,10 @@ function checkUsername() {
         return false;
     }
 
-    if (username.length > 5 || username.length < 30) {
+    if (username.length < 5 || username.length > 30) {
         alert("Username must be 5–30 characters long.");
         return false;
     }
-
     return true;
 }
 
@@ -35,7 +40,12 @@ function checkEmail() {
 }
 
 function checkPassword() {
-    let password = document.getElementById("password").value;
+    let password = document.getElementById("password").value.trim();
+
+    if (password.length === 0) {
+        alert("Password is required.");
+        return false;
+    }
 
     let passwordPattern = /^(?=.*\d).{8,}$/;
 
@@ -43,6 +53,7 @@ function checkPassword() {
         alert("Password must be at least 8 characters long and contain at least 1 number.");
         return false;
     }
+
     return true;
 }
 
@@ -58,20 +69,8 @@ function checkConfirmPassword() {
     return true;
 }
 
-//Save to database and redirect to login page
-// function saveAccount() {
-//     const userType = document.querySelector('input[name="userType"]:checked').value;
-
-//     alert("Account created successfully!");
-
-//     if (userType === "Owner") {
-//         window.location.href = "owner-dashboard.html";
-//     } else {
-//         window.location.href = "customer-dashboard.html";
-//     }
-// }
-
 function saveAccount() {
+    var userType = document.querySelector('input[name="userType"]:checked').value;
     alert("Account created successfully!");
 
     if (userType === "Owner") {
