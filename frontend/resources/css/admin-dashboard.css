@@ -4,19 +4,28 @@
     margin-top: 2%;
     padding: 3% 2%;
     justify-content: center;
-    border: 2px solid #333;
 }
 
 .preview-box {
     font-size: 280%;
-    border: 2px solid #333;
+    color:#725420;
     width: 600px;
     height: 300px;
     padding: 0 2%;
     box-sizing: border-box;
-
+    background-color: #fdd6d6;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
+    transition: ease all 0.3s;
+}
+
+.preview-box:hover {
+    scale: 101%;
+}
+
+.count {
+    color: #ce8139;
 }
 
 .redirect {
@@ -35,6 +44,11 @@
     width: 60px;
     padding-bottom: 20%;
     cursor: pointer;
+    transition: ease all 0.3s;
+}
+
+img:hover {
+    scale: 120%;
 }
 
 .preview-box p {
