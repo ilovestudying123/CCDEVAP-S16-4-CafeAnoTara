@@ -6,6 +6,8 @@ if (updateBtn && gridItems.length > 0) {
     
     updateBtn.onclick = function(e) {
 
+        e.preventDefault();
+
         // gets what is placed in infoCafe.html
         const currentWifi = gridItems[0].querySelector(".desc-text").textContent;
         const currentHours = gridItems[1].querySelector(".desc-text").textContent;
