@@ -18,19 +18,27 @@ body {
 .search {
     display: flex;
     width: 100%;
-    padding: 10px;
+    border-radius: 15px;
+    border: 1.3px solid black;
+    padding: 5px;
+}
+
+.search-box {
+    border: none;
 }
 
 .search input {
     flex: 1;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 4px 0 0 4px;
 }
 
 #search-button {
     padding: 5px;
     border-radius: 15px;
+    background-color: white;
+    border: 1px solid #ccc;
 }
 
 .filter-section {
@@ -58,6 +66,7 @@ body {
 #filter-button {
     padding: 7px;
     border-radius: 15px;
+    background-color: white;
 }
 
 .sort-section {
@@ -67,6 +76,7 @@ body {
 #sort-button {
     padding: 7px;
     border-radius: 15px;
+    background-color: white;
 }
 
 .cafe-listings {
@@ -74,8 +84,8 @@ body {
     border-width: 1.2px;
     padding: 20px;
     margin: 20px auto;
-    width: 1750px;
-    height: 400px;
+    width: 90%;
+    height: 300px;
     overflow: auto;
 }
 
