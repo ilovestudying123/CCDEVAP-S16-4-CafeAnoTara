@@ -62,7 +62,7 @@ const cafes =[
     {
         id: "cbtl",
         name: "Coffee Bean Tea Latte",
-        address: "123456 Main Street, Bonifacio Global City, Taguig City",
+        address: "108 E. Rodriguez Jr. Ave., Brgy. Bagumbayan, Quezon City",
         wifiSpeed: "1Gbps",
         outlets: 100,
         priceRange: "100-1000",

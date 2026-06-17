@@ -90,6 +90,9 @@ body {
     padding: 7px;
     border-radius: 15px;
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sort-section {
@@ -153,4 +156,5 @@ body {
     justify-content: center;
     text-decoration: none;
     color: black;
+    align-items: center;
 }

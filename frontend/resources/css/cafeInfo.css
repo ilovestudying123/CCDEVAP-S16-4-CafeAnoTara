@@ -35,9 +35,10 @@
     display: flex;
     background-color: #fdd6d6;
     border-radius: 15px;
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     margin-top: 10px;
+    box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
 }
 
 .pic-column {
@@ -45,7 +46,7 @@
 }
 
 .cafe-pic img {
-    width: 80%;
+    width: 90%;
     height: auto;
     border: 5px solid white;
     margin-right: 0%;
@@ -72,12 +73,12 @@
 
 .header-text {
     font-weight: bold;
-    font-size: 160%;
+    font-size: 140%;
     color: #725420;
 }
 
 .desc-text {
-    font-size: 130%;
+    font-size: 120%;
     color: #ce8139;
     font-family: Verdana;
 }
@@ -94,6 +95,9 @@
     border: 5px solid white;
     aspect-ratio: 4 / 3;
     object-fit: cover;
+    width: 250px;
+    gap: 2%;
+    margin: 0 auto;
 }
 
 .form-btn{
@@ -101,9 +105,9 @@
 }
 
 @media (max-width: 768px) {
-    *, *:before, *:after {
-        box-sizing: border-box;
-    }
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
 
     .body-box {
         padding: 15px;
@@ -124,7 +128,7 @@
     }
 
     .update-btn {
-        font-size: 200%;
+        font-size: 120%;
         padding: 8px 16px;
         border-radius: 20px;
 
@@ -181,10 +185,10 @@
     }
     
     .header-text {
-        font-size: 200%;
+        font-size: 150%;
     }
 
     .desc-text {
-        font-size: 170%;
+        font-size: 120%;
     }
 }

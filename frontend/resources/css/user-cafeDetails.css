@@ -198,6 +198,9 @@ textarea {
     padding: 7px;
     border-radius: 15px;
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sort-section {
@@ -226,7 +229,13 @@ textarea {
 .user-reviews {
     display: flex;
     gap: 20px;
-    justify-content: center;
+    align-items: center;
+}
+
+.userName {
+    width: 150px;
+    flex-shrink: 0;
+    text-align: left;
 }
 
 .user-reviews p {
@@ -238,9 +247,15 @@ textarea {
 }
 
 .review-box {
-    width: 90%;
+    flex-grow: 1;
+    box-sizing: border-box;
     border-style: solid;
+    max-width: 800px;
    border-width: 1.2px;
+   padding: 10px;
    border-radius: 15px;
-   margin-bottom: 20px;
+   margin: 10px auto;
+   white-space: normal;     
+  word-wrap: break-word;   
+  overflow-wrap: break-word;
 }
