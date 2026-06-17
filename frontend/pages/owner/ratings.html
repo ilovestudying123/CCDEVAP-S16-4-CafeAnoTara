@@ -3,9 +3,8 @@
 <header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
-    <link rel="stylesheet" href="../../resources/css/owner-ratings.css?v=1">
+    <link rel="stylesheet" href="../../resources/css/owner-ratings.css?v=2">
 
     <div id="header"></div>
     <script src="../../resources/js/script-header-owner.js"></script>
@@ -18,7 +17,10 @@
 
         <div class="grid-btn">
             <div class="dropdown">
-                <button id="filter-btn" onclick="toggleFilter()" class="filter-btn"><i class="fa-solid fa-sliders"></i> Filter</button>
+                <button id="filter-btn" class="filter-btn" onclick="toggleFilter()">
+                    <img src="../../resources/imgs/sliders-solid.png" class="filter-img"> Filter
+                </button>
+
                 <div id="dropdown-filter-options">
                     <p>Cafe Rating:</p>
                     <label><input type="radio" name="stars" value="five">5 Stars</label> <br>
@@ -35,7 +37,10 @@
             </div>
 
             <div class="dropdown">
-                <button id="sort-btn" onclick="toggleSort()" class="sort-btn"><i class="fa-solid fa-sort"></i> Sort</button>
+                <button id="sort-btn" class="sort-btn" onclick="toggleSort()">
+                    <img src="../../resources/imgs/sort-solid.png" class="sort-img"> Sort
+                </button>
+
                 <div id="dropdown-sort-options">
                     <p>Cafe Rating:</p>
                     <label><input type="radio" name="newestOldest" value="new">Newest To Oldest</label> <br>
