@@ -16,7 +16,7 @@ const cafes =[
             "../../resources/imgs/cafe.jpg",
             "../../resources/imgs/cafe.jpg"
         ],
-        description: "dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+        description: "Cozy corner cafe serving artisinal coffee blends."
     },
 
     {
@@ -36,7 +36,7 @@ const cafes =[
             "../../resources/imgs/cafe.jpg",
             "../../resources/imgs/cafe.jpg"
         ],
-        description: "dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+        description: "Family frinedly cafe with homemade pastries and snacks."
     },
 
     {
@@ -56,7 +56,7 @@ const cafes =[
             "../../resources/imgs/cafe.jpg",
             "../../resources/imgs/cafe.jpg"
         ],
-        description: "dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+        description: "Eco friendly cafe offering organic teas and coffees."
     },
 
     {
@@ -76,6 +76,6 @@ const cafes =[
             "../../resources/imgs/cafe.jpg",
             "../../resources/imgs/cafe.jpg"
         ],
-        description: "dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+        description: "Small establishment that serves drinks such as brewed coffee and simple food items like pastries or sandwiches."
     },
 ]
