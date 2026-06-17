@@ -8,7 +8,7 @@ const cafes =[
         priceRange: "100-300",
         noiseLevel: "Moderate",
         hours: "7:30am - 10:00pm",
-        rating: "3.6/5",
+        rating: 3.6,
         mainImage: "../../resources/imgs/cafe.jpg",
         additionImages: [
             "../../resources/imgs/cafe.jpg",
@@ -28,7 +28,7 @@ const cafes =[
         priceRange: "100-500",
         noiseLevel: "Quiet",
         hours: "7:30am - 9:00pm",
-        rating: "4.6/5",
+        rating: 4.6,
         mainImage: "../../resources/imgs/cafe.jpg",
         additionImages: [
             "../../resources/imgs/cafe.jpg",
@@ -48,7 +48,7 @@ const cafes =[
         priceRange: "100-200",
         noiseLevel: "Noisy",
         hours: "8:00am - 10:00pm",
-        rating: "4.0/5",
+        rating: 4.0,
         mainImage: "../../resources/imgs/cafe.jpg",
         additionImages: [
             "../../resources/imgs/cafe.jpg",
@@ -68,7 +68,7 @@ const cafes =[
         priceRange: "100-1000",
         noiseLevel: "Moderate",
         hours: "8:00am - 10:00pm",
-        rating: "4.8/5",
+        rating: 4.8,
         mainImage: "../../resources/imgs/cafe.jpg",
         additionImages: [
             "../../resources/imgs/cafe.jpg",
