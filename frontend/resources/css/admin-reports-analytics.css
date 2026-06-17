@@ -51,8 +51,13 @@
     border-radius: 15px;
     width: 100%;
     box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+    transition: ease all 0.3s;
     padding: 2%;
     flex: 1;
+}
+
+.info-box:hover {
+    scale: 102%;
 }
 
 .info-box h1 {
