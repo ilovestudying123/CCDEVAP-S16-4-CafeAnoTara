@@ -55,15 +55,16 @@ body {
 }
 
 .header-text{
-    font-size: 170%;
+    font-size: 150%;
     color:#725420;
     margin: 0%;
 }
 
 .desc-text{
-    font-size: 140%;
+    font-size: 110%;
     color:#ce8139;
     margin-top: 0%;
+    margin-bottom: 0%;
     font-family: Verdana;
 }
 
@@ -74,17 +75,17 @@ body {
 }
 
 .main-img {
-    height: 400px;
+    height: 270px;
     outline: 5px solid white;
 }
 
 .mini-img {
-    height: 185px;
+    height: 122px;
     outline: 5px solid white;
 }
 
 .rating {
-    font-size: 260%;
+    font-size: 200%;
     margin-top: 10px;
     color: #ce8139;
 }
@@ -94,7 +95,7 @@ body {
 }
 
 .count {
-    font-size: 350%;
+    font-size: 250%;
     color:#ce8139;
 }
 
@@ -182,13 +183,13 @@ body {
     }
     .cafe-name {
         margin-top: 0%;
-        font-size: 300%;
+        font-size: 250%;
     }
     .header-text{
-        font-size: 200%;
+        font-size: 150%;
     }
     .desc-text {
-        font-size: 170%;
+        font-size: 120%;
     }
     .rating {
         font-size: 180%;

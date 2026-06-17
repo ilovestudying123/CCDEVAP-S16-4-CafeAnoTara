@@ -34,6 +34,9 @@
     align-items: flex-start; 
     background-color: #fdd6d6;
     border-radius: 15px;
+    width: 70%;
+    box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+    margin: 0 auto;
 }
 
 .pic-column {
@@ -69,9 +72,9 @@
 .form-btn {
     color: gray;
     background-color: white;
-    padding: 12px 25px;
+    padding: 12px 18px;
     border-radius: 30px;
-    font-size: 130%;
+    font-size: 120%;
     text-align: left; 
     width: 100%;
     cursor: pointer;
@@ -111,7 +114,7 @@
 }
 
 img{
-    width:350px;
+    width:200px;
     margin-left: 3%;
 }
 
@@ -128,7 +131,7 @@ img{
     }
 
     .update-btn {
-        font-size: 200%;
+        font-size: 150%;
         padding: 8px 16px;
         border-radius: 20px;
     }

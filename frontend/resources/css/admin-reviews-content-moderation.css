@@ -1,7 +1,3 @@
-body {
-    background-color: #fffabc;
-}
-
 .body-box {
     width: 100%;
     max-width: 1500px;
@@ -11,18 +7,13 @@ body {
     border-radius: 15px;
 }
 
-.table-section {
-    padding: 2% 0%;
-    background-color: #fdd6d6;
-    border-radius: 15px;
-}
-
 .heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 95%;
-    margin: 0 auto 0 auto;
+    width: 98%;
+    margin: 0;
+    padding-left: 30px;
 }
 
 .heading h1 {
@@ -114,6 +105,10 @@ body {
     transition: ease all 0.3s;
 }
 
+.filter-buttons button:hover {
+    background-color: #ccc;
+}
+
 #sort-button {
     display: flex;
     align-items: center;
@@ -125,8 +120,33 @@ body {
     height: 16px;
 }
 
-.filter-buttons button:hover {
-    background-color: #ccc;
+.sort {
+    position: relative;
+    width: fit-content;
+    font-family:Verdana;
+}
+
+#sort-options {
+    display: none;
+    position: absolute;
+    font-family:Verdana;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 100;
+}
+#sort-options input {
+    cursor: pointer;
+}
+
+.table-section {
+    padding: 2% 0%;
+    background-color: #fdd6d6;
+    border-radius: 15px;
 }
 
 table {
@@ -203,4 +223,43 @@ th {
 .table-wrapper::-webkit-scrollbar-thumb {
     background: #725420;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .heading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .heading h1 {
+        font-size: 180%;
+        text-align: center;
+    }
+
+    .search-box {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .filter-section {
+        display: flex;
+        gap: 10px;
+    }
+
+    #filter-button,
+    #sort-button {
+        width: auto;
+    }
+
+    table th,
+    table td {
+        font-size: 12px;
+        padding: 10px;
+    }
 }

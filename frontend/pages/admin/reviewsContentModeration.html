@@ -49,6 +49,24 @@
                     <button id="sort-button" onclick="toggleSort()">
                         <img src="../../resources/imgs/sort-solid.png" alt="sort icon">Sort
                     </button>
+                    
+                    <div id="sort-options">
+                        <p>Sort by:</p>
+                        <label>
+                            <input type="radio" name="sort" value="newest">
+                            Newest to Oldest
+                        </label><br>
+
+                        <label>
+                            <input type="radio" name="sort" value="oldest">
+                            Oldest to Newest
+                        </label><br>
+
+                        <div class="filter-buttons">
+                            <button type="button" onclick="applySort()">Apply</button>
+                            <button type="button" onclick="clearSort()">Clear</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,7 +80,7 @@
                     <th>Reason</th>
                     <th>Date Created</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th>Actions</th>
                 </tr>
                 <tr>
                     <td>Ramona Gray</td>
