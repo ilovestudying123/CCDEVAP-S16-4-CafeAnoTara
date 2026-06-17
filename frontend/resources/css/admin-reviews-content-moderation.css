@@ -1,22 +1,31 @@
+body {
+    background-color: #fffabc;
+}
+
 .body-box {
     width: 100%;
     max-width: 1500px;
     padding: 2%;
-    background-color: #fdd6d6;
     margin: 0 auto;
     margin-top: 2%;
     border-radius: 15px;
 }
 
-.search-section {
+.table-section {
+    padding: 2% 0%;
+    background-color: #fdd6d6;
+    border-radius: 15px;
+}
+
+.heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 95%;
-    margin: 20px auto;
+    margin: 0 auto 0 auto;
 }
 
-.search-section h1 {
+.heading h1 {
     font-size: 250%;
     color:#725420;
     font-family: "Montagu Slab", serif;
@@ -179,6 +188,7 @@ th {
     margin: 0 auto;
     overflow-x: auto; 
     overflow-y: auto;
+    padding-bottom: 15px;
 }   
 
 .table-wrapper::-webkit-scrollbar {

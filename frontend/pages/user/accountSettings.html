@@ -4,48 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Settings</title>
-    <link rel="stylesheet" href="accountSettings.css" <-- Link to CSS file for styling -->>
-    <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
-    <script src="accountSettings.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="header-style.css">
+    <link rel="stylesheet" href="accountSettings.css">
 
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-user.js"></script>
 </head>
 <body>
+
+    <div class="header">
+    <h1 class="title">Cafe Tayo </h1><h1 class="name"></h1><h1 class="title">, Ano Tara?</h1>
+
+    <nav class="nav-user">
+        <a href="dashboard.html">Home</a> |
+        <a href="bookmarks.html">Bookmarks</a> |
+        <a href="postedReviews.html">Posted Reviews</a> |
+        <a href="accountSettings.html">Account Settings</a>
+    </nav>
+    </div>
+
+    <script src="script-header-user.js"></script>
+ 
+
+
     <div class="account-settings">
-        <h1>Account Settings</h1>
-        <form>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" value="j_delacruz123" disabled>
-            <br><br>
+        
+        <h1 class="accSet">Account Settings</h1><br><br>
+        <form class="form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" value="j_delacruz123" disabled>
+                </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="juan.delacruz@gmail.com" disabled>
-            <br><br>
+                <div class="form-group"> 
+                <button id="edit-button" type="button" onclick="goToEditPage();">
+                    Edit
+                </button>
+                    <script>
+                    function goToEditPage() {
+                        window.location.href = "editAccountDetails.html";
+                    }
+                    </script>
+                </div>
+            </div>
 
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" value="Juan" disabled>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="juan.delacruz@gmail.com" disabled>
+                </div>
 
+                <div class="form-group">
+                    <label for="contactNumber">Contact Number</label>
+                    <input type="text" id="contactNumber" value="09123456789" disabled>
+                </div>
+            </div>
 
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" value="Dela Cruz" disabled>
-            <br><br>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" value="Juan" disabled>
+                </div>
 
-            <label for="contactNumber">Contact Number:</label>
-            <input type="text" id="contactNumber" name="contactNumber" value="09123456789" disabled>
-            <br><br>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" value="Dela Cruz" disabled>
+                </div>
+            </div>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" value="juan2345!" disabled>
-            <br><br><br>
-            <button type="button" onclick="goToEditPage();">Edit</button>
-
-            <script>
-            function goToEditPage() {
-                window.location.href = "editAccountDetails.html";
-            }
-            </script>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" value="juan2345!" disabled>
+            </div>
         </form>
     </div>
+    </body>
 </body>
 </html>
