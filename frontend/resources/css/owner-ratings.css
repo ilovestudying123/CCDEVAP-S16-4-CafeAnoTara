@@ -35,7 +35,6 @@
     border-radius: 15px;
     background-color: #fdd6d6;
     padding: 2%;
-    margin-top: 10%;
     width: 70%;
     margin: 0 auto;
     box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
@@ -49,8 +48,8 @@
 }
 
 .review-img img {
-    width: 300px; 
-    height: auto;
+    width: 250px; 
+    max-height: 320px;
     display: block;
     border: 5px solid white;
 }
@@ -183,8 +182,7 @@
     }
 
     .review-img img {
-        width: 90%;
-        max-width: 100%;
+        width: 80%;
         margin: 0 auto;
     }
 
