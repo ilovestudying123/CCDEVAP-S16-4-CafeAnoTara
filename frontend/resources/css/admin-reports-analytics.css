@@ -1,0 +1,81 @@
+.body-box {
+    width: 100%;
+    max-width: 1500px;
+    padding: 2%;
+    margin: 0 auto;
+    margin-top: 2%;
+    border-radius: 15px;
+}
+
+.body-box h1 {
+    font-size: 250%;
+    color:#725420;
+    font-family: "Montagu Slab", serif;
+    font-weight: 400
+}
+
+.heading {
+    width: 95%;
+    margin: 20px 40px 20px 40px;
+}
+
+.reports-content {
+    background-color: #fdd6d6;
+    border-radius: 15px;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-evenly;
+    overflow-y: auto;
+    overflow-x: auto;
+
+    height: 100%;
+    padding: 2% 3% 1% 2%;
+    gap: 2%;
+}
+
+.bottom-row {
+    display: flex;
+    justify-content: space-evenly;
+    overflow-y: auto;
+    overflow-x: auto;
+
+    height: 100%;
+    padding: 2% 3% 5% 2%;
+    gap: 2%;
+}
+
+.info-box {
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
+    box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+    padding: 2%;
+    flex: 1;
+}
+
+.info-box h1 {
+    font-family: "Montagu Slab", serif;
+    font-weight: 300;
+    font-size: 200%;
+    margin-top: 0;
+    margin-bottom: 2%;
+}
+
+.info-box p {
+    font-family: "Montagu Slab", serif;
+    font-weight: 300;
+    font-size: 250%;
+    margin-top: 0;
+    margin-bottom: 2%;
+}
+
+.info-box ol {
+    font-family: "Verdana", serif;
+    font-weight: 300;
+    font-size: 200%;
+    margin-top: 0%;
+    margin-bottom: 2%;
+    padding-left: 8%;
+}
