@@ -105,9 +105,30 @@ section {
     scale: 102%;
 }
 
+.cafe-info {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.cafe-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.cafe-details h1 {
+    margin-top: 0;
+    margin-bottom: 2%;
+}
+
+.cafe-details p {
+    margin: 0;
+}
+
 .cafe-card img {
-    width: 216px;
-    height: 144px;
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
 }
 
 .cafe-card h1, .cafe-card p {

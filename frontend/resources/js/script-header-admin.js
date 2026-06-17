@@ -18,3 +18,13 @@ function toggleFilter() {
         panel.style.display = 'block';
     }
 }
+
+function clearFilter() {
+}
+
+function applyFilter() {
+}
+
+function toggleSort() {
+    
+}
