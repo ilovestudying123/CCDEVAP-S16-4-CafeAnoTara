@@ -41,8 +41,21 @@
                         </div>
                     </div>
                 </div>
-                <button id="sort-button" type="button" onclick="toggleSort()">
-                <img src="../../resources/imgs/sort-solid.png" class="sort-icon">Sort</button>
+
+                <div class="sort">
+                    <button id="sort-button" onclick="toggleSort()">
+                        <img src="../../resources/imgs/sort-solid.png" class="sort-icon">Sort</button>
+
+                    <div id="sort-options">
+                        <p>Sort by:</p>
+                        <label><input type="radio" name="oldestNewest" value="old">Alphabet</label>
+
+                        <div class="filter-buttons">
+                            <button type="button" onclick="applySort()">Apply</button>
+                            <button type="button" onclick="clearSort()">Clear</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         

@@ -19,12 +19,12 @@ function toggleFilter() {
     }
 }
 
-function clearFilter() {
-}
-
-function applyFilter() {
-}
-
 function toggleSort() {
+    const panel = document.getElementById('sort-options');
     
+    if (panel.style.display === 'block') {
+        panel.style.display = 'none';
+    } else {
+        panel.style.display = 'block';
+    }
 }

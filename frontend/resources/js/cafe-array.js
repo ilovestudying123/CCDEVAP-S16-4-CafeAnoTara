@@ -1,8 +1,8 @@
 const cafes =[
     {
-        id: "cafeW",
-        name: "Cafe W",
-        address: "123 Main Street, Bonifacio Global City, Taguig City",
+        id: "yardstick",
+        name: "Yardstick",
+        address: "5th Avenue, Bonifacio Global City, Taguig City",
         wifiSpeed: "100Mbps",
         outlets: 8,
         priceRange: "100-300",
@@ -20,9 +20,9 @@ const cafes =[
     },
 
     {
-        id: "cafeX",
-        name: "Cafe X",
-        address: "1234 Main Street, Bonifacio Global City, Taguig City",
+        id: "matchaLater",
+        name: "Matcha Later",
+        address: "36 Polaris Street, Poblacion, Makati City",
         wifiSpeed: "10Mbps",
         outlets: 10,
         priceRange: "100-500",
@@ -40,9 +40,9 @@ const cafes =[
     },
 
     {
-        id: "cafeY",
-        name: "Cafe Y",
-        address: "12345 Main Street, Bonifacio Global City, Taguig City",
+        id: "starbucks",
+        name: "Starbucks",
+        address: "Forbestown Road, Bonifacio Global City, Taguig City",
         wifiSpeed: "1Mbps",
         outlets: 6,
         priceRange: "100-200",
@@ -60,8 +60,8 @@ const cafes =[
     },
 
     {
-        id: "cafeZ",
-        name: "Cafe Z",
+        id: "cbtl",
+        name: "Coffee Bean Tea Latte",
         address: "123456 Main Street, Bonifacio Global City, Taguig City",
         wifiSpeed: "1Gbps",
         outlets: 100,

@@ -2,6 +2,15 @@ function goToSearchPage() {
         window.location.href="../../pages/user/search.html"
     }
 
+    function toggleFilter() {
+    const panel = document.getElementById('filter-options');
+    if (panel.style.display === 'block') {
+        panel.style.display = 'none';
+    } else {
+        panel.style.display = 'block';
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("rec-cafes-list");
 
