@@ -49,6 +49,9 @@
     padding: 7px;
     border-radius: 15px;
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sort-section {
