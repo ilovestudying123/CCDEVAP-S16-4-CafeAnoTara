@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Montagu Slab';
+    src: url(../font/MontaguSlab-VariableFont_opsz\,wght.ttf);
+}
+
 .body-box {
     width: 100%;
     max-width: 1500px;
@@ -63,6 +68,20 @@
 
 .filter-section {
     flex: none;
+}
+
+#sort-button, #filter-button {
+    background-color: #fff;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sort-icon {
+    width: 18px;
+    height: 18px;
 }
 
 .filter {

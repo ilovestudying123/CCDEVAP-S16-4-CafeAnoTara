@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Montagu Slab';
+    src: url(../font/MontaguSlab-VariableFont_opsz\,wght.ttf);
+}
+
 .body-box {
     display: flex;
     gap: 3%;
