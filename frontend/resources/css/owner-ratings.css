@@ -171,6 +171,11 @@
     max-width: 20px;
 }
 
+.sort-img, .filter-img{
+    width: 25px;
+    height: auto;
+}
+
 @media (max-width: 768px) {
     .review-card {
         flex-direction: column;
