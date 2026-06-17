@@ -1,5 +1,6 @@
 .body-box {
     padding: 20px;
+    font-family: 'Montagu Slab';
 }
 
 .cafe-name {
@@ -19,6 +20,8 @@
     cursor: pointer;
     text-decoration: none;
     outline: none;
+    font-family: Verdana;
+    font-weight: normal;
 
     display: block; 
     width: fit-content;
@@ -73,6 +76,7 @@
 .desc-text {
     font-size: 150%;
     color: #ce8139;
+    font-family: Verdana;
 }
 
 .thumbnails-row {
@@ -118,10 +122,8 @@
     }
 
     .update-btn {
-        grid-column: 2;
         font-size: 200%;
         padding: 8px 16px;
-        margin: 0;
         border-radius: 20px;
     }
 

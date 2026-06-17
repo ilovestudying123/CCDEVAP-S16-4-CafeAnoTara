@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/owner-ratings.css?v=1">
+    <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap" rel="stylesheet">
 
     <div id="header"></div>
     <script src="../../resources/js/script-header-owner.js"></script>
@@ -25,7 +26,7 @@
                     <label><input type="radio" name="stars" value="four">4 Stars & Up</label> <br>
                     <label><input type="radio" name="stars" value="three">3 Stars & Up</label> <br>
                     <label><input type="radio" name="stars" value="two">2 Stars & Up</label> <br>
-                    <label><input type="radio" name="stars" value="one">1 Stars & Up</label> <br>
+                    <label><input type="radio" name="stars" value="one">1 Stars & Up</label> <br><br>
 
                     <div class="filter-buttons">
                         <button type="button" onclick="applyFilter()">Apply</button>
@@ -39,7 +40,7 @@
                 <div id="dropdown-sort-options">
                     <p>Cafe Rating:</p>
                     <label><input type="radio" name="newestOldest" value="new">Newest To Oldest</label> <br>
-                    <label><input type="radio" name="oldestNewest" value="old">Oldest To Newest</label> <br>
+                    <label><input type="radio" name="oldestNewest" value="old">Oldest To Newest</label> <br> <br>
 
                     <div class="filter-buttons">
                         <button type="button" onclick="applySort()">Apply</button>
@@ -63,7 +64,7 @@
                         <button type="button" id="report-btn">Report</button>
                     </div>
                     
-                    <p class="rating">4/5 Stars</p>
+                    <p class="rating"><span class="star">★</span> 3.6/5</p>
                     <p class="review-body">I liked this cafe it has fast wifi</p>
                     
                     <div class="review-reply">
