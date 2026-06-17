@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/user-dashboard.css">
-    <script src="../../resources/js/user-search.js"></script>
+    <script src="../../resources/js/cafe-array.js"></script>
+    <script src="../../resources/js/user-dashboard.js"></script>
 
     <div id="header"></div>
     <script src="../../resources/js/script-header-user.js"></script>
@@ -17,13 +18,8 @@
     <section class="search-section">
         <div class="search">
             <input id="search-box" type="search" placeholder="Search...">
-            <button id="search-button" type="submit" onclick="goToSearchPage()"><i class="fa-solid fa-magnifying-glass"></i></i></button>
+            <button id="search-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></i></button>
         </div>
-            <script>
-            function goToSearchPage() {
-                window.location.href = "search.html";
-            }
-            </script>
         </section>
 
         <section class="filter-section">
@@ -66,36 +62,8 @@
             <h2>Recommended Study Cafes</h2>
         </div>
 
-        <div class="rec-cafes-list">
-            <div class="cafe-card">
-                <img src="../../resources/imgs/cafe.jpg" alt="Cafe 1">
-               <div class="cafe-text">
-                <h3>Cafe A</h3>
-                <p><i class="fa-solid fa-star"></i>4.5/5</p>
-                </div>
-            </div>
-            <div class="cafe-card">
-                <img src="../../resources/imgs/cafe.jpg" alt="Cafe 2">
-               <div class="cafe-text">
-                <h3>Cafe X</h3>
-                <p><i class="fa-solid fa-star"></i>4.2/5</p>
-                </div>
-            </div>
-            <div class="cafe-card">
-                <img src="../../resources/imgs/cafe.jpg" alt="Cafe 3">
-               <div class="cafe-text">
-                <h3>Cafe Y</h3>
-                <p><i class="fa-solid fa-star"></i>4.7/5</p>
-                </div>
-            </div>
-             <div class="cafe-card">
-                <img src="../../resources/imgs/cafe.jpg" alt="Cafe 4">
-               <div class="cafe-text">
-                <h3>Cafe Y</h3>
-                <p><i class="fa-solid fa-star"></i>4.4/5</p>
-                </div>
-            </div>
-
+        <div class="rec-cafes-list" id="rec-cafes-list">
+            
         </div>
     </div>
     </section>

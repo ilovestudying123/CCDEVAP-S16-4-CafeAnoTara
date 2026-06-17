@@ -101,11 +101,14 @@ body {
     padding: 30px;
     padding-bottom: 30px;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 .cafe-card {
     flex: 1 1 150px;
     min-width: none;
+    text-decoration: none;
+    color: inherit;
 }
 
 .cafe-card img {
@@ -123,4 +126,6 @@ body {
     flex-direction: row;
     gap: 30px;
     justify-content: center;
+    text-decoration: none;
+    color: black;
 }
