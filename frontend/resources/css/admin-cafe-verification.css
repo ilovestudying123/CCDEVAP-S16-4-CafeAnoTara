@@ -18,6 +18,8 @@
 .search-section h1 {
     font-size: 250%;
     color:#725420;
+    font-family: "Montagu Slab", serif;
+    font-weight: 400;
 }
 
 .search-box {
@@ -47,6 +49,7 @@
     border: 1px solid #191102;
     border-radius: 20px;
     font-size: 14px;
+    font-family:Verdana;
     box-sizing: border-box;
 }
 
@@ -65,11 +68,13 @@
 .filter {
     position: relative;
     width: fit-content;
+    font-family:Verdana;
 }
 
 #filter-options {
     display: none;
     position: absolute;
+    font-family:Verdana;
     top: 100%;
     left: 0;
     width: 250px;
@@ -78,6 +83,18 @@
     border-radius: 4px;
     padding: 10px;
     z-index: 100;
+}
+#filter-options input {
+    cursor: pointer;
+}
+.filter-buttons button {
+    padding: 2%;
+    margin: 5% 0 5% 0;
+    transition: ease all 0.3s;
+}
+
+.filter-buttons button:hover {
+    background-color: #ccc;
 }
 
 .card-holder {
@@ -119,10 +136,14 @@ section {
 .cafe-details h1 {
     margin-top: 0;
     margin-bottom: 2%;
+    font-family: "Montagu Slab", serif;
+    font-weight: 300;
 }
 
 .cafe-details p {
     margin: 0;
+    font-size: 14px;
+    font-family:Verdana;
 }
 
 .cafe-card img {
@@ -137,6 +158,7 @@ section {
 
 .button-holder {
     display: flex;
+    padding-top: 5%;
     justify-content: center;
     gap: 5%;
 }
@@ -146,6 +168,7 @@ section {
     font-size: 20px;
     padding: 3% 0 3% 0;
     width: 45%;
+    font-family:Verdana;
 }
 
 .reject-btn {

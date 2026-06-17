@@ -6,9 +6,8 @@
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/admin-cafe-verification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap" rel="stylesheet">
     <script src="../../resources/js/script-header-admin.js"></script>
 </head>
 
@@ -56,8 +55,8 @@
                 </div>
 
                 <div class="button-holder">
-                    <button class="reject-btn">Reject</button>
-                    <button class="approve-btn">Approve</button>
+                    <button class="reject-btn" onclick="return confirm('Reject Cafe Application?')">Reject</button>
+                    <button class="approve-btn" onclick="return confirm('Accept Cafe Application?')">Approve</button>
                 </div>
             </section>
 
