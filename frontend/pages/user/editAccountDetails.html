@@ -1,47 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Account Details</title>
-    <script src="accountSettings.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="header-style.css">
+    <link rel="stylesheet" href="editAccountDetails.css">
+
 </head>
 <body>
+    <div class="header">
+    <h1 class="title">Cafe Tayo, Ano Tara?</h1>
 
-    <h1>Edit Account Details</h1>
+    <nav class="nav-user">
+        <a href="dashboard.html">Home</a> |
+        <a href="bookmarks.html">Bookmarks</a> |
+        <a href="postedReviews.html">Posted Reviews</a> |
+        <a href="accountSettings.html">Account Settings</a>
+    </nav>
+    </div>
+    <script src="script-header-user.js"></script>
 
-    <form>
-    <input type="checkbox" onclick="toggle('username', this)">
-    <label>Username:</label>
-    <input type="text" id="username" value="j_delacruz123" disabled>
-    <br><br>
+    <div class="editDetails">
+        <h1 class="editTitle">Edit Account Details</h1><br><br>
 
-    <input type="checkbox" onclick="toggle('email', this)">
-    <label>Email:</label>
-    <input type="email" id="email" value="juan.delacruz@gmail.com" disabled>
-    <br><br>
+        <form class="form">
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="checkbox" onclick="toggle('username', this)">
+                    <label>Username:</label>
+                    <input type="text" id="username" value="j_delacruz123" disabled>
+                </div>
 
-    <input type="checkbox" onclick="toggle('firstName', this)">
-    <label>First Name:</label>
-    <input type="text" id="firstName" value="Juan" disabled>
-    <br><br>
+                <div class="form-group"> 
+                    <button type="button" onclick="saveChanges()">Save Changes</button>
+                </div>
+            </div>
 
-    <input type="checkbox" onclick="toggle('lastName', this)">
-    <label>Last Name:</label>
-    <input type="text" id="lastName" value="Dela Cruz" disabled>
-    <br><br>
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="checkbox" onclick="toggle('email', this)">
+                    <label>Email:</label>
+                    <input type="email" id="email" value="juan.delacruz@gmail.com" disabled>
+                </div>
 
-    <input type="checkbox" onclick="toggle('contactNumber', this)">
-    <label>Contact Number:</label>
-    <input type="text" id="contactNumber" value="09123456789" disabled>
-    <br><br>
+                <div class="form-group"> 
+                    <input type="checkbox" onclick="toggle('contactNumber', this)">
+                    <label>Contact Number:</label>
+                    <input type="text" id="contactNumber" value="09123456789" disabled>
+                </div>
+            </div>
 
-    <input type="checkbox" onclick="toggle('password', this)">
-    <label>Password:</label>
-    <input type="password" id="password" value="juan2345!" disabled>
-    <br><br>
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="checkbox" onclick="toggle('firstName', this)">
+                    <label>First Name:</label>
+                    <input type="text" id="firstName" value="Juan" disabled>
 
-    <button type="button" onclick="saveChanges();">Save Changes</button>
+                </div>
 
-    </form>
-
+                <div class="form-group"> 
+                    <input type="checkbox" onclick="toggle('lastName', this)">
+                    <label>Last Name:</label>
+                    <input type="text" id="lastName" value="Dela Cruz" disabled>
+                </div>
+            </div>            
+            
+                <div class="form-group"> 
+                    <input type="checkbox" onclick="toggle('password', this)">
+                    <label>Password:</label>
+                    <input type="password" id="password" value="juan2345!" disabled>
+                </div>
+        </form>
+    </div>
 </body>
 </html>

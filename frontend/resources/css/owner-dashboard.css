@@ -9,8 +9,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1.1fr 1.1fr;
     gap: 25px;
-    width: 100%;
-    max-width: 1500px;
+    width: 80%;
     padding: 2%;
     background-color: #fdd6d6;
     margin: 0 auto;
@@ -72,7 +71,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 5%;
 }
 
 .main-img {
