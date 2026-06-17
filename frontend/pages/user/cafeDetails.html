@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/user-cafeDetails.css">
+
+    <div id="header"></div>
+    <script src="../../resources/js/script-header-user.js"></script>
+    <script src="../../resources/js/cafe-array.js"></script>
+    <script src="../../resources/js/cafe-array.js"></script>
 </head>
 <body>
 <section class="firstPart">
@@ -13,8 +19,8 @@
 
             <div class="name-bookmark">
                 <div class="cafe-name">
-                    <h3>Cafe W</h3>
-                    <p>123 Main Street, Bonifacio Global City, Taguig City</p>
+                    <h3 id="cafe-name">Cafe W</h3>
+                    <p id="cafe-address">123 Main Street, Bonifacio Global City, Taguig City</p>
                 </div>
                 <div class="cafe-bookmark">
                     <button id="bookmark-button" type="button" onclick="bookmarkCafe()"><i class="fa-solid fa-bookmark"></i></button>
@@ -23,32 +29,24 @@
 
             <div class="cafe-details">
                 <div class="cafe-mainImg">
-                    <img src="../../resources/imgs/cafe.jpg" alt="Cafe 1">
+                    <img id="cafe-mainImage" src="../../resources/imgs/cafe.jpg" alt="Cafe 1">
                 </div>
                 <div class="cafe-description">
-                    <p>Wifi speed: 100Mbps No. of outlets: 8</p>
-                    <p>Price range: $-$$  Noise Level: Moderate</p>
-                    <p>Opening hours: 7:30 am - 10:00 pm</p>
+                    <p>Wifi speed: <span id="cafe-wifi"> 100Mbps</span> No. of outlets: <span id="cafe-outlets">8</span></p>
+                    <p>Price range: <span id="cafe-price">$-$$</span> Noise Level: <span id="cafe-noise">Moderate</span></p>
+                    <p>Opening hours: <span id="cafe-hours">7:30 am - 10:00 pm</span></p>
                     <div class = "desc-box">
-                        <p>Description</p>
+                        <p id="cafe-desc-text">Description</p>
                     </div>
                 </div>
             </div>
             
             <p>Additional Images:</p>
             <div class = "cafe-images">
-                <div class="images">
-                     <img src="../../resources/imgs/cafe.jpg" alt="Cafe 1">
-                </div>
-                <div class="images">
-                     <img src="../../resources/imgs/cafe.jpg" alt="Cafe 1">
-                </div>
-                <div class="images">
-                     <img src="../../resources/imgs/cafe.jpg" alt="Cafe 1">
-                </div>
-                <div class="images">
-                     <img src="../../resources/imgs/cafe.jpg" alt="Cafe 1">
-                </div>
+                <div class="images"> <img class="additional-images" src="../../resources/imgs/cafe.jpg" alt="Cafe 1"> </div>
+                <div class="images"> <img class="additional-images" src="../../resources/imgs/cafe.jpg" alt="Cafe 1"> </div>
+                <div class="images"> <img class="additional-images" src="../../resources/imgs/cafe.jpg" alt="Cafe 1"> </div>
+                <div class="images"> <img class="additional-images" src="../../resources/imgs/cafe.jpg" alt="Cafe 1"> </div>
             </div>
 
         </div>
@@ -83,7 +81,7 @@
     <div class="cafe-ratings">
         <h1>Ratings & Review</h1>
         <div class="star-buttons">
-            <p><i class="fa-regular fa-star"></i> 3.6/5</p>
+            <p><i class="fa-regular fa-star"></i> <span id="cafe-rating">3.6/5</span></p>
 
             <div class="buttons">
                 <button id="filter-button" onclick="toggleFilter()"><i class="fa-solid fa-sliders"></i>Filter</button>
