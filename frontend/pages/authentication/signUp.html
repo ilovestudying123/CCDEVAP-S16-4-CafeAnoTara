@@ -8,50 +8,83 @@
     <script src="../../resources/js/signUp.js" defer></script>
 </head>
 <body>
-    <h1>Cafe, Ano Tara?</h1>
+    <div class="header">
+    <h1 class="title">Cafe Tayo, Ano Tara?</h1>
+    </div>
 
-<section>
-    <h3>Trending Cafes:</h3>
+    <div class="content">
+        <section class="trending">
+            <h3 class="trend">Trending Cafes:</h3>
 
-    <p>Yardstick Coffee</p>
-    <img src="yardstick.png" alt="Top 1" width="100" height="100"/>
-    <p>Starbucks</p>
-    <img src="sb.png" alt="Top 2" width="100" height="100"/>
-    <p>Coffee Bean & Tea Leaf</p>
-    <img src="cbtl.png" alt="Top 3" width="100" height="150"/>
-</section>
+            <div class="photo-row">
+                <div class="photo-group">
+                    <img src="yardstick.png" alt="Top 1" width="100" height="100"/>
+                    <h5>Yardstick Coffee</h5>
+                </div>
+                <div class="photo-group">                    
+                    <img src="sb.png" alt="Top 2" width="100" height="100"/>
+                    <h5>Starbucks</h5>
+                </div>    
+                <div class="photo-group">   
+                    <img src="cbtl.png" alt="Top 3" width="100" height="150"/>
+                    <h5>Coffee Bean & Tea Leaf</h5>
+                </div>
+            </div>
+        
+        </section>
 
-<aside>    
-    <h4>Become a member today!</h4>
+<aside class="signUp">
+    <h4 class="signUpCaption">Become a member today!</h4>
     <form id="signUpForm">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName" required>
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName" required>
-        <br>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required>
-        <br><br>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
 
-        <label for="userType">User Type</label><br>
-        <input type="radio" id="ownerType" name="userType" value="Owner" required>
-        <label for="ownerType">Owner</label>
-        <input type="radio" id="customerType" name="userType" value="Customer" required>
-        <label for="customerType">Customer</label><br><br>
+        <div class="name-row">
+            <div>
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
 
-        <!--Check which user type is selected to determine which dashboard to display-->
+            <div>
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+        </div>
+
+        <div class="password-row">
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div>
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+        </div>
+
+        <div class="user-type">
+            <label>User Type</label>
+
+            <div class="radio-row">
+                <div class="radio-group">
+                    <input type="radio" id="ownerType" name="userType" value="Owner" required>
+                    <label for="ownerType">Owner</label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" id="customerType" name="userType" value="Customer" required>
+                    <label for="customerType">Customer</label>
+                </div>
+            </div>
+        </div>
+        
         <button type="submit">Create Account</button>
         <br>
         <p>Already have an account? <a href="login.html">Sign in</a></p>
     </form>
 </aside>  
+</div>
 </body>
 </html>
