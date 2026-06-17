@@ -204,3 +204,42 @@ th {
     background: #725420;
     border-radius: 10px;
 }
+
+@media screen and (max-width: 768px) {
+
+    .heading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .heading h1 {
+        font-size: 180%;
+        text-align: center;
+    }
+
+    .search-box {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .filter-section {
+        display: flex;
+        gap: 10px;
+    }
+
+    #filter-button,
+    #sort-button {
+        width: auto;
+    }
+
+    table th,
+    table td {
+        font-size: 12px;
+        padding: 10px;
+    }
+}

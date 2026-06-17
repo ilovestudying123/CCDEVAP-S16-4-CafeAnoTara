@@ -85,3 +85,39 @@ body {
     padding-left: 8%;
     color: #ce8139;
 }
+
+@media screen and (max-width: 768px) {
+
+    .body-box h1 {
+        font-size: 180%;
+    }
+
+    .heading {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    .top-row,
+    .bottom-row {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .info-box {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .info-box h1 {
+        font-size: 150%;
+    }
+
+    .info-box p {
+        font-size: 200%;
+    }
+
+    .info-box ol {
+        font-size: 120%;
+    }
+}
