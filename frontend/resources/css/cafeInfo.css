@@ -16,7 +16,7 @@
     background-color: #ce8139;
     padding: 12px 24px;
     border-radius: 30px;
-    font-size: 200%;
+    font-size: 120%;
     cursor: pointer;
     text-decoration: none;
     outline: none;
@@ -35,6 +35,9 @@
     display: flex;
     background-color: #fdd6d6;
     border-radius: 15px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
 }
 
 .pic-column {
@@ -69,12 +72,12 @@
 
 .header-text {
     font-weight: bold;
-    font-size: 200%;
+    font-size: 160%;
     color: #725420;
 }
 
 .desc-text {
-    font-size: 150%;
+    font-size: 130%;
     color: #ce8139;
     font-family: Verdana;
 }

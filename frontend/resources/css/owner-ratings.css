@@ -71,7 +71,7 @@
 }
 
 .review-title {
-    font-size: 270%;
+    font-size: 200%;
     margin: 0;
     color:#725420;
 }
@@ -95,7 +95,7 @@
 }
 
 .rating{
-    font-size: 170%;
+    font-size: 150%;
 }
 
 .star {
@@ -104,7 +104,7 @@
 }
 
 .review-body{
-    font-size: 120%;
+    font-size: 100%;
 }
 
 .review-reply {
