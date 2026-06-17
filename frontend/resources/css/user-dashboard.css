@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Montagu Slab';
+    src: url(../font/MontaguSlab-VariableFont_opsz\,wght.ttf);
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -115,6 +120,14 @@ body {
     border-width: 1.2px;
     padding: 20px;
     box-sizing: border-box;
+
+    font-family: "Montagu Slab", serif;
+    font-size: 100%;
+    font-weight: 400;
+    color:#725420;
+    background-color: #fdd6d6;
+    transition: ease all 0.3s;
+    box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
 }
 
 
@@ -130,6 +143,7 @@ body {
     padding-bottom: 30px;
     box-sizing: border-box;
     text-decoration: none;
+
 }
 
 .cafe-card {
@@ -137,6 +151,16 @@ body {
     min-width: none;
     text-decoration: none;
     color: inherit;
+
+    padding: 2%;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+    transition: ease all 0.3s;
+}
+
+.cafe-card:hover {
+    scale: 102%;
 }
 
 .cafe-card img {

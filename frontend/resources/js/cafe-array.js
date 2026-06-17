@@ -21,7 +21,7 @@ const cafes =[
 
     {
         id: "matchaLater",
-        name: "Matcha Later",
+        name: "Ujisan",
         address: "36 Polaris Street, Poblacion, Makati City",
         wifiSpeed: "10Mbps",
         outlets: 10,
@@ -61,7 +61,7 @@ const cafes =[
 
     {
         id: "cbtl",
-        name: "Coffee Bean Latte",
+        name: "CBTL",
         address: "108 E. Rodriguez Jr. Ave., Brgy. Bagumbayan, Quezon City",
         wifiSpeed: "1Gbps",
         outlets: 100,

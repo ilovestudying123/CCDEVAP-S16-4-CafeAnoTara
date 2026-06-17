@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'Montagu Slab';
+    src: url(../font/MontaguSlab-VariableFont_opsz\,wght.ttf);
+}
+
+
 body {
     margin: 0;
     padding: 0;
@@ -116,8 +122,17 @@ body {
     width: 90%;
     height: 300px;
     overflow: auto;
+
+    background-color: #fdd6d6;
+    border-radius: 15px;
 }
 
+.cafe-lists-header h2 {
+    font-size: 250%;
+    color:#725420;
+    font-family: "Montagu Slab", serif;
+    font-weight: 500;
+}
 
 .cafe-list { 
    border-style: solid;
@@ -133,6 +148,20 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    font-family: Verdana;
+    font-size: 20px;
+    color: #725420;
+}
+
+.listing-box {
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+}
+
+.listing-box:hover {
+    background-color: #fff3f3;;
 }
 
 #star-icon {

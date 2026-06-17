@@ -1,8 +1,20 @@
+@font-face {
+    font-family: 'Montagu Slab';
+    src: url(../font/MontaguSlab-VariableFont_opsz\,wght.ttf);
+}
+
 .bookmark-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 50px;
+}
+
+.bookmark-header h1 {
+    font-size: 250%;
+    color:#725420;
+    font-family: "Montagu Slab", serif;
+    font-weight: 500;
 }
 
 .buttons {
@@ -74,11 +86,9 @@
     overflow: auto;
     border: 1.2px solid black;
     box-sizing: border-box;
-}
 
-.fa-bookmark {
-    font-size: 50px;
-    color: grey;
+    background-color: #fdd6d6;
+    border-radius: 15px;
 }
 
 .bookmark-card {
@@ -87,6 +97,7 @@
     margin: auto;
     gap: 20px;
     align-items: center;
+    border-radius: 15px;;
 }
 
 .cafe-details {
@@ -97,6 +108,19 @@
     box-sizing: border-box;
     width: 95%;
     border-radius: 15px;
+
+    background-color: #fff;
+    box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+}
+
+.cafe-details:hover {
+    scale: 102%;
+    transition: ease all 0.3s;
+}
+
+.cafe-text {
+     font-size: 12px;
+    font-family:Verdana;
 }
 
 #cafe-name {

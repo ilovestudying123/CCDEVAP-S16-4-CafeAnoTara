@@ -10,6 +10,12 @@
     gap: 20px;
 }
 
+.firstPart {
+    font-family: Verdana;
+    font-size: 16px;
+    color: #725420;
+}
+
 .cafe {
     flex: 0 0 60%;
     border: 1.2px solid black;
@@ -17,6 +23,8 @@
     padding: 20px;
     margin-left: 20px;
     
+    background-color: #fdd6d6;
+    border-radius: 15px;
 }
 
 .review {
@@ -25,6 +33,21 @@
     box-sizing: border-box;
     padding: 20px;
     
+    background-color: #fdd6d6;
+    border-radius: 15px;
+}
+
+.review h3 {
+    font-size: 250%;
+    color:#725420;
+    font-family: "Montagu Slab", serif;
+    font-weight: 500;
+}
+
+.review p {
+    font-family: Verdana;
+    font-size: 20px;
+    color: #725420;
 }
 
 .name-bookmark {
@@ -49,6 +72,13 @@
     justify-content: space-between;
     overflow: hidden;
     gap: 20px;
+}
+
+.cafe-name h3 {
+    font-size: 200%;
+    color:#725420;
+    font-family: "Montagu Slab", serif;
+    font-weight: 300;
 }
 
 .cafe-mainImg {
@@ -106,7 +136,7 @@
 
 textarea {
     width: 100%;
-    height: 500px;
+    height: 350px;
 }
 
 .submit-review {
@@ -138,10 +168,21 @@ textarea {
 }
 
 .cafe-ratings {
-    padding: 20px;
+    padding: 40px;
     margin: auto;
     width: 80%;
     justify-content: center;
+
+    background-color: #fdd6d6;
+    border-radius: 15px;
+    border: 1px solid #191102;
+}
+
+.cafe-ratings h3 {
+    font-size: 250%;
+    color:#725420;
+    font-family: "Montagu Slab", serif;
+    font-weight: 500;
 }
 
 .star-buttons p {
@@ -220,16 +261,31 @@ textarea {
     border-style: solid;
     border-width: 1.2px;
     padding: 10px;
-    margin: 20px auto;
+    margin: auto;
     width: 100%;
     height: 300px;
     overflow: auto;
+
+    border-radius: 15px;
+    border: 1px solid #191102;
+}
+
+#cafe-rating {
+    font-family: Verdana;
+    font-size: 120%;
+    color: #725420;
 }
 
 .user-reviews {
     display: flex;
     gap: 20px;
     align-items: center;
+}
+
+.user-reviews p {
+    font-family: Verdana;
+    font-size: 16px;
+    color: #725420;
 }
 
 .userName {
