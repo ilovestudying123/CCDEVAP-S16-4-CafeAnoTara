@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/user-search.css">
 
@@ -15,14 +14,16 @@
     <div class="search-filter-sort">
     <section class="search-section">
         <div class="search">
-            <input id="search-box" type="search" placeholder="Enter">
-            <button id="search-button" type="submit" onclick=""><i class="fa-solid fa-magnifying-glass"></i></i></button>
+            <input id="search-box" type="search" placeholder="Search...">
+            <button id="search-button" type="submit"><img id="search-icon" src="../../resources/imgs/magnifying-glass-solid.png"></button>
         </div>
         </section>
 
         <section class="filter-section">
         <div class="filter">
-            <button id="filter-button" onclick="toggleFilter()"><i class="fa-solid fa-sliders"></i>Filter</button>
+            <div class="filter-button">
+                <button id="filter-button" onclick="toggleFilter()"><img id="filter-icon" src="../../resources/imgs/sliders-solid.png">Filter</button>
+                </div>
             <div id="filter-options">
                 <!-- radio buttons for wifi speed -->
                 <p>Wifi Speed:</p>
@@ -49,7 +50,7 @@
         <!-- button for sort -->
         <section class="sort-section">
         <div class="sort-button">
-            <button id="sort-button" type="button" onclick="toggleSort()"><i class="fa-solid fa-sort"></i>Sort</button>
+            <button id="sort-button" type="button" onclick="toggleSort()"><img id="sort-icon" src="../../resources/imgs/sort-solid.png">Sort</button>
         </div>
     </div>
     </section>

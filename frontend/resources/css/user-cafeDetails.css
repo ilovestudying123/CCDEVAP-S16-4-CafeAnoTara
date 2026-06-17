@@ -154,18 +154,63 @@ textarea {
     align-items: center;
 }
 
+.buttons {
+    display: flex;
+    
+}
+
+#filter-icon {
+    width: 15px;
+    height: 20px;
+}
+
+#sort-icon {
+    width: 15px;
+    height: 20px;
+}
+
+.filter {
+    position: relative;
+    width: fit-content;
+}
+
+.filter-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#filter-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 100;
+}
+
 #filter-button {
     padding: 7px;
     border-radius: 15px;
-    font-size: 17px;
     background-color: white;
+}
+
+.sort-section {
+    flex: none;
 }
 
 #sort-button {
     padding: 7px;
     border-radius: 15px;
-    font-size: 17px;
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .reviews-scroll {
