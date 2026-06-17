@@ -1,6 +1,6 @@
 const cafes =[
     {
-        id: "CafeW",
+        id: "cafeW",
         name: "Cafe W",
         address: "123 Main Street, Bonifacio Global City, Taguig City",
         wifiSpeed: "100Mbps",
@@ -20,7 +20,7 @@ const cafes =[
     },
 
     {
-        id: "CafeX",
+        id: "cafeX",
         name: "Cafe X",
         address: "1234 Main Street, Bonifacio Global City, Taguig City",
         wifiSpeed: "10Mbps",
@@ -40,7 +40,7 @@ const cafes =[
     },
 
     {
-        id: "CafeY",
+        id: "cafeY",
         name: "Cafe Y",
         address: "12345 Main Street, Bonifacio Global City, Taguig City",
         wifiSpeed: "1Mbps",
@@ -60,7 +60,7 @@ const cafes =[
     },
 
     {
-        id: "CafeZ",
+        id: "cafeZ",
         name: "Cafe Z",
         address: "123456 Main Street, Bonifacio Global City, Taguig City",
         wifiSpeed: "1Gbps",
