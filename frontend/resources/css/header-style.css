@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Montagu Slab';
+    src: url(../font/MontaguSlab-VariableFont_opsz\,wght.ttf);
+}
+
 .title{
     text-align: left;
     margin: 0;
