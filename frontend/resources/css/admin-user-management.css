@@ -145,3 +145,24 @@ tr:nth-child(3) a {
 td:last-child:hover {
     text-decoration: underline;
 }
+
+.table-wrapper {
+    width: 95%;
+    margin: 0 auto;
+    overflow-x: auto; 
+    overflow-y: auto;
+}   
+
+.table-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: rgb(255, 165, 165);
+    border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #725420;
+    border-radius: 10px;
+}

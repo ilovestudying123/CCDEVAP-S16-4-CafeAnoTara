@@ -104,6 +104,23 @@
     border-radius: 15px;
     gap: 2%;
     padding: 2% 3% 5% 2%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.card-holder::-webkit-scrollbar {
+    width: 8px;
+}
+
+.card-holder::-webkit-scrollbar-track {
+    background: rgb(255, 165, 165);
+    border-radius: 10px;
+}
+
+.card-holder::-webkit-scrollbar-thumb {
+    background: #725420;
+    border-radius: 10px;
 }
 
 section {
