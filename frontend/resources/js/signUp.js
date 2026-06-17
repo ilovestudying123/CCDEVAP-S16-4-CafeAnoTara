@@ -74,8 +74,8 @@ function saveAccount() {
     alert("Account created successfully!");
 
     if (userType === "Owner") {
-        window.location.href = "owner-dashboard.html";
+        window.location.href = "owner/dashboard.html";
     } else {
-        window.location.href = "customer-dashboard.html";
+        window.location.href = "user/dashboard.html";
     }
 }
