@@ -158,3 +158,15 @@ body {
     color: black;
     align-items: center;
 }
+
+#star-icon {
+    width:15px;
+    height: 20px;
+    object-fit: cover;
+    border: none;
+    vertical-align: middle;
+}
+
+#name-ratings {
+    display: flex;
+}

@@ -112,10 +112,12 @@
     flex: 0 0 10%;
 }
 
-.fa-star {
-    font-size: 20px;
+#stars {
+    width: 150px;
+    height: 60px;
 }
 
-.fa-ellipsis-vertical {
-    font-size: 25px;
+#ellipsis {
+    width: 30px;
+    height: 40px;
 }

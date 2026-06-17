@@ -9,12 +9,12 @@ const cafes =[
         noiseLevel: "Moderate",
         hours: "7:30am - 10:00pm",
         rating: 3.6,
-        mainImage: "../../resources/imgs/cafe.jpg",
+        mainImage: "../../resources/imgs/yardstick.jpg",
         additionImages: [
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg"
+            "../../resources/imgs/y1.jpg",
+            "../../resources/imgs/y2.jpg",
+            "../../resources/imgs/y3.jpg",
+            "../../resources/imgs/y4.avif"
         ],
         description: "Cozy corner cafe serving artisinal coffee blends."
     },
@@ -29,12 +29,12 @@ const cafes =[
         noiseLevel: "Quiet",
         hours: "7:30am - 9:00pm",
         rating: 4.6,
-        mainImage: "../../resources/imgs/cafe.jpg",
+        mainImage: "../../resources/imgs/matchaLater.jpg",
         additionImages: [
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg"
+            "../../resources/imgs/m1.jpg",
+            "../../resources/imgs/m2.jpg",
+            "../../resources/imgs/m3.jpg",
+            "../../resources/imgs/m4.jpg"
         ],
         description: "Family frinedly cafe with homemade pastries and snacks."
     },
@@ -49,19 +49,19 @@ const cafes =[
         noiseLevel: "Noisy",
         hours: "8:00am - 10:00pm",
         rating: 4.0,
-        mainImage: "../../resources/imgs/cafe.jpg",
+        mainImage: "../../resources/imgs/starbucks.jpg",
         additionImages: [
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg"
+            "../../resources/imgs/s1.jpg",
+            "../../resources/imgs/s2.jpg",
+            "../../resources/imgs/s3.jpg",
+            "../../resources/imgs/s4.jpg"
         ],
         description: "Eco friendly cafe offering organic teas and coffees."
     },
 
     {
         id: "cbtl",
-        name: "Coffee Bean Tea Latte",
+        name: "Coffee Bean Latte",
         address: "108 E. Rodriguez Jr. Ave., Brgy. Bagumbayan, Quezon City",
         wifiSpeed: "1Gbps",
         outlets: 100,
@@ -69,12 +69,12 @@ const cafes =[
         noiseLevel: "Moderate",
         hours: "8:00am - 10:00pm",
         rating: 4.8,
-        mainImage: "../../resources/imgs/cafe.jpg",
+        mainImage: "../../resources/imgs/cbtl.jpg",
         additionImages: [
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg",
-            "../../resources/imgs/cafe.jpg"
+            "../../resources/imgs/c1.jpg",
+            "../../resources/imgs/c2.jpg",
+            "../../resources/imgs/c3.jpg",
+            "../../resources/imgs/c4.jpg"
         ],
         description: "Small establishment that serves drinks such as brewed coffee and simple food items like pastries or sandwiches."
     },
