@@ -8,8 +8,6 @@
     max-width: 1500px;
     padding: 2%;
     margin: 0 auto;
-    margin-top: 2%;
-    border-radius: 15px;
 }
 
 .search-section {
@@ -116,16 +114,40 @@
     background-color: #ccc;
 }
 
+.sort {
+    position: relative;
+    width: fit-content;
+    font-family:Verdana;
+}
+
+#sort-options {
+    display: none;
+    position: absolute;
+    font-family:Verdana;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 100;
+}
+#sort-options input {
+    cursor: pointer;
+}
+
 .card-holder {
     display: flex;
     justify-content: space-evenly;
     background-color: #fdd6d6;
     border-radius: 15px;
     gap: 2%;
-    padding: 2% 3% 5% 2%;
+    padding: 2% 3% 0 2%;
+    width: 90%;
     height: 100%;
     overflow-y: auto;
-    overflow-x: auto;
+    flex-wrap: wrap;
 }
 
 .card-holder::-webkit-scrollbar {
@@ -152,6 +174,10 @@ section {
 
 .cafe-card {
     transition: ease all 0.3s;
+    flex: 1 1 200px;
+    max-width: 500px;
+    min-width: 300px;
+    margin-bottom: 5%;
 }
 
 .cafe-card:hover {

@@ -4,7 +4,7 @@
 }
 
 .body-box {
-    width: 100%;
+    width: 90%;
     max-width: 1500px;
     padding: 2%;
     background-color: #fdd6d6;
@@ -115,6 +115,29 @@
 
 .filter-buttons button:hover {
     background-color: #ccc;
+}
+
+.sort {
+    position: relative;
+    width: fit-content;
+    font-family:Verdana;
+}
+
+#sort-options {
+    display: none;
+    position: absolute;
+    font-family:Verdana;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 100;
+}
+#sort-options input {
+    cursor: pointer;
 }
 
 table {
