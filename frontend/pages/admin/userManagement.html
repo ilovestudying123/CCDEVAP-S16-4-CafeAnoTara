@@ -73,30 +73,33 @@
                 <td>Juan Dela Cruz</td>
                 <td>JuanDelaCruz@gmail.com</td>
                 <td>User</td>
-                <td>Active</td>
+                <td id="status1">Active</td>
                 <td>10-22-2023</td>
                 <td>
-                    <a href="#" class="action-btn" onclick="return confirm('Are you sure you want to SUSPEND this user?')">[Suspend]</a>
+                    <a href="#" class="action-btn" onclick="userStatus('status1', 'action1')">
+                        <span id="action1">[Suspend]</span></a>
                 </td>
             </tr>
             <tr>
                 <td>John Doe</td>
                 <td>JohnDoe@gmail.com</td>
                 <td>User</td>
-                <td>Inactive</td>
+                <td id="status2">Inactive</td>
                 <td>2-14-2026</td>
                 <td>
-                    <a href="#" class="action-btn" onclick="return confirm('Are you sure you want to ACTIVATE this user?')">[Activate]</a>
+                    <a href="#" class="action-btn" onclick="userStatus('status2', 'action2')">
+                        <span id="action2">[Activate]</span></a>
                 </td>
             </tr>
             <tr>
                 <td>Jane Doe</td>
                 <td>JaneDoe@gmail.com</td>
                 <td>User</td>
-                <td>Active</td>
+                <td id="status3">Active</td>
                 <td>12-14-2020</td>
                 <td>
-                    <a href="#" class="action-btn" onclick="return confirm('Are you sure you want to SUSPEND this user?')">[Suspend]</a>
+                    <a href="#" class="action-btn" onclick="userStatus('status3', 'action3')">
+                        <span id="action3">[Suspend]</span></a>
                 </td>
             </tr>
         </table>
