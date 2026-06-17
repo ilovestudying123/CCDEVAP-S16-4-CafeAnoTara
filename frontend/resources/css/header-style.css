@@ -3,6 +3,8 @@
     margin: 0;
     color: #fffabc;
     font-size: 350%;
+    font-family: "Montagu Slab", serif;
+    font-weight: 400;
 }
 
 nav, nav a{
