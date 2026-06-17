@@ -1,0 +1,192 @@
+.header{
+    font-family: 'Montagu Slab';  
+    background-color: #fffabc;
+    padding: 1%;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 250%;
+    font-weight: 300;
+    color:#725420;    
+}
+
+.content{
+    background-color: #fffabc;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Montagu Slab';
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    min-height: 70vh;
+    padding: 2% 2% 15% 2%;
+    margin-bottom: 100px;
+}
+
+.trending{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trend{
+    text-align: center;
+    margin-bottom: 30px;
+    color: #725420;
+    font-size: 250%;
+    font-weight: bold;
+    font-family: 'Montagu Slab';
+}
+
+.photo-row{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.photo-group{
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+
+}
+
+.photo-group img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.photo-group h5{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-family: Verdana;
+    color: #725420;
+}
+
+
+.signUp{
+    border: 2px solid #725420;
+    border-radius: 8px;
+    padding: 30px;
+    background-color: #fdd6d6;
+    max-width: 80%;
+}
+
+.signUpCaption{
+    text-align: center;
+    color: #725420;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-family: 'Verdana';
+}
+
+#signUpForm{
+    width: 100%;
+}
+
+#signUpForm label{
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    color: #725420;
+    font-size: 14px;
+    font-family: Verdana;
+}
+
+#signUpForm input{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #725420;
+    border-radius: 8px;
+    font-family: Verdana;
+    font-size: 12px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+#signUpForm a{
+    color: #725420;
+    text-decoration: none;
+    font-family: Verdana;
+}
+
+#signUpForm a:hover{
+    text-decoration: underline;
+}
+
+
+#signUpForm button{
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+
+    background-color: #725420;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+#signUpForm button:hover{
+    background-color: #8b6630;
+}
+
+#signUpForm p{
+    text-align: center;
+    font-size: 13px;
+    margin-top: 20px;
+    font-family: Verdana;
+}
+
+.name-row{
+    display: flex;
+    gap: 15px;
+}
+
+.name-row div{
+    flex: 1;
+}
+
+.password-row{
+    display: flex;
+    gap: 15px;
+}
+
+.password-row div{
+    flex: 1;
+}
+
+.user-type{
+    margin: 15px 0;
+}
+
+.radio-row{
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.radio-group{
+    display: flex;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.radio-group label{
+    display: flex;
+    align-items: left;
+    gap: 0px;
+    margin: 0;
+    font-size: 14px;
+}
