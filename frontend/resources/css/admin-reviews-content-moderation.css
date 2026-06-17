@@ -72,6 +72,17 @@
     font-family:Verdana;
 }
 
+#filter-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#filter-button img {
+    width: 16px;
+    height: 16px;
+}
+
 #filter-options {
     display: none;
     position: absolute;
@@ -92,6 +103,17 @@
     padding: 2%;
     margin: 5% 0 5% 0;
     transition: ease all 0.3s;
+}
+
+#sort-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#sort-button img {
+    width: 16px;
+    height: 16px;
 }
 
 .filter-buttons button:hover {
@@ -131,18 +153,24 @@ th {
     color: #fea959;
 }
 
-tr:nth-child(2) a,
-tr:nth-child(4) a {
-    color: red;
-    text-decoration: none;
-}
-
-tr:nth-child(3) a {
+.approve-btn {
     color: green;
     text-decoration: none;
 }
 
-td:last-child:hover {
+.remove-btn {
+    color: red;
+    text-decoration: none;
+}
+
+.view-btn {
+    color: blue;
+    text-decoration: none;
+}
+
+.approve-btn:hover,
+.remove-btn:hover,
+.view-btn:hover {
     text-decoration: underline;
 }
 
