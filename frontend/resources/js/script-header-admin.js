@@ -28,3 +28,27 @@ function toggleSort() {
         panel.style.display = 'block';
     }
 }
+
+function userStatus(statusID, actionID) {
+    let status = document.getElementById(statusID);
+    let action = document.getElementById(actionID);
+    let userConfirm = false;
+
+    if (status.textContent === "Active") {
+        userConfirm = window.confirm("Are you sure you want to SUSPEND this user?");
+
+        if (userConfirm) {
+            status.textContent = "Inactive";
+            action.textContent = "[Activate]";
+            action.style.color = "green";
+        }
+    } else {
+        userConfirm = window.confirm("Are you sure you want to ACTIVATE this user?");
+
+        if (userConfirm) {
+            status.textContent = "Active";
+            action.textContent = "[Suspend]";
+            action.style.color = "red";
+        }
+    }
+}
