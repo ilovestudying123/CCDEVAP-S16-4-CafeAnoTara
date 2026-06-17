@@ -161,7 +161,7 @@ body {
 }
 
 .listing-box:hover {
-    background-color: #fff3f3;;
+    scale: 102%;
 }
 
 #star-icon {
