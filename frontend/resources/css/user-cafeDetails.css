@@ -259,3 +259,33 @@ textarea {
   word-wrap: break-word;   
   overflow-wrap: break-word;
 }
+
+#star-icon {
+    width:15px;
+    height: 20px;
+    object-fit: cover;
+    border: none;
+    margin-left: 8px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+#star-big {
+    width: 50px;
+    height: 40px;
+    object-fit: cover;
+    border: none;
+    margin-left: 8px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+#stars {
+    width: 150px;
+    height: 60px;
+}
+
+#bookmark {
+    width: 20px;
+    height: 25px;
+}
