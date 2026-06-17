@@ -57,7 +57,7 @@
 
 .info-box h1 {
     font-family: "Montagu Slab", serif;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 200%;
     margin-top: 0;
     margin-bottom: 2%;
@@ -65,10 +65,11 @@
 
 .info-box p {
     font-family: "Montagu Slab", serif;
-    font-weight: 300;
-    font-size: 250%;
+    font-weight: bold;
+    font-size: 300%;
     margin-top: 0;
     margin-bottom: 2%;
+    color: #ce8139;
 }
 
 .info-box ol {
@@ -78,4 +79,5 @@
     margin-top: 0%;
     margin-bottom: 2%;
     padding-left: 8%;
+    color: #ce8139;
 }
