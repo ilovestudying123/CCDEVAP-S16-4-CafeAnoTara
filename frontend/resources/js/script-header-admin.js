@@ -37,17 +37,25 @@ function userStatus(statusID, actionID) {
         if (window.confirm("Are you sure you want to SUSPEND this user?")) {
             status.textContent = "Inactive";
 
-            action.src = "../../resources/imgs/check-mark.png";
+            action.src = "../../resources/imgs/user-plus.png";
             action.alt = "Activate";
         }
     } else {
         if (window.confirm("Are you sure you want to ACTIVATE this user?")) {
             status.textContent = "Active";
 
-            action.src = "../../resources/imgs/x-mark.png";
+            action.src = "../../resources/imgs/user-minus.png";
             action.alt = "Suspend";
         }
     }
 }
 
-// let table = new DataTable('#myTable');
+document.addEventListener("DOMContentLoaded", () => {
+    new DataTable("#usersTable", {
+        searching: true,
+        ordering: true,
+        info: true,
+        lengthChange: true,
+        pageLength: 5
+    });
+});
