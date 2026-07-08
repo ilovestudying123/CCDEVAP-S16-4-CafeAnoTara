@@ -120,6 +120,10 @@ body {
     scale: 102%;
 }
 
+.home{
+    color: #FEA959;
+}
+
 @media (max-width: 768px) {
     *, *:before, *:after {
         box-sizing: border-box;

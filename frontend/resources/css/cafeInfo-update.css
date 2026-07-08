@@ -118,6 +118,10 @@ img{
     margin-left: 3%;
 }
 
+.info{
+    color: #FEA959;
+}
+
 @media (max-width: 768px) {
     *, *:before, *:after {
         box-sizing: border-box;
