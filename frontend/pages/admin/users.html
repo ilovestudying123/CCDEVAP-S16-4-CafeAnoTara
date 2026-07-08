@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
-    <link rel="stylesheet" href="../../resources/css/admin-user-management.css">
+    <link rel="stylesheet" href="../../resources/css/admin-users.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css"/>
     <script src="../../resources/js/script-header-admin.js"></script>
 </head>
 
@@ -76,10 +77,11 @@
                 <td id="status1">Active</td>
                 <td>10-22-2023</td>
                 <td>
-                    <a href="#" class="action-btn" onclick="userStatus('status1', 'action1')">
-                        <span id="action1">[Suspend]</span></a>
+                    <img
+                        id="action1" class="x-img" src="../../resources/imgs/x-mark.png" alt="Suspend" onclick="userStatus('status1', 'action1')">
                 </td>
             </tr>
+
             <tr>
                 <td>John Doe</td>
                 <td>JohnDoe@gmail.com</td>
@@ -87,10 +89,10 @@
                 <td id="status2">Inactive</td>
                 <td>2-14-2026</td>
                 <td>
-                    <a href="#" class="action-btn" onclick="userStatus('status2', 'action2')">
-                        <span id="action2">[Activate]</span></a>
+                    <img id="action2" class="x-img" src="../../resources/imgs/check-mark.png" alt="Activate" onclick="userStatus('status2', 'action2')">
                 </td>
             </tr>
+
             <tr>
                 <td>Jane Doe</td>
                 <td>JaneDoe@gmail.com</td>
@@ -98,8 +100,7 @@
                 <td id="status3">Active</td>
                 <td>12-14-2020</td>
                 <td>
-                    <a href="#" class="action-btn" onclick="userStatus('status3', 'action3')">
-                        <span id="action3">[Suspend]</span></a>
+                    <img id="action3" class="x-img" src="../../resources/imgs/x-mark.png" alt="Suspend" onclick="userStatus('status3', 'action3')">
                 </td>
             </tr>
         </table>
