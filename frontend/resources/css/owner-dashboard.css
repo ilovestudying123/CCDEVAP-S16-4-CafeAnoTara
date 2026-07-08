@@ -7,9 +7,10 @@ body {
 
 .body-box {
     display: grid;
-    grid-template-columns: 1fr 1.1fr 1.1fr;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: auto auto;
     gap: 25px;
-    width: 80%;
+    width: 60%;
     padding: 2%;
     background-color: #fdd6d6;
     margin: 0 auto;
@@ -69,19 +70,12 @@ body {
 }
 
 .info-box {
+    grid-column: 1;
+    grid-row: 1 / span 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.main-img {
-    height: 270px;
-    outline: 5px solid white;
-}
-
-.mini-img {
-    height: 122px;
-    outline: 5px solid white;
+    gap: 20px;
 }
 
 .rating {
@@ -104,6 +98,18 @@ body {
     justify-content: space-between;
     align-items: flex-end;
     box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+    grid-column: 3;
+    grid-row: 2;
+    width: 75%;
+    max-width: 240px; 
+    width: 100%;
+}
+
+.rating-box {
+    grid-column: 2;
+    grid-row: 2;
+    max-width: 240px; 
+    width: 100%;
 }
 
 .review-redirect {
@@ -124,87 +130,78 @@ body {
     color: #FEA959;
 }
 
-@media (max-width: 768px) {
-    *, *:before, *:after {
-        box-sizing: border-box;
-    }
+/* CAROUSEL CSS */
 
+.carousel-container {
+    grid-column: 2 / span 2; /* Span across right 2 columns */
+    grid-row: 1;
+    width: 520px;
+    height: 270px;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+    margin: auto 0;
+    justify-self: center;
+}
+
+.carousel-wrapper {
+    display: flex;
+    height: 100%;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none; 
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+    display: none; 
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: 5px solid white;
+    outline: 5px solid white;
+}
+
+@media (max-width: 768px) {
     .body-box {
         display: flex;
         flex-direction: column;
         gap: 20px;
         padding: 15px;
-        margin-top: 10px;
-        
-        width: 100%;
-        max-width: 100vw; 
-        overflow-x: hidden;
+        width: 95%;
     }
 
-    .col {
-        display: contents; 
-    }
-
-    .main-img {
+    .carousel-container {
+        height: 280px;
+        width: 455px;
         order: 1;
-        height: 250px; 
-        width: 100%;
     }
 
     .info-box {
         order: 2;
-        padding: 10px 0;
-        width: 100%;
     }
 
-    .img-column {
+    .rating-box {
         order: 3;
-        grid-template-columns: 1fr 1fr; 
-        gap: 15px;
-        width: 100%;
-    }
-
-    .col:nth-of-type(1) .pad:not(.review-box), 
-    .box:has(.rating) { 
-        order: 4; 
-        width: 100%;
+        justify-self: center;
     }
 
     .review-box {
-        order: 5;
-        width: 100%;
+        order: 4;
     }
 
-    .mini-img {
-        height: 120px; 
-        width: 100%;
-    }
-
-    .info-column {
-        grid-template-columns: 1fr 1fr; 
-        gap: 15px;
-        margin-top: 20px;
-        width: 100%;
-    }
-
-    .cafe-name, .header-text, .desc-text {
-        white-space: normal;
-        word-break: break-word;
-    }
     .cafe-name {
-        margin-top: 0%;
         font-size: 250%;
-    }
-    .header-text{
-        font-size: 150%;
-    }
-    .desc-text {
-        font-size: 120%;
-    }
-    .rating {
-        font-size: 180%;
-    }
-    .count {
-        font-size: 220%;
     }
 }
