@@ -1,7 +1,6 @@
 .body-box {
-    width: 100%;
+    width: 95%;
     max-width: 1500px;
-    padding: 2%;
     margin: 0 auto;
     margin-top: 2%;
     border-radius: 15px;
@@ -170,7 +169,7 @@ table th, table td {
 
 table td {
     font-family: Verdana;
-    font-size: 14px;
+    font-size: 10px;
     color: #725420;
 }
 

@@ -59,7 +59,7 @@
     box-sizing: border-box;
 }
 
-.search-box button {
+.search-box button{
     padding: 10px 15px;
     border: 1px solid #191102;
     border-radius: 20px;
@@ -207,4 +207,14 @@ td:last-child:hover {
 .table-wrapper::-webkit-scrollbar-thumb {
     background: #725420;
     border-radius: 10px;
+}
+
+.action-image-holder {
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+
+.x-img, .check-img {
+    width: 25px;
 }
