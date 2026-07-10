@@ -37,14 +37,14 @@ function userStatus(statusID, actionID) {
         if (window.confirm("Are you sure you want to SUSPEND this user?")) {
             status.textContent = "Inactive";
 
-            action.src = "../../resources/imgs/user-plus.png";
+            action.src = "../../resources/imgs/check-mark.png";
             action.alt = "Activate";
         }
     } else {
         if (window.confirm("Are you sure you want to ACTIVATE this user?")) {
             status.textContent = "Active";
 
-            action.src = "../../resources/imgs/user-minus.png";
+            action.src = "../../resources/imgs/x-mark.png";
             action.alt = "Suspend";
         }
     }
