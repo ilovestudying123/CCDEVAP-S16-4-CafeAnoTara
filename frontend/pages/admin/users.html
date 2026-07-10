@@ -5,63 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/admin-users.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script>
     <script src="../../resources/js/script-header-admin.js"></script>
+    <script src="../../resources/js/admin-users.js"></script>
 </head>
 
 <body>
     <div id="header"></div>
 
     <div class="body-box">
-        <div class="search-section">
+        <div class="header-section">
             <h1>Manage Users</h1>
-
-            <div class="search-box">
-                <div class="search-input">
-                    <img src="../../resources/imgs/magnifying-glass-solid.png" alt="search icon">
-                    <input type="search" placeholder="Enter user">
-                </div>
-
-                <div class="filter">
-                    <button id="filter-button" onclick="toggleFilter()">
-                    <img src="../../resources/imgs/sliders-solid.png" class="sort-icon">Filter</button>
-
-                    <div id="filter-options">
-                        <p>Role:</p>
-                        <label><input type="checkbox" name="role" value="admin"> Administrator</label><br>
-                        <label><input type="checkbox" name="role" value="owner"> Cafe Owner</label><br>
-                        <label><input type="checkbox" name="role" value="user"> User</label>
-
-                        <p>Status:</p>
-                        <label><input type="radio" name="status" value="active"> Active</label><br>
-                        <label><input type="radio" name="status" value="inactive"> Inactive</label>
-
-                        <div class="filter-buttons">
-                            <button type="button" onclick="applyFilter()">Apply</button>
-                            <button type="button" onclick="clearFilter()">Clear</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sort">
-                    <button id="sort-button" onclick="toggleSort()">
-                        <img src="../../resources/imgs/sort-solid.png" class="sort-icon">Sort</button>
-
-                    <div id="sort-options">
-                        <p>Sort by:</p>
-                        <label><input type="radio" name="oldestNewest" value="old">Alphabet</label>
-
-                        <div class="filter-buttons">
-                            <button type="button" onclick="applySort()">Apply</button>
-                            <button type="button" onclick="clearSort()">Clear</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a href="users-add.html" class="add-btn">Add Record</a>  
         </div>
         
         <div class="table-wrapper">
-        <table>
+        <table id="usersTable" class="display">
+            <thead>
             <tr>
                 <th>Full Name</th>
                 <th>Email</th>
@@ -70,6 +31,9 @@
                 <th>Account Creation</th>
                 <th>Action</th>
             </tr>
+            </thead>
+
+            <tbody>
             <tr>
                 <td>Juan Dela Cruz</td>
                 <td>JuanDelaCruz@gmail.com</td>
@@ -77,8 +41,11 @@
                 <td id="status1">Active</td>
                 <td>10-22-2023</td>
                 <td>
-                    <img
-                        id="action1" class="x-img" src="../../resources/imgs/x-mark.png" alt="Suspend" onclick="userStatus('status1', 'action1')">
+                    <div class="action-btn">
+                        <a href="users-edit.html"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
+                        <img id="action1" src="../../resources/imgs/x-mark.png" alt="Suspend" onclick="userStatus('status1','action1')">
+                        <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
+                    </div>
                 </td>
             </tr>
 
@@ -89,7 +56,11 @@
                 <td id="status2">Inactive</td>
                 <td>2-14-2026</td>
                 <td>
-                    <img id="action2" class="x-img" src="../../resources/imgs/check-mark.png" alt="Activate" onclick="userStatus('status2', 'action2')">
+                    <div class="action-btn">
+                        <a href="users-edit.html"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
+                        <img id="action2" src="../../resources/imgs/check-mark.png" alt="Activate" onclick="userStatus('status2', 'action2')">
+                        <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
+                    </div>
                 </td>
             </tr>
 
@@ -100,9 +71,14 @@
                 <td id="status3">Active</td>
                 <td>12-14-2020</td>
                 <td>
-                    <img id="action3" class="x-img" src="../../resources/imgs/x-mark.png" alt="Suspend" onclick="userStatus('status3', 'action3')">
+                    <div class="action-btn">
+                        <a href="users-edit.html"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
+                        <img id="action3" src="../../resources/imgs/x-mark.png" alt="Suspend" onclick="userStatus('status3', 'action3')">
+                        <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
+                    </div>
                 </td>
             </tr>
+            </tbody>
         </table>
         </div>
     </div>

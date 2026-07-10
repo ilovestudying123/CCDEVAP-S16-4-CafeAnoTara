@@ -50,4 +50,12 @@ function userStatus(statusID, actionID) {
     }
 }
 
-// let table = new DataTable('#myTable');
+document.addEventListener("DOMContentLoaded", () => {
+    new DataTable("#usersTable", {
+        searching: true,
+        ordering: true,
+        info: true,
+        lengthChange: true,
+        pageLength: 5
+    });
+});

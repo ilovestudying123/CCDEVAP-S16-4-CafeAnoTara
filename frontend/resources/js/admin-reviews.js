@@ -19,3 +19,13 @@ function removeReview(link) {
     row.querySelector("td:last-child").innerHTML =
         '<span class="resolved-text">No Action</span>';
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    new DataTable("#reviewsTable", {
+        searching: true,
+        ordering: true,
+        info: true,
+        lengthChange: true,
+        pageLength: 5
+    });
+});
