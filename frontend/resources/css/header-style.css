@@ -17,11 +17,6 @@ nav, nav a{
     margin-top: 15px;
 }
 
-.nav-admin a {
-    font-size: 90%;
-    color: #fffabc;
-}
-
 nav a:hover {
     color: #fea959;
 }

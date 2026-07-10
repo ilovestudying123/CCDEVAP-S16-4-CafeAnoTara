@@ -3,6 +3,10 @@
     src: url(../font/MontaguSlab-VariableFont_opsz\,wght.ttf);
 }
 
+.cafe{
+    color: #FEA959;
+}
+
 .body-box {
     width: 100%;
     max-width: 1500px;
@@ -257,3 +261,4 @@ section {
     border: 1px solid green;
     color: #fffabc;
 }
+
