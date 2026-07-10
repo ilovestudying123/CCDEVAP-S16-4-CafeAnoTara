@@ -224,6 +224,10 @@ th {
     border-radius: 10px;
 }
 
+.x-img, .check-img, .edit-btn {
+    width: 25px;
+}
+
 @media screen and (max-width: 768px) {
 
     .heading {
