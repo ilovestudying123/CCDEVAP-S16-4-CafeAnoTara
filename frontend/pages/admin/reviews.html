@@ -5,76 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/admin-reviews.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script>
     <script src="../../resources/js/script-header-admin.js"></script>
+    <script src="../../resources/js/admin-reviews.js"></script>
 </head>
 
 <body>
     <div id="header"></div>
 
     <div class="body-box">
-        <div class="heading">
+
+        <div class="header-section">
             <h1>Reviews & Content Moderation</h1>
-
-            <div class="search-box">
-                <div class="search-input">
-                    <img src="../../resources/imgs/magnifying-glass-solid.png" alt="search icon">
-                    <input type="search" placeholder="Enter user">
-                </div>
-
-                <div class="filter">
-                    <button id="filter-button" onclick="toggleFilter()">
-                        <img src="../../resources/imgs/sliders-solid.png" alt="filter icon">Filter
-                    </button>
-
-                    <div id="filter-options">
-                        <p>Reason:</p>
-                        <label><input type="checkbox" name="reason" value="reason-1">Spam / Advertising</label><br>
-                        <label><input type="checkbox" name="reason" value="reason-2">Harassment</label><br>
-                        <label><input type="checkbox" name="reason" value="reason-3">Hate Speech</label><br>
-                        <label><input type="checkbox" name="reason" value="reason-4">Inappropriate Language</label><br>
-                        <label><input type="checkbox" name="reason" value="reason-5">False Information</label><br>
-                        <label><input type="checkbox" name="reason" value="reason-6">Sharing Personal Information</label><br>
-                        <p>Status:</p>
-                        <label><input type="radio" name="status" value="pending">Pending</label><br>
-                        <label><input type="radio" name="status" value="resolved">Resolved</label><br>
-
-                        <div class="filter-buttons">
-                            <button type="button" onclick="applyFilter()">Apply</button>
-                            <button type="button" onclick="clearFilter()">Clear</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sort">
-                    <button id="sort-button" onclick="toggleSort()">
-                        <img src="../../resources/imgs/sort-solid.png" alt="sort icon">Sort
-                    </button>
-                    
-                    <div id="sort-options">
-                        <p>Sort by:</p>
-                        <label>
-                            <input type="radio" name="sort" value="newest">
-                            Newest to Oldest
-                        </label><br>
-
-                        <label>
-                            <input type="radio" name="sort" value="oldest">
-                            Oldest to Newest
-                        </label><br>
-
-                        <div class="filter-buttons">
-                            <button type="button" onclick="applySort()">Apply</button>
-                            <button type="button" onclick="clearSort()">Clear</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-        
-        <div class="table-section">
-            <div class="table-wrapper">
-            <table>
+
+        <div class="table-wrapper">
+            <table id="reviewsTable" class="display">
+                
+                <thead>
                 <tr>
                     <th>Reported By</th>
                     <th>Review</th>
@@ -83,6 +33,9 @@
                     <th>Status</th> 
                     <th>Actions</th>
                 </tr>
+                </thead>
+
+                <tbody>
                 <tr>
                     <td>Ramona Gray</td>
                     <td>"Anyone who likes this café is stupid."</td>
@@ -90,14 +43,17 @@
                     <td>2-16-2026</td>
                     <td class="status">Pending</td>
                     <td>
-                        <img
-                            id="action1" class="x-img" src="../../resources/imgs/check-mark.png" alt="Approve" onclick="approveReview(this)">
-                        <img
-                            id="action1" class="x-img" src="../../resources/imgs/x-mark.png" alt="Remove" onclick="removeReview(this)">
-                        <img
-                            id="action1" class="edit-btn" src="../../resources/imgs/edit-btn.png" alt="Edit" onclick="">
+                        <div class="action-btn">
+                            <img
+                                id="action1" class="x-img" src="../../resources/imgs/check-mark.png" alt="Approve" onclick="approveReview(this)">
+                            <img
+                                id="action1" class="x-img" src="../../resources/imgs/x-mark.png" alt="Remove" onclick="removeReview(this)">
+                            <img
+                                id="action1" class="edit-btn" src="../../resources/imgs/edit-btn.png" alt="Edit" onclick="">
+                        </div>
                     </td>
                 </tr>
+
                 <tr>
                     <td>Richard Hatch</td>
                     <td>"The barista's phone number is 0917-XXX-XXXX"</td>
@@ -105,12 +61,14 @@
                     <td>3-12-2026</td>
                     <td class="status">Pending</td>
                     <td>
-                        <img
-                            id="action1" class="x-img" src="../../resources/imgs/check-mark.png" alt="Approve" onclick="approveReview(this)">
-                        <img
-                            id="action1" class="x-img" src="../../resources/imgs/x-mark.png" alt="Remove" onclick="removeReview(this)">
-                        <img
-                            id="action1" class="edit-btn" src="../../resources/imgs/edit-btn.png" alt="Edit" onclick="">
+                        <div class="action-btn">
+                            <img
+                                id="action1" class="x-img" src="../../resources/imgs/check-mark.png" alt="Approve" onclick="approveReview(this)">
+                            <img
+                                id="action1" class="x-img" src="../../resources/imgs/x-mark.png" alt="Remove" onclick="removeReview(this)">
+                            <img
+                                id="action1" class="edit-btn" src="../../resources/imgs/edit-btn.png" alt="Edit" onclick="">
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -123,9 +81,9 @@
                         <span>No Action</span>
                     </td>
                 </tr>
+                </tbody>
             </table>
             </div>
         </div>
     </div>
-    <script src="../../resources/js/admin-reviews.js"></script>
 </body>
