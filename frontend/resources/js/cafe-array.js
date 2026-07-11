@@ -1,81 +1,144 @@
-const cafes =[
-    {
-        id: "yardstick",
-        name: "Yardstick",
-        address: "5th Avenue, Bonifacio Global City, Taguig City",
-        wifiSpeed: "100Mbps",
-        outlets: 8,
-        priceRange: "100-300",
-        noiseLevel: "Moderate",
-        hours: "7:30am - 10:00pm",
-        rating: 3.6,
-        mainImage: "../../resources/imgs/yardstick.jpg",
-        additionImages: [
-            "../../resources/imgs/y1.jpg",
-            "../../resources/imgs/y2.jpg",
-            "../../resources/imgs/y3.jpg",
-            "../../resources/imgs/y4.avif"
-        ],
-        description: "Cozy corner cafe serving artisinal coffee blends."
-    },
+    const cafes =[
+        {
+            id: "yardstick",
+            name: "Yardstick",
+            address: "5th Avenue, Bonifacio Global City, Taguig City",
+            wifiSpeed: "100Mbps",
+            outlets: 8,
+            priceRange: "100-300",
+            noiseLevel: "Moderate",
+            hours: "7:30am - 10:00pm",
+            rating: 3.6,
+            mainImage: "../../resources/imgs/yardstick.jpg",
+            additionImages: [
+                "../../resources/imgs/y1.jpg",
+                "../../resources/imgs/y2.jpg",
+                "../../resources/imgs/y3.jpg",
+                "../../resources/imgs/y4.avif"
+            ],
+            description: "Cozy corner cafe serving artisinal coffee blends."
+        },
 
-    {
-        id: "matchaLater",
-        name: "Ujisan",
-        address: "36 Polaris Street, Poblacion, Makati City",
-        wifiSpeed: "10Mbps",
-        outlets: 10,
-        priceRange: "100-500",
-        noiseLevel: "Quiet",
-        hours: "7:30am - 9:00pm",
-        rating: 4.6,
-        mainImage: "../../resources/imgs/matchaLater.jpg",
-        additionImages: [
-            "../../resources/imgs/m1.jpg",
-            "../../resources/imgs/m2.jpg",
-            "../../resources/imgs/m3.jpg",
-            "../../resources/imgs/m4.jpg"
-        ],
-        description: "Family frinedly cafe with homemade pastries and snacks."
-    },
+        {
+            id: "matchaLater",
+            name: "Ujisan",
+            address: "36 Polaris Street, Poblacion, Makati City",
+            wifiSpeed: "10Mbps",
+            outlets: 10,
+            priceRange: "100-500",
+            noiseLevel: "Quiet",
+            hours: "7:30am - 9:00pm",
+            rating: 4.6,
+            mainImage: "../../resources/imgs/matchaLater.jpg",
+            additionImages: [
+                "../../resources/imgs/m1.jpg",
+                "../../resources/imgs/m2.jpg",
+                "../../resources/imgs/m3.jpg",
+                "../../resources/imgs/m4.jpg"
+            ],
+            description: "Family frinedly cafe with homemade pastries and snacks."
+        },
 
-    {
-        id: "starbucks",
-        name: "Starbucks",
-        address: "Forbestown Road, Bonifacio Global City, Taguig City",
-        wifiSpeed: "1Mbps",
-        outlets: 6,
-        priceRange: "100-200",
-        noiseLevel: "Noisy",
-        hours: "8:00am - 10:00pm",
-        rating: 4.0,
-        mainImage: "../../resources/imgs/starbucks.jpg",
-        additionImages: [
-            "../../resources/imgs/s1.jpg",
-            "../../resources/imgs/s2.jpg",
-            "../../resources/imgs/s3.jpg",
-            "../../resources/imgs/s4.jpg"
-        ],
-        description: "Eco friendly cafe offering organic teas and coffees."
-    },
+        {
+            id: "starbucks",
+            name: "Starbucks",
+            address: "Forbestown Road, Bonifacio Global City, Taguig City",
+            wifiSpeed: "1Mbps",
+            outlets: 6,
+            priceRange: "100-200",
+            noiseLevel: "Noisy",
+            hours: "8:00am - 10:00pm",
+            rating: 4.0,
+            mainImage: "../../resources/imgs/starbucks.jpg",
+            additionImages: [
+                "../../resources/imgs/s1.jpg",
+                "../../resources/imgs/s2.jpg",
+                "../../resources/imgs/s3.jpg",
+                "../../resources/imgs/s4.jpg"
+            ],
+            description: "Eco friendly cafe offering organic teas and coffees."
+        },
 
-    {
-        id: "cbtl",
-        name: "CBTL",
-        address: "108 E. Rodriguez Jr. Ave., Brgy. Bagumbayan, Quezon City",
-        wifiSpeed: "1Gbps",
-        outlets: 100,
-        priceRange: "100-1000",
-        noiseLevel: "Moderate",
-        hours: "8:00am - 10:00pm",
-        rating: 4.8,
-        mainImage: "../../resources/imgs/cbtl.jpg",
-        additionImages: [
-            "../../resources/imgs/c1.jpg",
-            "../../resources/imgs/c2.jpg",
-            "../../resources/imgs/c3.jpg",
-            "../../resources/imgs/c4.jpg"
-        ],
-        description: "Small establishment that serves drinks such as brewed coffee and simple food items like pastries or sandwiches."
-    },
-]
+        {
+            id: "cbtl",
+            name: "CBTL",
+            address: "108 E. Rodriguez Jr. Ave., Brgy. Bagumbayan, Quezon City",
+            wifiSpeed: "1Gbps",
+            outlets: 100,
+            priceRange: "100-1000",
+            noiseLevel: "Moderate",
+            hours: "8:00am - 10:00pm",
+            rating: 4.8,
+            mainImage: "../../resources/imgs/cbtl.jpg",
+            additionImages: [
+                "../../resources/imgs/c1.jpg",
+                "../../resources/imgs/c2.jpg",
+                "../../resources/imgs/c3.jpg",
+                "../../resources/imgs/c4.jpg"
+            ],
+            description: "Small establishment that serves drinks such as brewed coffee and simple food items like pastries or sandwiches."
+        },
+
+        {
+            id: "cafeSiriusdan",
+            name: "Cafe Siriusdan",
+            owner: "Studio Siriusdan",
+            address: "492 Halcon Extension, Mandaluyong City, Metro Manila",
+            wifiSpeed: "100 Mbps",
+            outlets: 18,
+            priceRange: "₱150–₱400",
+            noiseLevel: "Quiet",
+            hours: "11:00 AM - 11:00 PM",
+            rating: 4.8,
+            mainImage: "../../resources/imgs/siriusdan.jpg",
+            additionImages: [
+                "../../resources/imgs/siriusdan1.jpg",
+                "../../resources/imgs/siriusdan2.jpg",
+                "../../resources/imgs/siriusdan3.jpg",
+                "../../resources/imgs/siriusdan4.jpg"
+            ],
+            description: "An art-inspired café with specialty coffee and a cozy atmosphere."
+        },
+
+        {
+            id: "bosCoffee",
+            name: "Bo's Coffee",
+            owner: "Bo's Coffee Philippines",
+            address: "Ground Floor, Activity Center, SM Mall of Asia, Pasay City",
+            wifiSpeed: "75 Mbps",
+            outlets: 18,
+            priceRange: "₱100–₱300",
+            noiseLevel: "Moderate",
+            hours: "10:00 AM - 10:00 PM",
+            rating: 4.4,
+            mainImage: "../../resources/imgs/bosCoffee.jpg",
+            additionImages: [
+                "../../resources/imgs/bosCoffee1.jpg",
+                "../../resources/imgs/bosCoffee2.png",
+                "../../resources/imgs/bosCoffee3.png",
+                "../../resources/imgs/bosCoffee4.png"
+            ],
+            description: "A Filipino café serving locally sourced coffee and freshly prepared food in a welcoming atmosphere."
+        },
+
+        {
+            id: "soulGood",
+            name: "Soul Good",
+            owner: "Soul Good Management",
+            address: "The Hub Greenfield District, Mayflower St, Mandaluyong City",
+            wifiSpeed: "120 Mbps",
+            outlets: 24,
+            priceRange: "₱150–₱400",
+            noiseLevel: "Moderate",
+            hours: "6:00 AM - 10:00 PM",
+            rating: 4.8,
+            mainImage: "../../resources/imgs/soulgood.jpg",
+            additionImages: [
+                "../../resources/imgs/soulgood1.png",
+                "../../resources/imgs/soulgood2.png",
+                "../../resources/imgs/soulgood3.png",
+                "../../resources/imgs/soulgood4.png"
+            ],
+            description: "Wellness café serving healthy meals and specialty coffee in a modern space."
+        }
+    ]

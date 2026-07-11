@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../../resources/css/admin-cafes.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css"/>
     <script src="../../resources/js/script-header-admin.js"></script>
+    <script src="../../resources/js/cafe-array.js"></script>
+    <script src="../../resources/js/cafe-verification.js"></script>
 </head>
 
 <body>
@@ -60,26 +62,31 @@
         <div class="card-holder">
             <section class="cafe-card">
                 <div class="cafe-info">
-                    <img src="../../resources/imgs/cafe1.png" alt="cafe1">
+                    <img src="../../resources/imgs/siriusdan.jpg" alt="cafe1">
 
                     <div class="cafe-details">
-                        <h1>Cafe Veranda</h1>
-                        <p>ABC Main Street, Bonifacio Global City, Taguig City</p>
+                        <h1>Cafe Siriusdan</h1>
+                        <p>Studio Siriusdan</p>
+                        <p><br></p>
+                        <p>492 Halcon Extension Street, Mandaluyong City</p>
                     </div>
                 </div>
 
                 <div class="button-holder">
                     <button class="reject-btn" onclick="confirm('Reject Cafe Application?')">Reject</button>
                     <button class="approve-btn" onclick=" confirm('Approve Cafe Application?')">Approve</button>
+                    <button class="view-btn" onclick="openCafe('cafeSiriusdan')"><img src="../../resources/imgs/eye-solid.png" alt="View Details"></button>
                 </div>
             </section>
 
             <section class="cafe-card">
                 <div class="cafe-info">
-                    <img src="../../resources/imgs/Bo's.jpg" alt="cafe2">
+                    <img src="../../resources/imgs/bosCoffee.jpg" alt="cafe2">
                     
                     <div class="cafe-details">
                         <h1>Bo's Coffee</h1>
+                        <p>Bo's Coffee Philippines</p>
+                        <p><br></p>
                         <p>Ground Floor, Activity Center, SM Mall of Asia, Pasay City</p>
                     </div>
                 </div>
@@ -87,24 +94,88 @@
                 <div class="button-holder">
                     <button class="reject-btn" onclick="confirm('Reject Cafe Application?')">Reject</button>
                     <button class="approve-btn" onclick="confirm('Approve Cafe Application?')">Approve</button>
+                    <button class="view-btn" onclick="openCafe('bosCoffee')"><img src="../../resources/imgs/eye-solid.png" alt="View Details"></button>
                 </div> 
             </section>
 
             <section class="cafe-card">
                 <div class="cafe-info">
-                    <img src="../../resources/imgs/cafe3.jpg" alt="cafe3">
+                    <img src="../../resources/imgs/soulgood.jpg" alt="cafe3">
 
                     <div class="cafe-details">
-                        <h1>Cavetown</h1>
-                        <p>281 Maginhawa Center, Maginhawa Street, Quezon City</p>
+                        <h1><b>Soul Good</b></h1>
+                        <p>Soul Good Management</p>
+                        <p><br></p>
+                        <p>The Hub Greenfield District, Mandaluyong City</p>
                     </div>
                 </div>
 
                 <div class="button-holder">
                     <button class="reject-btn" onclick="confirm('Reject Cafe Application?')" >Reject</button>
                     <button class="approve-btn" onclick="confirm('Approve Cafe Application?')">Approve</button>
+                    <button class="view-btn" onclick="openCafe('soulGood')"><img src="../../resources/imgs/eye-solid.png" alt="View Details"></button>
                 </div>   
             </section>
+        </div>
+    </div>
+
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <!-- Left Column -->
+                <div class="info-box">
+                    <h1 id="cafe-name" class="cafe-name"></h1>
+                    <p id="cafe-owner" class="desc-text"></p><br>
+                    <p id="cafe-address" class="desc-text"></p>
+                    <p id="cafe-desc-text" class="desc-text"></p>
+                    <div class="info-column">
+                        <div>
+                            <p class="header-text">WiFi Speed</p>
+                            <p id="cafe-wifi" class="desc-text"></p>
+                        </div>
+
+                        <div>
+                            <p class="header-text">Operating Hours</p>
+                            <p id="cafe-hours" class="desc-text"></p>
+                        </div>
+
+                        <div>
+                            <p class="header-text">Price Range</p>
+                            <p id="cafe-price" class="desc-text"></p>
+                        </div>
+
+                        <div>
+                            <p class="header-text">Power Outlets</p>
+                            <p id="cafe-outlets" class="desc-text"></p>
+                        </div>
+
+                        <div>
+                            <p class="header-text">Noise Level</p>
+                            <p id="cafe-noise" class="desc-text"></p>
+                        </div>
+
+                        <div>
+                            <p class="header-text">Rating</p>
+                            <p id="cafe-rating" class="desc-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="image-section">
+                    <!-- Large image -->
+                    <img id="cafe-mainImage" class="main-image" alt="Cafe Image">
+                    <!-- Thumbnails -->
+                    <div class="thumbnail-container">
+                        <img class="gallery-thumbnail">
+                        <img class="gallery-thumbnail">
+                        <img class="gallery-thumbnail">
+                        <img class="gallery-thumbnail">
+                        <img class="gallery-thumbnail">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
