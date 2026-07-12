@@ -71,3 +71,7 @@ button:hover{
     background-color: #8b6630;
     transform: translateY(-2px);
 }
+
+.setting {
+    color: #FEA959;
+}

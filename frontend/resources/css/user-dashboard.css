@@ -194,3 +194,7 @@ body {
 #name-ratings {
     display: flex;
 }
+
+.home {
+    color: #FEA959;
+}

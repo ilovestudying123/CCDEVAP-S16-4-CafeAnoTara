@@ -1,3 +1,7 @@
+.review {
+    color: #FEA959;
+}
+
 .reviews-header {
     display: flex;
     justify-content: space-between;
