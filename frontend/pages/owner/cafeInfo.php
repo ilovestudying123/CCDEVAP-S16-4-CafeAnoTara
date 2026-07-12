@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<header>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/header-style.css">
-    <link rel="stylesheet" href="../../resources/css/cafeInfo.css?v=3">
-    
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-owner.js"></script>
-</header>
-
 <?php
     require "../../../backend/config/connection.php";
 
@@ -32,11 +20,23 @@
     $row = $result->fetch_assoc();
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../resources/css/header-style.css">
+    <link rel="stylesheet" href="../../resources/css/cafeInfo.css?v=3">
+    
+    <div id="header"></div>
+    <script src="../../resources/js/script-header-owner.js"></script>
+</header>
+
 <body>
     <div class="body-box">
         <h1 class="cafe-name"><?php echo $row['cafe_name'];?></h1>
         
-        <a href="cafeInfo-update.html" class="update-btn">Update Profile</a>
+        <a href="cafeInfo-update.php" class="update-btn">Update Profile</a>
 
         <section class="info-box">
             <div class="pic-column">
@@ -53,7 +53,7 @@
                     </div>
                     <div class="grid-item">
                         <span class="header-text">Operating Hours</span>
-                        <span class="desc-text">8:00 AM - 7:00 PM</span>
+                        <span class="desc-text"><?php echo date("g:i A", strtotime($row['opening_time'])); ?>-<?php echo date("g:i A", strtotime($row['closing_time'])); ?></span>
                     </div>
                     <div class="grid-item">
                         <span class="header-text">Price Range</span>

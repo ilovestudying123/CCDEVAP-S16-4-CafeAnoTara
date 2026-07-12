@@ -122,6 +122,12 @@ img{
     color: #FEA959;
 }
 
+.header-text {
+    font-weight: bold;
+    font-size: 100%;
+    color: #725420;
+}
+
 @media (max-width: 768px) {
     *, *:before, *:after {
         box-sizing: border-box;

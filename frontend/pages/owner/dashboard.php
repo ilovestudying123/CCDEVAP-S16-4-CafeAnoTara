@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<header>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
-    <link rel="stylesheet" href="../../resources/css/owner-dashboard.css?v=2">
-
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-owner.js"></script>
-</header>
-
 <?php
     require "../../../backend/config/connection.php";
 
@@ -40,6 +28,18 @@
     $row = $result->fetch_assoc();
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
+    <link rel="stylesheet" href="../../resources/css/owner-dashboard.css?v=2">
+
+    <div id="header"></div>
+    <script src="../../resources/js/script-header-owner.js"></script>
+</header>
+
 <body>
     <div class="body-box">
         
@@ -50,7 +50,7 @@
             
             <div class="info-column">
                 <div><p class="header-text">Wifi Speed</p><p class="desc-text"><?php echo $row['wifi_speed'];?> Mbps</p></div>
-                <div><p class="header-text">Operating Hours</p><p class="desc-text">8:00 AM - 10:00 PM</p></div>
+                <div><p class="header-text">Operating Hours</p><p class="desc-text"><?php echo date("g:i A", strtotime($row['opening_time'])); ?>-<?php echo date("g:i A", strtotime($row['closing_time'])); ?></p></div>
                 <div><p class="header-text">Price Range</p><p class="desc-text">PHP <?php echo $row['price'];?></p></div>
                 <div><p class="header-text">No. of Outlets</p><p class="desc-text"><?php echo $row['outlet_num'];?></p></div>
             </div>
