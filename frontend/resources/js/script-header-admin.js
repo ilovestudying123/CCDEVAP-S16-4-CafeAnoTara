@@ -32,23 +32,30 @@ function toggleSort() {
 function userStatus(statusID, actionID) {
     let status = document.getElementById(statusID);
     let action = document.getElementById(actionID);
-    let userConfirm = false;
 
     if (status.textContent === "Active") {
-        userConfirm = window.confirm("Are you sure you want to SUSPEND this user?");
-
-        if (userConfirm) {
+        if (window.confirm("Are you sure you want to SUSPEND this user?")) {
             status.textContent = "Inactive";
-            action.textContent = "[Activate]";
-            action.style.color = "green";
+
+            action.src = "../../resources/imgs/check-mark.png";
+            action.alt = "Activate";
         }
     } else {
-        userConfirm = window.confirm("Are you sure you want to ACTIVATE this user?");
-
-        if (userConfirm) {
+        if (window.confirm("Are you sure you want to ACTIVATE this user?")) {
             status.textContent = "Active";
-            action.textContent = "[Suspend]";
-            action.style.color = "red";
+
+            action.src = "../../resources/imgs/x-mark.png";
+            action.alt = "Suspend";
         }
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    new DataTable("#usersTable", {
+        searching: true,
+        ordering: true,
+        info: true,
+        lengthChange: true,
+        pageLength: 5
+    });
+});

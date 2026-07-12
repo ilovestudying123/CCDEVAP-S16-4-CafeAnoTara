@@ -104,6 +104,10 @@
     outline: none;
 }
 
+.info{
+    color: #FEA959;
+}
+
 @media (max-width: 768px) {
         *, *:before, *:after {
             box-sizing: border-box;

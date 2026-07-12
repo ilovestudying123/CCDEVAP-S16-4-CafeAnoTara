@@ -175,6 +175,10 @@
     height: auto;
 }
 
+.review{
+    color: #FEA959;
+}
+
 @media (max-width: 768px) {
     .review-card {
         flex-direction: column;

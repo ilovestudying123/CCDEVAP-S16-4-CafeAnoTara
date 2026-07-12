@@ -1,0 +1,201 @@
+.review{
+    color: #FEA959;
+}
+
+.body-box {
+    width: 95%;
+    max-width: 1500px;
+    margin: 0 auto;
+    margin-top: 2%;
+    border-radius: 15px;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.header-section h1 {
+    font-size: 250%;
+    color:#725420;
+    font-family: "Montagu Slab", serif;
+    font-weight: 400;
+    margin-left: 30px;
+    margin-top: 35px;
+    margin-bottom: 0;
+}
+
+.table-wrapper {
+    width: 90%;
+    max-width: 1500px;
+    padding: 2%;
+    background-color: #fdd6d6;
+    margin: 0 auto;
+    margin-top: 2%;
+    border-radius: 15px;
+    overflow-x: auto;
+}
+
+.table-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: rgb(255, 165, 165);
+    border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #725420;
+    border-radius: 10px;
+}
+
+#reviewsTable_wrapper {
+    width: 95%;
+    margin: 0 auto;
+}
+
+#reviewsTable_wrapper .dt-layout-row {
+    margin: 15px 0;
+}
+
+#reviewsTable_wrapper .dt-search label,
+#reviewsTable_wrapper .dt-length label,
+#reviewsTable_wrapper .dt-info {
+    font-family: Verdana;
+    color: #725420;
+}
+
+#reviewsTable_wrapper .dt-search input {
+    border: 2px solid #725420;
+    border-radius: 8px;
+    padding: 6px 10px;
+    color: #725420;
+    font-family: Verdana;
+}
+
+#reviewsTable_wrapper .dt-length select {
+    border: 2px solid #725420;
+    border-radius: 8px;
+    padding: 5px;
+    color: #725420;
+    font-family: Verdana;
+}
+
+#reviewsTable_wrapper .dt-paging-button {
+    border-radius: 6px !important;
+}
+
+#reviewsTable_wrapper .dt-paging-button.current {
+    background: #725420 !important;
+    color: #fea959 !important;
+    border: none !important;
+}
+
+#reviewsTable_wrapper .dt-paging-button:hover {
+    background: #8b6b34 !important;
+    color: white !important;
+}
+
+
+#reviewsTable {
+    width: 100% !important;
+    border-spacing: 0;
+    border-collapse: separate;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+}
+
+#reviewsTable thead th {
+    padding: 15px;
+    text-align: center;
+    font-family: "Montagu Slab", serif;
+    font-weight: bold;
+    background-color: #725420;
+    color: #fea959;
+}
+
+#reviewsTable tbody td {
+    padding: 15px;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 14px;
+    color: #725420;
+}
+
+#reviewsTable tbody tr:hover {
+    background-color: #fff3f3;
+}
+
+.action-btn {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-btn img {
+    width: 30px;
+    cursor: pointer;
+}
+
+div.dt-layout-row:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+div.dt-length,
+div.dt-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+div.dt-search {
+    margin-left: auto;
+}
+@media screen and (max-width: 768px) {
+
+    .heading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .heading h1 {
+        font-size: 180%;
+        text-align: center;
+    }
+
+    .search-box {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .filter-section {
+        display: flex;
+        gap: 10px;
+    }
+
+    #filter-button,
+    #sort-button {
+        width: auto;
+    }
+
+    table th,
+    table td {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
