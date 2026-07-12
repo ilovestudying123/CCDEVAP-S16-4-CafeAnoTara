@@ -14,8 +14,7 @@ function goToSearchPage() {
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("rec-cafes-list");
 
-    const top4Cafes =[...cafes];
-    top4Cafes.sort((a, b) => b.rating - a.rating).slice(0, 4);
+    const top4Cafes = [...cafes].sort((a, b) => b.rating - a.rating).slice(0, 4);
 
     top4Cafes.forEach(cafe => {
         const card = document.createElement('a');

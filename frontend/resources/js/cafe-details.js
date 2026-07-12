@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const additionalImgElements = document.querySelectorAll('.additional-images');
         additionalImgElements.forEach ((img, index) => {
-            img.src = cafe.additionImages[index];
+            img.src = cafe.additionalImages[index];
         });
     } else {
         console.error('Cafe doesnt exist');

@@ -10,7 +10,7 @@
             hours: "7:30am - 10:00pm",
             rating: 3.6,
             mainImage: "../../resources/imgs/yardstick.jpg",
-            additionImages: [
+            additionalImages: [
                 "../../resources/imgs/y1.jpg",
                 "../../resources/imgs/y2.jpg",
                 "../../resources/imgs/y3.jpg",
@@ -30,7 +30,7 @@
             hours: "7:30am - 9:00pm",
             rating: 4.6,
             mainImage: "../../resources/imgs/matchaLater.jpg",
-            additionImages: [
+            additionalImages: [
                 "../../resources/imgs/m1.jpg",
                 "../../resources/imgs/m2.jpg",
                 "../../resources/imgs/m3.jpg",
@@ -50,7 +50,7 @@
             hours: "8:00am - 10:00pm",
             rating: 4.0,
             mainImage: "../../resources/imgs/starbucks.jpg",
-            additionImages: [
+            additionalImages: [
                 "../../resources/imgs/s1.jpg",
                 "../../resources/imgs/s2.jpg",
                 "../../resources/imgs/s3.jpg",
@@ -70,7 +70,7 @@
             hours: "8:00am - 10:00pm",
             rating: 4.8,
             mainImage: "../../resources/imgs/cbtl.jpg",
-            additionImages: [
+            additionalImages: [
                 "../../resources/imgs/c1.jpg",
                 "../../resources/imgs/c2.jpg",
                 "../../resources/imgs/c3.jpg",
@@ -91,7 +91,7 @@
             hours: "11:00 AM - 11:00 PM",
             rating: 4.8,
             mainImage: "../../resources/imgs/siriusdan.jpg",
-            additionImages: [
+            additionalImages: [
                 "../../resources/imgs/siriusdan1.jpg",
                 "../../resources/imgs/siriusdan2.jpg",
                 "../../resources/imgs/siriusdan3.jpg",
@@ -112,7 +112,7 @@
             hours: "10:00 AM - 10:00 PM",
             rating: 4.4,
             mainImage: "../../resources/imgs/bosCoffee.jpg",
-            additionImages: [
+            additionalImages: [
                 "../../resources/imgs/bosCoffee1.jpg",
                 "../../resources/imgs/bosCoffee2.png",
                 "../../resources/imgs/bosCoffee3.png",
@@ -133,7 +133,7 @@
             hours: "6:00 AM - 10:00 PM",
             rating: 4.8,
             mainImage: "../../resources/imgs/soulgood.jpg",
-            additionImages: [
+            additionalImages: [
                 "../../resources/imgs/soulgood1.png",
                 "../../resources/imgs/soulgood2.png",
                 "../../resources/imgs/soulgood3.png",
