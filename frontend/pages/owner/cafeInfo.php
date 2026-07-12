@@ -10,9 +10,31 @@
     <script src="../../resources/js/script-header-owner.js"></script>
 </header>
 
+<?php
+    require "../../../backend/config/connection.php";
+
+    $user_ID = 2; 
+
+    $sql = "SELECT 
+                c.cafe_id,
+                c.cafe_name,
+                c.wifi_speed,
+                c.opening_time,
+                c.closing_time,
+                c.price,
+                c.outlet_num
+            FROM 
+                Cafes c
+            WHERE 
+                c.owner_id = '$user_ID'";
+
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+?>
+
 <body>
     <div class="body-box">
-        <h1 class="cafe-name">Coffee Bun</h1>
+        <h1 class="cafe-name"><?php echo $row['cafe_name'];?></h1>
         
         <a href="cafeInfo-update.html" class="update-btn">Update Profile</a>
 
@@ -27,7 +49,7 @@
                 <div class="grid-container">
                     <div class="grid-item">
                         <span class="header-text">Wifi Speed</span>
-                        <span class="desc-text">100 Mbps</span>
+                        <span class="desc-text"><?php echo $row['wifi_speed'];?> Mbps</span>
                     </div>
                     <div class="grid-item">
                         <span class="header-text">Operating Hours</span>
@@ -35,11 +57,11 @@
                     </div>
                     <div class="grid-item">
                         <span class="header-text">Price Range</span>
-                        <span class="desc-text">$-$$</span>
+                        <span class="desc-text"><?php echo $row['price'];?></span>
                     </div>
                     <div class="grid-item">
                         <span class="header-text">No. of Outlets</span>
-                        <span class="desc-text">10</span>
+                        <span class="desc-text"><?php echo $row['outlet_num'];?></span>
                     </div>
                 </div>
 
