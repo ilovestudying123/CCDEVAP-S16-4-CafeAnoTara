@@ -21,5 +21,50 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } else {
         console.error('Cafe doesnt exist');
-}
+    }
+
+    let selectedRating = 0;
+
+const stars = document.querySelectorAll('#star-rating i');
+
+stars.forEach(star => {
+    
+    star.addEventListener('mouseover', () => {
+        const val = parseInt(star.dataset.value);
+        stars.forEach(s => {
+            const sVal = parseInt(s.dataset.value);
+            if (sVal <= val) {
+                s.classList.remove('fa-regular');
+                s.classList.add('fa-solid');
+                s.style.color = 'gold';
+            } else {
+                s.classList.remove('fa-solid');
+                s.classList.add('fa-regular');
+                s.style.color = '';
+            }
+        });
+    });
+
+    
+    star.addEventListener('mouseleave', () => {
+        stars.forEach(s => {
+            const sVal = parseInt(s.dataset.value);
+            if (sVal <= selectedRating) {
+                s.classList.remove('fa-regular');
+                s.classList.add('fa-solid');
+                s.style.color = 'gold';
+            } else {
+                s.classList.remove('fa-solid');
+                s.classList.add('fa-regular');
+                s.style.color = '';
+            }
+        });
+    });
+
+    
+    star.addEventListener('click', () => {
+        selectedRating = parseInt(star.dataset.value);
+        console.log('Rating selected:', selectedRating);
+    });
+});
 });
