@@ -61,8 +61,33 @@
                     <td><?= $row["created_on"] ?></td>
                     <td>
                         <div class="action-btn">
-                            <a href="users-edit.php"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
-                            <img id="action2" src="../../resources/imgs/check-mark.png" alt="Activate" onclick="userStatus('status2', 'action2')">
+                             <a href="users-edit.php?id=<?=$row["user_id"]?>">
+                                <img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
+
+                            <!-- TO FIX: Implement user status change functionality -->
+                            <?php if ($row["account_status"] == "active") : ?>
+                                <img
+                                    id="action<?= $row['user_id'] ?>"
+                                    src="../../resources/imgs/x-mark.png"
+                                    alt="Suspend"
+                                    onclick="userStatus(
+                                        <?= $row['user_id'] ?>,
+                                        'status<?= $row['user_id'] ?>',
+                                        'action<?= $row['user_id'] ?>'
+                                    )"
+                                >
+                            <?php else : ?>
+                                <img
+                                    id="action<?= $row['user_id'] ?>"
+                                    src="../../resources/imgs/check-mark.png"
+                                    alt="Activate"
+                                    onclick="userStatus(
+                                        <?= $row['user_id'] ?>,
+                                        'status<?= $row['user_id'] ?>',
+                                        'action<?= $row['user_id'] ?>'
+                                    )"
+                                >
+                            <?php endif; ?>
                             <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
                         </div>
                     </td>
