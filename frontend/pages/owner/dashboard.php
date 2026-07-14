@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/owner-dashboard.css?v=2">
-    <?php require "../../../backend/pages/owner/dashboard-sql.php"; ?>
+    <?php require "../../../backend/models/owner/dashboard-sql.php"; ?>
     <title>Owner Dashboard</title>
 
     <div id="header"></div>

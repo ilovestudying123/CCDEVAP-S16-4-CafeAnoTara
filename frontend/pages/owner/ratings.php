@@ -148,7 +148,7 @@
                                         <p class="reply-content"><?php echo htmlspecialchars($review['owner_reply']); ?></p>
                                     </div>
                                 <?php else: ?>
-                                    <form action="save_reply.php" method="POST">
+                                    <form action="../../../backend/models/owner/save-reply.php" method="POST">
                                         <input type="hidden" name="review_id" value="<?php echo $review['review_id']; ?>">
                                         <textarea id="reply-text" name="owner_reply" placeholder="Add reply"></textarea>
                                         <button type="submit" id="submit-btn">Submit</button>
