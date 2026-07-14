@@ -75,4 +75,5 @@ public function getCafeReviews ($conn, $cafe_id) {
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 }
+}
 ?>
