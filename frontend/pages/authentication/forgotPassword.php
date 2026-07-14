@@ -8,18 +8,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="../../resources/css/login.css">
-    <script src="../../resources/js/login.js"></script>
+    <link rel="stylesheet" href="../../resources/css/forgotPassword.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="../../resources/js/forgotPassword.js"></script>
 </head>
 <body>
-
-<div class="whole">
+<div class="whole">    
     <div class="header">
     <h1 class="title">Cafe Tayo, Ano Tara?</h1>
     </div>
-
-    
     <div class="content">
         <section class="trending">
             <h3 class="trend">Trending Cafes:</h3>
@@ -41,40 +38,39 @@
         
         </section>
 
-        <aside class="logIn">    
-            <h4 class="loginCaption">Find your perfect study cafe!</h4>
-            <form action="process.php" id="loginForm" method="POST"> <!--added action and method-->
-                <label for="username">Email/Username</label><br>
+        <aside class="resetPass">    
+            <h3>Forgot Password</h3>
+            <form id="loginForm">
+                <p>Enter your email to reset your password.</p>
+                <label for="username">Email </label>
                 <input type="text" id="username" name="username" required>
-
-
-
-
-
-                <br><br>
-                <label for="password">Password</label>
+                <label for="newpassword">New Password</label>
 
                 <div class="password-container">
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="newpasword" name="newpasword" required>
 
-                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                    <button type="button" class="toggle-passwordnew" onclick="togglePasswordnew()">
                         <i class="fa-solid fa-eye"></i>
                     </button>
 
                 </div>
 
-                <div class="fPass">
-                <a href="../authentication/forgotPassword.html">Forgot Password?</a>
-                </div>
-                <br><br>
+                <label for="newpassword">Confirm New Password</label>
 
-                <button type="button" class="login-btn" onclick="checkUser()">Sign In
-                </button>
-                <br>
-                    <p>Don't have an account? <a href="../authentication/signUp.html">Sign up</a></p>
+                <div class="password-container">
+                    <input type="password" id="confnewpasword" name="confnewpasword" required>
+
+                    <button type="button" class="toggle-passwordconf" onclick="togglePasswordconf() ">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+
+                </div>
+                
+                <button type="button" class="submit-btn" onclick="checkPass();">Submit</button>
+                <p>Don't have an account? <a href="../authentication/signUp.html">Sign up</a></p>
             </form>
         </aside>  
-    </div> 
-</div>       
+    </div>   
+</div>     
 </body>
 </html>
