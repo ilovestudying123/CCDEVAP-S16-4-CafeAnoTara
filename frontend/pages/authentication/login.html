@@ -6,9 +6,12 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="../../resources/css/login.css">
     <script src="../../resources/js/login.js"></script>
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
 
+<div class="whole">
     <div class="header">
     <h1 class="title">Cafe Tayo, Ano Tara?</h1>
     </div>
@@ -41,19 +44,29 @@
                 <label for="username">Email/Username</label><br>
                 <input type="text" id="username" name="username" required>
                 <br><br>
-                <label for="password">Password</label><br>
-                <input type="password" id="password" name="password" required>
-                <br>
+                <label for="password">Password</label>
+
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+
+                </div>
+
                 <div class="fPass">
                 <a href="../authentication/forgotPassword.html">Forgot Password?</a>
                 </div>
                 <br><br>
 
-                <button type="button" onclick="checkUser()">Sign In</button>
+                <button type="button" class="login-btn" onclick="checkUser()">Sign In
+                </button>
                 <br>
                     <p>Don't have an account? <a href="../authentication/signUp.html">Sign up</a></p>
             </form>
         </aside>  
-    </div>    
+    </div> 
+</div>       
 </body>
 </html>
