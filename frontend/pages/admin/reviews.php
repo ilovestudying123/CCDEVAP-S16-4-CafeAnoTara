@@ -1,3 +1,7 @@
+<?php
+    require "../../../backend/config/connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +13,13 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script>
-    
-    <script src="../../resources/js/script-header-admin.js"></script>
     <script src="../../resources/js/admin-reviews.js"></script>
 </head>
 
 <body>
-    <div id="header"></div>
+    <div id="header">
+        <?php require "../../includes/header-admin.php"; ?>
+    </div>
 
     <div class="body-box">
 

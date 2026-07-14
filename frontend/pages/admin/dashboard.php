@@ -1,3 +1,7 @@
+<?php
+    require "../../../backend/config/connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +13,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="../../resources/js/script-header-admin.js"></script>
     <script src="../../resources/js/admin-dashboard.js"></script>
 </head>
 
 <body>
-    <div id="header"></div>
+    <div id="header">
+        <?php require "../../includes/header-admin.php"; ?>
+    </div>
 
     <div class="body-box">
         <div class="card-holder">
@@ -22,7 +27,7 @@
                 <p>Pending Reports</p>
                 <p class="count">0</p>
                     <div class="redirect">
-                    <a href="reviews.html"><img src="../../resources/imgs/arrow-btn-color2.png"></a>
+                    <a href="reviews.php"><img src="../../resources/imgs/arrow-btn-color2.png"></a>
                     </div>
             </div>
 
@@ -30,11 +35,11 @@
                 <p>Pending Cafe Approvals</p>
                 <p class="count">3</p>
                     <div class="redirect">
-                    <a href="cafes.html"><img src="../../resources/imgs/arrow-btn-color2.png"></a>
+                    <a href="cafes.php"><img src="../../resources/imgs/arrow-btn-color2.png"></a>
                     </div>
             </div>
         </div>
-
+        
         <div class="chart-container">
             <div class="chart">
                 <h3>Monthly Sign Ups</h3>

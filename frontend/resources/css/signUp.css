@@ -23,6 +23,26 @@
     margin-bottom: 100px;
 }
 
+.toggle-password, .toggle-passwordconf{
+    position: absolute;
+    right: 10px;
+    top: 42%;
+    transform: translateY(-50%);
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    font-size: 20px;
+    color: #725420;
+
+    padding: 0;
+}
+
+.toggle-password, .toggle-passwordconf:hover{
+    color: #8b6630;
+}
+
 .trending{
     display: flex;
     box-sizing: border-box;
@@ -120,7 +140,7 @@
 }
 
 
-#signUpForm button{
+.create-btn{
     width: 100%;
     padding: 14px;
     margin-top: 10px;
@@ -138,9 +158,10 @@
     transition: 0.3s ease;
 }
 
-#signUpForm button:hover{
+.create-btn:hover{
     background-color: #8b6630;
 }
+
 
 #signUpForm p{
     text-align: center;
