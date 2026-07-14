@@ -61,6 +61,18 @@ public function searchCafe ($conn, $name) {
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+public function getCafeReviews ($conn, $cafe_id) {
+    $stmt = mysqli_prepare ($conn, 
+        "SELECT r.*, u.username
+        FROM Review r
+        JOIN Users u ON r.user_id = u.user_id
+        WHERE r.cafe_id = ?
+        ORDER BY r.created_on DESC"
+    );
+    mysqli_stmt_bind_param($stmt, "i", $cafe_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 }
 ?>
