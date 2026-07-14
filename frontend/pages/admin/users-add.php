@@ -1,3 +1,7 @@
+<?php
+    require "../../../backend/config/connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +16,7 @@
 
     <div class="body-box">
         <div class="header-section">
-            <h1>Edit Record</h1>
+            <h1>Add User Record</h1>
         </div>
 
         <form>
@@ -65,7 +69,7 @@
                 </div>
             </div>
 
-            <input type="submit" value="Update Record">
+            <input type="submit" value="Add Record">
         </form>
     </div>
 </body>

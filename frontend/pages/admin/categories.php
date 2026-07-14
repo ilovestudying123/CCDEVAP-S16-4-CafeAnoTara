@@ -1,3 +1,7 @@
+<?php
+    require "../../../backend/config/connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,22 +18,7 @@
     <div id="header"></div>
 
     <div class="body-box">
-        <div class="preview-box">
-            <p>Pending Reports</p>
-            <p class="count">0</p>
-                <div class="redirect">
-                <a href="reviews.html"><img src="../../resources/imgs/arrow-btn-color2.png"></a>
-                </div>
-        </div>
-
-        <div class="preview-box">
-            <p>Pending Cafe Approvals</p>
-            <p class="count">3</p>
-                <div class="redirect">
-                <a href="cafes.html"><img src="../../resources/imgs/arrow-btn-color2.png"></a>
-                </div>
-        </div>
-
+        
     </div>
 </body>
 </html>
