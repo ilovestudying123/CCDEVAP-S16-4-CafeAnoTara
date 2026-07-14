@@ -77,7 +77,7 @@
                 <div class="count"><?php echo $row['total_reviews'];?></div>
             </div>
             <div class="review-redirect">
-                <a href="ratings.html" class="arrow-btn"><img src="../../resources/imgs/arrow-btn.png" alt="arrow"></a>
+                <a href="ratings.php" class="arrow-btn"><img src="../../resources/imgs/arrow-btn.png" alt="arrow"></a>
             </div>
         </div>
 

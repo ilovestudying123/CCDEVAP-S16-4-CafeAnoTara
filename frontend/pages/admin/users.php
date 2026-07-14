@@ -1,23 +1,31 @@
+<?php
+    require "../../../backend/config/connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/admin-users.css">
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script>
-    <script src="../../resources/js/script-header-admin.js"></script>
+
     <script src="../../resources/js/admin-users.js"></script>
 </head>
 
 <body>
-    <div id="header"></div>
+    <div id="header">
+        <?php require "../../includes/header-admin.php"; ?>
+    </div>
 
     <div class="body-box">
         <div class="header-section">
             <h1>Manage Users</h1>
-            <a href="users-add.html" class="add-btn">Add Record</a>  
+            <a href="users-add.php" class="add-btn">Add Record</a>  
         </div>
         
         <div class="table-wrapper">
@@ -42,7 +50,7 @@
                 <td>10-22-2023</td>
                 <td>
                     <div class="action-btn">
-                        <a href="users-edit.html"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
+                        <a href="users-edit.php"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
                         <img id="action1" src="../../resources/imgs/x-mark.png" alt="Suspend" onclick="userStatus('status1','action1')">
                         <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
                     </div>
@@ -57,7 +65,7 @@
                 <td>2-14-2026</td>
                 <td>
                     <div class="action-btn">
-                        <a href="users-edit.html"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
+                        <a href="users-edit.php"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
                         <img id="action2" src="../../resources/imgs/check-mark.png" alt="Activate" onclick="userStatus('status2', 'action2')">
                         <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
                     </div>
@@ -72,7 +80,7 @@
                 <td>12-14-2020</td>
                 <td>
                     <div class="action-btn">
-                        <a href="users-edit.html"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
+                        <a href="users-edit.php"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
                         <img id="action3" src="../../resources/imgs/x-mark.png" alt="Suspend" onclick="userStatus('status3', 'action3')">
                         <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
                     </div>

@@ -116,6 +116,13 @@
     font-family: Verdana;
 }
 
+.review-reply form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
 #reply-text {
     flex-grow: 1;
     height: 36px;
@@ -177,6 +184,28 @@
 
 .review{
     color: #FEA959;
+}
+
+.saved-reply-box {
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.saved-reply-box p {
+    margin: 0;
+}
+
+.reply-label {
+    font-size: 0.85em;
+    color: #725420;
+    margin-bottom: 4px !important;
+}
+
+.reply-content {
+    font-size: 0.95em;
+    color: #333;
 }
 
 @media (max-width: 768px) {
