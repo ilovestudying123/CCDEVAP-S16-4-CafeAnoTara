@@ -36,7 +36,7 @@ public function removeBookmark ($conn, $customer_id, $cafe_id) {
 
 public function isBookmarked ($conn, $customer_id, $cafe_id) {
     $stmt = mysqli_prepare ($conn, 
-        "SELECT * 
+        "SELECT bookmark_id 
         FROM Bookmarks 
         WHERE customer_id = ? AND cafe_id = ?"
     );

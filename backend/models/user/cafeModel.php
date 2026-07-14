@@ -6,7 +6,7 @@ public function getCafeId ($conn, $cafe_id) {
     $stmt = mysqli_prepare ($conn,
         "SELECT c.*, AVG(r.rating) AS average_rating
         FROM Cafes c
-        LEFT JOIN Review r ON c.cafe_id=r.cafe_id
+        LEFT JOIN Reviews r ON c.cafe_id=r.cafe_id
         WHERE c.cafe_id = ?
         GROUP BY c.cafe_id"
     );
@@ -32,7 +32,7 @@ public function getTopCafes ($conn, $limit = 4) {
         "SELECT c.*, AVG(r.rating) as average_rating,
             MIN(ci.photo_url) as main_image
         FROM Cafes c
-        LEFT JOIN Review r ON c.cafe_id = r.cafe_id
+        LEFT JOIN Reviews r ON c.cafe_id = r.cafe_id
         LEFT JOIN CafeIMG ci ON c.cafe_id = ci.cafe_id
         WHERE c.is_verified = TRUE
         GROUP BY c.cafe_id
@@ -50,7 +50,7 @@ public function searchCafe ($conn, $name) {
         "SELECT c.*, AVG(r.rating) as average_rating,
             MIN(ci.photo_url) as main_image
         FROM Cafes c
-        LEFT JOIN Review r ON c.cafe_id = r.cafe_id
+        LEFT JOIN Reviews r ON c.cafe_id = r.cafe_id
         LEFT JOIN CafeIMG ci ON c.cafe_id = ci.cafe_id
         WHERE c.cafe_name = ? AND c.is_verified = TRUE
         GROUP BY c.cafe_id"
@@ -64,8 +64,8 @@ public function searchCafe ($conn, $name) {
 public function getCafeReviews ($conn, $cafe_id) {
     $stmt = mysqli_prepare ($conn, 
         "SELECT r.*, u.username
-        FROM Review r
-        JOIN Users u ON r.user_id = u.user_id
+        FROM Reviews r
+        JOIN Users u ON r.customer_id = u.user_id
         WHERE r.cafe_id = ?
         ORDER BY r.created_on DESC"
     );
@@ -74,5 +74,6 @@ public function getCafeReviews ($conn, $cafe_id) {
     $result = mysqli_stmt_get_result($stmt);
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+}
 }
 ?>

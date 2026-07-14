@@ -1,5 +1,5 @@
 <?php
-    require "../../../backend/config/connection.php";
+    require "../../../backend/models/admin/dashboard-sql.php";
 ?>
 
 <!DOCTYPE html>

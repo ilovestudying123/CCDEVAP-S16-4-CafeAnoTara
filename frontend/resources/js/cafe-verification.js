@@ -1,24 +1,37 @@
-function createCafe(){
-    const name = document.getElementById("new-name").value;
-    const owner = document.getElementById("new-owner").value;
-    const address = document.getElementById("new-address").value;
+function createCafe() {
+    const name = document.getElementById("create-name").value;
+    const owner = document.getElementById("create-owner").value;
+    const address = document.getElementById("create-address").value;
+    const description = document.getElementById("create-description").value;
+    const wifiSpeed = document.getElementById("create-wifi").value;
+    const hours = document.getElementById("create-hours").value;
+    const priceRange = document.getElementById("create-price").value;
+    const outlets = Number(document.getElementById("create-outlets").value);
+    const noiseLevel = document.getElementById("create-noise").value;
+    const rating = Number(document.getElementById("create-rating").value);
 
     const cafe = {
-        id: name.toLowerCase().replaceAll(" ",""),
-        name: name,
+        id: name.toLowerCase().replaceAll(" ", ""),
+        name,
         owner,
         address,
+        description,
+        wifiSpeed,
+        hours,
+        priceRange,
+        outlets,
+        noiseLevel,
+        rating,
         status: "Pending",
-        wifiSpeed: "-",
-        outlets: "-",
-        priceRange: "-",
-        noiseLevel: "-",
-        hours: "-",
-        rating: 0,
         mainImage: "../../resources/imgs/siriusdan.jpg",
-        additionalImages: [],
-        description: ""
+        additionalImages: [
+            "../../resources/imgs/siriusdan1.jpg",
+            "../../resources/imgs/siriusdan2.jpg",
+            "../../resources/imgs/siriusdan3.jpg",
+            "../../resources/imgs/siriusdan4.jpg"
+        ]
     };
+
     cafes.push(cafe);
     addCafeCard(cafe);
     closeCreateModal();
