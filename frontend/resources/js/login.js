@@ -1,14 +1,18 @@
+function validateForm() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
 
-function checkUser() {   
-    if (document.getElementById("username").value === "customer@gmail.com" && document.getElementById("password").value === "customer123") {
-        window.location.href = "../user/dashboard.html";
-    } else if (document.getElementById("username").value === "owner@gmail.com" && document.getElementById("password").value === "owner123") {
-        window.location.href = "../owner/dashboard.html";
-    } else if (document.getElementById("username").value === "admin@gmail.com" && document.getElementById("password").value === "admin123") {
-        window.location.href = "../admin/dashboard.html";
-    } else {
-        alert("Sorry this account doesn't exist. Please try again.");
+    if (email === "" || password === "") {
+        alert("Please fill out all fields.");
+        return false; // Blocks form from submitting to PHP
     }
+
+    if (!email.includes("@")) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    return true;
 }
 
 function togglePassword() {

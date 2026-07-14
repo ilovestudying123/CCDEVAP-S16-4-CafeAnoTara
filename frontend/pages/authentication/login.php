@@ -39,9 +39,9 @@
 
         <aside class="logIn">    
             <h4 class="loginCaption">Find your perfect study cafe!</h4>
-            <form action="loginController.php" id="loginCntrlr" method="POST"> <!--added action and method-->
-                <label for="username">Email/Username</label><br>
-                <input type="text" id="username" name="username" required>
+            <form action="loginController.php" id="loginCntrlr" method="POST" onsubmit="return validateForm()"> 
+                <label for="email">Email</label><br>
+                <input type="text" id="email" name="email" required>
                 <br><br>
                 <label for="password">Password</label>
 
@@ -59,8 +59,7 @@
                 </div>
                 <br><br>
 
-                <button type="button" class="login-btn" onclick="checkUser()">Sign In
-                </button>
+                <button type="submit" class="login-btn">Sign In</button>
                 <br>
                     <p>Don't have an account? <a href="../authentication/signUp.html">Sign up</a></p>
             </form>
