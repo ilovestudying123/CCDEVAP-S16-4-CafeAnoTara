@@ -3,6 +3,9 @@
     src: url(../font/MontaguSlab-VariableFont_opsz\,wght.ttf);
 }
 
+.home {
+    color: #FEA959;
+}
 
 body {
     margin: 0;

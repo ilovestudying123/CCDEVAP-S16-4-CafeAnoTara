@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/accountSettings.css">
 
+<<<<<<< HEAD
     <div id="header">
     <script src="../../resources/js/script-header-user.js"></script>
     </div>
@@ -30,6 +31,13 @@
     </div>
 
     <script src="script-header-user.js"></script>
+=======
+    <div id="header"></div>
+    <script src="../../resources/js/script-header-user.js"></script>
+</head>
+
+<body>
+>>>>>>> 909dea6b6949be7e9dd4537f690e78347308dc16
 
     <div class="account-settings">
 

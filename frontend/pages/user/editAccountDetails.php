@@ -10,22 +10,12 @@
     <title>Edit Account Details</title>
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/editAccountDetails.css">
+
+    <div id="header"></div>
+    <script src="../../resources/js/script-header-user.js"></script>
 </head>
 
 <body>
-
-    <div class="header">
-        <h1 class="title">Cafe Tayo, Ano Tara?</h1>
-
-        <nav class="nav-user">
-            <a href="dashboard.html">Home</a> |
-            <a href="bookmarks.html">Bookmarks</a> |
-            <a href="postedReviews.html">Posted Reviews</a> |
-            <a href="accountSettings.html">Account Settings</a>
-        </nav>
-    </div>
-
-    <script src="script-header-user.js"></script>
 
     <div class="editDetails">
 
