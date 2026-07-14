@@ -1,7 +1,3 @@
-<?php
-    require "../../../backend/config/connection.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,14 +39,9 @@
 
         <aside class="logIn">    
             <h4 class="loginCaption">Find your perfect study cafe!</h4>
-            <form action="process.php" id="loginForm" method="POST"> <!--added action and method-->
+            <form action="loginController.php" id="loginCntrlr" method="POST"> <!--added action and method-->
                 <label for="username">Email/Username</label><br>
                 <input type="text" id="username" name="username" required>
-
-
-
-
-
                 <br><br>
                 <label for="password">Password</label>
 
