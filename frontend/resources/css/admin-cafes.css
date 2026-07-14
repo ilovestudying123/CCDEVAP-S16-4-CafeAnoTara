@@ -462,7 +462,8 @@ section {
 }
 
 .field input,
-.field select {
+.field select,
+.field textarea {
     padding: 12px;
     border: 2px solid #725420;
     border-radius: 10px;
@@ -473,10 +474,17 @@ section {
 }
 
 .field input:focus,
-.field select:focus {
+.field select:focus,
+.field textarea:focus {
     outline: none;
     border-color: #FEA959;
     box-shadow: 0 0 8px rgba(254,169,89,.4);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .add-btn {
