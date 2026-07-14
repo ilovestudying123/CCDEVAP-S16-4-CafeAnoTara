@@ -27,7 +27,7 @@ CREATE TABLE Cafes (
     outlet_num INT,
     opening_time TIME,
     closing_time TIME,
-    price INT,
+    price VARCHAR(45),
     is_verified BOOLEAN DEFAULT FALSE,
     google_maps_url VARCHAR(255),
     created_on DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -70,6 +70,12 @@ CREATE TABLE Reviews (
     UNIQUE KEY unique_user_cafe_review (customer_id, cafe_id)
 );
 
+CREATE TABLE ReportCode (
+    report_code INT AUTO_INCREMENT,
+    report VARCHAR(45) NOT NULL UNIQUE,
+    PRIMARY KEY (report_code)
+);
+
 CREATE TABLE Reports (
     report_id INT AUTO_INCREMENT,
     reporter_id INT NOT NULL,
@@ -87,11 +93,6 @@ CREATE TABLE Reports (
     FOREIGN KEY (report_code) REFERENCES ReportCode(report_code)
 );
 
-CREATE TABLE ReportCode (
-    report_code INT AUTO_INCREMENT,
-    report VARCHAR(45) NOT NULL UNIQUE,
-    PRIMARY KEY (report_code)
-);
 
 INSERT INTO ReportCode (report)
 VALUES
@@ -103,13 +104,14 @@ VALUES
 
 INSERT INTO Users (firstname, lastname, username, password, email, mobilenumber, role, account_status, created_on)
 VALUES
-('Albert', 'Wesker', 'admin', 'P@ss12345', 'admin@gmail.com', '09604700469', 'admin', 'active', '2026-06-01 09:00:00'),
-('Claire', 'Redfield', 'cafe_owner', 'P@ss12345', 'owner@gmail.com', '09604700469', 'owner', 'active', '2026-06-05 10:15:00'),
-('Jill', 'Valentine', 'pat_study_hard', 'P@ss12345', 'customer@gmail.com', '09604700469', 'customer', 'active', '2026-07-01 14:00:00');
+('Albert', 'Wesker', 'admin1', 'P@ss12345', 'admin@gmail.com', '09604700469', 'admin', 'active', '2026-06-01 09:00:00'),
+('Claire', 'Redfield', 'cafe_owner1', 'P@ss12345', 'owner@gmail.com', '09604700469', 'owner', 'active', '2026-06-05 10:15:00'),
+('Jill', 'Valentine', 'customer1', 'P@ss12345', 'customer@gmail.com', '09604700469', 'customer', 'active', '2026-07-01 14:00:00'),
+('Ada', 'Wong', 'customer2', 'P@ss12345', 'custamer@gmail.com', '09604700469', 'customer', 'active', '2026-07-01 15:00:00');
 
 INSERT INTO Cafes (owner_id, cafe_name, location, description, wifi_speed, noise_level, outlet_num, opening_time, closing_time, price, is_verified, google_maps_url, created_on)
 VALUES
-(2, 'Coffee Bun', 'Gen Ave., Cubao, Quezon City', 'A nice comfortable space for student alike', '150', 'quiet', 10, '07:00:00', '23:00:00', 100-300, TRUE, 'https://www.google.com/maps', '2026-06-06 11:30:00');
+(2, 'Coffee Bun', 'Gen Ave., Cubao, Quezon City', 'A nice comfortable space for student alike', '150', 'quiet', 10, '07:00:00', '23:00:00', '100-300', TRUE, 'https://www.google.com/maps', '2026-06-06 11:30:00');
 
 INSERT INTO CafeIMG (cafe_id, photo_url)
 VALUES
@@ -122,13 +124,12 @@ VALUES
 
 INSERT INTO Reviews (customer_id, cafe_id, rating, comment, created_on)
 VALUES
-(3, 1, 5, 'Fast WiFi with many outlets, would recommend.', '2026-07-10 18:20:00');
+(3, 1, 5, 'Fast WiFi with many outlets, would recommend.', '2026-07-10 18:20:00'),
+(4, 1, 3, 'It’s louder than I thought it would be', '2026-07-11 18:20:00');
 
 INSERT INTO Reports (reporter_id, reported_user_id, reported_cafe_id, reported_review_id, report_code, status, created_on)
 VALUES
 (2, 3, 1, 1, 3, 'ongoing', '2026-07-11 11:05:00');
-
-
 
 
 
