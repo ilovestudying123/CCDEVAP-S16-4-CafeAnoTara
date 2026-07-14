@@ -34,4 +34,18 @@ public function removeBookmark ($conn, $customer_id, $cafe_id) {
     return mysqli_stmt_execute($stmt);
 }
 
+public function isBookmarked ($conn, $customer_id, $cafe_id) {
+    $stmt = mysqli_prepare ($conn, 
+        "SELECT * 
+        FROM Bookmarks 
+        WHERE customer_id = ? AND cafe_id = ?"
+    );
+    mysqli_stmt_bind_param($stmt, "ii", $customer_id, $cafe_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    return mysqli_num_rows($result) > 0;
+
 }
+
+}
+?>
