@@ -7,12 +7,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/admin-cafes.css">
-
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css"/>
-
+    <script src="../../resources/js/script-header-admin.js"></script>
     <script src="../../resources/js/cafe-array.js"></script>
     <script src="../../resources/js/cafe-verification.js"></script>
 </head>
@@ -25,6 +23,7 @@
     <div class="body-box">
         <div class="search-section">
             <h1>Cafe Verification</h1>
+            <button class="add-btn" onclick="openCreateModal()">Add Cafe</button>
 
             <div class="search-box">
                 <div class="search-input">
@@ -80,9 +79,13 @@
                     </div>
                 </div>
 
+                <div>
+                    <span id="status-cafeSiriusdan" class="status pending">Pending</span>
+                </div>
+
                 <div class="button-holder">
-                    <button class="reject-btn" onclick="confirm('Reject Cafe Application?')">Reject</button>
-                    <button class="approve-btn" onclick=" confirm('Approve Cafe Application?')">Approve</button>
+                    <button class="reject-btn" onclick="rejectCafe('cafeSiriusdan')">Reject </button>
+                    <button class="approve-btn" onclick="approveCafe('cafeSiriusdan')">Approve</button>
                     <button class="view-btn" onclick="openCafe('cafeSiriusdan')"><img src="../../resources/imgs/eye-solid.png" alt="View Details"></button>
                 </div>
             </section>
@@ -99,9 +102,13 @@
                     </div>
                 </div>
 
+                <div>
+                    <span id="status-bosCoffee" class="status pending">Pending</span>
+                </div>
+
                 <div class="button-holder">
-                    <button class="reject-btn" onclick="confirm('Reject Cafe Application?')">Reject</button>
-                    <button class="approve-btn" onclick="confirm('Approve Cafe Application?')">Approve</button>
+                    <button class="reject-btn" onclick="rejectCafe('bosCoffee')">Reject </button>
+                    <button class="approve-btn" onclick="approveCafe('bosCoffee')">Approve</button>
                     <button class="view-btn" onclick="openCafe('bosCoffee')"><img src="../../resources/imgs/eye-solid.png" alt="View Details"></button>
                 </div> 
             </section>
@@ -118,9 +125,13 @@
                     </div>
                 </div>
 
+                <div>
+                    <span id="status-soulGood" class="status pending">Pending</span>
+                </div>
+
                 <div class="button-holder">
-                    <button class="reject-btn" onclick="confirm('Reject Cafe Application?')" >Reject</button>
-                    <button class="approve-btn" onclick="confirm('Approve Cafe Application?')">Approve</button>
+                    <button class="reject-btn" onclick="rejectCafe('soulGood')">Reject </button>
+                    <button class="approve-btn" onclick="approveCafe('soulGood')">Approve</button>
                     <button class="view-btn" onclick="openCafe('soulGood')"><img src="../../resources/imgs/eye-solid.png" alt="View Details"></button>
                 </div>   
             </section>
@@ -185,5 +196,80 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="createModal" class="modal">
+        <div class="create-modal-content">
+            <span class="close" onclick="closeCreateModal()">&times;</span>
+            <h2>Add Cafe</h2>
+            <form class="create-form">
+                <div class="row">
+                    <div class="field">
+                        <label for="create-name">Cafe Name</label>
+                        <input type="text" id="create-name" placeholder="Cafe Name" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="create-owner">Owner</label>
+                        <input type="text" id="create-owner" placeholder="Owner" required>
+                    </div>
+
+                </div><br>
+
+                <div class="field">
+                    <label for="create-address">Address</label>
+                    <input type="text" id="create-address" placeholder="Address" required>
+                </div><br>
+
+                <div class="field">
+                    <label for="create-description">Description</label>
+                    <textarea id="create-description" rows="3" placeholder="Description"></textarea>
+                </div><br>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="create-wifi">WiFi Speed</label>
+                        <input type="text" id="create-wifi" placeholder="100 Mbps">
+                    </div>
+
+                    <div class="field">
+                        <label for="create-hours">Operating Hours</label>
+                        <input type="text" id="create-hours" placeholder="8:00 AM - 10:00 PM">
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="create-price">Price Range</label>
+                        <input type="text" id="create-price" placeholder="₱100–₱300">
+                    </div>
+
+                    <div class="field">
+                        <label for="create-outlets">Power Outlets</label>
+                        <input type="number" id="create-outlets" placeholder="10">
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="create-noise">Noise Level</label>
+                        <select id="create-noise">
+                            <option value="">Select</option>
+                            <option>Quiet</option>
+                            <option>Moderate</option>
+                            <option>Loud</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="create-rating">Rating</label>
+                        <input type="number" id="create-rating" min="0" max="5" step="0.1">
+                    </div>
+                </div><br>
+                <div class="button-container">
+                    <button type="button" class="add-btn" onclick="createCafe()">Submit</button>
+                </div>
+            </form>
+        </div>  
     </div>
 </body>

@@ -6,6 +6,7 @@
     <title>Sign Up Page</title>
     <link rel="stylesheet" href="../../resources/css/signUp.css">   
     <script src="../../resources/js/signUp.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
     <div class="header">
@@ -56,12 +57,28 @@
         <div class="password-row">
             <div>
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+
+                </div>    
+
+
             </div>
 
             <div>
                 <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <div class="password-container">
+                    <input type="password" id="confnewpasword" name="confnewpasword" required>
+
+                    <button type="button" class="toggle-passwordconf" onclick="togglePasswordconf() ">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+
+                </div>
             </div>
         </div>
 
@@ -80,7 +97,7 @@
             </div>
         </div>
         
-        <button type="submit">Create Account</button>
+        <button type="submit" class="create-btn">Create Account</button>
         <br>
         <p>Already have an account? <a href="../authentication/login.html">Sign in</a></p>
     </form>

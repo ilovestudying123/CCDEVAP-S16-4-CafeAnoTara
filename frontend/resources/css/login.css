@@ -2,7 +2,6 @@
     width: fit-content;
     background-color: #fffabc;
     margin: 0%;
-
 }
 
 .header{
@@ -37,7 +36,7 @@
 
 .password-container input{
     width: 100%;
-    padding: 12px 45px 12px 12px; /* room for icon */
+    padding: 12px 45px 12px 12px;
     border: 1px solid #725420;
     border-radius: 8px;
     box-sizing: border-box;

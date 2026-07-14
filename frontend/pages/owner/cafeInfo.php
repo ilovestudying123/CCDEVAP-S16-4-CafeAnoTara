@@ -1,47 +1,28 @@
-<?php
-    require "../../../backend/config/connection.php";
-
-    $user_ID = 2; 
-
-    $sql = "SELECT 
-                c.cafe_id,
-                c.cafe_name,
-                c.wifi_speed,
-                c.opening_time,
-                c.closing_time,
-                c.price,
-                c.outlet_num
-            FROM 
-                Cafes c
-            WHERE 
-                c.owner_id = '$user_ID'";
-
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-<header>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/cafeInfo.css?v=3">
+    <?php require "../../../backend/models/owner/cafeInfo-sql.php"; ?>
+    <title>Cafe Info</title>
     
     <div id="header"></div>
     <script src="../../resources/js/script-header-owner.js"></script>
-</header>
+</head>
 
 <body>
     <div class="body-box">
-        <h1 class="cafe-name"><?php echo $row['cafe_name'];?></h1>
+        <h1 class="cafe-name"><?php echo htmlspecialchars($row['cafe_name']);?></h1>
         
         <a href="cafeInfo-update.php" class="update-btn">Update Profile</a>
 
         <section class="info-box">
             <div class="pic-column">
                 <div class="cafe-pic">
-                    <img src="../../resources/imgs/cafe.jpg" alt="Main Cafe Image">
+                    <!-- Dynamic Cover Photo (Index 0) -->
+                    <img src="<?php echo htmlspecialchars($cover_img); ?>" alt="Main Cafe Image">
                 </div>
             </div>
 
@@ -49,7 +30,7 @@
                 <div class="grid-container">
                     <div class="grid-item">
                         <span class="header-text">Wifi Speed</span>
-                        <span class="desc-text"><?php echo $row['wifi_speed'];?> Mbps</span>
+                        <span class="desc-text"><?php echo htmlspecialchars($row['wifi_speed']);?> Mbps</span>
                     </div>
                     <div class="grid-item">
                         <span class="header-text">Operating Hours</span>
@@ -57,18 +38,19 @@
                     </div>
                     <div class="grid-item">
                         <span class="header-text">Price Range</span>
-                        <span class="desc-text"><?php echo $row['price'];?></span>
+                        <span class="desc-text"><?php echo htmlspecialchars($row['price']);?></span>
                     </div>
                     <div class="grid-item">
                         <span class="header-text">No. of Outlets</span>
-                        <span class="desc-text"><?php echo $row['outlet_num'];?></span>
+                        <span class="desc-text"><?php echo htmlspecialchars($row['outlet_num']);?></span>
                     </div>
                 </div>
 
+                <!-- Dynamic Gallery Thumbnails (Indices 1, 2, and 3) -->
                 <div class="thumbnails-row">
-                    <img src="../../resources/imgs/m3.jpg" alt="Thumb 1" class="thumb">
-                    <img src="../../resources/imgs/y1.jpg" alt="Thumb 2" class="thumb">
-                    <img src="../../resources/imgs/s2.jpg" alt="Thumb 3" class="thumb">
+                    <img src="<?php echo htmlspecialchars($thumb_1); ?>" alt="Thumb 1" class="thumb">
+                    <img src="<?php echo htmlspecialchars($thumb_2); ?>" alt="Thumb 2" class="thumb">
+                    <img src="<?php echo htmlspecialchars($thumb_3); ?>" alt="Thumb 3" class="thumb">
                 </div>
             </div>
         </section>
@@ -76,5 +58,4 @@
 
     <script src="../../resources/js/cafeInfo.js"></script>
 </body>
-
 </html>

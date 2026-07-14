@@ -79,6 +79,11 @@
     justify-content: center;
 }
 
+.bookmark-icon {
+    width: 50px;
+    height: 60px;
+}
+
 .bookmarked-cafes {
     width: 95%;
     height: 500px;
@@ -111,6 +116,8 @@
 
     background-color: #fff;
     box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+    text-decoration: none;
+    color: inherit;
 }
 
 .cafe-details:hover {
@@ -141,9 +148,13 @@
     height: 60px;
 }
 
-#stars {
+.stars {
     width: 150px;
     height: 60px;
     vertical-align: middle;
     margin-left: 5px;
+}
+
+.bookmark {
+    color: #FEA959;
 }
