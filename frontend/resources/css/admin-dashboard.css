@@ -8,6 +8,12 @@
 }
 
 .body-box {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-holder {
     display: flex;
     gap: 3%;
     padding: 3% 0;
@@ -25,7 +31,6 @@
     min-width: 300px;
     height: 300px;
     padding: 0 2%;
-    margin-bottom: 5%;
     background-color: #fdd6d6;
     border-radius: 15px;
     display: flex;
@@ -71,3 +76,33 @@ img:hover {
     margin: 3%;
 }
 
+.chart-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 100px;
+    padding: 0 3%;
+    justify-content: center;
+}
+
+.chart {
+    width: 85%;
+    height: 350px;
+}
+
+.chart canvas {
+    width: 100% !important;
+    height: 300px !important;
+    
+}
+
+.chart h3 {
+    color: #725420;
+    font-family: "Montagu Slab", serif;
+    font-size: 150%;
+    font-weight: bold;
+    border-radius: 15px;
+    box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+    padding: 20px;
+    background-color: #fdd6d6;
+}

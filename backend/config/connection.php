@@ -6,7 +6,7 @@
 $host = "localhost";
 $dbname = "cafeanotara";
 $username = "root";
-$password = ""; 
+$password = "12345"; 
 
 $conn = mysqli_connect($host, $username, $password, $dbname);
 

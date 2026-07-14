@@ -49,57 +49,51 @@
             
         </div>
         
-        <div class="bookmarked-cafes">  
+         <div class="bookmarked-cafes">
             <div class="bookmark-card">
-                <img id="bookmark" src ="../../resources/imgs/bookmark.png">
-                <div class="cafe-details">
+                <img class="bookmark-icon" src="../../resources/imgs/bookmark.png">
+                <a href="cafeDetails.html?id=yardstick" class="cafe-details">
                     <div class="cafe-text">
-                        <p id="cafe-name">Yardstick <img id="stars" src ="../../resources/imgs/5stars.png"></p>
+                        <p id="cafe-name">Yardstick <img class="stars" src="../../resources/imgs/5stars.png"></p>
                         <p>5th Avenue, Bonifacio Global City, Taguig City</p>
                     </div>
-                    <div class="circle">
-                    </div>
-                </div>
+                    <div class="circle"></div>
+                </a>
             </div>
 
             <div class="bookmark-card">
-                <img id="bookmark" src ="../../resources/imgs/bookmark.png">
-                <div class="cafe-details">
+                <img class="bookmark-icon" src="../../resources/imgs/bookmark.png">
+                <a href="cafeDetails.html?id=matchaLater" class="cafe-details">
                     <div class="cafe-text">
-                        <p id="cafe-name">Matcha Later <img id="stars" src ="../../resources/imgs/5stars.png"></p>
+                        <p id="cafe-name">Ujisan <img class="stars" src="../../resources/imgs/5stars.png"></p>
                         <p>36 Polaris Street, Poblacion, Makati City</p>
                     </div>
-                    <div class="circle">
-                    </div>
-                </div>
+                    <div class="circle"></div>
+                </a>
             </div>
 
             <div class="bookmark-card">
-                <img id="bookmark" src ="../../resources/imgs/bookmark.png">
-                <div class="cafe-details">
+                <img class="bookmark-icon" src="../../resources/imgs/bookmark.png">
+                <a href="cafeDetails.html?id=starbucks" class="cafe-details">
                     <div class="cafe-text">
-                        <p id="cafe-name">Starbucks <img id="stars" src ="../../resources/imgs/5stars.png"></p>
+                        <p id="cafe-name">Starbucks <img class="stars" src="../../resources/imgs/5stars.png"></p>
                         <p>Forbestown Road, Bonifacio Global City, Taguig City</p>
                     </div>
-                    <div class="circle">
-                    </div>
-                </div>
+                    <div class="circle"></div>
+                </a>
             </div>
 
             <div class="bookmark-card">
-                <img id="bookmark" src ="../../resources/imgs/bookmark.png">
-                <div class="cafe-details">
+                <img class="bookmark-icon" src="../../resources/imgs/bookmark.png">
+                <a href="cafeDetails.html?id=cbtl" class="cafe-details">
                     <div class="cafe-text">
-                        <p id="cafe-name">Coffee Bean Tea Latte <img id="stars" src ="../../resources/imgs/5stars.png"></p>
+                        <p id="cafe-name">CBTL <img class="stars" src="../../resources/imgs/5stars.png"></p>
                         <p>108 E. Rodriguez Jr. Ave., Brgy. Bagumbayan, Quezon City</p>
                     </div>
-                    <div class="circle">
-                    </div>
-                </div>
+                    <div class="circle"></div>
+                </a>
             </div>
-    
         </div>
-
 
     </section>
 </body>
