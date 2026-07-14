@@ -1,6 +1,13 @@
+.whole{
+    width: fit-content;
+    background-color: #fffabc;
+    margin: 0%;
+
+}
+
 .header{
     font-family: 'Montagu Slab';  
-    background-color: #fffabc;
+    /* background-color: #fffabc; */
     padding: 1%;
     width: 100%;
     box-sizing: border-box;
@@ -11,8 +18,8 @@
 }
 
 .content{
-    background-color: #fffabc;
-    width: 100%;
+    /* background-color: #fffabc; */
+    width: fit-content;
     box-sizing: border-box;
     font-family: 'Montagu Slab';
     display: grid;
@@ -20,7 +27,40 @@
     gap: 40px;
     min-height: 70vh;
     padding: 2% 7% 15% 7%;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
+}
+
+.password-container{
+    position: relative;
+    width: 100%;
+}
+
+.password-container input{
+    width: 100%;
+    padding: 12px 45px 12px 12px; /* room for icon */
+    border: 1px solid #725420;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.toggle-password{
+    position: absolute;
+    right: 10px;
+    top: 42%;
+    transform: translateY(-50%);
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    font-size: 20px;
+    color: #725420;
+
+    padding: 0;
+}
+
+.toggle-password:hover{
+    color: #8b6630;
 }
 
 .trending{
@@ -66,7 +106,6 @@
     font-family: Verdana;
     color: #725420;
 }
-
 
 .logIn{
     border: 2px solid #725420;
@@ -122,7 +161,7 @@
 }
 
 
-#loginForm button{
+.login-btn{
     width: 100%;
     padding: 14px;
     margin-top: 10px;
@@ -140,7 +179,7 @@
     transition: 0.3s ease;
 }
 
-#loginForm button:hover{
+.login-btn:hover{
     background-color: #8b6630;
 }
 
