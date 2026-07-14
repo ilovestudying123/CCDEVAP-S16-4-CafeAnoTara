@@ -7,17 +7,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/admin-reviews.css">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script>
-    <script src="../../resources/js/script-header-admin.js"></script>
+
     <script src="../../resources/js/admin-reviews.js"></script>
 </head>
 
 <body>
-    <div id="header"></div>
+    <div id="header">
+        <?php require "../../includes/header-admin.php"; ?>
+    </div>
 
     <div class="body-box">
 
