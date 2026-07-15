@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../../config/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -7,14 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST["password"];
 
     if (empty($email) || empty($password)) {
-        $error = "Please fill in all fields.";
-        include '../../../frontend/pages/authentication/index.php';
+        $_SESSION['error'] = "Please fill in all fields.";
+        header("Location: ../../../frontend/pages/authentication/index.php");
         exit();
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = "Please input a correct email format.";
-        include '../../../frontend/pages/authentication/index.php';
+        $_SESSION['error'] = "Please input a correct email format.";
+        header("Location: ../../../frontend/pages/authentication/index.php");
         exit();
     }
 
@@ -23,8 +24,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $userData = $loginModel->getUserByEmail($email);
 
-    if ($userData && $password === $userData['password']) {
-    // if ($userData && password_verify($password, $userData['password'])) {    for hashed passwords
+        // Check if email exists
+        if (!$userData) {
+            $_SESSION['error'] = "Email does not exist.";
+            header("Location: ../../../frontend/pages/authentication/index.php");
+            exit();
+        }
+
+        // Check if password is correct
+        if ($password !== $userData['password']) {
+            // if (!password_verify($password, $userData['password'])) { // For hashed passwords
+            $_SESSION['error'] = "Invalid password.";
+            header("Location: ../../../frontend/pages/authentication/index.php");
+            exit();
+        }
 
         session_start();
         $_SESSION['user'] = $userData['username'];
@@ -48,12 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Unknown role.";
                 exit();
         }
-
-    } else {
-        $error = "Invalid email or password.";
-        include '../../../frontend/pages/authentication/index.php';
-        exit();
-    }
 
 } else {
     header("Location: ../../../frontend/pages/authentication/index.php");
