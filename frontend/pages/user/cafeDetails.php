@@ -28,11 +28,12 @@
                 <div class="cafe-bookmark">
                     <!-- bookmark form -->
                     <form method="POST" 
-                          action="../../../backend/controllers/user/bookmarkController.php?action=add">
+                          action="../../../backend/controllers/user/bookmarkController.php?action=add"
+                          onsubmit="return confirm('Are you sure you want to bookmark this cafe?');">
                         <input type="hidden" name="cafe_id" 
                                value="<?php echo $cafe['cafe_id']; ?>">
                         <button id="bookmark-button" type="submit">
-                            <img id="bookmark" src="../../resources/imgs/bookmark.png">
+                            <i class="fa-solid fa-bookmark fa-2x"></i>
                         </button>
                     </form>
                 </div>
@@ -107,16 +108,16 @@
             <h3>Ratings & Review</h3>
             <div class="star-buttons">
                 <p>
-                    <img id="star-big" src="../../resources/imgs/star-shaded.png">
+                    <img id="star-big" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/star-shaded.png">
                     <span><?php echo $cafe['average_rating'] 
                         ? number_format($cafe['average_rating'], 1) . '/5' 
                         : 'No ratings yet'; ?></span>
                 </p>
-                <div class="buttons">
+                <!-- <div class="buttons">
                     <div class="filter">
                         <div class="filter-button">
                             <button id="filter-button" onclick="toggleFilter()">
-                                <img id="filter-icon" src="../../resources/imgs/sliders-solid.png">
+                                <img id="filter-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sliders-solid.png">
                                 Filter
                             </button>
                         </div>
@@ -137,10 +138,10 @@
                     </div>
                     <div class="sort-button">
                         <button id="sort-button" type="button" onclick="toggleSort()">
-                            <img id="sort-icon" src="../../resources/imgs/sort-solid.png">Sort
+                            <img id="sort-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sort-solid.png">Sort
                         </button>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="reviews-scroll">
@@ -154,7 +155,7 @@
                             </div>
                             <div class="review-box">
                                 <p>
-                                    <img class="star-icon" src="../../resources/imgs/star-shaded.png">
+                                      <i class="fa-solid fa-star"></i>
                                     <?php echo $review['rating']; ?>/5 
                                     <?php echo $review['comment']; ?>
                                 </p>

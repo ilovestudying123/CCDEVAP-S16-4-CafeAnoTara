@@ -27,27 +27,27 @@
     </div>
 
 
-        <section class="filter-section">
+        <!-- <section class="filter-section">
         <div class="filter">
             <div class="filter-button">
                 <button id="filter-button" onclick="toggleFilter()"><img id="filter-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sliders-solid.png">Filter</button>
                 </div>
             <div id="filter-options">
-                <!-- radio buttons for wifi speed -->
+                 radio buttons for wifi speed 
                 <p>Wifi Speed:</p>
                 <label><input type="radio" name="wifi" value=""> All Wifi Speeds</label> <br>
                 <label><input type="radio" name="wifi" value="fast"> Fast Wifi</label> <br>
                 <label><input type="radio" name="wifi" value="slow"> Slow Wifi</label>
                 
-                <!-- checkboxes for outlet availability -->
+                checkboxes for outlet availability 
                 <p>Outlet Availability:</p>
                 <label><input type="checkbox" name="outlet" value="available"> Available</label> <br>
                 <label><input type="checkbox" name="outlet" value="unavailable"> Unavailable</label>
                 <br>
-                <br>
+                <br> -->
 
                 <!-- buttons for apply and clear filter -->
-                <div class="filter-buttons">
+                <!-- <div class="filter-buttons">
                     <button type="button" onclick="applyFilter()">Apply</button>
                     <button type="button" onclick="clearFilter()">Clear</button>
                 </div>
@@ -55,12 +55,12 @@
         </div>
         </section>
 
-        <!-- button for sort -->
+        button for sort
         <section class="sort-section">
         <div class="sort-button">
             <button id="sort-button" type="button" onclick="toggleSort()"><img id="sort-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sort-solid.png">Sort</button>
         </div>
-    </div>
+    </div> -->
     </section>
 
     <section class="cafe-listings">
@@ -76,7 +76,7 @@
                     <div class="cafe-listing-info">
                         <span class="cafe-listing-name"><?php echo $cafe['cafe_name']; ?></span>
                         <span class="cafe-listing-rating">
-                            <img class="star-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/star-shaded.png">
+                            <i class="fa-solid fa-star"></i>
                             <?php echo $cafe['average_rating'] 
                                 ? number_format($cafe['average_rating'], 1) . '/5' 
                                 : 'No ratings'; ?>
