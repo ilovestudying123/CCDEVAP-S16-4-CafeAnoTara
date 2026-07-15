@@ -7,20 +7,20 @@
     <link rel="stylesheet" href="../../resources/css/owner-ratings.css?v=4">
     <?php require "../../../backend/models/owner/ratings-sql.php"; ?>
     <title>Cafe Reviews</title>
-
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-owner.js"></script>
-    <script src="../../resources/js/owner-ratings.js" defer></script>
 </head>
 
 <body>
+    <div id="header"></div>
+    <script src="../../resources/js/script-header-owner.js"></script>
+    <script src="../../resources/js/owner-ratings.js" defer></script>
+
     <div class="body-box">
         <h1 class="cafe-name"><?php echo htmlspecialchars($cafe_name); ?></h1>
 
         <div class="grid-btn">
             <div class="dropdown">
                 <button id="filter-btn" class="filter-btn" onclick="toggleFilter()">
-                    <img src="../../resources/imgs/sliders-solid.png" class="filter-img"> Filter
+                    <img src="../../resources/imgs/sliders-solid.png" class="filter-img" alt="filter"> Filter
                 </button>
                 <div id="dropdown-filter-options">
                     <p>Cafe Rating:</p>
@@ -38,7 +38,7 @@
 
             <div class="dropdown">
                 <button id="sort-btn" class="sort-btn" onclick="toggleSort()">
-                    <img src="../../resources/imgs/sort-solid.png" class="sort-img"> Sort
+                    <img src="../../resources/imgs/sort-solid.png" class="sort-img" alt="sort"> Sort
                 </button>
                 <div id="dropdown-sort-options">
                     <p>Cafe Rating:</p>
@@ -78,7 +78,6 @@
                             <p class="rating"><span class="star">★</span> <?php echo number_format($review['rating'], 1); ?>/5</p>
                             <p class="review-body"><?php echo htmlspecialchars($review['comment']); ?></p>
                             
-                            <!-- Reply Section -->
                             <div class="review-reply">
                                 <?php if (!empty($review['owner_reply'])): ?>
                                     <div class="saved-reply-box">

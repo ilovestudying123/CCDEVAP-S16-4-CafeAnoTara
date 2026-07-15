@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="../../resources/css/cafeInfo.css?v=3">
     <?php require "../../../backend/models/owner/cafeInfo-sql.php"; ?>
     <title>Cafe Info</title>
-    
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-owner.js"></script>
 </head>
 
 <body>
+    <div id="header"></div>
+    <script src="../../resources/js/script-header-owner.js"></script>
+
     <div class="body-box">
         <h1 class="cafe-name"><?php echo htmlspecialchars($row['cafe_name']);?></h1>
         
@@ -21,7 +21,6 @@
         <section class="info-box">
             <div class="pic-column">
                 <div class="cafe-pic">
-                    <!-- Dynamic Cover Photo (Index 0) -->
                     <img src="<?php echo htmlspecialchars($cover_img); ?>" alt="Main Cafe Image">
                 </div>
             </div>
@@ -46,7 +45,6 @@
                     </div>
                 </div>
 
-                <!-- Dynamic Gallery Thumbnails (Indices 1, 2, and 3) -->
                 <div class="thumbnails-row">
                     <img src="<?php echo htmlspecialchars($thumb_1); ?>" alt="Thumb 1" class="thumb">
                     <img src="<?php echo htmlspecialchars($thumb_2); ?>" alt="Thumb 2" class="thumb">
