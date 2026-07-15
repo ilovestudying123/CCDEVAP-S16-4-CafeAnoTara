@@ -28,6 +28,18 @@
     margin-bottom: 0;
 }
 
+.add-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #725420;
+    color: #fea959;
+    margin-top: 40px;
+    margin-right: 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: Verdana;
+}
+
 .table-wrapper {
     width: 90%;
     max-width: 1500px;
