@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
-    <link rel="stylesheet" href="../../resources/css/user-bookmark.css">
+    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
+    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-bookmark.css">
 
     <div id="header"></div>
-    <script src="../../resources/js/script-header-user.js"></script>
+    <script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/script-header-user.js"></script>
 </head>
 <body>
     <section>
@@ -17,7 +17,7 @@
                 <div class="filter">
                     <div class="filter-button">
                         <button id="filter-button" onclick="toggleFilter()">
-                            <img id="filter-icon" src="../../resources/imgs/sliders-solid.png">Filter
+                            <img id="filter-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sliders-solid.png">Filter
                         </button>
                     </div>
                     <div id="filter-options">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="sort-button">
                     <button id="sort-button" type="button" onclick="toggleSort()">
-                        <img id="sort-icon" src="../../resources/imgs/sort-solid.png">Sort
+                        <img id="sort-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sort-solid.png">Sort
                     </button>
                 </div>
             </div>
@@ -50,9 +50,9 @@
             <?php else: ?>
                 <?php foreach ($bookmarks as $bookmark): ?>
                     <div class="bookmark-card">
-                        <img class="bookmark-icon" src="../../resources/imgs/bookmark.png">
+                        <img class="bookmark-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/bookmark.png">
 
-                        <a href="../../../backend/controllers/CafeController.php?action=cafeDetails&id=<?php echo $bookmark['cafe_id']; ?>"
+                        <a href="../../../backend/controllers/user/cafeController.php?action=cafeDetails&id=<?php echo $bookmark['cafe_id']; ?>"
                         class="cafe-details">
                             <div class="cafe-text">
                                 <p class="cafe-name">
@@ -66,7 +66,7 @@
 
                         <!-- remove bookmark button -->
                         <form method="POST" 
-                            action="../../../backend/controllers/BookmarkController.php?action=remove">
+                            action="../../../backend/controllers/user/bookmarkController.php?action=remove">
                             <input type="hidden" name="cafe_id" 
                                 value="<?php echo $bookmark['cafe_id']; ?>">
                             <button type="submit" class="remove-bookmark">✕</button>

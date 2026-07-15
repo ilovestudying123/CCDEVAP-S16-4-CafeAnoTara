@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
-    <link rel="stylesheet" href="../../resources/css/user-cafeDetails.css">
+    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
+    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-cafeDetails.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <script src="../../resources/js/cafe-array.js"></script>
-    <script src="../../resources/js/cafe-details.js"></script>
+    <script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/cafe-array.js"></script>
+    <script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/cafe-details.js"></script>
 
     <div id="header"></div>
-    <script src="../../resources/js/script-header-user.js"></script>
+    <script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/script-header-user.js"></script>
 </head>
 <body>
 
@@ -43,13 +43,13 @@
                 <div class="carousel-inner">
                     <?php if (empty($images)): ?>
                         <div class="carousel-item active">
-                            <img src="../../resources/imgs/cafe.jpg" 
+                            <img src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/cafe.jpg" 
                                  class="carousel-img" alt="Cafe">
                         </div>
                     <?php else: ?>
                         <?php foreach ($images as $index => $img): ?>
                             <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="<?php echo $img['photo_url']; ?>" 
+                                <img src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/<?php echo $img['photo_url']; ?>" 
                                      class="carousel-img" 
                                      alt="Cafe Image">
                             </div>
@@ -100,7 +100,6 @@
                     <input type="hidden" name="rating" id="rating-value" value="0">
                     <button id="submit" type="submit">Submit</button>
                 </div>
-            </form>
         </div>
 
         <!-- Ratings and Reviews -->

@@ -1,4 +1,11 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+
+
 require_once '../../config/connection.php';
 require_once '../../models/user/cafeModel.php';
 
@@ -24,7 +31,7 @@ class cafeController {
             exit;
         }
 
-        $cafe = $this->model->getCafeById($this->conn, $cafe_id);
+        $cafe = $this->model->getCafeId($this->conn, $cafe_id);
         $images = $this->model->getCafeImages($this->conn, $cafe_id);
         $reviews = $this->model->getCafeReviews($this->conn, $cafe_id);
 
