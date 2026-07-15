@@ -40,9 +40,7 @@ async function createCategory() {
     const result = await response.json();
     if (result.success) {
         alert("Category added successfully.");
-        closeCreateModal();
-        document.getElementById("createCategoryForm").reset();
-        addCategoryRow(report);
+        location.reload();
     }
     else {
         alert("Failed to add category.");
