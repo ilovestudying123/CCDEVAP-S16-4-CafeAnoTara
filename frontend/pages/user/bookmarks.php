@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-bookmark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <div id="header"></div>
     <script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/script-header-user.js"></script>
@@ -13,7 +14,7 @@
     <section>
         <div class="bookmark-header">
             <h1>Your Bookmarked Cafes</h1>
-            <div class="buttons">
+            <!-- <div class="buttons">
                 <div class="filter">
                     <div class="filter-button">
                         <button id="filter-button" onclick="toggleFilter()">
@@ -40,7 +41,7 @@
                         <img id="sort-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sort-solid.png">Sort
                     </button>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="bookmarked-cafes">
@@ -50,27 +51,29 @@
             <?php else: ?>
                 <?php foreach ($bookmarks as $bookmark): ?>
                     <div class="bookmark-card">
-                        <img class="bookmark-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/bookmark.png">
+                        <!-- remove bookmark button -->
+                        <form method="POST" 
+                            action="../../../backend/controllers/user/bookmarkController.php?action=remove"
+                            onsubmit="return confirm('Are you sure you want to remove this bookmark?');"> 
+                            <input type="hidden" name="cafe_id" 
+                                value="<?php echo $bookmark['cafe_id']; ?>">
+                            <button type="submit" class="remove-bookmark" id="bookmark-button">
+                                <i class="fa-solid fa-bookmark fa-3x"></i>
+                            </button>
+                        </form>
 
                         <a href="../../../backend/controllers/user/cafeController.php?action=cafeDetails&id=<?php echo $bookmark['cafe_id']; ?>"
                         class="cafe-details">
                             <div class="cafe-text">
                                 <p class="cafe-name">
                                     <?php echo $bookmark['cafe_name']; ?>
-                                    <img class="stars" src="../../resources/imgs/5stars.png">
+                                    <i class="fa-solid fa-star"></i>
+                                    <?php echo round($bookmark['average_rating'], 1); ?>/5 
                                 </p>
-                                <p><?php echo $bookmark['location']; ?></p>
+                                <p class="cafe-text"><?php echo $bookmark['location']; ?></p>
                             </div>
-                            <div class="circle"></div>
+                            
                         </a>
-
-                        <!-- remove bookmark button -->
-                        <form method="POST" 
-                            action="../../../backend/controllers/user/bookmarkController.php?action=remove">
-                            <input type="hidden" name="cafe_id" 
-                                value="<?php echo $bookmark['cafe_id']; ?>">
-                            <button type="submit" class="remove-bookmark">✕</button>
-                        </form>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
