@@ -1,10 +1,10 @@
 <?php
 
-class loginModel {
+class forgotPassModel{
 
     private $conn;
 
-    public function __construct($conn) {
+    public function __construct($conn){
         $this->conn = $conn;
     }
 
@@ -33,6 +33,33 @@ class loginModel {
         return null;
     }
 
+    public function updatePassword($email, $newPassword)
+    {
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+        $query = "UPDATE users
+                SET password = ?
+                WHERE email = ?";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        if ($stmt) {
+
+            mysqli_stmt_bind_param($stmt, "ss", $hashedPassword, $email);
+
+            $success = mysqli_stmt_execute($stmt);
+
+            mysqli_stmt_close($stmt);
+
+            return $success;
+        }
+
+        return false;
+    }
+
+
 }
+
+
 
 ?>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
-
+<?php
+if (isset($_SESSION['error'])) {
+    echo "<script>alert('" . addslashes($_SESSION['error']) . "');</script>";
+    unset($_SESSION['error']);
+}
+?>
 <div class="whole">
     <div class="header">
     <h1 class="title">Cafe Tayo, Ano Tara?</h1>
@@ -39,10 +48,9 @@
 
         <aside class="logIn">    
             <h4 class="loginCaption">Find your perfect study cafe!</h4>
-            <form id="loginForm">
-                <label for="username">Email/Username</label><br>
-                <input type="text" id="username" name="username" required>
-                <br><br>
+            <form action="../../../backend/controllers/authentication/loginController.php" id="loginCntrlr" method="POST" onsubmit="return validateForm()"> 
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" required>
                 <label for="password">Password</label>
 
                 <div class="password-container">
@@ -55,14 +63,13 @@
                 </div>
 
                 <div class="fPass">
-                <a href="../authentication/forgotPassword.html">Forgot Password?</a>
+                <a href="forgotPassword.php">Forgot Password?</a>
                 </div>
                 <br><br>
 
-                <button type="button" class="login-btn" onclick="checkUser()">Sign In
-                </button>
+                <button type="submit" class="login-btn">Sign In</button>
                 <br>
-                    <p>Don't have an account? <a href="../authentication/signUp.html">Sign up</a></p>
+                    <p>Don't have an account? <a href="signUp.php">Sign up</a></p>
             </form>
         </aside>  
     </div> 

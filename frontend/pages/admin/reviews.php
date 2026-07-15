@@ -1,5 +1,9 @@
 <?php
     require "../../../backend/config/connection.php";
+    require "../../../backend/models/admin/reviews-sql.php";
+
+    $ReviewModel = new ReviewModel($conn);
+    $reports = $ReviewModel->getAllReportedReviews();
 ?>
 
 <!DOCTYPE html>
@@ -42,24 +46,29 @@
                 </thead>
 
                 <tbody>
+                <?php while ($row = $reports->fetch_assoc()) :?>
                 <tr>
-                    <td>Ramona Gray</td>
-                    <td>"Anyone who likes this café is stupid."</td>
-                    <td>Inappropriate Language</td>
-                    <td>2-16-2026</td>
-                    <td class="status">Pending</td>
+                    <td><?= htmlspecialchars($row['reported_by']) ?></td>
+                    <td><?= htmlspecialchars($row['comment']) ?></td>
+                    <td><?= htmlspecialchars($row['report']) ?></td>
+                    <td><?= htmlspecialchars($row['created_on']) ?></td>
+                    <td><?= htmlspecialchars($row['status']) ?></td>
                     <td>
                         <div class="action-btn">
                             <img
                                 id="action1" class="x-img" src="../../resources/imgs/check-mark.png" alt="Approve" onclick="approveReview(this)">
                             <img
                                 id="action1" class="x-img" src="../../resources/imgs/x-mark.png" alt="Remove" onclick="removeReview(this)">
-                             <a href="reviews-update.php">
+                             <a href="reviews-update.php?id=<?= $row['report_id'] ?>">
                                 <img
-                                id="action1" class="edit-btn" src="../../resources/imgs/edit-btn.png" alt="Edit" onclick=""></a>
+                                    class="edit-btn"
+                                    src="../../resources/imgs/edit-btn.png"
+                                    alt="Edit">
+                            </a>
                         </div>
                     </td>
                 </tr>
+                <?php endwhile; ?>
                 </tbody>
             </table>
             </div>

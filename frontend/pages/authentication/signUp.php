@@ -1,6 +1,3 @@
-<?php
-    require "../../../backend/config/connection.php";
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +100,7 @@
         
         <button type="submit" class="create-btn">Create Account</button>
         <br>
-        <p>Already have an account? <a href="../authentication/login.html">Sign in</a></p>
+        <p>Already have an account? <a href="../authentication/index.html">Sign in</a></p>
     </form>
 </aside>  
 </div>
