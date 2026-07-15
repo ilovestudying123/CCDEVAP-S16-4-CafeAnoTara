@@ -119,5 +119,44 @@ class ReviewModel {
 
         return $stmt->execute();
     }
+
+    // Approve review (resolve report only)
+    public function approveReview($reportID)
+    {
+        $sql = "
+            UPDATE Reports
+            SET status = 'resolved'
+            WHERE report_id = ?
+        ";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $reportID);
+
+        return $stmt->execute();
+    }
+
+    // Remove review then resolve report
+    public function removeReview($reportID, $reviewID)
+    {
+        // delete review
+        $stmt = $this->conn->prepare(
+            "DELETE FROM Reviews
+            WHERE review_id = ?"
+        );
+
+        $stmt->bind_param("i", $reviewID);
+        $stmt->execute();
+
+        // mark report resolved
+        $stmt = $this->conn->prepare(
+            "UPDATE Reports
+            SET status='resolved'
+            WHERE report_id=?"
+        );
+
+        $stmt->bind_param("i", $reportID);
+
+        return $stmt->execute();
+    }
 }
 ?>

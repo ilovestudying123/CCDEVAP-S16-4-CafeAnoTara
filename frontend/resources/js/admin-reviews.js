@@ -1,23 +1,50 @@
-function approveReview(link) {
-    if (!confirm("Are you sure you want to APPROVE this review?")) return;
+async function approveReview(reportID) {
+    if (!confirm("Approve this review?")) {
+        return;
+    }
 
-    let row = link.closest("tr");
+    const formData = new FormData();
+    formData.append("report_id", reportID);
 
-    row.querySelector(".status").textContent = "Approved";
+    const response = await fetch(
+        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/review-approve.php",
+        {
+            method: "POST",
+            body: formData
+        }
+    );
 
-    row.querySelector("td:last-child").innerHTML =
-        '<span class="resolved-text">No Action</span>';
+    const result = await response.json();
+    if(result.success){
+        alert("Review approved.");
+        location.reload();
+    }
 }
 
-function removeReview(link) {
-    if (!confirm("Are you sure you want to REMOVE this review?")) return;
+async function removeReview(reportID, reviewID){
+    if(!confirm("Remove this review?")){
+        return;
+    }
 
-    let row = link.closest("tr");
+    const formData = new FormData();
 
-    row.querySelector(".status").textContent = "Removed";
+    formData.append("report_id", reportID);
+    formData.append("review_id", reviewID);
 
-    row.querySelector("td:last-child").innerHTML =
-        '<span class="resolved-text">No Action</span>';
+    const response = await fetch(
+        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/review-remove.php",
+        {
+            method:"POST",
+            body:formData
+        }
+    );
+
+    const result = await response.json();
+
+    if(result.success){
+        alert("Review removed.");
+        location.reload();
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

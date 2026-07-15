@@ -63,6 +63,23 @@ public function getPendingCafes($conn, $search, $status, $sort) {
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+public function getOwners($conn)
+{
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT user_id, firstname, lastname
+         FROM Users
+         WHERE role = 'owner'
+         ORDER BY firstname, lastname"
+    );
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
 public function createCafe($conn, $data)
 {
     $stmt = mysqli_prepare(

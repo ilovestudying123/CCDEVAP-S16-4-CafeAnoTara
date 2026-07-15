@@ -28,7 +28,7 @@ async function openCafe(cafeId){
     document.getElementById("cafe-desc-text").textContent = cafe.description;
 
     const mainImage = document.getElementById("cafe-mainImage");
-    mainImage.src = "../../resources/imgs/" + cafe.main_image;
+    mainImage.src = cafe.main_image;
 
     const thumbnails = document.querySelectorAll(".gallery-thumbnail");
 
@@ -38,11 +38,9 @@ async function openCafe(cafeId){
             return;
         }   
         thumbnail.style.display = "block";
-        thumbnail.src =
-            "../../resources/imgs/" + cafe.images[index];
+        thumbnail.src = cafe.images[index];
         thumbnail.onclick = () => {
-            mainImage.src =
-                "../../resources/imgs/" + cafe.images[index];
+            mainImage.src = cafe.images[index];
             thumbnails.forEach(t =>
                 t.classList.remove("active")
             );
