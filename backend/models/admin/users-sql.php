@@ -108,16 +108,25 @@ class UserModel
     }
 
     // delete a specific user by ID in the users table
-    public function deleteUser($id) {
+    public function deleteUser($id)
+    {
+        $username = "deleted_user_" . $id;
+        $email = "deleted_" . $id . "@delete.com";
+
         $stmt = $this->conn->prepare("
             UPDATE users
-            SET firstname = 'Deleted', lastname = 'User', 
-                username = 'deleted_user', email = 'deleted@example.com', 
-                mobilenumber = '0000000000', account_status = 'deleted'
+            SET firstname = 'Deleted',
+                lastname = 'User',
+                username = ?,
+                email = ?,
+                mobilenumber = '0000000000',
+                account_status = 'deleted',
+                created_on = '0000-00-00 00:00:00'
             WHERE user_id = ?
         ");
 
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("ssi", $username, $email, $id);
+
         return $stmt->execute();
     }
 }
