@@ -16,10 +16,14 @@
     <div class="body">
     <div class="search-filter-sort">
     <section class="search-section">
-        <div class="search">
-            <input id="search-box" type="search" placeholder="Search...">
-            <button id="search-button" type="submit"><img id="search-icon" src="../../resources/imgs/magnifying-glass-solid.png"></button>
-        </div>
+        <form method="GET" action="../../backend/controllers/user/cafeController.php">
+            <input type="hidden" name="action" value="search">
+            <div class="search">
+                <input id="search-box" type="search" placeholder="Search...">
+                <button id="search-button" type="submit"><img id="search-icon" src="../../resources/imgs/magnifying-glass-solid.png"></button>
+            </div>
+
+        </form>
         </section>
 
         <section class="filter-section">
@@ -59,15 +63,29 @@
     </section>
 
     <section class="rec-cafes">
-    <div class="rec-cafe">
-        <div class="rec-cafes-header">
-            <h2>Recommended Study Cafes</h2>
+        <div class="rec-cafe">
+            <div class="rec-cafes-header">
+                <h2>Recommended Study Cafes</h2>
+            </div>
+            <div class="rec-cafes-list">
+                <?php foreach ($cafes as $cafe): ?>
+                    <a href="../../../backend/controllers/CafeController.php?action=cafeDetails&id=<?php echo $cafe['cafe_id']; ?>" 
+                       class="cafe-card">
+                        <img src="<?php echo $cafe['main_image'] ?? '../../resources/imgs/cafe.jpg'; ?>" 
+                             alt="<?php echo $cafe['cafe_name']; ?>">
+                        <div class="cafe-text">
+                            <h3><?php echo $cafe['cafe_name']; ?></h3>
+                            <p>
+                                <img class="star-icon" src="../../resources/imgs/star-shaded.png">
+                                <?php echo $cafe['average_rating'] 
+                                    ? number_format($cafe['average_rating'], 1) . '/5' 
+                                    : 'No ratings yet'; ?>
+                            </p>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
         </div>
-
-        <div class="rec-cafes-list" id="rec-cafes-list">
-            
-        </div>
-    </div>
     </section>
     
 </div>
