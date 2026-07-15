@@ -1,11 +1,5 @@
 <?php
-    require_once "../../../backend/config/connection.php";
-    require "../../../backend/models/admin/dashboard-sql.php";
-
-    
-    $dashboardModel = new UserDashboard($conn);
-    $pendingReports = $dashboardModel->getPendingReports();
-    $pendingCafes = $dashboardModel ->getPendingCafes();
+require "../../../backend/controllers/admin/user-dashboard.php";
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +12,20 @@
     <link rel="stylesheet" href="../../resources/css/admin-dashboard.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+    const userMonths = <?= json_encode($userMonths) ?>;
+    const userTotals = <?= json_encode($userTotals) ?>;
+
+    const roles = <?= json_encode($roles) ?>;
+    const roleTotals = <?= json_encode($roleTotals) ?>;
+
+    const cafeNames = <?= json_encode($cafeNames) ?>;
+    const ratings = <?= json_encode($ratings) ?>;
+
+    const bookmarkCafe = <?= json_encode($bookmarkCafe) ?>;
+    const bookmarkCount = <?= json_encode($bookmarkCount) ?>;
+    </script>
 
     <script src="../../resources/js/admin-dashboard.js"></script>
 </head>
@@ -49,22 +57,22 @@
         <div class="chart-container">
             <div class="chart">
                 <h3>Monthly Sign Ups</h3>
-                <canvas id="barChart1"></canvas>
-            </div>
-
-            <div class="chart">
-                <h3>Customer Satisfaction by Age Group</h3>
-                <canvas id="barChart2"></canvas>
-            </div>
-
-            <div class="chart">
-                <h3>Cafe Visit Times</h3>
                 <canvas id="lineChart"></canvas>
             </div>
 
             <div class="chart">
-                <h3>Most Used Search Filters</h3>
-                <canvas id="doughnutChart"></canvas>
+                <h3>Users Per Role</h3>
+                <canvas id="pieChart"></canvas>
+            </div>
+
+            <div class="chart">
+                <h3>Highest Rated Cafes</h3>
+                <canvas id="barGraph1"></canvas>
+            </div>
+
+            <div class="chart">
+                <h3>Most Bookmarked Cafes</h3>
+                <canvas id="barGraph2"></canvas>
             </div>
         </div>
     </div>
