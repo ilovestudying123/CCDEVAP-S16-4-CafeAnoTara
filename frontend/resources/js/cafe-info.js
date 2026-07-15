@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Cover Photo Elements
     const changeCoverBtn = document.getElementById("change-cover-btn");
     const coverModal = document.getElementById("coverModal");
     const closeCoverModal = document.getElementById("closeCoverModal");
@@ -9,16 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const coverPreview = document.getElementById("cafe-cover-preview");
     const modalCoverImg = document.getElementById("modal-cover-img");
 
-    // Edit Gallery Photos Elements
     const editPhotosBtn = document.getElementById("edit-photos-btn");
     const photoModal = document.getElementById("photoModal");
     const closePhotoModal = document.getElementById("closePhotoModal");
     const savePhotoModal = document.getElementById("savePhotoModal");
 
-    // --- COVER PHOTO MODAL LOGIC ---
     if (changeCoverBtn) {
         changeCoverBtn.addEventListener("click", function () {
-            // Load current hidden input value into modal text box
             modalCoverImg.value = coverInput.value;
             coverModal.style.display = "flex";
         });
@@ -35,13 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const newUrl = modalCoverImg.value.trim();
             if (newUrl !== "") {
                 coverInput.value = newUrl;
-                coverPreview.src = newUrl; // Live update thumbnail image container
+                coverPreview.src = newUrl;
             }
             coverModal.style.display = "none";
         });
     }
 
-    // --- GALLERY PHOTOS MODAL LOGIC ---
     if (editPhotosBtn) {
         editPhotosBtn.addEventListener("click", function () {
             for (let i = 0; i < 4; i++) {

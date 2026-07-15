@@ -23,7 +23,6 @@
                 <div class="pic-column">
                     <img id="cafe-cover-preview" src="<?php echo htmlspecialchars($cover_photo); ?>" alt="Cafe Cover Photo">
                     
-                    <!-- Hidden input to store cover URL dynamically -->
                     <input type="hidden" name="cover_photo_url" id="cover-photo-input" value="<?php echo $has_existing_cover ? htmlspecialchars($all_photos[0]['photo_url']) : ''; ?>">
 
                     <button type="button" id="change-cover-btn" class="form-btn cover-btn">Change Cover Photo</button>
@@ -32,7 +31,6 @@
                 <div class="info-column">
                     <button type="button" id="edit-photos-btn" class="form-btn edit-btn">Edit Photos</button>
                     
-                    <!-- Hidden inputs mapping to the 4 extra photos -->
                     <?php for($i = 0; $i < 4; $i++): ?>
                         <input type="hidden" name="extra_photos[<?php echo $i; ?>]" id="extra-photo-<?php echo $i; ?>" value="<?php echo isset($extra_photos[$i]) ? htmlspecialchars($extra_photos[$i]['photo_url']) : ''; ?>">
                     <?php endfor; ?>

@@ -18,7 +18,6 @@
         <h1 class="cafe-name"><?php echo htmlspecialchars($cafe_name); ?></h1>
 
         <div class="grid-btn">
-            <!-- Filter Dropdown -->
             <div class="dropdown">
                 <button id="filter-btn" class="filter-btn" onclick="toggleFilter()">
                     <img src="../../resources/imgs/sliders-solid.png" class="filter-img"> Filter
@@ -37,14 +36,12 @@
                 </div>
             </div>
 
-            <!-- Sort Dropdown -->
             <div class="dropdown">
                 <button id="sort-btn" class="sort-btn" onclick="toggleSort()">
                     <img src="../../resources/imgs/sort-solid.png" class="sort-img"> Sort
                 </button>
                 <div id="dropdown-sort-options">
                     <p>Cafe Rating:</p>
-                    <!-- Fixed radio button input mismatching name fields -->
                     <label><input type="radio" name="sort_by" value="new" <?php if($selected_sort == 'new' || $selected_sort == '') echo 'checked'; ?>>Newest To Oldest</label> <br>
                     <label><input type="radio" name="sort_by" value="old" <?php if($selected_sort == 'old') echo 'checked'; ?>>Oldest To Newest</label> <br> <br>
                     <div class="filter-buttons">
@@ -71,7 +68,7 @@
                                 <p class="review-title"><b><?php echo htmlspecialchars($review['firstname'] . ' ' . $review['lastname']); ?></b></p>
                                 
                                 <button type="button" 
-                                        id="report-btn"
+                                        class="report-btn"
                                         data-review-id="<?php echo $review['review_id']; ?>" 
                                         data-reporter-id="<?php echo $current_user_id; ?>">
                                     Report
@@ -104,8 +101,42 @@
                 endwhile; 
             else: 
             ?>
-                <p class="no-reviews" style="text-align: center; font-weight: bold; padding: 20px;">No reviews found matching that criteria.</p>
+                <p class="no-reviews" style="text-align: center; font-weight: bold; padding: 20px;">No reviews found</p>
             <?php endif; ?>
+        </div>
+    </div>
+
+    <div id="report-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3>Report Review</h3>
+            <p>Select the reason for reporting this review:</p>
+            
+            <form id="report-form" action="" method="POST">
+                <input type="hidden" id="modal-review-id" name="review_id">
+                <input type="hidden" id="modal-reporter-id" name="reporter_id">
+                
+                <div class="violation-options">
+                    <?php
+                    $code_sql = "SELECT report_code, report FROM ReportCode";
+                    $code_result = $conn->query($code_sql);
+                    if ($code_result && $code_result->num_rows > 0):
+                        while($code = $code_result->fetch_assoc()):
+                    ?>
+                        <label class="modal-radio-label">
+                            <input type="radio" name="report_code" value="<?php echo $code['report_code']; ?>" required>
+                            <?php echo htmlspecialchars($code['report']); ?>
+                        </label><br>
+                    <?php 
+                        endwhile;
+                    endif; 
+                    ?>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="closeReportModal()">Cancel</button>
+                    <button type="submit" name="submit_report" class="btn-submit">Submit Report</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>
