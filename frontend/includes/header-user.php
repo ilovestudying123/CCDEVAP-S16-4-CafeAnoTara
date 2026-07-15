@@ -1,5 +1,6 @@
 <?php
 // get firstname from session to display in header
+// $firstname = isset($_SESSION['firstname']) ? $_SESSION['firstname'] : '';
 $firstname = isset($_SESSION['firstname']) ? $_SESSION['firstname'] : '';
 ?>
 

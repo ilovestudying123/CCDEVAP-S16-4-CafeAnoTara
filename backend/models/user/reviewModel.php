@@ -62,5 +62,19 @@ class reviewModel {
         mysqli_stmt_bind_param($stmt, "isii", $rating, $comment, $review_id, $customer_id);
         return mysqli_stmt_execute($stmt);
     }
+
+    //get a specific review by its ID
+    public function getReviewById($conn, $review_id) {
+    $stmt = mysqli_prepare($conn,
+        "SELECT * FROM Reviews
+         WHERE review_id = ?"
+    );
+
+    mysqli_stmt_bind_param($stmt, "i", $review_id);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+    return mysqli_fetch_assoc($result);
+}
 }
 ?>

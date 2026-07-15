@@ -152,3 +152,17 @@
     width: 30px;
     height: 40px;
 }
+
+.dropdown .btn{
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.dropdown .btn:focus{
+    box-shadow: none;
+}
+
+.dropdown-item{
+    cursor: pointer;
+}
