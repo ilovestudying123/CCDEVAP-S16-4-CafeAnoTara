@@ -57,7 +57,7 @@
                     <td><?= htmlspecialchars($row["email"]) ?></td>
                     <td><?= $row["mobilenumber"] ?></td>
                     <td><?= $row["role"] ?></td>
-                    <td id="status<?= $row['user_id'] ?>"></td>
+                    <td id="status<?= $row['user_id'] ?>"><?= $row["account_status"] ?></td>
                     <td><?= $row["created_on"] ?></td>
                     <td>
                         <div class="action-btn">
@@ -79,12 +79,14 @@
                             <?php endif; ?>
 
                             <!-- delete button form -->
-                            <form action="../../../backend/controllers/admin/user-delete.php" method="POST">
-                                <input type="hidden" name="id" value="<?= $row['user_id'] ?>">
-                                <button class="hidden-btn" type="submit">
-                                    <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
-                                </button>
-                            </form>
+                            <form action="../../../backend/controllers/admin/user-delete.php" method="POST" onsubmit="return confirm('Are you sure you want to DELETE this user?');">
+
+                            <input type="hidden" name="user_id" value="<?= $row['user_id'] ?>">
+
+                            <button class="hidden-btn" type="submit">
+                                <img src="../../resources/imgs/delete.png" alt="Delete">
+                            </button>
+                        </form>
                         </div>
                     </td>
                 </tr>
