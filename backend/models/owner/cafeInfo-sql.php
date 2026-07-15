@@ -3,7 +3,6 @@
 
     $user_ID = 2; 
 
-    // 1. Fetch Cafe Details
     $sql = "SELECT 
                 c.cafe_id,
                 c.cafe_name,
@@ -20,7 +19,6 @@
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
-    // 2. Fetch Associated Images sequentially
     $db_photos = [];
     if ($row) {
         $cafe_id = $row['cafe_id'];

@@ -25,7 +25,6 @@
     
     $extra_photos = array_slice($all_photos, 1, 4);
 
-    // 3. Handle Form Submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $wifi_speed = $conn->real_escape_string($_POST['wifi_speed']);
         $outlet_num = $conn->real_escape_string($_POST['outlet_num']);
@@ -42,7 +41,6 @@
             $closing_time = $row['closing_time'];
         }
 
-        // Update Cafe Details
         $update_sql = "UPDATE Cafes SET 
                         wifi_speed = '$wifi_speed', 
                         outlet_num = '$outlet_num', 
@@ -53,24 +51,19 @@
 
         if ($conn->query($update_sql) === TRUE) {
             
-            // --- COVER PHOTO UPDATE ---
             if (isset($_POST['cover_photo_url'])) {
                 $new_cover = $conn->real_escape_string(trim($_POST['cover_photo_url']));
                 if (!empty($new_cover)) {
                     if ($has_existing_cover) {
-                        // Update existing first item
                         $target_id = $all_photos[0]['photo_id'];
                         $conn->query("UPDATE CafeIMG SET photo_url = '$new_cover' WHERE photo_id = '$target_id'");
                     } else {
-                        // Create primary entry if empty
                         $conn->query("INSERT INTO CafeIMG (cafe_id, photo_url) VALUES ('$cafe_id', '$new_cover')");
                     }
                 }
             }
 
-            // --- EXTRA PHOTOS UPDATE (4 LINKS) ---
             if (isset($_POST['extra_photos']) && is_array($_POST['extra_photos'])) {
-                // Ensure the cover photo anchor exists so extra photos don't steal index 0
                 if (!$has_existing_cover && empty($_POST['cover_photo_url'])) {
                     $conn->query("INSERT INTO CafeIMG (cafe_id, photo_url) VALUES ('$cafe_id', '../../resources/imgs/cafe.jpg')");
                 }
