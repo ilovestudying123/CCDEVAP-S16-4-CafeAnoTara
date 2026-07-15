@@ -93,18 +93,17 @@ class UserModel
     }
 
     //updates user status by ID in the users table
-    public function updateUserStatus($id, $status)
+    public function updateStatus($user_id, $status)
     {
-        
-        $stmt = $this->conn->prepare("
-            UPDATE users
-            SET account_status = ?
-            WHERE user_id = ?
-        ");
+    $stmt = $this->conn->prepare("
+        UPDATE users
+        SET account_status = ?
+        WHERE user_id = ?
+    ");
 
-        $stmt->bind_param("si", $status, $id);
+    $stmt->bind_param("si", $status, $user_id);
 
-        return $stmt->execute();
+    return $stmt->execute();
     }
 
     // delete a specific user by ID in the users table
