@@ -1,5 +1,5 @@
 <?php
-    require "../../../backend/config/connection.php";
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +13,12 @@
     <script src="../../resources/js/forgotPassword.js"></script>
 </head>
 <body>
+<?php
+if (isset($_SESSION['error'])) {
+    echo "<script>alert('" . addslashes($_SESSION['error']) . "');</script>";
+    unset($_SESSION['error']);
+}
+?>
 <div class="whole">    
     <div class="header">
     <h1 class="title">Cafe Tayo, Ano Tara?</h1>
@@ -40,14 +46,14 @@
 
         <aside class="resetPass">    
             <h3>Forgot Password</h3>
-            <form id="loginForm">
+            <form action="../../../backend/controllers/authentication/forgetPassController.php" id="loginForm" method="POST" onsubmit="return validateForm()">
                 <p>Enter your email to reset your password.</p>
-                <label for="username">Email </label>
-                <input type="text" id="username" name="username" required>
+                <label for="email">Email </label>
+                <input type="email" id="email" name="email" required>
                 <label for="newpassword">New Password</label>
 
                 <div class="password-container">
-                    <input type="password" id="newpasword" name="newpasword" required>
+                    <input type="password" id="newpassword" name="newpassword" required>
 
                     <button type="button" class="toggle-passwordnew" onclick="togglePasswordnew()">
                         <i class="fa-solid fa-eye"></i>
@@ -55,10 +61,10 @@
 
                 </div>
 
-                <label for="newpassword">Confirm New Password</label>
+                <label for="confnewpassword">Confirm New Password</label>
 
                 <div class="password-container">
-                    <input type="password" id="confnewpasword" name="confnewpasword" required>
+                    <input type="password" id="confnewpassword" name="confnewpassword" required>
 
                     <button type="button" class="toggle-passwordconf" onclick="togglePasswordconf() ">
                         <i class="fa-solid fa-eye"></i>
@@ -66,7 +72,7 @@
 
                 </div>
                 
-                <button type="button" class="submit-btn" onclick="checkPass();">Submit</button>
+                <button type="submit" class="submit-btn">Submit</button>
                 <p>Don't have an account? <a href="../authentication/signUp.php">Sign up</a></p>
             </form>
         </aside>  

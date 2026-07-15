@@ -1,18 +1,5 @@
-
-function checkUser() {   
-    if (document.getElementById("username").value === "customer@gmail.com" && document.getElementById("password").value === "customer123") {
-        window.location.href = "../user/dashboard.html";
-    } else if (document.getElementById("username").value === "owner@gmail.com" && document.getElementById("password").value === "owner123") {
-        window.location.href = "../owner/dashboard.html";
-    } else if (document.getElementById("username").value === "admin@gmail.com" && document.getElementById("password").value === "admin123") {
-        window.location.href = "../admin/dashboard.html";
-    } else {
-        alert("Sorry this account doesn't exist. Please try again.");
-    }
-}
-
 function togglePasswordnew() {
-    const password = document.getElementById("newpasword");
+    const password = document.getElementById("newpassword");
     const icon = document.querySelector(".toggle-passwordnew i");
 
     if (password.type === "password") {
@@ -25,7 +12,7 @@ function togglePasswordnew() {
 }
 
 function togglePasswordconf() {
-    const password = document.getElementById("confnewpasword");
+    const password = document.getElementById("confnewpassword");
     const icon = document.querySelector(".toggle-passwordconf i");
 
     if (password.type === "password") {
@@ -35,4 +22,27 @@ function togglePasswordconf() {
         password.type = "password";
         icon.classList.replace("fa-eye-slash", "fa-eye");
     }
+}
+
+function validateForm() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("newpassword").value;
+    const confirmPassword = document.getElementById("confnewpassword").value;
+
+    if (email === "" || password === "" || confirmPassword === "") {
+        alert("Please fill out all fields.");
+        return false;
+    }
+
+    if (!email.includes("@")) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+    }
+
+    return true;
 }
