@@ -1,5 +1,13 @@
 <?php
-    require "../../../backend/config/connection.php";
+require_once "../../../backend/config/connection.php";
+require_once "../../../backend/controllers/admin/cafe-verification.php";
+
+$search = $_GET['search'] ?? '';
+$status = $_GET['status'] ?? 0;
+$sort = $_GET['sort'] ?? 'DESC';
+
+$cafeController = new CafeVerificationController($conn);
+$pendingCafes = $cafeController->getPendingCafes($search, $status, $sort);
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +18,8 @@
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/admin-cafes.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css"/>
-    <script src="../../resources/js/script-header-admin.js"></script>
-    <script src="../../resources/js/cafe-array.js"></script>
+    <!-- <script src="../../includes/js/script-header-admin.js"></script> -->
+    <!-- <script src="../../resources/js/cafe-array.js"></script> -->
     <script src="../../resources/js/cafe-verification.js"></script>
 </head>
 
@@ -23,118 +31,78 @@
     <div class="body-box">
         <div class="search-section">
             <h1>Cafe Verification</h1>
+                <form method="GET" class="search-box">
+                    <div class="search-input">
+                        <img src="../../resources/imgs/magnifying-glass-solid.png" alt="search icon">
+                        <input type="search" id="search-input" name="search" placeholder="Enter cafe" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+                    </div>
+
+                    <button type="submit">Search</button>
+
+                    <div class="filter">
+                        <button type="button" id="filter-button" onclick="toggleFilter()">
+                        <img src="../../resources/imgs/sliders-solid.png" class="sort-icon">Filter</button>
+
+                        <div id="filter-options">
+                            <p>Status:</p>
+                            <label>
+                                <input type="radio" name="status" value="0" <?= (($_GET['status'] ?? '0') == '0') ? 'checked' : '' ?>>Pending
+                            </label>
+
+                            <label>
+                                <input type="radio" name="status" value="1" <?= (($_GET['status'] ?? '') == '1') ? 'checked' : '' ?>>Approved
+                            </label>
+                            <div class="filter-buttons">
+                                <button type="submit">Apply</button>
+                                <button type="button" onclick="window.location='cafes.php'">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sort">
+                        <button type="button" id="sort-button" onclick="toggleSort()">
+                            <img src="../../resources/imgs/sort-solid.png" class="sort-icon">Sort</button>
+
+                        <div id="sort-options">
+                            <p>Sort by:</p>
+                            <label><input type="radio" name="sort" value="DESC" <?= (($_GET['sort'] ?? 'DESC') == 'DESC') ? 'checked' : '' ?>>Newest To Oldest</label><br>
+                            <label><input type="radio" name="sort" value="ASC" <?= (($_GET['sort'] ?? '') == 'ASC') ? 'checked' : '' ?>>Oldest To Newest</label>
+
+                            <div class="filter-buttons">
+                                <button type="submit">Apply</button>
+                                <button type="button" onclick="window.location='cafes.php'">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             <button class="add-btn" onclick="openCreateModal()">Add Cafe</button>
-
-            <div class="search-box">
-                <div class="search-input">
-                    <img src="../../resources/imgs/magnifying-glass-solid.png" alt="search icon">
-                    <input type="search" placeholder="Enter cafe">
-                </div>
-
-                <div class="filter">
-                    <button id="filter-button" onclick="toggleFilter()">
-                    <img src="../../resources/imgs/sliders-solid.png" class="sort-icon">Filter</button>
-
-                    <div id="filter-options">
-                        <p>Status:</p>
-                        <label><input type="radio" name="status" value="pending"> Pending</label><br>
-                        <label><input type="radio" name="status" value="approved"> Approved</label><br>
-                        <label><input type="radio" name="status" value="denied"> Denied</label>
-
-                        <div class="filter-buttons">
-                            <button type="button" onclick="applyFilter()">Apply</button>
-                            <button type="button" onclick="clearFilter()">Clear</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sort">
-                    <button id="sort-button" onclick="toggleSort()">
-                        <img src="../../resources/imgs/sort-solid.png" class="sort-icon">Sort</button>
-
-                    <div id="sort-options">
-                        <p>Sort by:</p>
-                        <label><input type="radio" name="newestOldest" value="new">Newest To Oldest</label><br>
-                        <label><input type="radio" name="oldestNewest" value="old">Oldest To Newest</label>
-
-                        <div class="filter-buttons">
-                            <button type="button" onclick="applySort()">Apply</button>
-                            <button type="button" onclick="clearSort()">Clear</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="card-holder">
-            <section class="cafe-card">
-                <div class="cafe-info">
-                    <img src="../../resources/imgs/siriusdan.jpg" alt="cafe1">
+            <?php foreach ($pendingCafes as $cafe): ?>
+                <section id="cafe-<?= $cafe['cafe_id'] ?>" class="cafe-card">
+                    <div class="cafe-info">
+                        <img src="../../resources/imgs/<?= htmlspecialchars($cafe['main_image']) ?>" alt="<?= htmlspecialchars($cafe['cafe_name']) ?>">
 
-                    <div class="cafe-details">
-                        <h1>Cafe Siriusdan</h1>
-                        <p>Studio Siriusdan</p>
-                        <p><br></p>
-                        <p>492 Halcon Extension Street, Mandaluyong City</p>
+                        <div class="cafe-details">
+                            <h1><?= htmlspecialchars($cafe['cafe_name']) ?></h1>
+                            <p><?= htmlspecialchars($cafe['firstname'] . ' ' . $cafe['lastname']) ?></p>
+                            <p><br></p>
+                            <p><?= htmlspecialchars($cafe['location']) ?></p>
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <span id="status-cafeSiriusdan" class="status pending">Pending</span>
-                </div>
-
-                <div class="button-holder">
-                    <button class="reject-btn" onclick="rejectCafe('cafeSiriusdan')">Reject </button>
-                    <button class="approve-btn" onclick="approveCafe('cafeSiriusdan')">Approve</button>
-                    <button class="view-btn" onclick="openCafe('cafeSiriusdan')"><img src="../../resources/imgs/eye-solid.png" alt="View Details"></button>
-                </div>
-            </section>
-
-            <section class="cafe-card">
-                <div class="cafe-info">
-                    <img src="../../resources/imgs/bosCoffee.jpg" alt="cafe2">
-                    
-                    <div class="cafe-details">
-                        <h1>Bo's Coffee</h1>
-                        <p>Bo's Coffee Philippines</p>
-                        <p><br></p>
-                        <p>Ground Floor, Activity Center, SM Mall of Asia, Pasay City</p>
+                    <div>
+                        <span id="status-<?= $cafe['cafe_id'] ?>" class="status pending">Pending</span>
                     </div>
-                </div>
 
-                <div>
-                    <span id="status-bosCoffee" class="status pending">Pending</span>
-                </div>
-
-                <div class="button-holder">
-                    <button class="reject-btn" onclick="rejectCafe('bosCoffee')">Reject </button>
-                    <button class="approve-btn" onclick="approveCafe('bosCoffee')">Approve</button>
-                    <button class="view-btn" onclick="openCafe('bosCoffee')"><img src="../../resources/imgs/eye-solid.png" alt="View Details"></button>
-                </div> 
-            </section>
-
-            <section class="cafe-card">
-                <div class="cafe-info">
-                    <img src="../../resources/imgs/soulgood.jpg" alt="cafe3">
-
-                    <div class="cafe-details">
-                        <h1><b>Soul Good</b></h1>
-                        <p>Soul Good Management</p>
-                        <p><br></p>
-                        <p>The Hub Greenfield District, Mandaluyong City</p>
+                    <div class="button-holder">
+                        <button class="reject-btn" onclick="rejectCafe(<?= $cafe['cafe_id'] ?>)">Reject</button>
+                        <button class="approve-btn" onclick="approveCafe(<?= $cafe['cafe_id'] ?>)">Approve</button>
+                        <button class="view-btn"onclick="openCafe(<?= $cafe['cafe_id'] ?>)"><img src="../../resources/imgs/eye-solid.png"></button>
                     </div>
-                </div>
-
-                <div>
-                    <span id="status-soulGood" class="status pending">Pending</span>
-                </div>
-
-                <div class="button-holder">
-                    <button class="reject-btn" onclick="rejectCafe('soulGood')">Reject </button>
-                    <button class="approve-btn" onclick="approveCafe('soulGood')">Approve</button>
-                    <button class="view-btn" onclick="openCafe('soulGood')"><img src="../../resources/imgs/eye-solid.png" alt="View Details"></button>
-                </div>   
-            </section>
+                </section>
+            <?php endforeach; ?>
         </div>
     </div>
 
@@ -202,72 +170,76 @@
         <div class="create-modal-content">
             <span class="close" onclick="closeCreateModal()">&times;</span>
             <h2>Add Cafe</h2>
-            <form class="create-form">
+            <form class="create-form" action="../../../backend/controllers/admin/cafe-create.php" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="field">
                         <label for="create-name">Cafe Name</label>
-                        <input type="text" id="create-name" placeholder="Cafe Name" required>
+                        <input type="text" id="create-name" name="cafe_name" placeholder="Cafe Name" required>
                     </div>
 
                     <div class="field">
                         <label for="create-owner">Owner</label>
-                        <input type="text" id="create-owner" placeholder="Owner" required>
+                        <input type="text" id="create-owner" name="owner_id" placeholder="Owner" required>
                     </div>
 
                 </div><br>
 
                 <div class="field">
                     <label for="create-address">Address</label>
-                    <input type="text" id="create-address" placeholder="Address" required>
+                    <input type="text" id="create-address" name="location" placeholder="Address" required>
                 </div><br>
 
                 <div class="field">
                     <label for="create-description">Description</label>
-                    <textarea id="create-description" rows="3" placeholder="Description"></textarea>
+                    <textarea id="create-description" name="description" rows="3" placeholder="Description"></textarea>
                 </div><br>
 
                 <div class="row">
                     <div class="field">
                         <label for="create-wifi">WiFi Speed</label>
-                        <input type="text" id="create-wifi" placeholder="100 Mbps">
+                        <input type="text" id="create-wifi" name="wifi_speed" placeholder="100 Mbps">
                     </div>
 
                     <div class="field">
-                        <label for="create-hours">Operating Hours</label>
-                        <input type="text" id="create-hours" placeholder="8:00 AM - 10:00 PM">
+                        <label for="create-opening">Opening Time</label>
+                        <input type="time" id="create-opening" name="opening_time">
+                    </div>
+
+                    <div class="field">
+                        <label for="create-closing">Closing Time</label>
+                        <input type="time" id="create-closing" name="closing_time">
                     </div>
                 </div><br>
 
                 <div class="row">
                     <div class="field">
-                        <label for="create-price">Price Range</label>
-                        <input type="text" id="create-price" placeholder="₱100–₱300">
+                        <label for="create-price">Average Price</label>
+                        <input type="number" id="create-price" name="price" placeholder="Average Price">
                     </div>
 
                     <div class="field">
                         <label for="create-outlets">Power Outlets</label>
-                        <input type="number" id="create-outlets" placeholder="10">
+                        <input type="number" id="create-outlets" name="outlet_num" placeholder="10">
                     </div>
-                </div><br>
-
-                <div class="row">
+  
                     <div class="field">
                         <label for="create-noise">Noise Level</label>
-                        <select id="create-noise">
+                        <select id="create-noise" name="noise_level">
                             <option value="">Select</option>
                             <option>Quiet</option>
                             <option>Moderate</option>
                             <option>Loud</option>
                         </select>
                     </div>
-
-                    <div class="field">
-                        <label for="create-rating">Rating</label>
-                        <input type="number" id="create-rating" min="0" max="5" step="0.1">
-                    </div>
                 </div><br>
+
+                <div class="field">
+                    <label for="create-image">Cafe Image</label>
+                    <input type="file" id="create-image" name="cafe_images[]" accept="image/*" multiple>
+                </div>
+                <br>
                 <div class="button-container">
-                    <button type="button" class="add-btn" onclick="createCafe()">Submit</button>
+                    <button type="submit" class="add-btn">Submit</button>
                 </div>
             </form>
         </div>  
