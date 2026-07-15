@@ -8,6 +8,8 @@ $sort = $_GET['sort'] ?? 'DESC';
 
 $cafeController = new CafeVerificationController($conn);
 $pendingCafes = $cafeController->getPendingCafes($search, $status, $sort);
+
+$owners = $cafeController->getOwners();
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +84,7 @@ $pendingCafes = $cafeController->getPendingCafes($search, $status, $sort);
             <?php foreach ($pendingCafes as $cafe): ?>
                 <section id="cafe-<?= $cafe['cafe_id'] ?>" class="cafe-card">
                     <div class="cafe-info">
-                        <img src="../../resources/imgs/<?= htmlspecialchars($cafe['main_image']) ?>" alt="<?= htmlspecialchars($cafe['cafe_name']) ?>">
+                        <img src="<?= htmlspecialchars($cafe['main_image']) ?>" alt="<?= htmlspecialchars($cafe['cafe_name']) ?>">
 
                         <div class="cafe-details">
                             <h1><?= htmlspecialchars($cafe['cafe_name']) ?></h1>
@@ -92,14 +94,23 @@ $pendingCafes = $cafeController->getPendingCafes($search, $status, $sort);
                         </div>
                     </div>
 
+                    <?php $statusClass = ($cafe['is_verified'] == 1) ? "approved" : "pending";
+                          $statusText = ($cafe['is_verified'] == 1) ? "Approved" : "Pending";?>
+
                     <div>
-                        <span id="status-<?= $cafe['cafe_id'] ?>" class="status pending">Pending</span>
+                        <span
+                            id="status-<?= $cafe['cafe_id'] ?>"
+                            class="status <?= $statusClass ?>">
+                            <?= $statusText ?>
+                        </span>
                     </div>
 
                     <div class="button-holder">
-                        <button class="reject-btn" onclick="rejectCafe(<?= $cafe['cafe_id'] ?>)">Reject</button>
-                        <button class="approve-btn" onclick="approveCafe(<?= $cafe['cafe_id'] ?>)">Approve</button>
-                        <button class="view-btn"onclick="openCafe(<?= $cafe['cafe_id'] ?>)"><img src="../../resources/imgs/eye-solid.png"></button>
+                            <button class="reject-btn" onclick="rejectCafe(<?= $cafe['cafe_id'] ?>)">Reject</button>
+                        <?php if ($cafe['is_verified'] == 0): ?>
+                            <button class="approve-btn" onclick="approveCafe(<?= $cafe['cafe_id'] ?>)">Approve</button>
+                        <?php endif; ?>
+                            <button class="view-btn"onclick="openCafe(<?= $cafe['cafe_id'] ?>)"><img src="../../resources/imgs/eye-solid.png"></button>
                     </div>
                 </section>
             <?php endforeach; ?>
@@ -178,8 +189,13 @@ $pendingCafes = $cafeController->getPendingCafes($search, $status, $sort);
                     </div>
 
                     <div class="field">
-                        <label for="create-owner">Owner</label>
-                        <input type="text" id="create-owner" name="owner_id" placeholder="Owner" required>
+                        <label>Owner</label>
+                        <select name="owner_id" required>
+                            <option value="">Select Owner</option>
+                            <?php foreach($owners as $owner): ?>
+                                <option value="<?= $owner['user_id'] ?>"><?= htmlspecialchars($owner['firstname'] . ' ' . $owner['lastname']) ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
 
                 </div><br>
@@ -233,11 +249,40 @@ $pendingCafes = $cafeController->getPendingCafes($search, $status, $sort);
                     </div>
                 </div><br>
 
-                <div class="field">
+                <!-- <div class="field">
                     <label for="create-image">Cafe Image</label>
                     <input type="file" id="create-image" name="cafe_images[]" accept="image/*" multiple>
+                </div> -->
+
+                <div class="row">
+                    <div class="field">
+                        <label>Image URL 1</label>
+                        <input type="url" name="cafe_images[]" placeholder="Image Link">
+                    </div>
+
+                    <div class="field">
+                        <label>Image URL 2</label>
+                        <input type="url" name="cafe_images[]" placeholder="Image Link">
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="field">
+                        <label>Image URL 3</label>
+                        <input type="url" name="cafe_images[]" placeholder="Image Link">
+                    </div>
+
+                    <div class="field">
+                        <label>Image URL 4</label>
+                        <input type="url" name="cafe_images[]" placeholder="Image Link">
+                    </div>
+
+                    <div class="field">
+                        <label>Image URL 5</label>
+                        <input type="url" name="cafe_images[]" placeholder="Image Link">    
+                    </div>
                 </div>
-                <br>
+
                 <div class="button-container">
                     <button type="submit" class="add-btn">Submit</button>
                 </div>

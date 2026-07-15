@@ -20,21 +20,15 @@ $data = [
 
 $cafe_id = $controller->createCafe($data);
     if ($cafe_id) {
-        if (isset($_FILES['cafe_images'])) {
-            $images = $_FILES['cafe_images'];
-            for ($i = 0; $i < count($images['name']); $i++) {
-                if ($images['error'][$i] == 0) {
-                    $imageName = $images['name'][$i];
-                    $uploadPath = "../../../frontend/resources/imgs/" . $imageName;
+        if (isset($_POST['cafe_images'])) {
+            foreach ($_POST['cafe_images'] as $imageUrl) {
 
-                    move_uploaded_file(
-                        $images['tmp_name'][$i],
-                        $uploadPath
-                    );
-                    
+                $imageUrl = trim($imageUrl);
+
+                if ($imageUrl !== "") {
                     $controller->addCafeImage(
                         $cafe_id,
-                        $imageName
+                        $imageUrl
                     );
                 }
             }

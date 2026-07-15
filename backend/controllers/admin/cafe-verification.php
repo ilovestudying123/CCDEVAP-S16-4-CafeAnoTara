@@ -21,6 +21,10 @@ class CafeVerificationController
         return $this->cafeVerificationModel->getPendingCafes($this->conn, $search, $status, $sort);
     }
 
+    public function getOwners() {
+        return $this->cafeVerificationModel->getOwners($this->conn);
+    }
+
     public function createCafe($data) {
         return $this->cafeVerificationModel->createCafe($this->conn, $data);
     }

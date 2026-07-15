@@ -56,9 +56,10 @@
                     <td>
                         <div class="action-btn">
                             <img
-                                id="action1" class="x-img" src="../../resources/imgs/check-mark.png" alt="Approve" onclick="approveReview(this)">
+                                id="action1" class="x-img" src="../../resources/imgs/check-mark.png" alt="Approve" onclick="approveReview(<?= $row['report_id'] ?>)">
                             <img
-                                id="action1" class="x-img" src="../../resources/imgs/x-mark.png" alt="Remove" onclick="removeReview(this)">
+                                id="action1" class="x-img" src="../../resources/imgs/x-mark.png" 
+                                    alt="Remove" onclick="removeReview(<?= $row['report_id'] ?>, <?= $row['review_id'] ?>)">
                              <a href="reviews-update.php?id=<?= $row['report_id'] ?>">
                                 <img
                                     class="edit-btn"
