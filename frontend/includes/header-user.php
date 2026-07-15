@@ -11,7 +11,7 @@ $firstname = isset($_SESSION['firstname']) ? $_SESSION['firstname'] : '';
     <nav class="nav-user">
         <a href="../../../backend/controllers/user/cafeController.php?action=dashboard" class="home">Home</a> |
         <a href="../../../backend/controllers/user/bookmarkController.php?action=bookmarks" class="bookmark">Bookmarks</a> |
-        <a href="postedReviews.php">My Reviews</a> |
+        <a href="../../../backend/controllers/user/reviewController.php?action=myReviews" class="review">My Reviews</a> |
         <a href="accountSettings.php">Account Settings</a>
     </nav>
 </div>
