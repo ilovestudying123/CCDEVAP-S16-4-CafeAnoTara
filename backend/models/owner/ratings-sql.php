@@ -1,54 +1,54 @@
 <?php
-    require "../../../backend/config/connection.php";
+require_once __DIR__ . "/../../config/connection.php";
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_report'])) {
-        $review_id = isset($_POST['review_id']) ? intval($_POST['review_id']) : 0;
-        $reporter_id = isset($_POST['reporter_id']) ? intval($_POST['reporter_id']) : 0;
-        $report_code = isset($_POST['report_code']) ? intval($_POST['report_code']) : 0;
+// Fetches cafe name
+function getCafeName($conn, $cafe_id) {
+    $sql = "SELECT cafe_name FROM Cafes WHERE cafe_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $cafe_id);
+    $stmt->execute();
+    $row = $stmt->get_result()->fetch_assoc();
+    return $row ? $row['cafe_name'] : "Unknown Cafe";
+}
 
-        if ($review_id > 0 && $reporter_id > 0 && $report_code > 0) {
-            $lookup_sql = "SELECT customer_id, cafe_id FROM Reviews WHERE review_id = ?";
-            $stmt = $conn->prepare($lookup_sql);
-            $stmt->bind_param("i", $review_id);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $review_data = $result->fetch_assoc();
-            $stmt->close();
+// Fetches review details
+function getReviewLookup($conn, $review_id) {
+    $sql = "SELECT customer_id, cafe_id FROM Reviews WHERE review_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $review_id);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_assoc();
+}
 
-            if ($review_data) {
-                $reported_user_id = $review_data['customer_id'];
-                $reported_cafe_id = $review_data['cafe_id'];
+function createReport($conn, $reporter_id, $reported_user_id, $reported_cafe_id, $review_id, $report_code) {
+    $sql = "INSERT INTO Reports (reporter_id, reported_user_id, reported_cafe_id, reported_review_id, report_code) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iiiii", $reporter_id, $reported_user_id, $reported_cafe_id, $review_id, $report_code);
+    return $stmt->execute();
+}
 
-                $insert_sql = "INSERT INTO Reports (reporter_id, reported_user_id, reported_cafe_id, reported_review_id, report_code) VALUES (?, ?, ?, ?, ?)";
-                $insert_stmt = $conn->prepare($insert_sql);
-                $insert_stmt->bind_param("iiiii", $reporter_id, $reported_user_id, $reported_cafe_id, $review_id, $report_code);
-                
-                if ($insert_stmt->execute()) {
-                    echo "<script>alert('Review reported successfully.'); window.location.href = window.location.pathname;</script>";
-                    exit;
-                } else {
-                    echo "<script>alert('Database Error: Failed to log report.');</script>";
-                }
-                $insert_stmt->close();
-            } else {
-                echo "<script>alert('Error: Target review not found.');</script>";
-            }
-        } else {
-            echo "<script>alert('Error: Missing required form fields.');</script>";
+function getReportCodes($conn) {
+    $sql = "SELECT report_code, report FROM ReportCode";
+    $result = $conn->query($sql);
+    $codes = [];
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $codes[] = $row;
         }
     }
+    return $codes;
+}
 
-    $cafe_id = 1; 
-    $current_user_id = 2; 
+function saveOwnerReply($conn, $review_id, $reply) {
+    $sql = "UPDATE Reviews SET owner_reply = ? WHERE review_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $reply, $review_id);
+    return $stmt->execute();
+}
 
-    $cafe_sql = "SELECT cafe_name FROM Cafes WHERE cafe_id = '$cafe_id'";
-    $cafe_result = $conn->query($cafe_sql);
-    $cafe_row = $cafe_result->fetch_assoc();
-    $cafe_name = $cafe_row ? $cafe_row['cafe_name'] : "Unknown Cafe";
-
+// Fetches the reviews for filtering
+function getReviews($conn, $cafe_id, $selected_star, $selected_sort) {
     $filter_condition = "";
-    $selected_star = isset($_GET['stars']) ? $_GET['stars'] : '';
-
     if (!empty($selected_star)) {
         if ($selected_star === "five") {
             $filter_condition = " AND r.rating = 5 ";
@@ -64,8 +64,6 @@
     }
 
     $sort_order = " r.created_on DESC "; 
-    $selected_sort = isset($_GET['sort']) ? $_GET['sort'] : '';
-
     if (!empty($selected_sort)) {
         if ($selected_sort === "old") {
             $sort_order = " r.created_on ASC ";
@@ -74,22 +72,26 @@
         }
     }
 
-    $reviews_sql = "SELECT 
-                        r.review_id,
-                        r.rating,
-                        r.comment,
-                        r.owner_reply,
-                        u.firstname,
-                        u.lastname
-                    FROM 
-                        Reviews r
-                    INNER JOIN 
-                        Users u ON r.customer_id = u.user_id
-                    WHERE 
-                        r.cafe_id = '$cafe_id' 
-                        $filter_condition
-                    ORDER BY 
-                        $sort_order"; 
+    $sql = "SELECT 
+                r.review_id,
+                r.rating,
+                r.comment,
+                r.owner_reply,
+                u.firstname,
+                u.lastname
+            FROM 
+                Reviews r
+            INNER JOIN 
+                Users u ON r.customer_id = u.user_id
+            WHERE 
+                r.cafe_id = ? 
+                $filter_condition
+            ORDER BY 
+                $sort_order";
 
-    $reviews_result = $conn->query($reviews_sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $cafe_id);
+    $stmt->execute();
+    return $stmt->get_result();
+}
 ?>

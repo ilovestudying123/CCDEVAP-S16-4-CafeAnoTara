@@ -1,3 +1,6 @@
+<?php
+require_once "../../../backend/controllers/owner/cafeInfoController.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/cafeInfo-update.css?v=4">
-    <?php require "../../../backend/models/owner/cafeInfo-update-sql.php"; ?>
     <title>Update Cafe Info</title>
 
     <div id="header"></div>
@@ -13,7 +15,7 @@
 </head>
 
 <body>
-    <form action="cafeInfo-update.php" method="POST">
+    <form action="../../../backend/controllers/owner/cafeInfoController.php" method="POST">
         <div class="body-box">
             <h1 class="cafe-name"><?php echo htmlspecialchars($row['cafe_name']);?></h1>
 
@@ -38,12 +40,14 @@
                     <div class="info-text">
                         <label class="header-text" for="wifi-speed">Wifi Speed:</label>
                         <input type="text" name="wifi_speed" id="input-wifi" class="form-btn" value="<?php echo htmlspecialchars($row['wifi_speed']); ?>">
+                        
                         <label class="header-text" for="outlet">Outlet Number:</label>
                         <input type="text" name="outlet_num" id="input-outlets" class="form-btn" value="<?php echo htmlspecialchars($row['outlet_num']); ?>">
                     </div>
 
                     <label class="header-text" for="operating-hrs">Operating Hours:</label>
                     <input type="text" name="operating_hours" id="input-hours" class="form-btn" value="<?php echo date('H:i', strtotime($row['opening_time'])) . ' - ' . date('H:i', strtotime($row['closing_time']));?>">
+                    
                     <label class="header-text" for="price">Price Range:</label>
                     <input type="text" name="price" id="input-price" class="form-btn" value="<?php echo htmlspecialchars($row['price']); ?>">
                 </div>

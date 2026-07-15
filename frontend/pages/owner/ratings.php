@@ -1,3 +1,6 @@
+<?php
+    require_once "../../../backend/controllers/owner/ratingsController.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/owner-ratings.css?v=4">
-    <?php require "../../../backend/models/owner/ratings-sql.php"; ?>
     <title>Cafe Reviews</title>
 </head>
 
@@ -85,9 +87,10 @@
                                         <p class="reply-content"><?php echo htmlspecialchars($review['owner_reply']); ?></p>
                                     </div>
                                 <?php else: ?>
-                                    <form action="../../../backend/models/owner/save-reply.php" method="POST">
+                                    <!-- Submit Reply direct to the Controller file -->
+                                    <form action="../../../backend/controllers/owner/ratingsController.php" method="POST">
                                         <input type="hidden" name="review_id" value="<?php echo $review['review_id']; ?>">
-                                        <textarea id="reply-text" name="owner_reply" placeholder="Add reply"></textarea>
+                                        <textarea id="reply-text" name="owner_reply" placeholder="Add reply" required></textarea>
                                         <button type="submit" id="submit-btn">Submit</button>
                                     </form>
                                 <?php endif; ?>
@@ -105,30 +108,25 @@
         </div>
     </div>
 
+    <!-- Report Modal -->
     <div id="report-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <h3>Report Review</h3>
             <p>Select the reason for reporting this review:</p>
             
-            <form id="report-form" action="" method="POST">
+            <form id="report-form" action="../../../backend/controllers/owner/ratingsController.php" method="POST">
                 <input type="hidden" id="modal-review-id" name="review_id">
                 <input type="hidden" id="modal-reporter-id" name="reporter_id">
                 
                 <div class="violation-options">
-                    <?php
-                    $code_sql = "SELECT report_code, report FROM ReportCode";
-                    $code_result = $conn->query($code_sql);
-                    if ($code_result && $code_result->num_rows > 0):
-                        while($code = $code_result->fetch_assoc()):
-                    ?>
-                        <label class="modal-radio-label">
-                            <input type="radio" name="report_code" value="<?php echo $code['report_code']; ?>" required>
-                            <?php echo htmlspecialchars($code['report']); ?>
-                        </label><br>
-                    <?php 
-                        endwhile;
-                    endif; 
-                    ?>
+                    <?php if (!empty($report_codes)): ?>
+                        <?php foreach($report_codes as $code): ?>
+                            <label class="modal-radio-label">
+                                <input type="radio" name="report_code" value="<?php echo $code['report_code']; ?>" required>
+                                <?php echo htmlspecialchars($code['report']); ?>
+                            </label><br>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
                 
                 <div class="modal-actions">
