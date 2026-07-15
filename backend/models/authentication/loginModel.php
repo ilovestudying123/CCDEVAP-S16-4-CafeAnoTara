@@ -3,6 +3,7 @@ class loginModel{
     
     public function getUserByEmail($email){
         require '../../config/connection.php';
+        global $conn;
 
          $query = "SELECT user_id, username, password, role FROM users WHERE email = ? LIMIT 1";
 

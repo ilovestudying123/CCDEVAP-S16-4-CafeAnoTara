@@ -1,5 +1,6 @@
 <?php
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $email = trim($_POST["email"]);
@@ -17,16 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    require_once 'loginModel.php';
+    require_once '../../../backend/models/loginModel.php';
     $loginModel = new loginModel();
     
     $userData = $loginModel->getUserByEmail($email);
 
-    if ($userData && password_verify($password, $userData['password'])) {
+    if ($userData && $password === $userData['password']) {
         
         session_start();
         $_SESSION['user'] = $userData['username'];
-        $_SESSION['user_id'] = $userData['id'];
+        $_SESSION['user_id'] = $userData['user_id'];
         $_SESSION['role'] = $userData['role'];
 
         if ($_SESSION['role'] === 'customer') {
