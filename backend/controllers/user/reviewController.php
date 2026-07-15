@@ -14,7 +14,7 @@ class reviewController {
     }
 
     public function addReview() {
-        $customer_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 1;
+        $customer_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 3;
 
         $cafe_id = isset($_POST['cafe_id']) ? intval($_POST['cafe_id']) : 0;
         $rating = isset($_POST['rating']) ? intval($_POST['rating']) : 0;
