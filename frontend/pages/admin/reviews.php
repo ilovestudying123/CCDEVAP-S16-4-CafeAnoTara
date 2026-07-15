@@ -54,37 +54,10 @@
                                 id="action1" class="x-img" src="../../resources/imgs/check-mark.png" alt="Approve" onclick="approveReview(this)">
                             <img
                                 id="action1" class="x-img" src="../../resources/imgs/x-mark.png" alt="Remove" onclick="removeReview(this)">
-                            <img
-                                id="action1" class="edit-btn" src="../../resources/imgs/edit-btn.png" alt="Edit" onclick="">
+                             <a href="reviews-update.php">
+                                <img
+                                id="action1" class="edit-btn" src="../../resources/imgs/edit-btn.png" alt="Edit" onclick=""></a>
                         </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Richard Hatch</td>
-                    <td>"The barista's phone number is 0917-XXX-XXXX"</td>
-                    <td>Sharing Personal Information</td>
-                    <td>3-12-2026</td>
-                    <td class="status">Pending</td>
-                    <td>
-                        <div class="action-btn">
-                            <img
-                                id="action1" class="x-img" src="../../resources/imgs/check-mark.png" alt="Approve" onclick="approveReview(this)">
-                            <img
-                                id="action1" class="x-img" src="../../resources/imgs/x-mark.png" alt="Remove" onclick="removeReview(this)">
-                            <img
-                                id="action1" class="edit-btn" src="../../resources/imgs/edit-btn.png" alt="Edit" onclick="">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Greg Buis</td>
-                    <td>"Visit my website for cheap coffee beans: discountedbeans.com"</td>
-                    <td>Spam / Advertising</td>
-                    <td>1-29-2026</td>
-                    <td>Removed</td>
-                    <td>
-                        <span>No Action</span>
                     </td>
                 </tr>
                 </tbody>

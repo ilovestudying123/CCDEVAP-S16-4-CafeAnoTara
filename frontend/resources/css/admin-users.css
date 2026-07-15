@@ -170,3 +170,11 @@ div.dt-search {
 div.dt-search {
     margin-left: auto;
 }
+
+.hidden-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+}

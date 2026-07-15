@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("../../includes/header-user.php")
+    fetch("/CCDEVAP-S16-4-CafeAnoTara/frontend/includes/header-user.php")
         .then(response => {
             if (!response.ok) throw new Error("Header file not found");
             return response.text();

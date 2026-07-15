@@ -126,12 +126,13 @@
 }
 
 .cafe-text {
-     font-size: 12px;
+     font-size: 13px;
     font-family:Verdana;
 }
 
-#cafe-name {
+.cafe-name {
     font-size: 24px;
+    font-weight: bold;
 }
 
 .circle {
@@ -148,6 +149,17 @@
     height: 60px;
 }
 
+#bookmark-button {
+    font-size: 18px;
+    width: 50px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
 .stars {
     width: 150px;
     height: 60px;
@@ -157,4 +169,8 @@
 
 .bookmark {
     color: #FEA959;
+}
+
+.fa-star {
+    color: gold;
 }

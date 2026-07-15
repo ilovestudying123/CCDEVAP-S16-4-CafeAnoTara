@@ -2,8 +2,8 @@
     require_once "../../../backend/config/connection.php";
     require "../../../backend/models/admin/users-sql.php";
 
-    $userModel = new UserModel();
-    $result = $userModel->getUsers($conn);
+    $userModel = new UserModel($conn);
+    $result = $userModel->getUsers();
 ?>
 
 <!DOCTYPE html>
@@ -49,21 +49,59 @@
             </thead>
 
             <tbody>
-                <tr>
                 <?php while ($row = $result->fetch_assoc()) : ?>
+                <tr>
                     <td><?= htmlspecialchars($row["user_id"]) ?></td>
                     <td><?= htmlspecialchars($row["fullname"]) ?></td>
                     <td><?= htmlspecialchars($row["username"]) ?></td>
                     <td><?= htmlspecialchars($row["email"]) ?></td>
                     <td><?= $row["mobilenumber"] ?></td>
                     <td><?= $row["role"] ?></td>
-                    <td><?= $row["account_status"] ?></td>
+                    <td id="status<?= $row['user_id'] ?>"><?= $row["account_status"] ?></td>
                     <td><?= $row["created_on"] ?></td>
                     <td>
                         <div class="action-btn">
-                            <a href="users-edit.php"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
-                            <img id="action2" src="../../resources/imgs/check-mark.png" alt="Activate" onclick="userStatus('status2', 'action2')">
-                            <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
+
+                        <?php if ($row['account_status'] == 'deleted'): ?>
+                            <!-- No actions avilable for deleted users -->
+                            <span>No actions available</span>
+                        <?php else: ?>
+
+                            <!-- Edit -->
+                            <a href="users-edit.php?id=<?= $row['user_id'] ?>">
+                                <img src="../../resources/imgs/edit-btn.png" alt="Modify">
+                            </a>
+
+                            <!-- Suspend / Activate -->
+                            <form action="../../../backend/controllers/admin/user-status.php" method="POST" onsubmit="return confirm('You are about to change this user\'s STATUS. Continue?');">
+                                <input type="hidden" name="user_id" value="<?= $row['user_id'] ?>">
+
+                                <?php if ($row['account_status'] == 'active'): ?>
+                                    <input type="hidden" name="status" value="suspended">
+                                    <button type="submit" class="hidden-btn">
+                                        <img src="../../resources/imgs/x-mark.png" alt="Suspend">
+                                    </button>
+                                <?php elseif ($row['account_status'] == 'suspended'): ?>
+                                    <input type="hidden" name="status" value="active">
+                                    <button type="submit" class="hidden-btn">
+                                        <img src="../../resources/imgs/check-mark.png" alt="Activate">
+                                    </button>
+                                <?php endif; ?>
+                            </form>
+
+                            <!-- Delete -->
+                            <form action="../../../backend/controllers/admin/user-delete.php"
+                                method="POST"
+                                onsubmit="return confirm('Are you sure you want to DELETE this user?');">
+
+                                <input type="hidden" name="user_id" value="<?= $row['user_id'] ?>">
+
+                                <button class="hidden-btn" type="submit">
+                                    <img src="../../resources/imgs/delete.png" alt="Delete">
+                                </button>
+                            </form>
+
+                        <?php endif; ?>
                         </div>
                     </td>
                 </tr>

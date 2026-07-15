@@ -3,98 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
-    <link rel="stylesheet" href="../../resources/css/user-bookmark.css">
+    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
+    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-bookmark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <div id="header"></div>
-    <script src="../../resources/js/script-header-user.js"></script>
+    <script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/script-header-user.js"></script>
 </head>
 <body>
     <section>
         <div class="bookmark-header">
             <h1>Your Bookmarked Cafes</h1>
-    
-            <div class="buttons">
+            <!-- <div class="buttons">
                 <div class="filter">
-                <div class="filter-button">
-                    <button id="filter-button" onclick="toggleFilter()"><img id="filter-icon" src="../../resources/imgs/sliders-solid.png">Filter</button>
+                    <div class="filter-button">
+                        <button id="filter-button" onclick="toggleFilter()">
+                            <img id="filter-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sliders-solid.png">Filter
+                        </button>
                     </div>
                     <div id="filter-options">
-                    <!-- radio buttons for wifi speed -->
-                    <p>Wifi Speed:</p>
-                    <label><input type="radio" name="wifi" value=""> All Wifi Speeds</label> <br>
-                    <label><input type="radio" name="wifi" value="fast"> Fast Wifi</label> <br>
-                    <label><input type="radio" name="wifi" value="slow"> Slow Wifi</label>
-                    
-                    <!-- checkboxes for outlet availability -->
-                    <p>Outlet Availability:</p>
-                    <label><input type="checkbox" name="outlet" value="available"> Available</label> <br>
-                    <label><input type="checkbox" name="outlet" value="unavailable"> Unavailable</label>
-                    <br>
-                    <br>
-
-                    <!-- buttons for apply and clear filter -->
-                    <div class="filter-buttons">
-                        <button type="button" onclick="applyFilter()">Apply</button>
-                        <button type="button" onclick="clearFilter()">Clear</button>
+                        <p>Wifi Speed:</p>
+                        <label><input type="radio" name="wifi" value=""> All</label><br>
+                        <label><input type="radio" name="wifi" value="fast"> Fast</label><br>
+                        <label><input type="radio" name="wifi" value="slow"> Slow</label>
+                        <p>Outlet Availability:</p>
+                        <label><input type="checkbox" name="outlet" value="available"> Available</label><br>
+                        <label><input type="checkbox" name="outlet" value="unavailable"> Unavailable</label>
+                        <br><br>
+                        <div class="filter-buttons">
+                            <button type="button" onclick="applyFilter()">Apply</button>
+                            <button type="button" onclick="clearFilter()">Clear</button>
+                        </div>
                     </div>
                 </div>
-                </div>
-
                 <div class="sort-button">
-                <button id="sort-button" type="button" onclick="toggleSort()"><img id="sort-icon" src="../../resources/imgs/sort-solid.png">Sort</button>
+                    <button id="sort-button" type="button" onclick="toggleSort()">
+                        <img id="sort-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sort-solid.png">Sort
+                    </button>
                 </div>
-                
-            </div>
-            
-        </div>
-        
-         <div class="bookmarked-cafes">
-            <div class="bookmark-card">
-                <img class="bookmark-icon" src="../../resources/imgs/bookmark.png">
-                <a href="cafeDetails.html?id=yardstick" class="cafe-details">
-                    <div class="cafe-text">
-                        <p id="cafe-name">Yardstick <img class="stars" src="../../resources/imgs/5stars.png"></p>
-                        <p>5th Avenue, Bonifacio Global City, Taguig City</p>
-                    </div>
-                    <div class="circle"></div>
-                </a>
-            </div>
-
-            <div class="bookmark-card">
-                <img class="bookmark-icon" src="../../resources/imgs/bookmark.png">
-                <a href="cafeDetails.html?id=matchaLater" class="cafe-details">
-                    <div class="cafe-text">
-                        <p id="cafe-name">Ujisan <img class="stars" src="../../resources/imgs/5stars.png"></p>
-                        <p>36 Polaris Street, Poblacion, Makati City</p>
-                    </div>
-                    <div class="circle"></div>
-                </a>
-            </div>
-
-            <div class="bookmark-card">
-                <img class="bookmark-icon" src="../../resources/imgs/bookmark.png">
-                <a href="cafeDetails.html?id=starbucks" class="cafe-details">
-                    <div class="cafe-text">
-                        <p id="cafe-name">Starbucks <img class="stars" src="../../resources/imgs/5stars.png"></p>
-                        <p>Forbestown Road, Bonifacio Global City, Taguig City</p>
-                    </div>
-                    <div class="circle"></div>
-                </a>
-            </div>
-
-            <div class="bookmark-card">
-                <img class="bookmark-icon" src="../../resources/imgs/bookmark.png">
-                <a href="cafeDetails.html?id=cbtl" class="cafe-details">
-                    <div class="cafe-text">
-                        <p id="cafe-name">CBTL <img class="stars" src="../../resources/imgs/5stars.png"></p>
-                        <p>108 E. Rodriguez Jr. Ave., Brgy. Bagumbayan, Quezon City</p>
-                    </div>
-                    <div class="circle"></div>
-                </a>
-            </div>
+            </div> -->
         </div>
 
+        <div class="bookmarked-cafes">
+            <?php if (empty($bookmarks)): ?>
+                <p>You have no bookmarked cafes yet.</p>
+
+            <?php else: ?>
+                <?php foreach ($bookmarks as $bookmark): ?>
+                    <div class="bookmark-card">
+                        <!-- remove bookmark button -->
+                        <form method="POST" 
+                            action="../../../backend/controllers/user/bookmarkController.php?action=remove"
+                            onsubmit="return confirm('Are you sure you want to remove this bookmark?');"> 
+                            <input type="hidden" name="cafe_id" 
+                                value="<?php echo $bookmark['cafe_id']; ?>">
+                            <button type="submit" class="remove-bookmark" id="bookmark-button">
+                                <i class="fa-solid fa-bookmark fa-3x"></i>
+                            </button>
+                        </form>
+
+                        <a href="../../../backend/controllers/user/cafeController.php?action=cafeDetails&id=<?php echo $bookmark['cafe_id']; ?>"
+                        class="cafe-details">
+                            <div class="cafe-text">
+                                <p class="cafe-name">
+                                    <?php echo $bookmark['cafe_name']; ?>
+                                    <i class="fa-solid fa-star"></i>
+                                    <?php echo round($bookmark['average_rating'], 1); ?>/5 
+                                </p>
+                                <p class="cafe-text"><?php echo $bookmark['location']; ?></p>
+                            </div>
+                            
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
     </section>
+
 </body>
 </html>

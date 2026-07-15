@@ -8,11 +8,9 @@ function toggleSort() {
     panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
 }
 
-
 function applyFilter() {
     const selectedRadio = document.querySelector('input[name="stars"]:checked');
     const urlParams = new URLSearchParams(window.location.search);
-
     if (selectedRadio) {
         urlParams.set('stars', selectedRadio.value);
     }
@@ -28,7 +26,6 @@ function clearFilter() {
 function applySort() {
     const selectedRadio = document.querySelector('input[name="sort_by"]:checked');
     const urlParams = new URLSearchParams(window.location.search);
-
     if (selectedRadio) {
         urlParams.set('sort', selectedRadio.value);
     }
@@ -42,17 +39,23 @@ function clearSort() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    const reportButtons = document.querySelectorAll(".report-btn-class");
-    
+    const reportButtons = document.querySelectorAll(".report-btn");
+    const modal = document.getElementById("report-modal");
+
     reportButtons.forEach(btn => {
         btn.addEventListener("click", function() {
             const reviewId = this.getAttribute("data-review-id");
-            const userConfirmed = window.confirm("Proceed with the REPORT for review ID " + reviewId + "?");
-            
-            if (userConfirmed) {
-                window.alert("REVIEW REPORTED");
+            const reporterId = this.getAttribute("data-reporter-id");
 
-            }
+            document.getElementById("modal-review-id").value = reviewId;
+            document.getElementById("modal-reporter-id").value = reporterId;
+            
+            modal.style.display = "flex";
         });
     });
 });
+
+function closeReportModal() {
+    document.getElementById("report-modal").style.display = "none";
+    document.getElementById("report-form").reset();
+}

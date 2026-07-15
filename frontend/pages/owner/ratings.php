@@ -1,3 +1,6 @@
+<?php
+    require_once "../../../backend/controllers/owner/ratingsController.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,23 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/owner-ratings.css?v=4">
-    <?php require "../../../backend/models/owner/ratings-sql.php"; ?>
     <title>Cafe Reviews</title>
-
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-owner.js"></script>
-    <script src="../../resources/js/owner-ratings.js" defer></script>
 </head>
 
 <body>
+    <div id="header"></div>
+    <script src="../../resources/js/script-header-owner.js"></script>
+    <script src="../../resources/js/owner-ratings.js" defer></script>
+
     <div class="body-box">
         <h1 class="cafe-name"><?php echo htmlspecialchars($cafe_name); ?></h1>
 
         <div class="grid-btn">
-            <!-- Filter Dropdown -->
             <div class="dropdown">
                 <button id="filter-btn" class="filter-btn" onclick="toggleFilter()">
-                    <img src="../../resources/imgs/sliders-solid.png" class="filter-img"> Filter
+                    <img src="../../resources/imgs/sliders-solid.png" class="filter-img" alt="filter"> Filter
                 </button>
                 <div id="dropdown-filter-options">
                     <p>Cafe Rating:</p>
@@ -37,14 +38,12 @@
                 </div>
             </div>
 
-            <!-- Sort Dropdown -->
             <div class="dropdown">
                 <button id="sort-btn" class="sort-btn" onclick="toggleSort()">
-                    <img src="../../resources/imgs/sort-solid.png" class="sort-img"> Sort
+                    <img src="../../resources/imgs/sort-solid.png" class="sort-img" alt="sort"> Sort
                 </button>
                 <div id="dropdown-sort-options">
                     <p>Cafe Rating:</p>
-                    <!-- Fixed radio button input mismatching name fields -->
                     <label><input type="radio" name="sort_by" value="new" <?php if($selected_sort == 'new' || $selected_sort == '') echo 'checked'; ?>>Newest To Oldest</label> <br>
                     <label><input type="radio" name="sort_by" value="old" <?php if($selected_sort == 'old') echo 'checked'; ?>>Oldest To Newest</label> <br> <br>
                     <div class="filter-buttons">
@@ -71,7 +70,7 @@
                                 <p class="review-title"><b><?php echo htmlspecialchars($review['firstname'] . ' ' . $review['lastname']); ?></b></p>
                                 
                                 <button type="button" 
-                                        id="report-btn"
+                                        class="report-btn"
                                         data-review-id="<?php echo $review['review_id']; ?>" 
                                         data-reporter-id="<?php echo $current_user_id; ?>">
                                     Report
@@ -81,7 +80,6 @@
                             <p class="rating"><span class="star">★</span> <?php echo number_format($review['rating'], 1); ?>/5</p>
                             <p class="review-body"><?php echo htmlspecialchars($review['comment']); ?></p>
                             
-                            <!-- Reply Section -->
                             <div class="review-reply">
                                 <?php if (!empty($review['owner_reply'])): ?>
                                     <div class="saved-reply-box">
@@ -89,9 +87,10 @@
                                         <p class="reply-content"><?php echo htmlspecialchars($review['owner_reply']); ?></p>
                                     </div>
                                 <?php else: ?>
-                                    <form action="../../../backend/models/owner/save-reply.php" method="POST">
+                                    <!-- Submit Reply direct to the Controller file -->
+                                    <form action="../../../backend/controllers/owner/ratingsController.php" method="POST">
                                         <input type="hidden" name="review_id" value="<?php echo $review['review_id']; ?>">
-                                        <textarea id="reply-text" name="owner_reply" placeholder="Add reply"></textarea>
+                                        <textarea id="reply-text" name="owner_reply" placeholder="Add reply" required></textarea>
                                         <button type="submit" id="submit-btn">Submit</button>
                                     </form>
                                 <?php endif; ?>
@@ -104,8 +103,37 @@
                 endwhile; 
             else: 
             ?>
-                <p class="no-reviews" style="text-align: center; font-weight: bold; padding: 20px;">No reviews found matching that criteria.</p>
+                <p class="no-reviews" style="text-align: center; font-weight: bold; padding: 20px;">No reviews found</p>
             <?php endif; ?>
+        </div>
+    </div>
+
+    <!-- Report Modal -->
+    <div id="report-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3>Report Review</h3>
+            <p>Select the reason for reporting this review:</p>
+            
+            <form id="report-form" action="../../../backend/controllers/owner/ratingsController.php" method="POST">
+                <input type="hidden" id="modal-review-id" name="review_id">
+                <input type="hidden" id="modal-reporter-id" name="reporter_id">
+                
+                <div class="violation-options">
+                    <?php if (!empty($report_codes)): ?>
+                        <?php foreach($report_codes as $code): ?>
+                            <label class="modal-radio-label">
+                                <input type="radio" name="report_code" value="<?php echo $code['report_code']; ?>" required>
+                                <?php echo htmlspecialchars($code['report']); ?>
+                            </label><br>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="closeReportModal()">Cancel</button>
+                    <button type="submit" name="submit_report" class="btn-submit">Submit Report</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>

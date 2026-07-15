@@ -1,3 +1,6 @@
+<?php
+require_once "../../../backend/controllers/owner/cafeInfoController.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/cafeInfo-update.css?v=4">
-    <?php require "../../../backend/models/owner/cafeInfo-update-sql.php"; ?>
     <title>Update Cafe Info</title>
 
     <div id="header"></div>
@@ -13,7 +15,7 @@
 </head>
 
 <body>
-    <form action="cafeInfo-update.php" method="POST">
+    <form action="../../../backend/controllers/owner/cafeInfoController.php" method="POST">
         <div class="body-box">
             <h1 class="cafe-name"><?php echo htmlspecialchars($row['cafe_name']);?></h1>
 
@@ -23,7 +25,6 @@
                 <div class="pic-column">
                     <img id="cafe-cover-preview" src="<?php echo htmlspecialchars($cover_photo); ?>" alt="Cafe Cover Photo">
                     
-                    <!-- Hidden input to store cover URL dynamically -->
                     <input type="hidden" name="cover_photo_url" id="cover-photo-input" value="<?php echo $has_existing_cover ? htmlspecialchars($all_photos[0]['photo_url']) : ''; ?>">
 
                     <button type="button" id="change-cover-btn" class="form-btn cover-btn">Change Cover Photo</button>
@@ -32,7 +33,6 @@
                 <div class="info-column">
                     <button type="button" id="edit-photos-btn" class="form-btn edit-btn">Edit Photos</button>
                     
-                    <!-- Hidden inputs mapping to the 4 extra photos -->
                     <?php for($i = 0; $i < 4; $i++): ?>
                         <input type="hidden" name="extra_photos[<?php echo $i; ?>]" id="extra-photo-<?php echo $i; ?>" value="<?php echo isset($extra_photos[$i]) ? htmlspecialchars($extra_photos[$i]['photo_url']) : ''; ?>">
                     <?php endfor; ?>
@@ -40,12 +40,14 @@
                     <div class="info-text">
                         <label class="header-text" for="wifi-speed">Wifi Speed:</label>
                         <input type="text" name="wifi_speed" id="input-wifi" class="form-btn" value="<?php echo htmlspecialchars($row['wifi_speed']); ?>">
+                        
                         <label class="header-text" for="outlet">Outlet Number:</label>
                         <input type="text" name="outlet_num" id="input-outlets" class="form-btn" value="<?php echo htmlspecialchars($row['outlet_num']); ?>">
                     </div>
 
                     <label class="header-text" for="operating-hrs">Operating Hours:</label>
                     <input type="text" name="operating_hours" id="input-hours" class="form-btn" value="<?php echo date('H:i', strtotime($row['opening_time'])) . ' - ' . date('H:i', strtotime($row['closing_time']));?>">
+                    
                     <label class="header-text" for="price">Price Range:</label>
                     <input type="text" name="price" id="input-price" class="form-btn" value="<?php echo htmlspecialchars($row['price']); ?>">
                 </div>
