@@ -9,7 +9,7 @@ class UserModel
         $this->conn = $conn;
     }
 
-        // Add a new user to the users table
+    // Add a new user to the users table
     public function addUser(
         $firstname,
         $lastname,
@@ -95,6 +95,7 @@ class UserModel
     //updates user status by ID in the users table
     public function updateUserStatus($id, $status)
     {
+        
         $stmt = $this->conn->prepare("
             UPDATE users
             SET account_status = ?
