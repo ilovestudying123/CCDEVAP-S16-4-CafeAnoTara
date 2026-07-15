@@ -143,7 +143,7 @@ if (isset($_SESSION['error'])) {
                         <input type="radio"
                                id="ownerType"
                                name="userType"
-                               value="Owner"
+                               value="owner"
                                required>
                         <label for="ownerType">Owner</label>
                     </div>
@@ -152,7 +152,7 @@ if (isset($_SESSION['error'])) {
                         <input type="radio"
                                id="customerType"
                                name="userType"
-                               value="Customer"
+                               value="customer"
                                required>
                         <label for="customerType">Customer</label>
                     </div>
@@ -167,7 +167,7 @@ if (isset($_SESSION['error'])) {
 
             <p>
                 Already have an account?
-                <a href="../authentication/index.php">Sign In</a>
+                <a href="index.php">Sign In</a>
             </p>
 
         </form>

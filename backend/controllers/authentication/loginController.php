@@ -32,14 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Check if password is correct
-        if ($password !== $userData['password']) {
-            // if (!password_verify($password, $userData['password'])) { // For hashed passwords
+        if (!password_verify($password, $userData['password'])) {
             $_SESSION['error'] = "Invalid password.";
             header("Location: ../../../frontend/pages/authentication/index.php");
             exit();
         }
 
-        session_start();
         $_SESSION['user'] = $userData['username'];
         $_SESSION['user_id'] = $userData['user_id'];
         $_SESSION['role'] = $userData['role'];
