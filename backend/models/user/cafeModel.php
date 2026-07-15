@@ -16,6 +16,7 @@ public function getCafeId ($conn, $cafe_id) {
     return mysqli_fetch_assoc($result);
 }
 
+
 // get cafe images from cafeimg table
 public function getCafeImages ($conn, $cafe_id) {
     $stmt = mysqli_prepare ($conn, 

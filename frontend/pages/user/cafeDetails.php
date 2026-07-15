@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-cafeDetails.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/cafe-array.js"></script>
@@ -89,7 +89,19 @@
         <!-- Post a Review -->
         <div class="review">
             <h3>Post a Review</h3>
+
+            <!-- show error if any -->
+            <?php if (isset($_SESSION['review_error'])): ?>
+                <p style="color: red;"><?php echo $_SESSION['review_error']; unset($_SESSION['review_error']); ?></p>
+            <?php endif; ?>
+
+            <form method="POST" 
+                action="/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/reviewController.php?action=add">
+                <input type="hidden" name="cafe_id" value="<?php echo $cafe['cafe_id']; ?>">
+                <input type="hidden" name="rating" id="rating-value" value="0">
+                
                 <textarea name="comment" placeholder="Add a Review"></textarea>
+                
                 <div class="submit-review">
                     <div class="star-rating" id="star-rating">
                         <i class="fa-regular fa-star" data-value="1"></i>
@@ -98,9 +110,9 @@
                         <i class="fa-regular fa-star" data-value="4"></i>
                         <i class="fa-regular fa-star" data-value="5"></i>
                     </div>
-                    <input type="hidden" name="rating" id="rating-value" value="0">
                     <button id="submit" type="submit">Submit</button>
                 </div>
+            </form>
         </div>
 
         <!-- Ratings and Reviews -->

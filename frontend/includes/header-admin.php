@@ -7,7 +7,8 @@
         <a class="user" href="users.php">Users</a> |
         <a class="cafe" href="cafes.php">Cafes</a> |
         <a class="review" href="reviews.php">Reviews</a> |
-        <a class="category" href="categories.php">Categories</a>
+        <a class="category" href="categories.php">Categories</a> |
+        <a href="../authentication/index.php">Logout</a>
     </nav>
 </div>
 </html>
