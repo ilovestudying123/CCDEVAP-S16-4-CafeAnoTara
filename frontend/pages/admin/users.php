@@ -1,5 +1,9 @@
 <?php
-    require "../../../backend/config/connection.php";
+    require_once "../../../backend/config/connection.php";
+    require "../../../backend/models/admin/users-sql.php";
+
+    $userModel = new UserModel($conn);
+    $result = $userModel->getUsers();
 ?>
 
 <!DOCTYPE html>
@@ -32,8 +36,11 @@
         <table id="usersTable" class="display">
             <thead>
             <tr>
+                <th>User ID</th>
                 <th>Full Name</th>
+                <th>Username</th>
                 <th>Email</th>
+                <th>Phone Number</th>
                 <th>Role</th>
                 <th>Status</th>
                 <th>Account Creation</th>
@@ -42,52 +49,53 @@
             </thead>
 
             <tbody>
-            <tr>
-                <td>Juan Dela Cruz</td>
-                <td>JuanDelaCruz@gmail.com</td>
-                <td>User</td>
-                <td id="status1">Active</td>
-                <td>10-22-2023</td>
-                <td>
-                    <div class="action-btn">
-                        <a href="users-edit.php"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
-                        <img id="action1" src="../../resources/imgs/x-mark.png" alt="Suspend" onclick="userStatus('status1','action1')">
-                        <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
-                    </div>
-                </td>
-            </tr>
+                <tr>
+                <?php while ($row = $result->fetch_assoc()) : ?>
+                    <td><?= htmlspecialchars($row["user_id"]) ?></td>
+                    <td><?= htmlspecialchars($row["fullname"]) ?></td>
+                    <td><?= htmlspecialchars($row["username"]) ?></td>
+                    <td><?= htmlspecialchars($row["email"]) ?></td>
+                    <td><?= $row["mobilenumber"] ?></td>
+                    <td><?= $row["role"] ?></td>
+                    <td id="status<?= $row['user_id'] ?>"><?= $row["account_status"] ?></td>
+                    <td><?= $row["created_on"] ?></td>
+                    <td>
+                        <div class="action-btn">
+                             <a href="users-edit.php?id=<?=$row["user_id"]?>">
+                                <img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
 
-            <tr>
-                <td>John Doe</td>
-                <td>JohnDoe@gmail.com</td>
-                <td>User</td>
-                <td id="status2">Inactive</td>
-                <td>2-14-2026</td>
-                <td>
-                    <div class="action-btn">
-                        <a href="users-edit.php"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
-                        <img id="action2" src="../../resources/imgs/check-mark.png" alt="Activate" onclick="userStatus('status2', 'action2')">
-                        <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Jane Doe</td>
-                <td>JaneDoe@gmail.com</td>
-                <td>User</td>
-                <td id="status3">Active</td>
-                <td>12-14-2020</td>
-                <td>
-                    <div class="action-btn">
-                        <a href="users-edit.php"><img src="../../resources/imgs/edit-btn.png" alt="modify"></a>
-                        <img id="action3" src="../../resources/imgs/x-mark.png" alt="Suspend" onclick="userStatus('status3', 'action3')">
-                        <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
-                    </div>
-                </td>
-            </tr>
+                            <!-- TO FIX: Implement user status change functionality -->
+                            <?php if ($row["account_status"] == "active") : ?>
+                                <img
+                                    id="action<?= $row['user_id'] ?>"
+                                    src="../../resources/imgs/x-mark.png"
+                                    alt="Suspend"
+                                    onclick="userStatus(
+                                        <?= $row['user_id'] ?>,
+                                        'status<?= $row['user_id'] ?>',
+                                        'action<?= $row['user_id'] ?>'
+                                    )"
+                                >
+                            <?php else : ?>
+                                <img
+                                    id="action<?= $row['user_id'] ?>"
+                                    src="../../resources/imgs/check-mark.png"
+                                    alt="Activate"
+                                    onclick="userStatus(
+                                        <?= $row['user_id'] ?>,
+                                        'status<?= $row['user_id'] ?>',
+                                        'action<?= $row['user_id'] ?>'
+                                    )"
+                                >
+                            <?php endif; ?>
+                            <img src="../../resources/imgs/delete.png" alt="delete" onclick="confirm('Are you sure you want to DELETE this user?')">
+                        </div>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
             </tbody>
         </table>
         </div>
     </div>
 </body>
+</html>
