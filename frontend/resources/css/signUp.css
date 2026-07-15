@@ -1,5 +1,5 @@
 .header{
-    font-family: 'Montagu Slab';  
+    font-family: 'Montagu Slab';
     background-color: #fffabc;
     padding: 1%;
     width: 100%;
@@ -7,7 +7,7 @@
     text-align: center;
     font-size: 250%;
     font-weight: 300;
-    color:#725420;    
+    color: #725420;
 }
 
 .content{
@@ -23,29 +23,8 @@
     margin-bottom: 100px;
 }
 
-.toggle-password, .toggle-passwordconf{
-    position: absolute;
-    right: 10px;
-    top: 42%;
-    transform: translateY(-50%);
-
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    font-size: 20px;
-    color: #725420;
-
-    padding: 0;
-}
-
-.toggle-password, .toggle-passwordconf:hover{
-    color: #8b6630;
-}
-
 .trending{
     display: flex;
-    box-sizing: border-box;
     flex-direction: column;
     align-items: center;
 }
@@ -67,10 +46,10 @@
 }
 
 .photo-group{
+    display: flex;
     flex-direction: column;
     align-items: center;
     flex: 1;
-
 }
 
 .photo-group img{
@@ -88,7 +67,6 @@
     color: #725420;
 }
 
-
 .signUp{
     border: 2px solid #725420;
     border-radius: 8px;
@@ -102,7 +80,7 @@
     color: #725420;
     font-size: 20px;
     margin-bottom: 20px;
-    font-family: 'Verdana';
+    font-family: Verdana;
 }
 
 #signUpForm{
@@ -139,30 +117,6 @@
     text-decoration: underline;
 }
 
-
-.create-btn{
-    width: 100%;
-    padding: 14px;
-    margin-top: 10px;
-
-    background-color: #725420;
-    color: white;
-
-    border: none;
-    border-radius: 8px;
-
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-
-.create-btn:hover{
-    background-color: #8b6630;
-}
-
-
 #signUpForm p{
     text-align: center;
     font-size: 13px;
@@ -170,23 +124,86 @@
     font-family: Verdana;
 }
 
+.create-btn{
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background-color: #725420;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.create-btn:hover{
+    background-color: #8b6630;
+}
+
+/* Name Fields */
+
 .name-row{
     display: flex;
     gap: 15px;
 }
 
-.name-row div{
+.name-row > div{
     flex: 1;
 }
+
+/* Password Fields */
 
 .password-row{
     display: flex;
     gap: 15px;
 }
 
-.password-row div{
+.password-row > div{
     flex: 1;
 }
+
+.password-container{
+    position: relative;
+    width: 100%;
+}
+
+.password-container input{
+    padding-right: 45px;
+}
+
+/* Eye Button */
+
+.toggle-password,
+.toggle-passwordconf{
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+
+    background: none;
+    border: none;
+    outline: none;
+
+    color: #725420;
+    cursor: pointer;
+    font-size: 16px;
+
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password:hover,
+.toggle-passwordconf:hover{
+    color: #8b6630;
+}
+
+/* User Type */
 
 .user-type{
     margin: 15px 0;
@@ -200,14 +217,18 @@
 
 .radio-group{
     display: flex;
-    gap: 5px;
-    margin-top: 8px;
+    align-items: center;
+    gap: 6px;
+}
+
+.radio-group input{
+    width: auto !important;
+    margin: 0;
 }
 
 .radio-group label{
-    display: flex;
-    align-items: left;
-    gap: 0px;
     margin: 0;
     font-size: 14px;
+    font-family: Verdana;
+    color: #725420;
 }

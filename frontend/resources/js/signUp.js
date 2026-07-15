@@ -1,5 +1,4 @@
-document.getElementById("signUpForm").addEventListener("submit", function(event){
-    event.preventDefault();
+document.getElementById("signUpForm").addEventListener("submit", function(event) {
 
     let isValid =
         checkUsername() &&
@@ -7,9 +6,10 @@ document.getElementById("signUpForm").addEventListener("submit", function(event)
         checkPassword() &&
         checkConfirmPassword();
 
-    if (isValid) {
-        saveAccount();
+    if (!isValid) {
+        event.preventDefault();
     }
+
 });
 
 function checkUsername() {
@@ -24,6 +24,7 @@ function checkUsername() {
         alert("Username must be 5–30 characters long.");
         return false;
     }
+
     return true;
 }
 
@@ -36,11 +37,12 @@ function checkEmail() {
         alert("Please enter a valid email address.");
         return false;
     }
+
     return true;
 }
 
 function checkPassword() {
-    let password = document.getElementById("password").value.trim();
+    let password = document.getElementById("password").value;
 
     if (password.length === 0) {
         alert("Password is required.");
@@ -69,17 +71,6 @@ function checkConfirmPassword() {
     return true;
 }
 
-function saveAccount() {
-    var userType = document.querySelector('input[name="userType"]:checked').value;
-    alert("Account created successfully!");
-
-    if (userType === "Owner") {
-        window.location.href = "../owner/dashboard.html";
-    } else {
-        window.location.href = "../user/dashboard.html";
-    }
-}
-
 function togglePassword() {
     const password = document.getElementById("password");
     const icon = document.querySelector(".toggle-password i");
@@ -94,7 +85,7 @@ function togglePassword() {
 }
 
 function togglePasswordconf() {
-    const password = document.getElementById("confpasword");
+    const password = document.getElementById("confirmPassword");
     const icon = document.querySelector(".toggle-passwordconf i");
 
     if (password.type === "password") {
