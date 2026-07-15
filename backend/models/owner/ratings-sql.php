@@ -1,25 +1,6 @@
 <?php
     require "../../../backend/config/connection.php";
 
-    $reviews_sql = "SELECT 
-                        r.review_id,
-                        r.rating,
-                        r.comment,
-                        r.owner_reply,
-                        u.firstname,
-                        u.lastname
-                    FROM 
-                        Reviews r
-                    INNER JOIN 
-                        Users u ON r.customer_id = u.user_id
-                    WHERE 
-                        r.cafe_id = '$cafe_id' 
-                        $filter_condition
-                    ORDER BY 
-                        $sort_order"; 
-
-    $reviews_result = $conn->query($reviews_sql);
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_report'])) {
         $review_id = isset($_POST['review_id']) ? intval($_POST['review_id']) : 0;
         $reporter_id = isset($_POST['reporter_id']) ? intval($_POST['reporter_id']) : 0;
@@ -92,4 +73,23 @@
             $sort_order = " r.created_on DESC ";
         }
     }
+
+    $reviews_sql = "SELECT 
+                        r.review_id,
+                        r.rating,
+                        r.comment,
+                        r.owner_reply,
+                        u.firstname,
+                        u.lastname
+                    FROM 
+                        Reviews r
+                    INNER JOIN 
+                        Users u ON r.customer_id = u.user_id
+                    WHERE 
+                        r.cafe_id = '$cafe_id' 
+                        $filter_condition
+                    ORDER BY 
+                        $sort_order"; 
+
+    $reviews_result = $conn->query($reviews_sql);
 ?>
