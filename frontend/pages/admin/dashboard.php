@@ -1,5 +1,11 @@
 <?php
+    require_once "../../../backend/config/connection.php";
     require "../../../backend/models/admin/dashboard-sql.php";
+
+    
+    $dashboardModel = new UserDashboard($conn);
+    $pendingReports = $dashboardModel->getPendingReports();
+    $pendingCafes = $dashboardModel ->getPendingCafes();
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +31,7 @@
         <div class="card-holder">
             <div class="preview-box">
                 <p>Pending Reports</p>
-                <p class="count">0</p>
+                <p class="count"><?= $pendingReports ?></p>
                     <div class="redirect">
                     <a href="reviews.php"><img src="../../resources/imgs/arrow-btn-color2.png"></a>
                     </div>
@@ -33,7 +39,7 @@
 
             <div class="preview-box">
                 <p>Pending Cafe Approvals</p>
-                <p class="count">3</p>
+                <p class="count"><?= $pendingCafes ?></p>
                     <div class="redirect">
                     <a href="cafes.php"><img src="../../resources/imgs/arrow-btn-color2.png"></a>
                     </div>
