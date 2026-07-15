@@ -1,22 +1,54 @@
-function userStatus(statusID, actionID) {
+// TO FIX: Function to handle user status change (active/suspended) along with image.
+
+function userStatus(userID, statusID, actionID) {
+
+    console.log("statusID:", statusID);
+    console.log(document.getElementById(statusID));
+
     let status = document.getElementById(statusID);
     let action = document.getElementById(actionID);
 
-    if (status.textContent === "Active") {
+    let newStatus;
+
+    if (status.textContent.trim() === "active") {
+
         if (window.confirm("Are you sure you want to SUSPEND this user?")) {
-            status.textContent = "Inactive";
+            newStatus = "suspended";
 
-            action.src = "../../resources/imgs/check-mark.png";
-            action.alt = "Activate";
+        } else {
+            return;
         }
-    } else {
-        if (window.confirm("Are you sure you want to ACTIVATE this user?")) {
-            status.textContent = "Active";
 
-            action.src = "../../resources/imgs/x-mark.png";
-            action.alt = "Suspend";
+    } else {
+
+        if (window.confirm("Are you sure you want to ACTIVATE this user?")) {
+            newStatus = "active";
+
+        } else {
+            return;
         }
     }
+
+    // Send update to PHP controller
+    let form = document.createElement("form");
+    form.method = "POST";
+    form.action = "../../../backend/controllers/admin/update-status.php";
+
+    let idInput = document.createElement("input");
+    idInput.type = "hidden";
+    idInput.name = "user_id";
+    idInput.value = userID;
+
+    let statusInput = document.createElement("input");
+    statusInput.type = "hidden";
+    statusInput.name = "status";
+    statusInput.value = newStatus;
+
+    form.appendChild(idInput);
+    form.appendChild(statusInput);
+
+    document.body.appendChild(form);
+    form.submit();
 }
 
 document.addEventListener("DOMContentLoaded", () => {

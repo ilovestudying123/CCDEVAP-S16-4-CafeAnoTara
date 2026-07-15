@@ -10,14 +10,34 @@ class UserModel
     }
 
     // Add a new user to the users table
-    public function addUser ($firstname, $lastname, $username, $email, $mobilenumber, $role, $account_status)
+    public function addUser(
+        $firstname,
+        $lastname,
+        $username,
+        $email,
+        $mobilenumber,
+        $password,
+        $role,
+        $account_status
+    )
     {
         $stmt = $this->conn->prepare("
-            INSERT INTO users (firstname, lastname, username, email, mobilenumber, role, account_status)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO users
+            (firstname, lastname, username, email, mobilenumber, password, role, account_status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ");
 
-        $stmt->bind_param("sssssss", $firstname, $lastname, $username, $email, $mobilenumber, $role, $account_status);
+        $stmt->bind_param(
+            "ssssssss",
+            $firstname,
+            $lastname,
+            $username,
+            $email,
+            $mobilenumber,
+            $password,
+            $role,
+            $account_status
+        );
 
         return $stmt->execute();
     }
@@ -75,6 +95,7 @@ class UserModel
     //updates user status by ID in the users table
     public function updateUserStatus($id, $status)
     {
+        
         $stmt = $this->conn->prepare("
             UPDATE users
             SET account_status = ?
