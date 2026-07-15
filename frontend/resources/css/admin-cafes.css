@@ -118,6 +118,11 @@
     padding: 10px;
     z-index: 100;
 }
+
+#filter-options.show {
+    display: block;
+}
+
 #filter-options input {
     cursor: pointer;
 }
@@ -150,6 +155,11 @@
     padding: 10px;
     z-index: 100;
 }
+
+#sort-options.show {
+    display: block;
+}
+
 #sort-options input {
     cursor: pointer;
 }
