@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Default password
     $password = "P@ss12345";
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT); //added this for hashing
 
     $stmt = $userModel->addUser(
         $firstname,
@@ -49,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $username,
         $email,
         $phone,
-        $password,
+        $hashedPassword, //changed this to save the hashed password
         $role,
         $status
     );
