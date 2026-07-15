@@ -39,7 +39,7 @@
 
         <aside class="logIn">    
             <h4 class="loginCaption">Find your perfect study cafe!</h4>
-            <form action="../../../../backend/controllers/authentication/loginController.php" id="loginCntrlr" method="POST" onsubmit="return validateForm()"> 
+            <form action="../../../backend/controllers/authentication/loginController.php" id="loginCntrlr" method="POST" onsubmit="return validateForm()"> 
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" required>
                 <label for="password">Password</label>
@@ -54,13 +54,13 @@
                 </div>
 
                 <div class="fPass">
-                <a href="../authentication/forgotPassword.php">Forgot Password?</a>
+                <a href="forgotPassword.php">Forgot Password?</a>
                 </div>
                 <br><br>
 
                 <button type="submit" class="login-btn">Sign In</button>
                 <br>
-                    <p>Don't have an account? <a href="../authentication/signUp.php">Sign up</a></p>
+                    <p>Don't have an account? <a href="signUp.php">Sign up</a></p>
             </form>
         </aside>  
     </div> 

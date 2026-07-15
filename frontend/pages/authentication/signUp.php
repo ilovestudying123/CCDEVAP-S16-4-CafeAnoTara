@@ -100,7 +100,7 @@
         
         <button type="submit" class="create-btn">Create Account</button>
         <br>
-        <p>Already have an account? <a href="../authentication/login.php">Sign in</a></p>
+        <p>Already have an account? <a href="../authentication/index.html">Sign in</a></p>
     </form>
 </aside>  
 </div>
