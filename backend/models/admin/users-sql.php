@@ -10,14 +10,34 @@ class UserModel
     }
 
     // Add a new user to the users table
-    public function addUser ($firstname, $lastname, $username, $email, $mobilenumber, $role, $account_status)
+    public function addUser(
+        $firstname,
+        $lastname,
+        $username,
+        $email,
+        $mobilenumber,
+        $password,
+        $role,
+        $account_status
+    )
     {
         $stmt = $this->conn->prepare("
-            INSERT INTO users (firstname, lastname, username, email, mobilenumber, role, account_status)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO users
+            (firstname, lastname, username, email, mobilenumber, password, role, account_status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ");
 
-        $stmt->bind_param("sssssss", $firstname, $lastname, $username, $email, $mobilenumber, $role, $account_status);
+        $stmt->bind_param(
+            "ssssssss",
+            $firstname,
+            $lastname,
+            $username,
+            $email,
+            $mobilenumber,
+            $password,
+            $role,
+            $account_status
+        );
 
         return $stmt->execute();
     }
@@ -73,30 +93,39 @@ class UserModel
     }
 
     //updates user status by ID in the users table
-    public function updateUserStatus($id, $status)
+    public function updateStatus($user_id, $status)
     {
-        $stmt = $this->conn->prepare("
-            UPDATE users
-            SET account_status = ?
-            WHERE user_id = ?
-        ");
+    $stmt = $this->conn->prepare("
+        UPDATE users
+        SET account_status = ?
+        WHERE user_id = ?
+    ");
 
-        $stmt->bind_param("si", $status, $id);
+    $stmt->bind_param("si", $status, $user_id);
 
-        return $stmt->execute();
+    return $stmt->execute();
     }
 
     // delete a specific user by ID in the users table
-    public function deleteUser($id) {
+    public function deleteUser($id)
+    {
+        $username = "deleted_user_" . $id;
+        $email = "deleted_" . $id . "@delete.com";
+
         $stmt = $this->conn->prepare("
             UPDATE users
-            SET firstname = 'Deleted', lastname = 'User', 
-                username = 'deleted_user', email = 'deleted@example.com', 
-                mobilenumber = '0000000000', account_status = 'deleted'
+            SET firstname = 'Deleted',
+                lastname = 'User',
+                username = ?,
+                email = ?,
+                mobilenumber = '0000000000',
+                account_status = 'deleted',
+                created_on = '0000-00-00 00:00:00'
             WHERE user_id = ?
         ");
 
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("ssi", $username, $email, $id);
+
         return $stmt->execute();
     }
 }

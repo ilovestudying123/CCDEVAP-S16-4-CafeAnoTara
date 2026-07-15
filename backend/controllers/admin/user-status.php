@@ -2,30 +2,17 @@
 require_once "../../config/connection.php";
 require_once "../../models/admin/users-sql.php";
 
-$userModel = new UserModel($conn);
-
-//TO DO: Implement user status change functionality
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $id = $_POST["user_id"];
+    $user_id = $_POST["user_id"];
     $status = $_POST["status"];
 
-    // Only allow valid statuses
-    if (!in_array($status, ["active", "suspended"])) {
-        die("Invalid status.");
-    }
+    $userModel = new UserModel($conn);
 
-    $result = $userModel->updateUserStatus($id, $status);
-
-    if ($result) {
-        header("Location: ../../../frontend/pages/admin/users.php");
-        exit();
+    if ($userModel->updateStatus($user_id, $status)) {
+        header("Location: ../../../frontend/pages/admin/users.php?success=statusupdated");
     } else {
-        echo "<script>
-                alert('Failed to update status.');
-                window.history.back();
-              </script>";
-        exit();
+        header("Location: ../../../frontend/pages/admin/users.php?error=statusfailed");
     }
+    exit();
 }
-?>

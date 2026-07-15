@@ -1,6 +1,10 @@
 <?php
-    require "../../../backend/config/connection.php";
+    require_once "../../../backend/config/connection.php";
+    require "../../../backend/models/admin/users-sql.php";
+
+    $userModel = new UserModel($conn);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +22,7 @@
             <h1>Add User Record</h1>
         </div>
 
-        <form>
+        <form action="../../../backend/controllers/admin/user-add.php" method="POST">
             <a href="users.php" class="back-link">Go Back</a>
 
             <div class="row">

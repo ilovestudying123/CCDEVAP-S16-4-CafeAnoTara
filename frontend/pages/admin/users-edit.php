@@ -25,7 +25,7 @@
             <h1>Edit Record</h1>
         </div>
 
-        <form action="../../../backend/controllers/admin/user-add-update.php" method="POST">
+        <form action="../../../backend/controllers/admin/user-update.php" method="POST">
 
         <!-- Hidden user ID -->
         <input type="hidden" name="user_id" value="<?= $user['user_id'] ?>">
@@ -37,16 +37,16 @@
                     <label for="firstName">First Name</label>
                     <input type="text" id="firstName" name="firstName"
                      value="<?= htmlspecialchars($user['firstname']) ?>"
-                     pattern="[A-Za-z '-]{2,50}"
+                     pattern="[A-Za-z -']{2,50}"
                      title="First name must be 2-50 characters and contain only letters, spaces, apostrophes, or hyphens." required>
                 </div>
 
                 <div class="field">
                     <label for="lastName">Last Name</label>
                     <input type="text" id="lastName" name="lastName"
-                     value="<?= htmlspecialchars($user['lastname']) ?>"
-                     pattern="[A-Za-z '-]{2,50}"
-                     title="Last name must be 2-50 characters and contain only letters, spaces, apostrophes, or hyphens." required>
+                        value="<?= htmlspecialchars($user['lastname']) ?>"
+                        pattern="[A-Za-z -']{2,50}" required 
+                        title="Last name must be 2-50 characters and contain only letters, spaces, apostrophes, or hyphens." required>
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
             <div class="field">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email"
-                 value="<?= htmlspecialchars($user['email']) ?>"
+                 value="<?= htmlspecialchars($user['email']) ?>">
             </div>
 
             <div class="field">

@@ -3,26 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
-    <link rel="stylesheet" href="../../resources/css/user-search.css">
+    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
+    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-search.css">
 
     <div id="header"></div>
-    <script src="../../resources/js/script-header-user.js"></script>
+    <script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/script-header-user.js"></script>
 </head>
 <body>
-    <div class="body">
-    <div class="search-filter-sort">
+   <div class="search-filter-sort">
     <section class="search-section">
-        <div class="search">
-            <input id="search-box" type="search" placeholder="Search...">
-            <button id="search-button" type="submit"><img id="search-icon" src="../../resources/imgs/magnifying-glass-solid.png"></button>
-        </div>
-        </section>
+        <form method="GET" action="../../../backend/controllers/user/cafeController.php">
+            <input type="hidden" name="action" value="search">
+            <div class="search">
+                <input type="search" name="name" 
+                       placeholder="Search..." 
+                       value="<?php echo isset($_GET['name']) ? htmlspecialchars($_GET['name']) : ''; ?>">
+                <button type="submit">
+                    <img id="search-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/magnifying-glass-solid.png">
+                </button>
+            </div>
+        </form>
+    </section>
+    </div>
+
 
         <section class="filter-section">
         <div class="filter">
             <div class="filter-button">
-                <button id="filter-button" onclick="toggleFilter()"><img id="filter-icon" src="../../resources/imgs/sliders-solid.png">Filter</button>
+                <button id="filter-button" onclick="toggleFilter()"><img id="filter-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sliders-solid.png">Filter</button>
                 </div>
             <div id="filter-options">
                 <!-- radio buttons for wifi speed -->
@@ -50,75 +58,38 @@
         <!-- button for sort -->
         <section class="sort-section">
         <div class="sort-button">
-            <button id="sort-button" type="button" onclick="toggleSort()"><img id="sort-icon" src="../../resources/imgs/sort-solid.png">Sort</button>
+            <button id="sort-button" type="button" onclick="toggleSort()"><img id="sort-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sort-solid.png">Sort</button>
         </div>
     </div>
     </section>
 
-    <section class="cafe-listing">
-        <div class="cafe-listings">
-            <div class="cafe-lists-header">
-                <h2>Cafe Listings</h2>
-            </div>
+    <section class="cafe-listings">
+        <h2>Cafe Listings</h2>
 
-                <div class="listing-box">
-                <div class="cafe-list">
-                    <div class="list-text">
-                        <p>Yardstick <img id="star-icon" src ="../../resources/imgs/star-shaded.png">3.6/5</p>
-                        <p>5th Avenue, Bonifacio Global City, Taguig City</p>
-                    </div>
-                </div>
-                </div>
+        <?php if (empty($results) && isset($_GET['name'])): ?>
+            <p>No cafes found matching "<?php echo htmlspecialchars($_GET['name']); ?>".</p>
 
-                <div class="listing-box">
-                <div class="cafe-list">
-                    <div class="list-text">
-                        <p>Matcha Later <img id="star-icon" src ="../../resources/imgs/star-shaded.png"></i>3.6/5</p>
-                        <p>36 Polaris Street, Poblacion, Makati City</p>
+        <?php elseif (!empty($results)): ?>
+            <?php foreach ($results as $cafe): ?>
+                <a href="../../../backend/controllers/user/cafeController.php?action=cafeDetails&id=<?php echo $cafe['cafe_id']; ?>"
+                class="cafe-listing-item">
+                    <div class="cafe-listing-info">
+                        <span class="cafe-listing-name"><?php echo $cafe['cafe_name']; ?></span>
+                        <span class="cafe-listing-rating">
+                            <img class="star-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/star-shaded.png">
+                            <?php echo $cafe['average_rating'] 
+                                ? number_format($cafe['average_rating'], 1) . '/5' 
+                                : 'No ratings'; ?>
+                        </span>
                     </div>
-                </div>
-                </div>
+                    <span class="cafe-listing-address"><?php echo $cafe['location']; ?></span>
+                </a>
+            <?php endforeach; ?>
 
-                <div class="listing-box">
-                <div class="cafe-list">
-                    <div class="list-text">
-                        <p>Starbucks <img id="star-icon" src ="../../resources/imgs/star-shaded.png"></i>3.6/5</p>
-                        <p>Forbestown Road, Bonifacio Global City, Taguig City</p>
-                    </div>
-                </div>
-                </div>
-
-                
-                <div class="listing-box">
-                <div class="cafe-list">
-                    <div class="list-text">
-                        <p>Coffee Bean Tea Latte <img id="star-icon" src ="../../resources/imgs/star-shaded.png"></i>3.6/5</p>
-                        <p>108 E. Rodriguez Jr. Ave., Brgy. Bagumbayan, Quezon City</p>
-                    </div>
-                </div>
-                </div>
-
-                <div class="listing-box">
-                <div class="cafe-list">
-                    <div class="list-text">
-                        <p>Bo's Coffee <img id="star-icon" src ="../../resources/imgs/star-shaded.png"></i>3.6/5</p>
-                        <p>Concepcion Cor Arroceros & San Marcelino, Ermita, Manila</p>
-                    </div>
-                </div>
-                </div>
-
-                <div class="listing-box">
-                <div class="cafe-list">
-                    <div class="list-text">
-                        <p>The Coffee Academics <img id="star-icon" src ="../../resources/imgs/star-shaded.png"></i>3.6/5</p>
-                        <p>High Street South Corporate Plaza, BGC, Taguig City</p>
-                    </div>
-                </div>
-                </div>
-        </div>
-        
+        <?php else: ?>
+            <p>Enter a cafe name to search.</p>
+        <?php endif; ?>
     </section>
 
-   
 </body>
 </html>
