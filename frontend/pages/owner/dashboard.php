@@ -31,7 +31,7 @@
         <!-- IMG Carousel -->
         <div class="carousel-container">
             <div class="carousel-wrapper">
-                <?php foreach ($carousel_images as $index => $url): ?>
+                <?php foreach ($carousel_images as $index => $url): ?> <!-- Goes through the array of IMGs -->
                     <div class="carousel-slide">
                         <img src="<?php echo htmlspecialchars($url); ?>" alt="Cafe Photo <?php echo $index + 1; ?>">
                     </div>

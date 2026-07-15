@@ -165,16 +165,18 @@
 }
 
 .card-holder {
-    display: flex;
-    justify-content: space-evenly;
-    background-color: #fdd6d6;
-    border-radius: 15px;
-    gap: 2%;
-    padding: 2% 3% 0 2%;
-    width: 90%;
-    height: 100%;
-    overflow-y: auto;
-    flex-wrap: wrap;
+    width:95%;
+    margin:0 auto 0 auto;
+    padding:2%;
+    background-color:#fdd6d6;
+    border-radius:15px;
+
+    display:flex;
+    justify-content:space-evenly;
+    gap:2%;
+    flex-wrap:wrap;
+
+    box-sizing:border-box;
 }
 
 .card-holder::-webkit-scrollbar {
@@ -537,4 +539,40 @@ section {
 .rejected{
     background:#f8d7da;
     color:#721c24;
+}
+
+@media screen and (max-width: 768px) {
+
+    .body-box h1 {
+        font-size: 180%;
+    }
+
+    .heading {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    .top-row,
+    .bottom-row {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .info-box {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .info-box h1 {
+        font-size: 150%;
+    }
+
+    .info-box p {
+        font-size: 200%;
+    }
+
+    .info-box ol {
+        font-size: 120%;
+    }
 }

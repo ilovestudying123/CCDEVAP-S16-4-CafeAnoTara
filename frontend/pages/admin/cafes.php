@@ -31,8 +31,6 @@ $pendingCafes = $cafeController->getPendingCafes($search, $status, $sort);
     <div class="body-box">
         <div class="search-section">
             <h1>Cafe Verification</h1>
-            <button class="add-btn" onclick="openCreateModal()">Add Cafe</button>
-
                 <form method="GET" class="search-box">
                     <div class="search-input">
                         <img src="../../resources/imgs/magnifying-glass-solid.png" alt="search icon">
@@ -77,6 +75,7 @@ $pendingCafes = $cafeController->getPendingCafes($search, $status, $sort);
                         </div>
                     </div>
                 </form>
+            <button class="add-btn" onclick="openCreateModal()">Add Cafe</button>
         </div>
 
         <div class="card-holder">
