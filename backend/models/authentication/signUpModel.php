@@ -60,7 +60,7 @@ class SignUpModel {
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO users
+        $query = "INSERT INTO Users
                   (username, email, firstname, lastname, password, role)
                   VALUES (?, ?, ?, ?, ?, ?)";
 

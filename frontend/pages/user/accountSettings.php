@@ -12,32 +12,11 @@
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/accountSettings.css">
 
-<<<<<<< HEAD
-    <div id="header">
-    <script src="../../resources/js/script-header-user.js"></script>
-    </div>
-</head>
-
-<body>
-    <div class="header">
-        <h1 class="title">Cafe Tayo, Ano Tara?</h1>
-
-        <nav class="nav-user">
-            <a href="dashboard.html">Home</a> |
-            <a href="bookmarks.html">Bookmarks</a> |
-            <a href="postedReviews.html">Posted Reviews</a> |
-            <a href="accountSettings.html">Account Settings</a>
-        </nav>
-    </div>
-
-    <script src="script-header-user.js"></script>
-=======
     <div id="header"></div>
     <script src="../../resources/js/script-header-user.js"></script>
 </head>
 
 <body>
->>>>>>> 909dea6b6949be7e9dd4537f690e78347308dc16
 
     <div class="account-settings">
 
@@ -56,31 +35,31 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" id="username" value="j_delacruz123" disabled>
+                    <input value="<?= htmlspecialchars($user['username']) ?>" disabled>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" id="email" value="juan.delacruz@gmail.com" disabled>
+                    <input value="<?= htmlspecialchars($user['email']) ?>" disabled>
                 </div>
 
                 <div class="form-group">
                     <label>Contact Number</label>
-                    <input type="text" id="contactNumber" value="09123456789" disabled>
+                    <input value="<?= htmlspecialchars($user['mobilenumber']) ?>" disabled>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" id="firstName" value="Juan" disabled>
+                    <input value="<?= htmlspecialchars($user['firstname']) ?>" disabled>
                 </div>
 
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" id="lastName" value="Dela Cruz" disabled>
+                    <input value="<?= htmlspecialchars($user['lastname']) ?>" disabled>
                 </div>
             </div>
 
@@ -95,7 +74,7 @@
 
     <script>
         function goToEditPage() {
-            window.location.href = "editAccountDetails.html";
+            window.location.href="../../../backend/controllers/user/accountController.php?action=edit";
         }
 
     </script>
