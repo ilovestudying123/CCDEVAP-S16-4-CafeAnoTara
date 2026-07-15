@@ -1,6 +1,7 @@
 <?php
 class CafeVerificationModel {
 
+// retrieves complete information for a specific cafe
 public function getCafeById ($conn, $cafe_id) {
     $stmt = mysqli_prepare ($conn,
         "SELECT
@@ -33,6 +34,7 @@ public function getCafeById ($conn, $cafe_id) {
         return $cafe;
 }   
 
+// retrieves cafes based on search, verification status, and sort order
 public function getPendingCafes($conn, $search, $status, $sort) {
     $search = "%" . $search . "%";
     $sort = ($sort === "ASC") ? "ASC" : "DESC";
@@ -63,6 +65,7 @@ public function getPendingCafes($conn, $search, $status, $sort) {
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+// retrieves all users with the owner role
 public function getOwners($conn)
 {
     $stmt = mysqli_prepare(
@@ -80,6 +83,7 @@ public function getOwners($conn)
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+// creates a new cafe record
 public function createCafe($conn, $data)
 {
     $stmt = mysqli_prepare(
@@ -116,6 +120,7 @@ public function createCafe($conn, $data)
         $data['price']
     );
 
+    // return the newly created cafe ID
     if (mysqli_stmt_execute($stmt)) {
         return mysqli_insert_id($conn);
     }
@@ -123,6 +128,7 @@ public function createCafe($conn, $data)
     return false;
 }
 
+// adds an image URL for a cafe
 public function addCafeImage($conn, $cafe_id, $photo_url)
 {
     $stmt = mysqli_prepare(
@@ -142,6 +148,7 @@ public function addCafeImage($conn, $cafe_id, $photo_url)
     return mysqli_stmt_execute($stmt);
 }
 
+// approves a cafe submission
 public function approveCafe($conn, $cafe_id)
 {
     $stmt = mysqli_prepare(
@@ -156,6 +163,7 @@ public function approveCafe($conn, $cafe_id)
     return mysqli_stmt_execute($stmt);
 }
 
+// rejects a cafe submission by deleting it
 public function rejectCafe($conn, $cafe_id)
 {
     $stmt = mysqli_prepare(

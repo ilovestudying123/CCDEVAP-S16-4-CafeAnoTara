@@ -6,6 +6,8 @@ function closeCreateModal(){
     document.getElementById("createModal").style.display = "none";
 }
 
+
+// loads and displays cafe details in the modal
 async function openCafe(cafeId){
     const response = await fetch('/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/cafe-get.php?id=' + cafeId);   
 
@@ -16,6 +18,7 @@ async function openCafe(cafeId){
 
     const cafe = await response.json();
 
+    // populate cafe information
     document.getElementById("cafe-name").textContent = cafe.cafe_name
     document.getElementById("cafe-owner").textContent = cafe.firstname + " " + cafe.lastname;
     document.getElementById("cafe-address").textContent = cafe.location
@@ -27,9 +30,11 @@ async function openCafe(cafeId){
     document.getElementById("cafe-rating").textContent = cafe.average_rating
     document.getElementById("cafe-desc-text").textContent = cafe.description;
 
+    // display main image
     const mainImage = document.getElementById("cafe-mainImage");
     mainImage.src = cafe.main_image;
 
+    // load image gallery thumbnails
     const thumbnails = document.querySelectorAll(".gallery-thumbnail");
 
     thumbnails.forEach((thumbnail, index) => {
@@ -39,6 +44,7 @@ async function openCafe(cafeId){
         }   
         thumbnail.style.display = "block";
         thumbnail.src = cafe.images[index];
+        // change main image when thumbnail is clicked
         thumbnail.onclick = () => {
             mainImage.src = cafe.images[index];
             thumbnails.forEach(t =>
@@ -68,6 +74,7 @@ async function approveCafe(cafeId) {
     console.log(document.getElementById(`card-${cafeId}`));
 
     if (result.success) {
+        // update status badge
         const status = document.getElementById(`status-${cafeId}`);
 
         if (status) {
@@ -77,6 +84,7 @@ async function approveCafe(cafeId) {
 
         alert("Cafe has been approved.");
 
+        // remove card after a short delay
         setTimeout(() => {
             const card = document.getElementById(`cafe-${cafeId}`);
             if (card) {

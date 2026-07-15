@@ -5,6 +5,7 @@ require_once "cafe-verification.php";
 
 $controller = new CafeVerificationController($conn);
 
+// collect form data from the add cafe form
 $data = [
     "owner_id" => $_POST['owner_id'],
     "cafe_name" => $_POST['cafe_name'],
@@ -18,13 +19,17 @@ $data = [
     "price" => $_POST['price']
 ];
 
+
+// insert the cafe into the Cafes table
 $cafe_id = $controller->createCafe($data);
     if ($cafe_id) {
+        // save each image URL into the CafeIMG table
         if (isset($_POST['cafe_images'])) {
             foreach ($_POST['cafe_images'] as $imageUrl) {
 
                 $imageUrl = trim($imageUrl);
 
+                // skip empty image URL fields
                 if ($imageUrl !== "") {
                     $controller->addCafeImage(
                         $cafe_id,
@@ -34,6 +39,7 @@ $cafe_id = $controller->createCafe($data);
             }
         }
 
+        // return to the Cafe Verification page
         header("Location: ../../../frontend/pages/admin/cafes.php");
         exit;
     }
