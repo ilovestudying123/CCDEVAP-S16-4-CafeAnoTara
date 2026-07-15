@@ -1,11 +1,14 @@
 <?php
+// database connection and cafe controller
 require_once "../../../backend/config/connection.php";
 require_once "../../../backend/controllers/admin/cafe-verification.php";
 
+// retrieve search, filter, and sort values from the URL
 $search = $_GET['search'] ?? '';
 $status = $_GET['status'] ?? 0;
 $sort = $_GET['sort'] ?? 'DESC';
 
+// load cafe records and owner list
 $cafeController = new CafeVerificationController($conn);
 $pendingCafes = $cafeController->getPendingCafes($search, $status, $sort);
 
@@ -20,8 +23,6 @@ $owners = $cafeController->getOwners();
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/admin-cafes.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css"/>
-    <!-- <script src="../../includes/js/script-header-admin.js"></script> -->
-    <!-- <script src="../../resources/js/cafe-array.js"></script> -->
     <script src="../../resources/js/cafe-verification.js"></script>
 </head>
 
@@ -94,6 +95,7 @@ $owners = $cafeController->getOwners();
                         </div>
                     </div>
 
+                    <!-- determine the status badge style and text -->
                     <?php $statusClass = ($cafe['is_verified'] == 1) ? "approved" : "pending";
                           $statusText = ($cafe['is_verified'] == 1) ? "Approved" : "Pending";?>
 
