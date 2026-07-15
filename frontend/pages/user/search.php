@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <div id="header"></div>
     <script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/script-header-user.js"></script>
@@ -71,9 +72,8 @@
 
         <?php elseif (!empty($results)): ?>
             <?php foreach ($results as $cafe): ?>
-                <a href="../../../backend/controllers/user/cafeController.php?action=cafeDetails&id=<?php echo $cafe['cafe_id']; ?>"
-                class="cafe-listing-item">
-                    <div class="cafe-listing-info">
+                <a href="../../../backend/controllers/user/cafeController.php?action=cafeDetails&id=<?php echo $cafe['cafe_id']; ?>" class="listing-box">
+                    <div class="list-text">
                         <span class="cafe-listing-name"><?php echo $cafe['cafe_name']; ?></span>
                         <span class="cafe-listing-rating">
                             <i class="fa-solid fa-star"></i>
@@ -82,7 +82,7 @@
                                 : 'No ratings'; ?>
                         </span>
                     </div>
-                    <span class="cafe-listing-address"><?php echo $cafe['location']; ?></span>
+                    <span class="cafe-address"><?php echo $cafe['location']; ?></span>
                 </a>
             <?php endforeach; ?>
 

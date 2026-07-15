@@ -146,25 +146,40 @@ body {
 
 
 
-.list-text {
+.list-text{
     margin: 10px;
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-decoration: none;
 
     font-family: Verdana;
-    font-size: 20px;
+    font-size: 25px;
     color: #725420;
 }
 
 .listing-box {
+    display: block;
+    padding: 15px;
+    gap: 8px;
+    text-decoration: none;
     border-radius: 15px;
-    background-color: #fff;
+    background-color: white;
+    border: 1.3px solid black;
     box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
 }
 
 .listing-box:hover {
     scale: 102%;
+}
+
+.cafe-address {
+    font-size: 14px;
+    text-decoration: none;
+    font-family: Verdana;
+    color: black;
+
 }
 
 #star-icon {
@@ -175,4 +190,8 @@ body {
     margin-left: 8px;
     margin-right: 4px;
     vertical-align: middle;
+}
+
+.fa-star {
+    color: gold;
 }
