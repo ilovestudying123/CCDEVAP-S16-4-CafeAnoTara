@@ -39,7 +39,7 @@
 
         <aside class="logIn">    
             <h4 class="loginCaption">Find your perfect study cafe!</h4>
-            <form action="loginController.php" id="loginCntrlr" method="POST" onsubmit="return validateForm()"> 
+            <form action="../../../../backend/controllers/authentication/loginController.php" id="loginCntrlr" method="POST" onsubmit="return validateForm()"> 
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" required>
                 <label for="password">Password</label>

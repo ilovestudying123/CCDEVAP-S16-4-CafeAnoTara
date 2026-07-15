@@ -8,17 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($email) || empty($password)) {
         $error = "Please fill in all fields.";
-        include 'login.php';
-        exit();
+        include '../../../frontend/pages/authentication/login.php';        exit();
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Please input a correct email format.";
-        include 'login.php';
+        include '../../../frontend/pages/authentication/login.php';
         exit();
     }
 
-    require_once '../../../backend/models/loginModel.php';
+    require_once '../../models/loginModel.php';
     $loginModel = new loginModel();
     
     $userData = $loginModel->getUserByEmail($email);
@@ -31,13 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['role'] = $userData['role'];
 
         if ($_SESSION['role'] === 'customer') {
-            header("Location: ../user/dashboard.php");
+            header("Location: ../../../frontend/pages/user/dashboard.php");
             exit();
         } else if ($_SESSION['role'] === 'owner') {
-            header("Location: ../owner/dashboard.php");
+            header("Location: ../../../frontend/pages/owner/dashboard.php");
             exit();
         } else if ($_SESSION['role'] === 'admin') {
-            header("Location: ../admin/dashboard.php");
+            header("Location: ../../../frontend/pages/admin/dashboard.php");
             exit();
         } else {
             echo "Unknown role.";
@@ -46,12 +45,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     } else {
         $error = "Invalid email or password.";
-        include 'login.php';
+        include '../../../frontend/pages/authentication/login.php';
         exit();
     }
 
 } else {
-    header("Location: login.php");
+    header("Location: ../../../frontend/pages/authentication/login.php");
     exit();
 }
 ?>
