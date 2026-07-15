@@ -54,13 +54,13 @@
                 </div>
 
                 <div class="fPass">
-                <a href="../authentication/forgotPassword.html">Forgot Password?</a>
+                <a href="../authentication/forgotPassword.php">Forgot Password?</a>
                 </div>
                 <br><br>
 
                 <button type="submit" class="login-btn">Sign In</button>
                 <br>
-                    <p>Don't have an account? <a href="../authentication/signUp.html">Sign up</a></p>
+                    <p>Don't have an account? <a href="../authentication/signUp.php">Sign up</a></p>
             </form>
         </aside>  
     </div> 

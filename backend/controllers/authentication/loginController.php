@@ -8,7 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($email) || empty($password)) {
         $error = "Please fill in all fields.";
-        include '../../../frontend/pages/authentication/login.php';        exit();
+        include '../../../frontend/pages/authentication/login.php';        
+        exit();
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

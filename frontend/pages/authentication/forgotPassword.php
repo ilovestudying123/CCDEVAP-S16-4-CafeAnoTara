@@ -67,7 +67,7 @@
                 </div>
                 
                 <button type="button" class="submit-btn" onclick="checkPass();">Submit</button>
-                <p>Don't have an account? <a href="../authentication/signUp.html">Sign up</a></p>
+                <p>Don't have an account? <a href="../authentication/signUp.php">Sign up</a></p>
             </form>
         </aside>  
     </div>   
