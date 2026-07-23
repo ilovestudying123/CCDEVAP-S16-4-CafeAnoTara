@@ -28,7 +28,7 @@
     <div class="body-box">
 
         <div class="header-section">
-            <h1>Reviews & Content Moderation</h1>
+            <h1>Reports & Content Moderation</h1>
         </div>
 
         <div class="table-wrapper">

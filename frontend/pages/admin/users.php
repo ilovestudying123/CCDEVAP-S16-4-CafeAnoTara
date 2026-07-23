@@ -29,7 +29,7 @@
     <div class="body-box">
         <div class="header-section">
             <h1>Manage Users</h1>
-            <a href="users-add.php" class="add-btn">Add Record</a>  
+            <a href="users-add.php" class="add-btn">Add User</a>  
         </div>
         
         <div class="table-wrapper">

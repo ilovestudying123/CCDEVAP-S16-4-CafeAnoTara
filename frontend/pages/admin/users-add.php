@@ -19,7 +19,7 @@
 <body>
     <div class="body-box">
         <div class="header-section">
-            <h1>Add User Record</h1>
+            <h1>Add User</h1>
         </div>
 
         <form action="../../../backend/controllers/admin/user-add.php" method="POST">
@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <input type="submit" value="Add Record">
+            <input type="submit" value="Add User">
         </form>
     </div>
 </body>
