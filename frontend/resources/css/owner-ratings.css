@@ -299,6 +299,10 @@ body {
     opacity: 0.9;
 }
 
+.reviews {
+    color: #FEA959;
+}
+
 @media (max-width: 768px) {
     .body-box {
         width: 95%;
