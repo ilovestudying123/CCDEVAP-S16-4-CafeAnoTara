@@ -112,7 +112,7 @@ $owners = $cafeController->getOwners();
                         <?php if ($cafe['is_verified'] == 0): ?>
                             <button class="approve-btn" onclick="approveCafe(<?= $cafe['cafe_id'] ?>)">Approve</button>
                         <?php endif; ?>
-                            <button class="view-btn"onclick="openCafe(<?= $cafe['cafe_id'] ?>)"><img src="../../resources/imgs/eye-solid.png"></button>
+                            <button class="view-btn"onclick="openCafe(<?= $cafe['cafe_id'] ?>)">View</button>
                     </div>
                 </section>
             <?php endforeach; ?>

@@ -263,21 +263,20 @@ section {
 }
 
 .reject-btn,
-.approve-btn{
+.approve-btn,
+.view-btn {
     width:120px;
     height:50px;
-}
-
-.view-btn{
-    width:40px;
-    height:50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition: ease all 0.3s;
 }
 
 .reject-btn {
     background-color: #fffabc;
     border: 1px solid #725420;
     color: #725420;
-    transition: ease all 0.3s;
 }
 
 .reject-btn:hover {
@@ -299,25 +298,14 @@ section {
 }
 
 .view-btn{
-    border:none;
+    border: 1px solid #725420;
     background:#f4a261;
     border-radius:50%;
     cursor:pointer;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    transition:.2s;
 }
 
 .view-btn:hover{
     background:#ce8139;
-}
-
-.view-btn img{
-    width:18px;
-    height:18px;
 }
 
 /* modal */
