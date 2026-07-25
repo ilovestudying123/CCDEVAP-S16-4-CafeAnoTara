@@ -50,32 +50,41 @@
 
 // ?>
 
+
 <?php
-//TO BE FIXED
+
 session_start();
 
 require_once '../../config/connection.php';
 require_once '../../models/user/accountModel.php';
 
 
-
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../../../frontend/pages/authentication/index.php");
     exit();
 }
 
 
-$accountModel = new AccountModel($conn);
+// Create model
+$accountModel = new accountModel($conn);
 
-$userId = $_SESSION['user_id'];
 
+// Get current logged-in user's ID
+$user_id = $_SESSION['user_id'];
+
+
+// Get action
 $action = $_GET['action'] ?? 'view';
 
 
+// =====================================================
+// VIEW ACCOUNT SETTINGS
+// =====================================================
 
 if ($action === 'view') {
 
-    $user = $accountModel->getUser($userId);
+    $user = $accountModel->getUser($user_id);
 
     if (!$user) {
         $_SESSION['error'] = "User account not found.";
@@ -88,9 +97,13 @@ if ($action === 'view') {
 }
 
 
+// =====================================================
+// EDIT ACCOUNT SETTINGS
+// =====================================================
+
 if ($action === 'edit') {
 
-    $user = $accountModel->getUser($userId);
+    $user = $accountModel->getUser($user_id);
 
     if (!$user) {
         $_SESSION['error'] = "User account not found.";
@@ -103,6 +116,10 @@ if ($action === 'edit') {
 }
 
 
+// =====================================================
+// UPDATE ACCOUNT
+// =====================================================
+
 if ($action === 'update' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $firstname = trim($_POST['firstname'] ?? '');
@@ -110,7 +127,7 @@ if ($action === 'update' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $mobilenumber = trim($_POST['mobilenumber'] ?? '');
 
 
-    // Check required fields
+    // Check if all fields are filled
     if (empty($firstname) || empty($lastname) || empty($mobilenumber)) {
 
         $_SESSION['error'] = "Please fill in all fields.";
@@ -120,32 +137,26 @@ if ($action === 'update' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-    // Update user
-    $updated = $accountModel->updateUser(
-        $userId,
+    // Update user's information
+    $accountModel->updateUser(
+        $user_id,
         $firstname,
         $lastname,
         $mobilenumber
     );
 
 
-    if ($updated) {
+    $_SESSION['success'] = "Account updated successfully.";
 
-        $_SESSION['success'] = "Account updated successfully.";
-
-        header("Location: accountController.php?action=view");
-        exit();
-
-    } else {
-
-        $_SESSION['error'] = "Failed to update account.";
-
-        header("Location: accountController.php?action=edit");
-        exit();
-    }
+    header("Location: accountController.php?action=view");
+    exit();
 }
+
+
+// =====================================================
+// INVALID ACTION
+// =====================================================
 
 header("Location: accountController.php?action=view");
 exit();
-
 ?>
