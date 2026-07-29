@@ -40,10 +40,8 @@ $cafes = $controller->getTopCafes();
                 <?php foreach ($cafes as $cafe): ?>
                     <a href="/CCDEVAP-S16-4-CafeAnoTara/frontend/pages/user/cafeDetails.php?id=<?php echo $cafe['cafe_id']; ?>"
                        class="cafe-card">
-                        <img src="<?php echo !empty($cafe['main_image'])
-                            ? '/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/' . htmlspecialchars($cafe['main_image'])
-                            : '/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/cafe.jpg';
-                        ?>" alt="<?php echo htmlspecialchars($cafe['cafe_name']); ?>">
+                        <img src="<?php echo !empty($cafe['main_image']) ? htmlspecialchars($cafe['main_image']) : '/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/cafe.jpg'; ?>" 
+                        alt="<?php echo htmlspecialchars($cafe['cafe_name']); ?>">
                         <div class="cafe-text">
                             <h3><?php echo htmlspecialchars($cafe['cafe_name']); ?></h3>
                             <p>

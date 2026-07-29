@@ -58,7 +58,8 @@ $isBookmarked = $bookmarkCtrl->isBookmarked($customer_id, $cafe_id);
                 </div>
             </div>
 
-            <!-- Carousel -->
+            
+            <!-- carousel -->
             <div id="cafeCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <?php if (empty($images)): ?>
@@ -69,8 +70,8 @@ $isBookmarked = $bookmarkCtrl->isBookmarked($customer_id, $cafe_id);
                     <?php else: ?>
                         <?php foreach ($images as $index => $img): ?>
                             <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/<?php echo htmlspecialchars($img['photo_url']); ?>"
-                                     class="carousel-img" alt="Cafe Image">
+                                <img src="<?php echo htmlspecialchars($img['photo_url']); ?>" 
+                                    class="carousel-img" alt="Cafe Image">
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>

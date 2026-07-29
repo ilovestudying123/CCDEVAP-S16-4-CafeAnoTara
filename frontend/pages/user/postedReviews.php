@@ -32,7 +32,7 @@ $reviews = $controller->getUserReviews($customer_id);
             <?php foreach ($reviews as $review): ?>
                 <div class="review-box">
                     <div class="review-image">
-                        <img src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/<?php echo htmlspecialchars($review['main_image'] ?? 'cafe.jpg'); ?>">
+                        <img src="<?php echo htmlspecialchars($review['main_image'] ?? '/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/cafe.jpg'); ?>">
                     </div>
                     <div class="review-text">
                         <p id="cafe-name"><?php echo htmlspecialchars($review['cafe_name']); ?></p>
