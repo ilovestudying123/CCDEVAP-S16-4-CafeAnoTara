@@ -1,3 +1,10 @@
+<?php
+require_once '../../../backend/controllers/user/bookmarkController.php';
+
+$controller = new bookmarkController($conn);
+$customer_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 4;
+$bookmarks = $controller->getBookmarks($customer_id);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,79 +13,47 @@
     <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-bookmark.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
     <div id="header"></div>
     <script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/script-header-user.js"></script>
 </head>
 <body>
-    <section>
-        <div class="bookmark-header">
-            <h1>Your Bookmarked Cafes</h1>
-            <!-- <div class="buttons">
-                <div class="filter">
-                    <div class="filter-button">
-                        <button id="filter-button" onclick="toggleFilter()">
-                            <img id="filter-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sliders-solid.png">Filter
+<section>
+    <div class="bookmark-header">
+        <h1>Your Bookmarked Cafes</h1>
+    </div>
+
+    <div class="bookmarked-cafes">
+        <?php if (empty($bookmarks)): ?>
+            <p>You have no bookmarked cafes yet.</p>
+        <?php else: ?>
+            <?php foreach ($bookmarks as $bookmark): ?>
+                <div class="bookmark-card">
+                    <form method="POST"
+                          action="/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/bookmarkController.php?action=remove"
+                          onsubmit="return confirm('Remove this bookmark?');">
+                        <input type="hidden" name="cafe_id" value="<?php echo $bookmark['cafe_id']; ?>">
+                        <button type="submit" class="remove-bookmark" id="bookmark-button">
+                            <i class="fa-solid fa-bookmark fa-3x"></i>
                         </button>
-                    </div>
-                    <div id="filter-options">
-                        <p>Wifi Speed:</p>
-                        <label><input type="radio" name="wifi" value=""> All</label><br>
-                        <label><input type="radio" name="wifi" value="fast"> Fast</label><br>
-                        <label><input type="radio" name="wifi" value="slow"> Slow</label>
-                        <p>Outlet Availability:</p>
-                        <label><input type="checkbox" name="outlet" value="available"> Available</label><br>
-                        <label><input type="checkbox" name="outlet" value="unavailable"> Unavailable</label>
-                        <br><br>
-                        <div class="filter-buttons">
-                            <button type="button" onclick="applyFilter()">Apply</button>
-                            <button type="button" onclick="clearFilter()">Clear</button>
+                    </form>
+
+                    <a href="/CCDEVAP-S16-4-CafeAnoTara/frontend/pages/user/cafeDetails.php?id=<?php echo $bookmark['cafe_id']; ?>"
+                       class="cafe-details">
+                        <div class="cafe-text">
+                            <p class="cafe-name">
+                                <?php echo htmlspecialchars($bookmark['cafe_name']); ?>
+                                <i class="fa-solid fa-star"></i>
+                                <?php echo $bookmark['average_rating']
+                                    ? number_format($bookmark['average_rating'], 1) . '/5'
+                                    : 'No ratings'; ?>
+                            </p>
+                            <p><?php echo htmlspecialchars($bookmark['location']); ?></p>
                         </div>
-                    </div>
+                    </a>
                 </div>
-                <div class="sort-button">
-                    <button id="sort-button" type="button" onclick="toggleSort()">
-                        <img id="sort-icon" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/sort-solid.png">Sort
-                    </button>
-                </div>
-            </div> -->
-        </div>
-
-        <div class="bookmarked-cafes">
-            <?php if (empty($bookmarks)): ?>
-                <p>You have no bookmarked cafes yet.</p>
-
-            <?php else: ?>
-                <?php foreach ($bookmarks as $bookmark): ?>
-                    <div class="bookmark-card">
-                        <!-- remove bookmark button -->
-                        <form method="POST" 
-                            action="../../../backend/controllers/user/bookmarkController.php?action=remove"
-                            onsubmit="return confirm('Are you sure you want to remove this bookmark?');"> 
-                            <input type="hidden" name="cafe_id" 
-                                value="<?php echo $bookmark['cafe_id']; ?>">
-                            <button type="submit" class="remove-bookmark" id="bookmark-button">
-                                <i class="fa-solid fa-bookmark fa-3x"></i>
-                            </button>
-                        </form>
-
-                        <a href="../../../backend/controllers/user/cafeController.php?action=cafeDetails&id=<?php echo $bookmark['cafe_id']; ?>"
-                        class="cafe-details">
-                            <div class="cafe-text">
-                                <p class="cafe-name">
-                                    <?php echo $bookmark['cafe_name']; ?>
-                                    <i class="fa-solid fa-star"></i>
-                                    <?php echo round($bookmark['average_rating'], 1); ?>/5 
-                                </p>
-                                <p class="cafe-text"><?php echo $bookmark['location']; ?></p>
-                            </div>
-                            
-                        </a>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-    </section>
-
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</section>
 </body>
 </html>
