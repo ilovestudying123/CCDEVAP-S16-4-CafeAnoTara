@@ -1,5 +1,4 @@
-.whole{
-    width: fit-content;
+body{
     background-color: #fffabc;
     margin: 0%;
 }
@@ -8,12 +7,37 @@
     font-family: 'Montagu Slab';  
     /* background-color: #fffabc; */
     padding: 1%;
-    width: 100%;
+    width:auto;
     box-sizing: border-box;
     text-align: center;
-    font-size: 350%;
+    font-size: 300%;
     font-weight: 300;
     color:#725420;    
+}
+.content{
+    /* background-color: #fffabc; */
+    width: fit-content;
+    box-sizing: border-box;
+    font-family: 'Montagu Slab';
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 40px;
+    min-height: 70vh;
+    padding: 2% 7% 15% 7%;
+    /* margin-bottom: 100px; */
+}
+
+.password-container{
+    position: relative;
+    width: 100%;
+}
+
+.password-container input{
+    width: 100%;
+    padding: 12px 45px 12px 12px;
+    border: 1px solid #725420;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
 .content{
