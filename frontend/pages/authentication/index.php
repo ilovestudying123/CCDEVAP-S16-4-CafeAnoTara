@@ -19,7 +19,6 @@ if (isset($_SESSION['error'])) {
     unset($_SESSION['error']);
 }
 ?>
-<div class="whole">
     <div class="header">
     <h1 class="title">Cafe Tayo, Ano Tara?</h1>
     </div>
@@ -72,7 +71,6 @@ if (isset($_SESSION['error'])) {
                     <p>Don't have an account? <a href="signUp.php">Sign up</a></p>
             </form>
         </aside>  
-    </div> 
-</div>       
+    </div>     
 </body>
 </html>
