@@ -5,7 +5,6 @@
     $userModel = new UserModel($conn);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

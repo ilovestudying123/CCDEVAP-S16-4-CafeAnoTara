@@ -1,24 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Monthly Sign-ups (Line Chart)
+    // Monthly Sign-ups Per Role (Multi-line Chart)
     const lineChart = document.getElementById("lineChart");
+
+    const roleColors = {
+        customer: "#4CAF50",
+        owner: "#2196F3",
+        admin: "#FFC107"
+    };
+
+    const lineDatasets = Object.keys(usersByRole).map(role => {
+        const color = roleColors[role] || "#888888";
+        return {
+            label: role.charAt(0).toUpperCase() + role.slice(1),
+            data: usersByRole[role],
+            borderColor: color,
+            backgroundColor: color,
+            fill: false,
+            tension: 0.3
+        };
+    });
 
     new Chart(lineChart, {
         type: "line",
         data: {
             labels: userMonths,
-            datasets: [{
-                label: "New User Sign-ups",
-                data: userTotals,
-                borderColor: "#0482ff",
-                backgroundColor: "rgba(4,130,255,0.2)",
-                fill: true,
-                tension: 0.3
-            }]
+            datasets: lineDatasets
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: "top"
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true,
@@ -52,32 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Highest Rated Cafes (Horizontal Bar Chart)
-    const barGraph1 = document.getElementById("barGraph1");
-
-    new Chart(barGraph1, {
-        type: "bar",
-        data: {
-            labels: cafeNames,
-            datasets: [{
-                label: "Average Rating",
-                data: ratings,
-                backgroundColor: "#70a83c"
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            indexAxis: "y",
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    max: 5
-                }
-            }
-        }
-    });
-
     // Most Bookmarked Cafes (Bar Chart)
     const barGraph2 = document.getElementById("barGraph2");
 
@@ -105,4 +96,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+});
+
+// Data Tables
+document.addEventListener("DOMContentLoaded", () => {
+    new DataTable("#rankedCafesTable", {
+        searching: true,
+        ordering: true,
+        info: true,
+        lengthChange: true,
+        pageLength: 5
+    });
 });
