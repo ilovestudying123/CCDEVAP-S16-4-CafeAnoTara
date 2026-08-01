@@ -24,56 +24,43 @@ $pendingCafes = $dashboardModel->getPendingCafes();
    LINE CHART - MONTHLY USER SIGN UPS
    ============================================================ */
 
-// Retrieve all users grouped by month and role
-$userResult = $dashboardModel->getUsersPerMonth();
+    // Retrieve all users grouped by month and role
+    $userResult = $dashboardModel->getUsersPerMonth();   // <-- this line must exist
 
-// Stores the names of the months
-$userMonths = [];
+    // Stores the names of the months
+    $userMonths = [];
+    $monthKeys  = [];
 
-// Stores the number of users for each role
-$usersByRole = [];
+    // Stores the number of users for each role
+    $usersByRole = [];
 
-// Temporarily stores every row returned by MySQL
-$rawRows = [];
+    // Temporarily stores every row returned by MySQL
+    $rawRows = [];
 
-// Read every row from the SQL query
-while ($row = $userResult->fetch_assoc()) {
+    while ($row = $userResult->fetch_assoc()) {
+        $rawRows[] = $row;
 
-    // Save the row for later use
-    $rawRows[] = $row;
+        if (!in_array($row['month_key'], $monthKeys)) {
+            $monthKeys[] = $row['month_key'];
+            $userMonths[] = $row['month'] . ' ' . $row['year']; // e.g. "August 2026"
+        }
 
-    // If this month hasn't been added yet, add it
-    if (!in_array($row['month'], $userMonths)) {
-        $userMonths[] = $row['month'];
+        if (!isset($usersByRole[$row['role']])) {
+            $usersByRole[$row['role']] = [];
+        }
     }
 
-    // If this role doesn't exist yet, create an empty array for it
-    if (!isset($usersByRole[$row['role']])) {
-        $usersByRole[$row['role']] = [];
+    foreach ($usersByRole as $role => &$totals) {
+        foreach ($monthKeys as $key) {
+            $match = array_filter(
+                $rawRows,
+                fn($r) => $r['month_key'] === $key && $r['role'] === $role
+            );
+            $totals[] = $match ? array_values($match)[0]['total'] : 0;
+        }
     }
-}
+    unset($totals);
 
-
-// Fill in the data for every role.
-foreach ($usersByRole as $role => &$totals) {
-
-    foreach ($userMonths as $month) {
-
-        // Look for a row that matches BOTH the current month and the current role
-        $match = array_filter(
-            $rawRows,
-            fn($r) => $r['month'] === $month && $r['role'] === $role
-        );
-
-        // If found, use its total. Otherwise store 0.
-        $totals[] = $match
-            ? array_values($match)[0]['total']
-            : 0;
-    }
-}
-
-// Remove the reference variable after the foreach
-unset($totals);
 
 
 /* ============================================================
