@@ -76,5 +76,41 @@ public function getCafeReviews ($conn, $cafe_id) {
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 }
+
+public function getCafeByOwnerId($conn, $owner_id) {
+    $stmt = mysqli_prepare($conn,
+        "SELECT 
+            c.cafe_id,
+            c.cafe_name,
+            c.location,
+            c.description,
+            c.wifi_speed,
+            c.opening_time,
+            c.closing_time,
+            c.price,
+            c.outlet_num,
+            IFNULL(ROUND(AVG(r.rating), 1), 0.0) AS average_rating,
+            COUNT(r.review_id) AS total_reviews
+        FROM Cafes c
+        LEFT JOIN Reviews r ON c.cafe_id = r.cafe_id
+        WHERE c.owner_id = ?
+        GROUP BY c.cafe_id"
+    );
+    mysqli_stmt_bind_param($stmt, "i", $owner_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    return mysqli_fetch_assoc($result);
+}
+
+public function getCafeImagesOrdered($conn, $cafe_id) {
+    $stmt = mysqli_prepare($conn, 
+        "SELECT photo_url FROM CafeIMG WHERE cafe_id = ? ORDER BY photo_id ASC"
+    );
+    mysqli_stmt_bind_param($stmt, "i", $cafe_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
 }
 ?>
