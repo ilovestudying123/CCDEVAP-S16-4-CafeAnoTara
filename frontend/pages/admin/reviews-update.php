@@ -12,16 +12,14 @@ $reportCodes = $reviewModel->getReportCodes();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Update Review</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="../../resources/css/header-style.css">
+ 
     <link rel="stylesheet" href="../../resources/css/admin-reviews-update.css">
 </head>
 
 <body>
-    <div id="header"></div>
-
     <div class="body-box">
         <div class="header-section">
             <h1>Update Review</h1>

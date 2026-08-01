@@ -9,7 +9,6 @@ class UserDashboard
         $this->conn = $conn;
     }
 
-
     public function getPendingReports() {
         $stmt = $this->conn->prepare("
         SELECT COUNT(report_id) AS total
@@ -37,14 +36,15 @@ class UserDashboard
 
     //Chart getters
     public function getUsersPerMonth() {
-        $stmt= $this->conn->prepare("
-        SELECT
-            MONTHNAME(created_on) AS month,
-            MONTH(created_on) AS month_num,
-            COUNT(*) AS total
-        FROM Users
-        GROUP BY MONTH(created_on), MONTHNAME(created_on)
-        ORDER BY month_num");
+        $stmt = $this->conn->prepare("
+            SELECT
+                MONTHNAME(created_on) AS month,
+                MONTH(created_on) AS month_num,
+                role,
+                COUNT(*) AS total
+            FROM Users
+            GROUP BY MONTH(created_on), MONTHNAME(created_on), role
+            ORDER BY month_num");
 
         $stmt->execute();
         return $stmt->get_result();
@@ -60,20 +60,43 @@ class UserDashboard
         return $stmt->get_result();
     }
 
-    public function getHighestRatedCafes() {
+    public function getRankedCafes($minReviews = 5) {
+        // C = average rating across all cafes (with at least 1 review)
         $stmt = $this->conn->prepare("
         SELECT
+            c.cafe_id,
             c.cafe_name,
-            COALESCE(ROUND(AVG(r.rating),2),0) AS average_rating
+            COUNT(r.review_id) AS review_count,
+            COALESCE(ROUND(AVG(r.rating), 2), 0) AS average_rating,
+            (
+                SELECT AVG(rating) FROM Reviews
+            ) AS overall_avg
         FROM Cafes c
         LEFT JOIN Reviews r
         ON c.cafe_id = r.cafe_id
-        GROUP BY c.cafe_id, c.cafe_name 
-        ORDER BY average_rating DESC
-        LIMIT 10");
+        GROUP BY c.cafe_id, c.cafe_name");
 
         $stmt->execute();
-        return $stmt->get_result();
+        $result = $stmt->get_result();
+
+        $cafes = [];
+        while ($row = $result->fetch_assoc()) {
+            $v = (int) $row['review_count'];
+            $R = (float) $row['average_rating'];
+            $C = (float) $row['overall_avg'];
+            $m = $minReviews;
+
+            $row['weighted_rating'] = $v > 0
+                ? round((($v / ($v + $m)) * $R) + (($m / ($v + $m)) * $C), 2)
+                : 0;
+
+            $cafes[] = $row;
+        }
+
+        // Sort by weighted rating, descending
+        usort($cafes, fn($a, $b) => $b['weighted_rating'] <=> $a['weighted_rating']);
+
+        return $cafes;
     }
 
     public function getMostBookmarkedCafes() {

@@ -18,6 +18,7 @@ $owners = $cafeController->getOwners();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Cafe Verification</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/header-style.css">
@@ -27,9 +28,8 @@ $owners = $cafeController->getOwners();
 </head>
 
 <body>
-    <div id="header">
-        <?php require "../../includes/header-admin.php"; ?>
-    </div>
+    <!-- header -->
+    <?php require "../../includes/header-admin.php"; ?>
 
     <div class="body-box">
         <div class="search-section">
@@ -82,7 +82,9 @@ $owners = $cafeController->getOwners();
         </div>
 
         <div class="card-holder">
-            <?php foreach ($pendingCafes as $cafe): ?>
+            <?php 
+            if ($pendingCafes) {
+            foreach ($pendingCafes as $cafe): ?>
                 <section id="cafe-<?= $cafe['cafe_id'] ?>" class="cafe-card">
                     <div class="cafe-info">
                         <img src="<?= htmlspecialchars($cafe['main_image']) ?>" alt="<?= htmlspecialchars($cafe['cafe_name']) ?>">
@@ -115,7 +117,12 @@ $owners = $cafeController->getOwners();
                             <button class="view-btn"onclick="openCafe(<?= $cafe['cafe_id'] ?>)">View</button>
                     </div>
                 </section>
-            <?php endforeach; ?>
+            <?php endforeach; }
+            else { ?>
+                <div class="no-record">
+                    <p>No cafes to verify</p>
+                </div>
+            <?php } ?>
         </div>
     </div>
 
@@ -286,7 +293,7 @@ $owners = $cafeController->getOwners();
                 </div>
 
                 <div class="button-container">
-                    <button type="submit" class="add-btn">Submit</button>
+                    <button type="submit" class="submit-btn">Submit</button>
                 </div>
             </form>
         </div>  

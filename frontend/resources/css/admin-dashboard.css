@@ -106,3 +106,116 @@ img:hover {
     padding: 20px;
     background-color: #fdd6d6;
 }
+
+/* DataTables styling */
+
+.table-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: rgb(255, 165, 165);
+    border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #725420;
+    border-radius: 10px;
+}
+
+#rankedCafesTable_wrapper {
+    width: 95%;
+    margin: 0 auto;
+}
+
+#rankedCafesTable_wrapper .dt-layout-row {
+    margin: 15px 0;
+}
+
+#rankedCafesTable_wrapper .dt-search label,
+#rankedCafesTable_wrapper .dt-length label,
+#rankedCafesTable_wrapper .dt-info {
+    font-family: Verdana;
+    color: #725420;
+}
+
+#rankedCafesTable_wrapper .dt-search input {
+    border: 2px solid #725420;
+    border-radius: 8px;
+    padding: 6px 10px;
+    color: #725420;
+    font-family: Verdana;
+}
+
+#rankedCafesTable_wrapper .dt-length select {
+    border: 2px solid #725420;
+    border-radius: 8px;
+    padding: 5px;
+    color: #725420;
+    font-family: Verdana;
+}
+
+#rankedCafesTable_wrapper .dt-paging-button {
+    border-radius: 6px !important;
+}
+
+#rankedCafesTable_wrapper .dt-paging-button.current {
+    background: #725420 !important;
+    color: #FEA959 !important;
+    border: none !important;
+}
+
+#rankedCafesTable_wrapper .dt-paging-button:hover {
+    background: #8b6b34 !important;
+    color: white !important;
+}
+
+#rankedCafesTable {
+    width: 100% !important;
+    border-spacing: 0;
+    border-collapse: separate;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 10px -3px rgba(99, 15, 15, 0.3);
+}
+
+#rankedCafesTable thead th {
+    padding: 15px;
+    text-align: center;
+    font-family: "Montagu Slab", serif;
+    font-weight: bold;
+    background-color: #725420;
+    color: #FEA959;
+}
+
+#rankedCafesTable tbody td {
+    padding: 15px;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 14px;
+    color: #725420;
+}
+
+#rankedCafesTable tbody tr:hover {
+    background-color: #fff3f3;
+}
+
+div.dt-layout-row:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+div.dt-length,
+div.dt-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+div.dt-search {
+    margin-left: auto;
+}

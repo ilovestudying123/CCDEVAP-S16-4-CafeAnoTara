@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="../../resources/css/owner-dashboard.css?v=2">
     <?php require "../../../backend/models/owner/dashboard-sql.php"; ?>
     <title>Owner Dashboard</title>
-
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-owner.js"></script>
 </head>
 
 <body>
+
+    <!-- header -->
+    <?php require "../../includes/header-owner.php"; ?>
+
     <div class="body-box">
         
         <div class="info-box">
@@ -36,6 +37,11 @@
                         <img src="<?php echo htmlspecialchars($url); ?>" alt="Cafe Photo <?php echo $index + 1; ?>">
                     </div>
                 <?php endforeach; ?>
+            </div>
+
+            <!-- Arrow to show swipeability -->
+            <div class="swipe">
+                <img src="../../resources/imgs/arrow-btn.png"> 
             </div>
         </div>
 

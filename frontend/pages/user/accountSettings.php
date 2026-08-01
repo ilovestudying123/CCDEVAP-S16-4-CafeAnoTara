@@ -11,12 +11,11 @@
 
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/accountSettings.css">
-
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-user.js"></script>
 </head>
 
 <body>
+<!-- header -->
+<?php require "../../includes/header-user.php"; ?>
 
     <div class="account-settings">
 

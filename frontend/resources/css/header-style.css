@@ -10,9 +10,9 @@
     font-weight: normal;
 }
 
-nav, nav a{
+nav a{
     text-decoration: none;
-    font-size: 140%;
+    font-size: 160%;
     color: #fffabc;
     margin-top: 15px;
 }
@@ -28,6 +28,13 @@ nav a:hover {
     box-sizing: border-box;
     font-family: 'Montagu Slab';
     text-align: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: block;
+    width: 100%;
 }
 
 .name{

@@ -3,21 +3,33 @@
     src: url(../font/MontaguSlab-VariableFont_opsz\,wght.ttf);
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 .header-section {
-    margin: 0 auto;
     background-color: #725420;
-    color: #fffabc;
-    padding: 2%;
+    padding: 1%;
     width: 100%;
     box-sizing: border-box;
+    font-family: 'Montagu Slab';
     text-align: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: block;
+    width: 100%;
 }
+
 
 .header-section h1 {
     font-size: 250%;
     color: #fffabc;
     display: inline;
-    font-family: 'Montagu Slab';
     font-weight: 400;
     margin-left: 30px;
 }
@@ -25,7 +37,6 @@
 .header-section a {
     display: inline-block;
     margin-top: 20px;
-    font-family: 'Montagu Slab';
     text-decoration: none;
     font-size: 140%;
     color: #fffabc;

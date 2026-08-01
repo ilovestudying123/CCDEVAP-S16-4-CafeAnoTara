@@ -1,27 +1,31 @@
 <?php
+require "../../../backend/config/connection.php";
+require "../../../backend/models/admin/dashboard-sql.php";
 require "../../../backend/controllers/admin/user-dashboard.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Admin Dashboard</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/admin-dashboard.css">
-
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- DataTables -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script>
 
     <script>
     const userMonths = <?= json_encode($userMonths) ?>;
-    const userTotals = <?= json_encode($userTotals) ?>;
+    const usersByRole = <?= json_encode($usersByRole) ?>;
 
     const roles = <?= json_encode($roles) ?>;
     const roleTotals = <?= json_encode($roleTotals) ?>;
-
-    const cafeNames = <?= json_encode($cafeNames) ?>;
-    const ratings = <?= json_encode($ratings) ?>;
 
     const bookmarkCafe = <?= json_encode($bookmarkCafe) ?>;
     const bookmarkCount = <?= json_encode($bookmarkCount) ?>;
@@ -31,9 +35,8 @@ require "../../../backend/controllers/admin/user-dashboard.php";
 </head>
 
 <body>
-    <div id="header">
-        <?php require "../../includes/header-admin.php"; ?>
-    </div>
+    <!-- header -->
+    <?php require "../../includes/header-admin.php"; ?>
 
     <div class="body-box">
         <div class="card-holder">
@@ -66,9 +69,30 @@ require "../../../backend/controllers/admin/user-dashboard.php";
             </div>
 
             <div class="chart">
-                <h3>Highest Rated Cafes</h3>
-                <canvas id="barGraph1"></canvas>
-            </div>
+            <h3>Cafe Rankings</h3>
+            <table id="rankedCafesTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Cafe</th>
+                        <th>Avg Rating</th>
+                        <th>Reviews</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($rankedCafes as $i => $cafe) : ?>
+                    <tr>
+                        <td><?= $i + 1 ?></td>
+                        <td><?= htmlspecialchars($cafe["cafe_name"]) ?></td>
+                        <td><?= htmlspecialchars($cafe["average_rating"]) ?></td>
+                        <td><?= htmlspecialchars($cafe["review_count"]) ?></td>
+                        <td><?= htmlspecialchars($cafe["weighted_rating"]) ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
 
             <div class="chart">
                 <h3>Most Bookmarked Cafes</h3>
