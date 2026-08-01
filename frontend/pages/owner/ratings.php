@@ -1,5 +1,20 @@
 <?php
-    require_once "../../../backend/controllers/owner/ratingsController.php";
+    require '../../../backend/config/connection.php';   
+    require_once __DIR__ . "/../../../backend/controllers/user/reviewController.php";
+
+    $controller = new reviewController($conn);
+
+    $current_user_id = $_SESSION['user_id'] ?? 2;
+    $cafe_id = 1; // change to SESSION
+
+    $selected_star = $_GET['stars'] ?? '';
+    $selected_sort = $_GET['sort']  ?? ($_GET['sort_by'] ?? '');
+
+    $ratingsData = $controller->getCafeRatingsData($cafe_id, $selected_star, $selected_sort);
+
+    $cafe_name      = $ratingsData['cafe_name'];
+    $report_codes   = $ratingsData['report_codes'];
+    $reviews_result = $ratingsData['reviews_result'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -21,6 +21,47 @@ class reviewController {
     public function getUserReviews($customer_id) {
         return $this->model->getUserReviews($this->conn, $customer_id);
     }
+
+    public function getCafeRatingsData($cafe_id, $selected_star = '', $selected_sort = '') {
+        return [
+            'cafe_name'      => $this->model->getCafeName($this->conn, $cafe_id),
+            'report_codes'   => $this->model->getReportCodes($this->conn),
+            'reviews_result' => $this->model->getReviews($this->conn, $cafe_id, $selected_star, $selected_sort)
+        ];
+    }
+
+    /** Processes report submission */
+    public function submitReport($reporter_id, $review_id, $report_code) {
+        if ($review_id <= 0 || $reporter_id <= 0 || $report_code <= 0) {
+            return false;
+        }
+
+        $review_data = $this->model->getReviewLookup($this->conn, $review_id);
+        if (!$review_data) {
+            return false;
+        }
+
+        $reported_user_id = $review_data['customer_id'];
+        $reported_cafe_id = $review_data['cafe_id'];
+
+        return $this->model->createReport(
+            $this->conn,
+            $reporter_id,
+            $reported_user_id,
+            $reported_cafe_id,
+            $review_id,
+            $report_code
+        );
+    }
+
+    /** Processes owner reply submission */
+    public function submitReply($review_id, $reply) {
+        if ($review_id <= 0 || empty($reply)) {
+            return false;
+        }
+
+        return $this->model->saveOwnerReply($this->conn, $review_id, $reply);
+    }
 }
 
 // handle POST actions — these still redirect
@@ -66,6 +107,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $model->editReview($conn, $review_id, $customer_id, $rating, $comment);
         header('Location: /CCDEVAP-S16-4-CafeAnoTara/frontend/pages/user/postedReviews.php');
         exit;
+    }
+
+    if (isset($_POST['submit_report']) || isset($_POST['report_code'])) {
+        $review_id   = isset($_POST['review_id']) ? intval($_POST['review_id']) : 0;
+        $reporter_id = isset($_POST['reporter_id']) ? intval($_POST['reporter_id']) : 0;
+        $report_code = isset($_POST['report_code']) ? intval($_POST['report_code']) : 0;
+
+        $success = $controller->submitReport($reporter_id, $review_id, $report_code);
+
+        $status = $success ? 'success' : 'error';
+        header("Location: ../../../frontend/pages/owner/ratings.php?report=" . $status);
+        exit();
+    }
+
+    // handles owner reply submissions
+    if (isset($_POST['owner_reply'])) {
+        $review_id   = intval($_POST['review_id']);
+        $owner_reply = trim($_POST['owner_reply']);
+
+        $controller->submitReply($review_id, $owner_reply);
+
+        $redirectUrl = $_SERVER['HTTP_REFERER'] ?? '../../../frontend/pages/owner/ratings.php';
+        header("Location: " . $redirectUrl);
+        exit();
     }
 }
 ?>
