@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<!-- header -->
+
 <?php require "../../includes/header-user.php"; ?>
 
     <div class="account-settings">

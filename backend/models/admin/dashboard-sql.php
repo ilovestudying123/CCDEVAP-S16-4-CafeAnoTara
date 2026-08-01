@@ -36,18 +36,19 @@ class UserDashboard
 
     //Chart getters
     public function getUsersPerMonth() {
-        $stmt = $this->conn->prepare("
-            SELECT
-                MONTHNAME(created_on) AS month,
-                MONTH(created_on) AS month_num,
-                role,
-                COUNT(*) AS total
-            FROM Users
-            GROUP BY MONTH(created_on), MONTHNAME(created_on), role
-            ORDER BY month_num");
+    $stmt = $this->conn->prepare("
+        SELECT
+            DATE_FORMAT(created_on, '%Y-%m') AS month_key,
+            MONTHNAME(created_on) AS month,
+            YEAR(created_on) AS year,
+            role,
+            COUNT(*) AS total
+        FROM Users
+        GROUP BY DATE_FORMAT(created_on, '%Y-%m'), MONTHNAME(created_on), YEAR(created_on), role
+        ORDER BY month_key");
 
-        $stmt->execute();
-        return $stmt->get_result();
+    $stmt->execute();
+    return $stmt->get_result();
     }
 
     public function getUserPerRole() {

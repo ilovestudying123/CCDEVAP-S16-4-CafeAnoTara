@@ -47,14 +47,39 @@ $isBookmarked = $bookmarkCtrl->isBookmarked($customer_id, $cafe_id);
                     <p><?php echo htmlspecialchars($cafe['location']); ?></p>
                 </div>
                 <div class="cafe-bookmark">
-                    <form method="POST"
-                          action="../../../backend/controllers/user/bookmarkController.php?action=<?php echo $isBookmarked ? 'remove' : 'add'; ?>"
-                          onsubmit="return confirm('<?php echo $isBookmarked ? 'Remove bookmark?' : 'Bookmark this cafe?'; ?>');">
-                        <input type="hidden" name="cafe_id" value="<?php echo $cafe['cafe_id']; ?>">
-                        <button id="bookmark-button" type="submit">
-                            <i class="fa-<?php echo $isBookmarked ? 'solid' : 'regular'; ?> fa-bookmark fa-2x"></i>
-                        </button>
-                    </form>
+                    <button type="button" id="bookmark-button"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#bookmarkModal">
+                        <i class="fa-<?php echo $isBookmarked ? 'solid' : 'regular'; ?> fa-bookmark fa-2x"></i>
+                    </button>
+                </div>
+
+                <div class="modal fade" id="bookmarkModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">
+                                    <?php echo $isBookmarked ? 'Remove Bookmark' : 'Add Bookmark'; ?>
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <?php echo $isBookmarked 
+                                    ? 'Are you sure you want to remove this cafe from your bookmarks?' 
+                                    : 'Are you sure you want to bookmark this cafe?'; ?>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <form method="POST"
+                                    action="../../../backend/controllers/user/bookmarkController.php?action=<?php echo $isBookmarked ? 'remove' : 'add'; ?>">
+                                    <input type="hidden" name="cafe_id" value="<?php echo $cafe['cafe_id']; ?>">
+                                    <button type="submit" class="btn <?php echo $isBookmarked ? 'btn-danger' : 'btn-primary'; ?>">
+                                        <?php echo $isBookmarked ? 'Remove' : 'Bookmark'; ?>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

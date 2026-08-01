@@ -7,72 +7,110 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Login</title>
+
     <link rel="stylesheet" href="../../resources/css/login.css">
-    <script src="../../resources/js/login.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="../../resources/js/login.js" defer></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
+
 <?php
-if (isset($_SESSION['error'])) {
+if(isset($_SESSION['error'])){
     echo "<script>alert('" . addslashes($_SESSION['error']) . "');</script>";
     unset($_SESSION['error']);
 }
 ?>
-<div class="whole">
-    <div class="header">
-    <h1 class="title">Cafe Tayo, Ano Tara?</h1>
-    </div>
 
-    
-    <div class="content">
-        <section class="trending">
-            <h3 class="trend">Trending Cafes:</h3>
+<div class="container">
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+        <!-- bg image -->
+        <img src="../../resources/imgs/login.jpg" alt="Cafe">
 
+        <div class="image-overlay"></div>
+
+        <div class="trending-overlay">
+            <h2>Trending Cafés</h2>
+        
             <div class="photo-row">
                 <div class="photo-group">
-                    <img src="../../resources/imgs/yardstick.jpg" alt="Top 1" width="100" height="100"/>
-                    <h5>Yardstick Coffee</h5>
+                    <img src="../../resources/imgs/yardstick.jpg" alt="">
+                    <div class="cafe-info">
+                        <h4>Yardstick Coffee</h4>
+                    </div>
                 </div>
-                <div class="photo-group">                    
-                    <img src="../../resources/imgs/starbucks.jpg" alt="Top 2" width="100" height="100"/>
-                    <h5>Starbucks</h5>
-                </div>    
-                <div class="photo-group">   
-                    <img src="../../resources/imgs/cbtl.jpg" alt="Top 3" width="100" height="150"/>
-                    <h5>Coffee Bean & Tea Leaf</h5>
+
+                <div class="photo-group">
+                    <img src="../../resources/imgs/starbucks.jpg" alt="">
+                    <div class="cafe-info">
+                        <h4>Starbucks</h4>
+                    </div>
+                </div>
+
+                <div class="photo-group">
+                    <img src="../../resources/imgs/cbtl.jpg" alt="">
+                    <div class="cafe-info">
+                        <h4>Coffee Bean & Tea Leaf</h4>
+                    </div>
                 </div>
             </div>
-        
-        </section>
+        </div>
+    </div>
 
-        <aside class="logIn">    
-            <h4 class="loginCaption">Find your perfect study cafe!</h4>
-            <form action="../../../backend/controllers/authentication/loginController.php" id="loginCntrlr" method="POST" onsubmit="return validateForm()"> 
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" required>
-                <label for="password">Password</label>
+    <!-- RIGHT PANEL -->
+
+    <div class="right-panel">
+
+        <div class="header">
+            <h1 class="title">Cafe Tayo, Ano Tara?</h1>
+
+            <p class="subtitle">
+                Discover the perfect study café near you.
+            </p>
+
+        </div>
+
+        <aside class="login-card">
+
+            <h2>Welcome Back!</h2>
+
+            <form
+                action="../../../backend/controllers/authentication/loginController.php"
+                method="POST"
+                id="loginCntrlr"
+                onsubmit="return validateForm()">
+
+                <label>Email</label>
+
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
+
+                <label>Password</label>
 
                 <div class="password-container">
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password"  name="password" placeholder="Enter your password" required>
 
                     <button type="button" class="toggle-password" onclick="togglePassword()">
                         <i class="fa-solid fa-eye"></i>
                     </button>
-
                 </div>
 
-                <div class="fPass">
-                <a href="forgotPassword.php">Forgot Password?</a>
+                <div class="forgot">
+                    <a href="forgotPassword.php">Forgot Password?</a>
                 </div>
-                <br><br>
 
                 <button type="submit" class="login-btn">Sign In</button>
-                <br>
-                    <p>Don't have an account? <a href="signUp.php">Sign up</a></p>
+
+                <p class="signup"> Don't have an account?
+                    <a href="signUp.php">Sign Up</a>
+                </p>
+
             </form>
-        </aside>  
-    </div> 
-</div>       
+        </aside>
+    </div>
+</div>
+
 </body>
 </html>

@@ -13,6 +13,7 @@ $bookmarks = $controller->getBookmarks($customer_id);
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/user-bookmark.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <div id="header"></div>
     <script src="../../resources/js/script-header-user.js"></script>
 </head>
@@ -27,18 +28,18 @@ $bookmarks = $controller->getBookmarks($customer_id);
             <p>You have no bookmarked cafes yet.</p>
         <?php else: ?>
             <?php foreach ($bookmarks as $bookmark): ?>
-                <div class="bookmark-card">
-                    <form method="POST"
-                          action="../../../backend/controllers/user/bookmarkController.php?action=remove"
-                          onsubmit="return confirm('Remove this bookmark?');">
-                        <input type="hidden" name="cafe_id" value="<?php echo $bookmark['cafe_id']; ?>">
-                        <button type="submit" class="remove-bookmark" id="bookmark-button">
-                            <i class="fa-solid fa-bookmark fa-3x"></i>
-                        </button>
-                    </form>
+            <div class="bookmark-card">
+                <!-- button triggers modal, passes cafe_id via data attribute -->
+                <button type="button" 
+                        class="remove-bookmark"
+                        data-bs-toggle="modal"
+                        data-bs-target="#removeModal"
+                        data-cafe-id="<?php echo $bookmark['cafe_id']; ?>">
+                    <i class="fa-solid fa-bookmark fa-3x"></i>
+                </button>
 
-                    <a href="cafeDetails.php?id=<?php echo $bookmark['cafe_id']; ?>"
-                       class="cafe-details">
+                <a href="cafeDetails.php?id=<?php echo $bookmark['cafe_id']; ?>"
+                    class="cafe-details">
                         <div class="cafe-text">
                             <p class="cafe-name">
                                 <?php echo htmlspecialchars($bookmark['cafe_name']); ?>
@@ -52,8 +53,42 @@ $bookmarks = $controller->getBookmarks($customer_id);
                     </a>
                 </div>
             <?php endforeach; ?>
+
+            <!-- modal -->
+            <div class="modal fade" id="removeModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Remove Bookmark</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to remove this bookmark?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <form method="POST" 
+                                action="../../../backend/controllers/user/bookmarkController.php?action=remove">
+                                <input type="hidden" name="cafe_id" id="modal-cafe-id" value="">
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <?php endif; ?>
     </div>
 </section>
+
+<!-- fill cafe id when modal opens -->
+<script>
+    const removeModal = document.getElementById('removeModal');
+    removeModal.addEventListener('show.bs.modal', event => {
+        const button = event.relatedTarget;
+        const cafeId = button.getAttribute('data-cafe-id');
+        document.getElementById('modal-cafe-id').value = cafeId;
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
