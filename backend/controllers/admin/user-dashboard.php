@@ -25,7 +25,7 @@ $pendingCafes = $dashboardModel->getPendingCafes();
    ============================================================ */
 
     // Retrieve all users grouped by month and role
-    $userResult = $dashboardModel->getUsersPerMonth();   // <-- this line must exist
+    $userResult = $dashboardModel->getUsersPerMonth();
 
     // Stores the names of the months
     $userMonths = [];
@@ -42,7 +42,7 @@ $pendingCafes = $dashboardModel->getPendingCafes();
 
         if (!in_array($row['month_key'], $monthKeys)) {
             $monthKeys[] = $row['month_key'];
-            $userMonths[] = $row['month'] . ' ' . $row['year']; // e.g. "August 2026"
+            $userMonths[] = $row['month'] . ' ' . $row['year'];
         }
 
         if (!isset($usersByRole[$row['role']])) {
@@ -60,8 +60,7 @@ $pendingCafes = $dashboardModel->getPendingCafes();
         }
     }
     unset($totals);
-
-
+    
 
 /* ============================================================
    PIE CHART - USERS PER ROLE
