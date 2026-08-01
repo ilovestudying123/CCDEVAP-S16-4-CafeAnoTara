@@ -22,157 +22,171 @@ if (isset($_SESSION['error'])) {
 }
 ?>
 
-<div class="header">
-    <h1 class="title">Cafe Tayo, Ano Tara?</h1>
-</div>
+<div class="container">
 
-<div class="content">
+    <div class="left-panel">
+        <img src="../../resources/imgs/login.jpg" alt="Background Image">
+        <div class="image-overlay"></div>
 
-    <section class="trending">
-        <h3 class="trend">Trending Cafes:</h3>
+        <div class="trending-overlay">
+            <h2>Trending Cafés</h2>
 
-        <div class="photo-row">
-            <div class="photo-group">
-                <img src="../../resources/imgs/yardstick.jpg" alt="Top 1" width="100" height="100">
-                <h5>Yardstick Coffee</h5>
-            </div>
+            <div class="photo-row">
+                <div class="photo-group">
+                    <img src="../../resources/imgs/yardstick.jpg" alt="Top 1">
+                    <div class="cafe-info">
+                        <h4>Yardstick Coffee</h4>
+                    </div>
+                </div>
 
-            <div class="photo-group">
-                <img src="../../resources/imgs/starbucks.jpg" alt="Top 2" width="100" height="100">
-                <h5>Starbucks</h5>
-            </div>
+                <div class="photo-group">
+                    <img src="../../resources/imgs/starbucks.jpg" alt="Top 2">
+                    <div class="cafe-info">
+                        <h4>Starbucks</h4>
+                    </div>
+                </div>
 
-            <div class="photo-group">
-                <img src="../../resources/imgs/cbtl.jpg" alt="Top 3" width="100" height="150">
-                <h5>Coffee Bean & Tea Leaf</h5>
+                <div class="photo-group">
+                    <img src="../../resources/imgs/cbtl.jpg" alt="Top 3">
+                    <div class="cafe-info">
+                        <h4>Coffee Bean & Tea Leaf</h4>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <aside class="signUp">
+    <div class="right-panel">
 
-        <h4 class="signUpCaption">Become a member today!</h4>
+        <div class="header">
+            <h1 class="title">Cafe Tayo, Ano Tara?</h1>
+            <p class="subtitle">Become a member today!</p>
+        </div>
 
-        <form action="../../../backend/controllers/authentication/signUpController.php"
-              method="POST"
-              id="signUpForm">
+        <div class="signUp">
 
-            <label for="username">Username</label>
-            <input type="text"
-                   id="username"
-                   name="username"
-                   required>
+            <form action="../../../backend/controllers/authentication/signUpController.php"
+                  method="POST"
+                  id="signUpForm">
 
-            <label for="email">Email</label>
-            <input type="email"
-                   id="email"
-                   name="email"
-                   required>
+                <label for="username">Username</label>
+                <input type="text"
+                       id="username"
+                       name="username"
+                       required>
 
-            <div class="name-row">
+                <label for="email">Email</label>
+                <input type="email"
+                       id="email"
+                       name="email"
+                       required>
 
-                <div>
-                    <label for="firstName">First Name</label>
-                    <input type="text"
-                           id="firstName"
-                           name="firstName"
-                           required>
-                </div>
+                <div class="name-row">
 
-                <div>
-                    <label for="lastName">Last Name</label>
-                    <input type="text"
-                           id="lastName"
-                           name="lastName"
-                           required>
-                </div>
-
-            </div>
-
-            <div class="password-row">
-
-                <div>
-                    <label for="password">Password</label>
-
-                    <div class="password-container">
-
-                        <input type="password"
-                               id="password"
-                               name="password"
+                    <div>
+                        <label for="firstName">First Name</label>
+                        <input type="text"
+                               id="firstName"
+                               name="firstName"
                                required>
-
-                        <button type="button"
-                                class="toggle-password"
-                                onclick="togglePassword()">
-                            <i class="fa-solid fa-eye"></i>
-                        </button>
-
                     </div>
-                </div>
 
-                <div>
-
-                    <label for="confirmPassword">Confirm Password</label>
-
-                    <div class="password-container">
-
-                        <input type="password"
-                               id="confirmPassword"
-                               name="confirmPassword"
+                    <div>
+                        <label for="lastName">Last Name</label>
+                        <input type="text"
+                               id="lastName"
+                               name="lastName"
                                required>
-
-                        <button type="button"
-                                class="toggle-passwordconf"
-                                onclick="togglePasswordconf()">
-                            <i class="fa-solid fa-eye"></i>
-                        </button>
-
                     </div>
 
                 </div>
 
-            </div>
+                <div class="password-row">
 
-            <div class="user-type">
+                    <div>
+                        <label for="password">Password</label>
 
-                <label>User Type</label>
+                        <div class="password-container">
 
-                <div class="radio-row">
+                            <input type="password"
+                                   id="password"
+                                   name="password"
+                                   required>
 
-                    <div class="radio-group">
-                        <input type="radio"
-                               id="ownerType"
-                               name="userType"
-                               value="owner"
-                               required>
-                        <label for="ownerType">Owner</label>
+                            <button type="button"
+                                    class="toggle-password"
+                                    onclick="togglePassword()">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+
+                        </div>
                     </div>
 
-                    <div class="radio-group">
-                        <input type="radio"
-                               id="customerType"
-                               name="userType"
-                               value="customer"
-                               required>
-                        <label for="customerType">Customer</label>
+                    <div>
+
+                        <label for="confirmPassword">Confirm Password</label>
+
+                        <div class="password-container">
+
+                            <input type="password"
+                                   id="confirmPassword"
+                                   name="confirmPassword"
+                                   required>
+
+                            <button type="button"
+                                    class="toggle-passwordconf"
+                                    onclick="togglePasswordconf()">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
+                <div class="user-type">
 
-            <button type="submit" class="create-btn">
-                Create Account
-            </button>
+                    <label>User Type</label>
 
-            <p>
-                Already have an account?
-                <a href="index.php">Sign In</a>
-            </p>
+                    <div class="radio-row">
 
-        </form>
+                        <div class="radio-group">
+                            <input type="radio"
+                                   id="ownerType"
+                                   name="userType"
+                                   value="owner"
+                                   required>
+                            <label for="ownerType">Owner</label>
+                        </div>
 
-    </aside>
+                        <div class="radio-group">
+                            <input type="radio"
+                                   id="customerType"
+                                   name="userType"
+                                   value="customer"
+                                   required>
+                            <label for="customerType">Customer</label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="create-btn">
+                    Create Account
+                </button>
+
+                <p class="signup">
+                    Already have an account?
+                    <a href="index.php">Sign In</a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </div>
 
