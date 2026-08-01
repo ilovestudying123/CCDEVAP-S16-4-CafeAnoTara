@@ -10,9 +10,9 @@
     font-weight: normal;
 }
 
-nav, nav a{
+nav a{
     text-decoration: none;
-    font-size: 140%;
+    font-size: 160%;
     color: #fffabc;
     margin-top: 15px;
 }
