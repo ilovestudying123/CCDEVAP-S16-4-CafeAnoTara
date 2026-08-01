@@ -69,8 +69,7 @@ class UserDashboard
         LEFT JOIN Reviews r
         ON c.cafe_id = r.cafe_id
         GROUP BY c.cafe_id, c.cafe_name 
-        ORDER BY average_rating DESC
-        LIMIT 10");
+        ORDER BY average_rating DESC");
 
         $stmt->execute();
         return $stmt->get_result();

@@ -13,10 +13,11 @@ $bookmarks = $controller->getBookmarks($customer_id);
     <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-bookmark.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <div id="header"></div>
-    <script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/script-header-user.js"></script>
 </head>
 <body>
+<!-- header -->
+<?php require "../../includes/header-user.php"; ?>
+
 <section>
     <div class="bookmark-header">
         <h1>Your Bookmarked Cafes</h1>

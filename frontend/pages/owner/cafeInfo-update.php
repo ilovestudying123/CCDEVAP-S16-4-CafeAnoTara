@@ -10,11 +10,13 @@ require_once "../../../backend/controllers/owner/cafeInfoController.php";
     <link rel="stylesheet" href="../../resources/css/cafeInfo-update.css?v=4">
     <title>Update Cafe Info</title>
 
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-owner.js"></script>
 </head>
 
 <body>
+
+    <!-- header -->
+    <?php require "../../includes/header-owner.php"; ?>
+
     <form action="../../../backend/controllers/owner/cafeInfoController.php" method="POST">
         <div class="body-box">
             <h1 class="cafe-name"><?php echo htmlspecialchars($row['cafe_name']);?></h1>

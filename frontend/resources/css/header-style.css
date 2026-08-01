@@ -28,6 +28,13 @@ nav a:hover {
     box-sizing: border-box;
     font-family: 'Montagu Slab';
     text-align: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: block;
+    width: 100%;
 }
 
 .name{

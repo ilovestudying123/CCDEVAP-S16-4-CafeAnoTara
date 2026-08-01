@@ -12,8 +12,9 @@
 </head>
 
 <body>
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-owner.js"></script>
+    <!-- header -->
+    <?php require "../../includes/header-owner.php"; ?>
+    
     <script src="../../resources/js/owner-ratings.js" defer></script>
 
     <div class="body-box">

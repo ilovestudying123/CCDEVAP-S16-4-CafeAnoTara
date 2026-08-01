@@ -9,6 +9,7 @@ $categories = $categoriesController->getCategories();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Report Categories</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,9 +18,8 @@ $categories = $categoriesController->getCategories();
 </head>
 
 <body>
-    <div id="header">
-        <?php require "../../includes/header-admin.php"; ?>
-    </div>
+    <!-- header -->
+    <?php require "../../includes/header-admin.php"; ?>
 
     <div class="body-box">
         <div class="search-section">

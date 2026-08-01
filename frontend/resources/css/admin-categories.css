@@ -10,8 +10,9 @@
 .body-box {
     width: 100%;
     max-width: 1500px;
-    padding: 2%;
     margin: 0 auto;
+    padding: 2%;
+    box-sizing: border-box;
 }
 
 .search-section {
@@ -94,6 +95,14 @@
 .action-btn img {
     width: 24px;
     cursor: pointer;
+}
+
+.hidden-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
 }
 
 /* modal */

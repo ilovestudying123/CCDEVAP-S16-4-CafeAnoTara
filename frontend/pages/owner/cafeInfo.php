@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-owner.js"></script>
+    <!-- header -->
+    <?php require "../../includes/header-owner.php"; ?>
 
     <div class="body-box">
         <h1 class="cafe-name"><?php echo htmlspecialchars($row['cafe_name']);?></h1>

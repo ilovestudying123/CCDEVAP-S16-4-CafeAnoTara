@@ -11,13 +11,12 @@ session_start();
 
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/editAccountDetails.css">
-
-    <script src="../../resources/js/script-header-user.js"></script>
 </head>
 
 <body>
 
-<div id="header"></div>
+<!-- header -->
+    <?php require "../../includes/header-user.php"; ?>
 
 <div class="editDetails">
 

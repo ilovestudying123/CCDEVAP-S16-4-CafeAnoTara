@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="../../resources/css/owner-dashboard.css?v=2">
     <?php require "../../../backend/models/owner/dashboard-sql.php"; ?>
     <title>Owner Dashboard</title>
-
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-owner.js"></script>
 </head>
 
 <body>
+
+    <!-- header -->
+    <?php require "../../includes/header-owner.php"; ?>
+
     <div class="body-box">
         
         <div class="info-box">
