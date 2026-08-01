@@ -37,6 +37,11 @@
                     </div>
                 <?php endforeach; ?>
             </div>
+
+            <!-- Arrow to show swipeability -->
+            <div class="swipe">
+                <img src="../../resources/imgs/arrow-btn.png"> 
+            </div>
         </div>
 
         <div class="box pad rating-box">
