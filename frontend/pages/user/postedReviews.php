@@ -10,16 +10,14 @@ $reviews = $controller->getUserReviews($customer_id);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
-    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-reviews.css">
+    <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
+    <link rel="stylesheet" href="../../resources/css/user-reviews.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <div id="header"></div>
+    <script src="../../resources/js/script-header-user.js"></script>
 </head>
-
 <body>
-<!-- header -->
-    <?php require "../../includes/header-user.php"; ?>
-
 <section>
     <div class="reviews-header">
         <h1>My Reviews</h1>
@@ -34,7 +32,7 @@ $reviews = $controller->getUserReviews($customer_id);
             <?php foreach ($reviews as $review): ?>
                 <div class="review-box">
                     <div class="review-image">
-                        <img src="<?php echo htmlspecialchars($review['main_image'] ?? '/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/cafe.jpg'); ?>">
+                        <img src="<?php echo htmlspecialchars($review['main_image'] ?? '../../resources/imgs/cafe.jpg'); ?>">
                     </div>
                     <div class="review-text">
                         <p id="cafe-name"><?php echo htmlspecialchars($review['cafe_name']); ?></p>
@@ -73,7 +71,7 @@ $reviews = $controller->getUserReviews($customer_id);
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form method="POST"
-                              action="/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/reviewController.php?action=update">
+                              action="../../../backend/controllers/user/reviewController.php?action=update">
                             <input type="hidden" name="review_id" id="edit-review-id">
                             <div class="modal-header">
                                 <h5>Edit Review</h5>
@@ -98,7 +96,7 @@ $reviews = $controller->getUserReviews($customer_id);
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form method="POST"
-                              action="/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/reviewController.php?action=delete">
+                              action="../../../backend/controllers/user/reviewController.php?action=delete">
                             <input type="hidden" name="review_id" id="delete-review-id">
                             <div class="modal-body">Delete this review?</div>
                             <div class="modal-footer">
@@ -113,7 +111,7 @@ $reviews = $controller->getUserReviews($customer_id);
     </div>
 </section>
 
-<script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/user-review.js"></script>
+<script src="../../resources/js/user-review.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

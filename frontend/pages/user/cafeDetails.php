@@ -6,7 +6,7 @@ $cafeCtrl = new cafeController($conn);
 $cafe_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($cafe_id === 0) {
-    header('Location: /CCDEVAP-S16-4-CafeAnoTara/frontend/pages/user/dashboard.php');
+    header('Location: dashboard.php');
     exit;
 }
 
@@ -29,15 +29,14 @@ $isBookmarked = $bookmarkCtrl->isBookmarked($customer_id, $cafe_id);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
-    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-cafeDetails.css">
+    <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
+    <link rel="stylesheet" href="../../resources/css/user-cafeDetails.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <div id="header"></div>
+    <script src="../../resources/js/script-header-user.js"></script>
 </head>
-
 <body>
-<!-- header -->
-    <?php require "../../includes/header-user.php"; ?>
 
 <section class="firstPart">
     <section class="cafe-section">
@@ -49,7 +48,7 @@ $isBookmarked = $bookmarkCtrl->isBookmarked($customer_id, $cafe_id);
                 </div>
                 <div class="cafe-bookmark">
                     <form method="POST"
-                          action="/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/bookmarkController.php?action=<?php echo $isBookmarked ? 'remove' : 'add'; ?>"
+                          action="../../../backend/controllers/user/bookmarkController.php?action=<?php echo $isBookmarked ? 'remove' : 'add'; ?>"
                           onsubmit="return confirm('<?php echo $isBookmarked ? 'Remove bookmark?' : 'Bookmark this cafe?'; ?>');">
                         <input type="hidden" name="cafe_id" value="<?php echo $cafe['cafe_id']; ?>">
                         <button id="bookmark-button" type="submit">
@@ -59,20 +58,19 @@ $isBookmarked = $bookmarkCtrl->isBookmarked($customer_id, $cafe_id);
                 </div>
             </div>
 
-            
-            <!-- carousel -->
+            <!-- Carousel -->
             <div id="cafeCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <?php if (empty($images)): ?>
                         <div class="carousel-item active">
-                            <img src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/cafe.jpg"
+                            <img src="../../resources/imgs/cafe.jpg"
                                  class="carousel-img" alt="Cafe">
                         </div>
                     <?php else: ?>
                         <?php foreach ($images as $index => $img): ?>
                             <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="<?php echo htmlspecialchars($img['photo_url']); ?>" 
-                                    class="carousel-img" alt="Cafe Image">
+                                <img src="<?php echo htmlspecialchars($img['photo_url']); ?>"
+                                     class="carousel-img" alt="Cafe Image">
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -117,7 +115,7 @@ $isBookmarked = $bookmarkCtrl->isBookmarked($customer_id, $cafe_id);
             <?php endif; ?>
 
             <form method="POST"
-                  action="/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/reviewController.php?action=add">
+                  action="../../../backend/controllers/user/reviewController.php?action=add">
                 <input type="hidden" name="cafe_id" value="<?php echo $cafe['cafe_id']; ?>">
                 <input type="hidden" name="rating" id="rating-value" value="0">
                 <textarea name="comment" placeholder="Add a Review"></textarea>
@@ -138,7 +136,7 @@ $isBookmarked = $bookmarkCtrl->isBookmarked($customer_id, $cafe_id);
             <h3>Ratings & Review</h3>
             <div class="star-buttons">
                 <p>
-                    <img id="star-big" src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/imgs/star-shaded.png">
+                    <img id="star-big" src="../../resources/imgs/star-shaded.png">
                     <span><?php echo $cafe['average_rating']
                         ? number_format($cafe['average_rating'], 1) . '/5'
                         : 'No ratings yet'; ?></span>
@@ -170,6 +168,6 @@ $isBookmarked = $bookmarkCtrl->isBookmarked($customer_id, $cafe_id);
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/js/cafe-details.js"></script>
+<script src="../../resources/js/cafe-details.js"></script>
 </body>
 </html>

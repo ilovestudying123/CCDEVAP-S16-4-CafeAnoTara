@@ -10,14 +10,13 @@ $bookmarks = $controller->getBookmarks($customer_id);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/header-style.css?v=2">
-    <link rel="stylesheet" href="/CCDEVAP-S16-4-CafeAnoTara/frontend/resources/css/user-bookmark.css">
+    <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
+    <link rel="stylesheet" href="../../resources/css/user-bookmark.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <div id="header"></div>
+    <script src="../../resources/js/script-header-user.js"></script>
 </head>
 <body>
-<!-- header -->
-<?php require "../../includes/header-user.php"; ?>
-
 <section>
     <div class="bookmark-header">
         <h1>Your Bookmarked Cafes</h1>
@@ -30,7 +29,7 @@ $bookmarks = $controller->getBookmarks($customer_id);
             <?php foreach ($bookmarks as $bookmark): ?>
                 <div class="bookmark-card">
                     <form method="POST"
-                          action="/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/bookmarkController.php?action=remove"
+                          action="../../../backend/controllers/user/bookmarkController.php?action=remove"
                           onsubmit="return confirm('Remove this bookmark?');">
                         <input type="hidden" name="cafe_id" value="<?php echo $bookmark['cafe_id']; ?>">
                         <button type="submit" class="remove-bookmark" id="bookmark-button">
@@ -38,7 +37,7 @@ $bookmarks = $controller->getBookmarks($customer_id);
                         </button>
                     </form>
 
-                    <a href="/CCDEVAP-S16-4-CafeAnoTara/frontend/pages/user/cafeDetails.php?id=<?php echo $bookmark['cafe_id']; ?>"
+                    <a href="cafeDetails.php?id=<?php echo $bookmark['cafe_id']; ?>"
                        class="cafe-details">
                         <div class="cafe-text">
                             <p class="cafe-name">
