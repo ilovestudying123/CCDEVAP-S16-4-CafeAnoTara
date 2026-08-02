@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `bookmarks`
 --
+CREATE DATABASE IF NOT EXISTS CafeAnoTara;
+USE CafeAnoTara;
 
 CREATE TABLE `bookmarks` (
   `bookmark_id` int(11) NOT NULL,
