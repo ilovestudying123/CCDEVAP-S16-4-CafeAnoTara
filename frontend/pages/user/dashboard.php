@@ -60,4 +60,5 @@ $cafes = $controller->getTopCafes();
     </section>
 </div>
 </body>
+
 </html>
