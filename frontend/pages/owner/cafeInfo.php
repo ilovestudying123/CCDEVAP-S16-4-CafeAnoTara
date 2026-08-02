@@ -18,10 +18,10 @@
         }
     }
 
-    $cover_img = isset($db_photos[0]) ? $db_photos[0] : 'default-cover.jpg';
-    $thumb_1   = isset($db_photos[1]) ? $db_photos[1] : 'default-thumb.jpg';
-    $thumb_2   = isset($db_photos[2]) ? $db_photos[2] : 'default-thumb.jpg';
-    $thumb_3   = isset($db_photos[3]) ? $db_photos[3] : 'default-thumb.jpg';
+    $cover_img = isset($db_photos[0]) ? $db_photos[0] : '../../resources/imgs/default.png';
+    $thumb_1   = isset($db_photos[1]) ? $db_photos[1] : '../../resources/imgs/default.png';
+    $thumb_2   = isset($db_photos[2]) ? $db_photos[2] : '../../resources/imgs/default.png';
+    $thumb_3   = isset($db_photos[3]) ? $db_photos[3] : '../../resources/imgs/default.png';
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +47,7 @@
             <section class="info-box">
                 <div class="pic-column">
                     <div class="cafe-pic">
-                        <img src="<?php echo htmlspecialchars($cover_img); ?>" alt="Main Cafe Image">
+                        <img src="<?php echo htmlspecialchars($cover_img); ?>">
                     </div>
                 </div>
 
@@ -72,9 +72,9 @@
                     </div>
 
                     <div class="thumbnails-row">
-                        <img src="<?php echo htmlspecialchars($thumb_1); ?>" alt="Thumb 1" class="thumb">
-                        <img src="<?php echo htmlspecialchars($thumb_2); ?>" alt="Thumb 2" class="thumb">
-                        <img src="<?php echo htmlspecialchars($thumb_3); ?>" alt="Thumb 3" class="thumb">
+                        <img src="<?php echo htmlspecialchars($thumb_1); ?>" class="thumb">
+                        <img src="<?php echo htmlspecialchars($thumb_2); ?>" class="thumb">
+                        <img src="<?php echo htmlspecialchars($thumb_3); ?>" class="thumb">
                     </div>
                 </div>
             </section>

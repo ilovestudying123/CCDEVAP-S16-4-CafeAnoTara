@@ -266,29 +266,29 @@ $owners = $cafeController->getOwners();
                 <div class="row">
                     <div class="field">
                         <label>Image URL 1</label>
-                        <input type="url" name="cafe_images[]" placeholder="Image Link">
+                        <input type="url" name="cafe_images[]" placeholder="Image Link" required>
                     </div>
 
                     <div class="field">
                         <label>Image URL 2</label>
-                        <input type="url" name="cafe_images[]" placeholder="Image Link">
+                        <input type="url" name="cafe_images[]" placeholder="Image Link" required>
                     </div>
                 </div><br>
 
                 <div class="row">
                     <div class="field">
                         <label>Image URL 3</label>
-                        <input type="url" name="cafe_images[]" placeholder="Image Link">
+                        <input type="url" name="cafe_images[]" placeholder="Image Link" required>
                     </div>
 
                     <div class="field">
                         <label>Image URL 4</label>
-                        <input type="url" name="cafe_images[]" placeholder="Image Link">
+                        <input type="url" name="cafe_images[]" placeholder="Image Link" required>
                     </div>
 
                     <div class="field">
                         <label>Image URL 5</label>
-                        <input type="url" name="cafe_images[]" placeholder="Image Link">    
+                        <input type="url" name="cafe_images[]" placeholder="Image Link" required>    
                     </div>
                 </div>
 
