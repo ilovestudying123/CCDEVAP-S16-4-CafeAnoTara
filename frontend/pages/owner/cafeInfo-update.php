@@ -1,5 +1,21 @@
 <?php
-require_once "../../../backend/controllers/owner/cafeInfoController.php";
+    require '../../../backend/config/connection.php';
+    require_once __DIR__ . "/../../../backend/controllers/user/cafeController.php";
+
+    $controller = new cafeController($conn);
+
+    $user_ID = $_SESSION['user_id'] ?? 2; // CAHNGE INTO SESSIONS
+
+    $row = $controller->getCafeByOwnerId($user_ID);
+    if (!$row) {
+        die("Cafe not found.");
+    }
+    $cafe_id = $row['cafe_id'];
+
+    $all_photos = $controller->getCafePhotos($cafe_id);
+    $has_existing_cover = !empty($all_photos);
+    $cover_photo = $has_existing_cover ? $all_photos[0]['photo_url'] : "../../resources/imgs/cafe.jpg";
+    $extra_photos = array_slice($all_photos, 1, 4);
 ?>
 <!DOCTYPE html>
 <html lang="en">

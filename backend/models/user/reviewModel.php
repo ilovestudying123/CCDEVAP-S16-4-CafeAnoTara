@@ -150,21 +150,24 @@ class reviewModel {
             }
         }
 
-        $sql = "SELECT 
+        $sql = "SELECT
                     r.review_id,
                     r.rating,
                     r.comment,
                     r.owner_reply,
                     u.firstname,
-                    u.lastname
-                FROM 
-                    Reviews r
-                INNER JOIN 
-                    Users u ON r.customer_id = u.user_id
-                WHERE 
-                    r.cafe_id = ? 
+                    u.lastname,
+                    rp.report_id,
+                    rp.status
+                FROM Reviews r
+                INNER JOIN Users u
+                    ON r.customer_id = u.user_id
+                LEFT JOIN Reports rp
+                    ON r.review_id = rp.reported_review_id
+                WHERE
+                    r.cafe_id = ?
                     $filter_condition
-                ORDER BY 
+                ORDER BY
                     $sort_order";
 
         $stmt = $conn->prepare($sql);
@@ -172,6 +175,8 @@ class reviewModel {
         $stmt->execute();
         return $stmt->get_result();
     }
+
+    
 
     // ================= ADMIN REVIEW REPORT FUNCTIONS =================
 

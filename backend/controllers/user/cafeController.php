@@ -90,6 +90,36 @@ class cafeController {
             $cafe_id
         );
     }
+
+    public function getCafeByOwnerId($owner_id) {
+        return $this->model->getCafeByOwnerId(
+            $this->conn, $owner_id
+        );
+    }
+
+    public function getCafePhotos($cafe_id) {
+        return $this->model->getCafePhotos(
+            $this->conn, $cafe_id
+        );
+    }
+
+    public function updateCafeDetails($cafe_id, $wifi, $outlet, $open, $close, $price) {
+        return $this->model->updateCafeDetails(
+            $this->conn, $cafe_id, $wifi, $outlet, $open, $close, $price
+        );
+    }
+
+    public function updatePhoto($photo_id, $url) {
+        return $this->model->updatePhoto(
+            $this->conn, $photo_id, $url
+        );
+    }
+
+    public function addPhoto($cafe_id, $url) {
+        return $this->model->addPhoto(
+            $this->conn, $cafe_id, $url
+        );
+    }
 }
 
 if (basename($_SERVER["SCRIPT_FILENAME"]) === basename(__FILE__)) {

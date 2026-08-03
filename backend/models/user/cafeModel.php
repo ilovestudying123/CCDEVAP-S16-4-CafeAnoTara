@@ -287,5 +287,50 @@ public function rejectCafe($conn, $cafe_id)
     return mysqli_stmt_execute($stmt);
 }   
 
+// retrieves cafe images
+public function getCafePhotos($conn, $cafe_id) {
+    $sql = "SELECT photo_id, photo_url FROM CafeIMG WHERE cafe_id = ? ORDER BY photo_id ASC";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $cafe_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    $photos = [];
+    while ($row = $result->fetch_assoc()) {
+        $photos[] = $row;
+    }
+    return $photos;
+}
+
+// udpdates the new cafe details entered
+public function updateCafeDetails($conn, $cafe_id, $wifi, $outlet, $open, $close, $price) {
+    $sql = "UPDATE Cafes SET 
+                wifi_speed = ?, 
+                outlet_num = ?, 
+                opening_time = ?, 
+                closing_time = ?, 
+                price = ? 
+            WHERE cafe_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssssi", $wifi, $outlet, $open, $close, $price, $cafe_id);
+    return $stmt->execute();
+}
+
+// updates the photos
+public function updatePhoto($conn, $photo_id, $url) {
+    $sql = "UPDATE CafeIMG SET photo_url = ? WHERE photo_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $url, $photo_id);
+    return $stmt->execute();
+}
+
+// inserts new photos
+public function addPhoto($conn, $cafe_id, $url) {
+    $sql = "INSERT INTO CafeIMG (cafe_id, photo_url) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("is", $cafe_id, $url);
+    return $stmt->execute();
+}
+
 }
 ?>
