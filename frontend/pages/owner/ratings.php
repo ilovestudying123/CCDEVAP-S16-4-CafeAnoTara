@@ -85,11 +85,32 @@
                             <div class="review-header">
                                 <p class="review-title"><b><?php echo htmlspecialchars($review['firstname'] . ' ' . $review['lastname']); ?></b></p>
                                 
-                                <button type="button" 
-                                        class="report-btn"
-                                        data-review-id="<?php echo $review['review_id']; ?>" 
-                                        data-reporter-id="<?php echo $current_user_id; ?>">
-                                    Report
+                                <!-- Checks the status of the report to change text-->
+                                <?php
+                                    $text = "Report";
+                                    $disabled = "";
+
+                                    if (!empty($review['report_id'])) {
+
+                                        if ($review['status'] == "ongoing") {
+                                            $text = "Pending Report";
+                                            $disabled = "disabled";
+                                        }
+                                        elseif ($review['status'] == "resolved") {
+                                            $text = "Resolved";
+                                            $disabled = "disabled";
+                                        }
+                                    }
+                                ?>
+
+                                <!-- Changes the button text and disables button -->
+                                <button
+                                    type="button"
+                                    class="report-btn"
+                                    <?= $disabled ?>
+                                        data-review-id="<?= $review['review_id']; ?>"
+                                        data-reporter-id="<?= $current_user_id; ?>">
+                                    <?= $text ?>
                                 </button>
                             </div>
                             
