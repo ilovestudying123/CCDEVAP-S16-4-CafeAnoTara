@@ -1,7 +1,5 @@
 <?php
-require "../../../backend/config/connection.php";
-require "../../../backend/models/admin/dashboard-sql.php";
-require "../../../backend/controllers/admin/user-dashboard.php";
+require "../../../backend/controllers/user/dashboardController.php";
 ?>
 
 <!DOCTYPE html>

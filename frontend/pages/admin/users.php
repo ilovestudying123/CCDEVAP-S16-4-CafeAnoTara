@@ -1,6 +1,6 @@
 <?php
     require_once "../../../backend/config/connection.php";
-    require "../../../backend/models/admin/users-sql.php";
+    require "../../../backend/models/user/userModel.php";
 
     $userModel = new UserModel($conn);
     $result = $userModel->getUsers();
@@ -73,7 +73,7 @@
                             </a>
 
                             <!-- Suspend / Activate -->
-                            <form action="../../../backend/controllers/admin/user-status.php" method="POST" onsubmit="return confirm('You are about to change this user\'s STATUS. Continue?');">
+                            <form action="../../../backend/controllers/user/userController.php?action=status" method="POST" onsubmit="return confirm('You are about to change this user\'s STATUS. Continue?');">
                                 <input type="hidden" name="user_id" value="<?= $row['user_id'] ?>">
 
                                 <?php if ($row['account_status'] == 'active'): ?>
@@ -90,7 +90,7 @@
                             </form>
 
                             <!-- Delete -->
-                            <form action="../../../backend/controllers/admin/user-delete.php"
+                            <form action="../../../backend/controllers/user/userController.php?action=delete"
                                 method="POST"
                                 onsubmit="return confirm('Are you sure you want to DELETE this user?');">
 

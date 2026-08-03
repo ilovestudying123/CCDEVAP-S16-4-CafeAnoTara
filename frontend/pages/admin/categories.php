@@ -1,8 +1,8 @@
 <?php
 require_once "../../../backend/config/connection.php";
-require_once "../../../backend/controllers/admin/categories-reports.php";
+require_once "../../../backend/controllers/user/reportController.php";
 
-$categoriesController = new CategoriesController($conn);
+$categoriesController = new reportController($conn);
 $categories = $categoriesController->getCategories();
 ?>
 

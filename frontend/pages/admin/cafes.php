@@ -1,7 +1,7 @@
 <?php
 // database connection and cafe controller
 require_once "../../../backend/config/connection.php";
-require_once "../../../backend/controllers/admin/cafe-verification.php";
+require_once "../../../backend/controllers/user/cafeController.php";
 
 // retrieve search, filter, and sort values from the URL
 $search = $_GET['search'] ?? '';
@@ -9,7 +9,7 @@ $status = $_GET['status'] ?? 0;
 $sort = $_GET['sort'] ?? 'DESC';
 
 // load cafe records and owner list
-$cafeController = new CafeVerificationController($conn);
+$cafeController = new cafeController($conn);
 $pendingCafes = $cafeController->getPendingCafes($search, $status, $sort);
 
 $owners = $cafeController->getOwners();
@@ -190,7 +190,7 @@ $owners = $cafeController->getOwners();
         <div class="create-modal-content">
             <span class="close" onclick="closeCreateModal()">&times;</span>
             <h2>Add Cafe</h2>
-            <form class="create-form" action="../../../backend/controllers/admin/cafe-create.php" method="POST" enctype="multipart/form-data">
+            <form class="create-form" action="../../../backend/controllers/user/cafeController.php?action=create" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="field">
                         <label for="create-name">Cafe Name</label>

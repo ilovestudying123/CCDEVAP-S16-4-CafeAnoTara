@@ -9,7 +9,7 @@ function closeCreateModal(){
 
 // loads and displays cafe details in the modal
 async function openCafe(cafeId){
-    const response = await fetch('/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/cafe-get.php?id=' + cafeId);   
+    const response = await fetch('/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/cafeController.php?action=get&id=' + cafeId);   
 
     if (!response.ok) {
         alert("Unable to load cafe details.");
@@ -63,7 +63,7 @@ async function approveCafe(cafeId) {
     const formData = new FormData();
     formData.append("cafe_id", cafeId);
 
-    const response = await fetch("/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/cafe-approve.php",
+    const response = await fetch("/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/cafeController.php?action=approve",
         {
             method: "POST",
             body: formData
@@ -102,7 +102,7 @@ async function rejectCafe(cafeId) {
     formData.append("cafe_id", cafeId);
 
     const response = await fetch(
-        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/cafe-reject.php",
+        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/cafeController.php?action=reject",
         {
             method: "POST",
             body: formData

@@ -31,7 +31,7 @@ async function createCategory() {
     const formData = new FormData();
     formData.append("report", report);
     const response = await fetch(
-        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/categories-create.php",
+        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/reportController.php?action=create",
         {
             method: "POST",
             body: formData
@@ -57,7 +57,7 @@ async function updateCategory(){
     formData.append("report_code", selectedCategory);
     formData.append("report", report);
     const response = await fetch(
-        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/categories-update.php",
+        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/reportController.php?action=update",
         {
             method:"POST",
             body:formData
@@ -91,7 +91,7 @@ async function deleteCategory(reportCode) {
     );
 
     const response = await fetch(
-        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/categories-delete.php",
+        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/reportController.php?action=delete",
         {
             method: "POST",
             body: formData
@@ -104,7 +104,7 @@ async function deleteCategory(reportCode) {
         location.reload();
     } 
     else {
-        alert("Failed to delete category.");
+        alert("Cannot delete this category because it is already used in reports.");
     }
 }
 window.deleteCategory = deleteCategory;

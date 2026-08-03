@@ -1,6 +1,6 @@
 <?php
     require_once "../../../backend/config/connection.php";
-    require "../../../backend/models/admin/users-sql.php";
+    require "../../../backend/models/user/userModel.php";
 
     $userModel = new UserModel($conn);
 
@@ -26,7 +26,7 @@
             <h1>Edit Record</h1>
         </div>
 
-        <form action="../../../backend/controllers/admin/user-update.php" method="POST">
+        <form action="../../../backend/controllers/user/userController.php?action=update" method="POST">
 
         <!-- Hidden user ID -->
         <input type="hidden" name="user_id" value="<?= $user['user_id'] ?>">

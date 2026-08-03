@@ -1,12 +1,15 @@
 <?php
-require "../../../backend/config/connection.php";
-require "../../../backend/models/admin/reviews-sql.php";
+    require "../../../backend/controllers/user/reviewController.php";
 
-$reviewModel = new ReviewModel($conn);
+    $controller = new reviewController($conn);
 
-$reportID = $_GET['id'];
-$report = $reviewModel->getReviewReport($reportID);
-$reportCodes = $reviewModel->getReportCodes();
+    $reportID = $_GET['id'] ?? null;
+        if (!$reportID) {
+            die("Missing report ID.");
+        }
+
+    $report = $controller->getReviewReport($reportID);
+    $reportCodes = $controller->getReportCodes();
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +28,7 @@ $reportCodes = $reviewModel->getReportCodes();
             <h1>Update Review</h1>
         </div>
 
-        <form action="../../../backend/controllers/admin/review-update.php" method="POST">
+        <form action="../../../backend/controllers/user/reviewController.php?action=updateReview" method="POST">
             <input type="hidden" name="reportID" value="<?= $report['report_id'] ?>">
             <input type="hidden" name="reviewID" value="<?= $report['review_id'] ?>">
             

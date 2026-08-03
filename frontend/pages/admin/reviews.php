@@ -1,9 +1,9 @@
 <?php
-    require "../../../backend/config/connection.php";
-    require "../../../backend/models/admin/reviews-sql.php";
+require "../../../backend/controllers/user/reviewController.php";
 
-    $ReviewModel = new ReviewModel($conn);
-    $reports = $ReviewModel->getAllReportedReviews();
+$controller = new reviewController($conn);
+
+$reports = $controller->getAllReportedReviews();
 ?>
 
 <!DOCTYPE html>

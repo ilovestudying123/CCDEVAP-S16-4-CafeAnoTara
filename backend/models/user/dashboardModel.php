@@ -1,5 +1,6 @@
 <?php
-class UserDashboard 
+
+class dashboardModel
 {
     private $conn;
 

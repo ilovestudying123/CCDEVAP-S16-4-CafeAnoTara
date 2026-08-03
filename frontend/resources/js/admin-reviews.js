@@ -7,7 +7,7 @@ async function approveReview(reportID) {
     formData.append("report_id", reportID);
 
     const response = await fetch(
-        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/review-approve.php",
+        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/reviewController.php?action=approveReview",
         {
             method: "POST",
             body: formData
@@ -32,7 +32,7 @@ async function removeReview(reportID, reviewID){
     formData.append("review_id", reviewID);
 
     const response = await fetch(
-        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/review-remove.php",
+        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/reviewController.php?action=removeReview",
         {
             method:"POST",
             body:formData
