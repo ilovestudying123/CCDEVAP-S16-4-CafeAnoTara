@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2026 at 03:24 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: Aug 03, 2026 at 06:03 PM
+-- Server version: 8.0.37
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,14 +26,12 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `bookmarks`
 --
-CREATE DATABASE IF NOT EXISTS CafeAnoTara;
-USE CafeAnoTara;
 
 CREATE TABLE `bookmarks` (
-  `bookmark_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `cafe_id` int(11) NOT NULL,
-  `created_on` datetime DEFAULT current_timestamp()
+  `bookmark_id` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `cafe_id` int NOT NULL,
+  `created_on` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -64,9 +62,9 @@ INSERT INTO `bookmarks` (`bookmark_id`, `customer_id`, `cafe_id`, `created_on`) 
 --
 
 CREATE TABLE `cafeimg` (
-  `photo_id` int(11) NOT NULL,
-  `cafe_id` int(11) NOT NULL,
-  `photo_url` varchar(500) NOT NULL
+  `photo_id` int NOT NULL,
+  `cafe_id` int NOT NULL,
+  `photo_url` varchar(500) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -98,20 +96,20 @@ INSERT INTO `cafeimg` (`photo_id`, `cafe_id`, `photo_url`) VALUES
 --
 
 CREATE TABLE `cafes` (
-  `cafe_id` int(11) NOT NULL,
-  `owner_id` int(11) DEFAULT NULL,
-  `cafe_name` varchar(45) NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `wifi_speed` varchar(45) DEFAULT NULL,
-  `noise_level` enum('quiet','moderate','loud') DEFAULT NULL,
-  `outlet_num` int(11) DEFAULT NULL,
+  `cafe_id` int NOT NULL,
+  `owner_id` int DEFAULT NULL,
+  `cafe_name` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
+  `location` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `wifi_speed` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `noise_level` enum('quiet','moderate','loud') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `outlet_num` int DEFAULT NULL,
   `opening_time` time DEFAULT NULL,
   `closing_time` time DEFAULT NULL,
-  `price` varchar(45) DEFAULT NULL,
-  `is_verified` tinyint(1) DEFAULT 0,
-  `google_maps_url` varchar(500) DEFAULT NULL,
-  `created_on` datetime DEFAULT current_timestamp()
+  `price` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `is_verified` tinyint(1) DEFAULT '0',
+  `google_maps_url` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_on` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -142,8 +140,8 @@ INSERT INTO `cafes` (`cafe_id`, `owner_id`, `cafe_name`, `location`, `descriptio
 --
 
 CREATE TABLE `reportcode` (
-  `report_code` int(11) NOT NULL,
-  `report` varchar(45) NOT NULL
+  `report_code` int NOT NULL,
+  `report` varchar(45) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -174,14 +172,14 @@ INSERT INTO `reportcode` (`report_code`, `report`) VALUES
 --
 
 CREATE TABLE `reports` (
-  `report_id` int(11) NOT NULL,
-  `reporter_id` int(11) NOT NULL,
-  `reported_user_id` int(11) DEFAULT NULL,
-  `reported_cafe_id` int(11) DEFAULT NULL,
-  `reported_review_id` int(11) DEFAULT NULL,
-  `report_code` int(11) NOT NULL,
-  `status` enum('ongoing','resolved') DEFAULT 'ongoing',
-  `created_on` datetime DEFAULT current_timestamp()
+  `report_id` int NOT NULL,
+  `reporter_id` int NOT NULL,
+  `reported_user_id` int DEFAULT NULL,
+  `reported_cafe_id` int DEFAULT NULL,
+  `reported_review_id` int DEFAULT NULL,
+  `report_code` int NOT NULL,
+  `status` enum('ongoing','approved','rejected') COLLATE utf8mb4_general_ci DEFAULT 'ongoing',
+  `created_on` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -190,19 +188,19 @@ CREATE TABLE `reports` (
 
 INSERT INTO `reports` (`report_id`, `reporter_id`, `reported_user_id`, `reported_cafe_id`, `reported_review_id`, `report_code`, `status`, `created_on`) VALUES
 (1, 2, 4, 1, 1, 3, 'ongoing', '2026-05-13 11:21:04'),
-(2, 3, 5, 1, 2, 1, 'resolved', '2026-05-17 23:47:25'),
+(2, 3, 5, 1, 2, 1, 'approved', '2026-05-17 23:47:25'),
 (3, 2, 6, 2, 3, 4, 'ongoing', '2026-05-22 12:13:47'),
-(4, 3, 4, 3, 4, 5, 'resolved', '2026-05-27 00:40:08'),
+(4, 3, 4, 3, 4, 5, 'approved', '2026-05-27 00:40:08'),
 (5, 2, 5, 4, 5, 2, 'ongoing', '2026-05-31 13:06:29'),
-(6, 3, 6, 5, 6, 3, 'resolved', '2026-06-05 01:32:50'),
+(6, 3, 6, 5, 6, 3, 'approved', '2026-06-05 01:32:50'),
 (7, 7, NULL, NULL, 7, 6, 'ongoing', '2026-06-09 13:59:11'),
-(8, 8, 10, NULL, NULL, 7, 'resolved', '2026-06-14 02:25:32'),
+(8, 8, 10, NULL, NULL, 7, 'approved', '2026-06-14 02:25:32'),
 (9, 9, NULL, 6, NULL, 8, 'ongoing', '2026-06-18 14:51:53'),
-(10, 10, NULL, NULL, 9, 9, 'resolved', '2026-06-23 03:18:14'),
+(10, 10, NULL, NULL, 9, 9, 'approved', '2026-06-23 03:18:14'),
 (11, 11, 12, NULL, NULL, 10, 'ongoing', '2026-06-27 15:44:35'),
-(12, 12, NULL, 10, NULL, 11, 'resolved', '2026-07-02 04:10:56'),
+(12, 12, NULL, 10, NULL, 11, 'approved', '2026-07-02 04:10:56'),
 (13, 13, NULL, NULL, 13, 12, 'ongoing', '2026-07-06 16:37:17'),
-(14, 14, 9, NULL, NULL, 13, 'resolved', '2026-07-11 05:03:38'),
+(14, 14, 9, NULL, NULL, 13, 'approved', '2026-07-11 05:03:38'),
 (15, 15, NULL, 14, NULL, 14, 'ongoing', '2026-07-15 17:29:59');
 
 -- --------------------------------------------------------
@@ -212,14 +210,14 @@ INSERT INTO `reports` (`report_id`, `reporter_id`, `reported_user_id`, `reported
 --
 
 CREATE TABLE `reviews` (
-  `review_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `cafe_id` int(11) NOT NULL,
-  `rating` int(11) NOT NULL,
-  `comment` varchar(255) DEFAULT NULL,
-  `owner_reply` varchar(255) DEFAULT NULL,
-  `is_inappropriate` tinyint(1) DEFAULT 0,
-  `created_on` datetime DEFAULT current_timestamp()
+  `review_id` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `cafe_id` int NOT NULL,
+  `rating` int NOT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `owner_reply` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `is_inappropriate` tinyint(1) DEFAULT '0',
+  `created_on` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -250,16 +248,16 @@ INSERT INTO `reviews` (`review_id`, `customer_id`, `cafe_id`, `rating`, `comment
 --
 
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `firstname` varchar(30) NOT NULL,
-  `lastname` varchar(30) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `mobilenumber` varchar(20) DEFAULT NULL,
-  `role` enum('customer','owner','admin') NOT NULL,
-  `account_status` enum('active','suspended','deleted') DEFAULT 'active',
-  `created_on` datetime DEFAULT current_timestamp()
+  `user_id` int NOT NULL,
+  `firstname` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `lastname` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `mobilenumber` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `role` enum('customer','owner','admin') COLLATE utf8mb4_general_ci NOT NULL,
+  `account_status` enum('active','suspended','deleted') COLLATE utf8mb4_general_ci DEFAULT 'active',
+  `created_on` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -354,43 +352,43 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookmarks`
 --
 ALTER TABLE `bookmarks`
-  MODIFY `bookmark_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `bookmark_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `cafeimg`
 --
 ALTER TABLE `cafeimg`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `photo_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `cafes`
 --
 ALTER TABLE `cafes`
-  MODIFY `cafe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `cafe_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `reportcode`
 --
 ALTER TABLE `reportcode`
-  MODIFY `report_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `report_code` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `report_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `review_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables

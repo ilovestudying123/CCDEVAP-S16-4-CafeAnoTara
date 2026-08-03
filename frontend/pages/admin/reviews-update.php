@@ -51,13 +51,17 @@
                         <option value="ongoing" 
                             <?= $report['status']=="ongoing" ? "selected" : "" ?>
                             >Ongoing
-                            </option>
+                        </option>
 
-                            <option
-                                value="resolved"
-                                <?= $report['status']=="resolved" ? "selected" : "" ?>>
-                                Resolved
-                            </option>
+                        <option value="approved"
+                            <?= $report['status'] == "approved" ? "selected" : "" ?>>
+                            Approved
+                        </option>
+                        
+                        <option value="rejected"
+                            <?= $report['status'] == "rejected" ? "selected" : "" ?>>
+                            Rejected
+                        </option>
                     </select>
                 </div>
 

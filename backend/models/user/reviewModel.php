@@ -201,9 +201,7 @@ class reviewModel {
 
             ORDER BY rp.created_on DESC
         ";
-
         $result = $conn->query($sql);
-
         return $result;
     }
 
@@ -228,16 +226,12 @@ class reviewModel {
 
             WHERE rp.report_id = ?
         ";
-
         $stmt = $conn->prepare($sql);
-
         $stmt->bind_param(
             "i",
             $reportID
         );
-
         $stmt->execute();
-
         return $stmt->get_result()->fetch_assoc();
     }
 
@@ -250,7 +244,6 @@ class reviewModel {
             FROM ReportCode
             ORDER BY report
         ";
-
         return $conn->query($sql);
     }
 
@@ -274,7 +267,6 @@ class reviewModel {
         ";
 
         $stmt = $conn->prepare($sql);
-
         $stmt->bind_param(
             "sisi",
             $status,
@@ -282,10 +274,8 @@ class reviewModel {
             $createdOn,
             $reportID
         );
-
         return $stmt->execute();
     }
-
 
     // Update review comment
     public function updateReview(
@@ -299,15 +289,12 @@ class reviewModel {
             SET comment = ?
             WHERE review_id = ?
         ";
-
         $stmt = $conn->prepare($sql);
-
         $stmt->bind_param(
             "si",
             $comment,
             $reviewID
         );
-
         return $stmt->execute();
     }
 
@@ -320,17 +307,14 @@ class reviewModel {
     {
         $sql = "
             UPDATE Reports
-            SET status='resolved'
+            SET status='approved'
             WHERE report_id=?
         ";
-
         $stmt = $conn->prepare($sql);
-
         $stmt->bind_param(
             "i",
             $reportID
         );
-
         return $stmt->execute();
     }
 
@@ -347,27 +331,22 @@ class reviewModel {
             "DELETE FROM Reviews
             WHERE review_id=?"
         );
-
         $stmt->bind_param(
             "i",
             $reviewID
         );
-
         $stmt->execute();
-
 
         // Resolve report
         $stmt = $conn->prepare(
             "UPDATE Reports
-            SET status='resolved'
+            SET status='rejected'
             WHERE report_id=?"
         );
-
         $stmt->bind_param(
             "i",
             $reportID
         );
-
         return $stmt->execute();
     }
 }
