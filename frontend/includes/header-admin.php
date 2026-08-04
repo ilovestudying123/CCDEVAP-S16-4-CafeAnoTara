@@ -7,6 +7,6 @@
         <a class="cafe" href="cafes.php">Cafes |</a>
         <a class="review" href="reviews.php">Reports |</a>
         <a class="category" href="categories.php">Categories |</a>
-        <a href="../authentication/index.php">Logout</a>
+        <a href="../authentication/logout.php">Logout</a>
     </nav>
 </div>

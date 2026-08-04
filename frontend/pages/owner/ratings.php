@@ -1,11 +1,19 @@
 <?php
     require '../../../backend/config/connection.php';   
+    require_once "../authentication/auth.php";
     require_once __DIR__ . "/../../../backend/controllers/user/reviewController.php";
+    require_once __DIR__ . '/../../../backend/models/user/cafeModel.php';
 
     $controller = new reviewController($conn);
 
-    $current_user_id = $_SESSION['user_id'] ?? 2;
-    $cafe_id = 1; // change to SESSION
+    $current_user_id = $_SESSION['user_id'];
+    
+    // gets cafe id number
+    $cafeModel = new cafeModel();
+    $ownerCafe = $cafeModel->getCafeByOwnerId($conn, $current_user_id);
+
+    // sets cafe id number
+    $cafe_id = $ownerCafe ? $ownerCafe['cafe_id'] : 0;
 
     $selected_star = $_GET['stars'] ?? '';
     $selected_sort = $_GET['sort']  ?? ($_GET['sort_by'] ?? '');

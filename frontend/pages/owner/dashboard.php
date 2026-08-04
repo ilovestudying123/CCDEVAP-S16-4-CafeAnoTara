@@ -1,10 +1,11 @@
 <?php
 require '../../../backend/config/connection.php';
+require_once "../authentication/auth.php";
 require_once __DIR__ . '/../../../backend/models/user/cafeModel.php';
 
 $model = new cafeModel();
 
-$user_ID = 2; // Replace with SESSION
+$user_ID = $_SESSION['user_id'];
 
 $row = $model->getCafeByOwnerId($conn, $user_ID);
 
