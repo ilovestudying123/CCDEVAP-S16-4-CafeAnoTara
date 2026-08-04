@@ -16,10 +16,12 @@ $customer_id = $_SESSION['user_id'];
     <link rel="stylesheet" href="../../resources/css/user-dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="../../resources/js/user-dashboard.js"></script>
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-user.js"></script>
+    
 </head>
 <body>
+
+<!-- header -->
+    <?php require "../../includes/header-user.php"; ?>
 <div class="body">
     <div class="search-filter-sort">
         <section class="search-section">

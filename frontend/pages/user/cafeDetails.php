@@ -35,11 +35,11 @@ $isBookmarked = $bookmarkCtrl->isBookmarked($customer_id, $cafe_id);
     <link rel="stylesheet" href="../../resources/css/user-cafeDetails.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-user.js"></script>
+    
 </head>
 <body>
-
+<!-- header -->
+    <?php require "../../includes/header-user.php"; ?>
 <section class="firstPart">
     <section class="cafe-section">
         <div class="cafe">
