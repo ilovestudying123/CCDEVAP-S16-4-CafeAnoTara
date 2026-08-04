@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once __DIR__ . '/../../config/connection.php';
-require_once __DIR__ . '/../../models/user/bookmarkModel.php';
+require_once __DIR__ . '/../../models/bookmarkModel.php';
 
 class bookmarkController {
     private $model;

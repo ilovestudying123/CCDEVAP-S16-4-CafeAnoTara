@@ -1,8 +1,10 @@
 <?php
-require_once '../../../backend/controllers/user/reviewController.php';
+require '../../../backend/config/connection.php';
+require_once '../authentication/auth.php';
+require_once '../../../backend/controllers/reviewController.php';
 
 $controller = new reviewController($conn);
-$customer_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 4;
+$customer_id = $_SESSION['user_id'];
 $reviews = $controller->getUserReviews($customer_id);
 ?>
 <!DOCTYPE html>
@@ -75,6 +77,7 @@ $reviews = $controller->getUserReviews($customer_id);
                             <input type="hidden" name="review_id" id="edit-review-id">
                             <div class="modal-header">
                                 <h5>Edit Review</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
                                 <label>Rating</label>
@@ -98,7 +101,7 @@ $reviews = $controller->getUserReviews($customer_id);
                         <form method="POST"
                               action="../../../backend/controllers/user/reviewController.php?action=delete">
                             <input type="hidden" name="review_id" id="delete-review-id">
-                            <div class="modal-body">Delete this review?</div>
+                            <div class="modal-body">Are you sure you want to delete this review?</div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                 <button class="btn btn-danger" type="submit">Delete</button>

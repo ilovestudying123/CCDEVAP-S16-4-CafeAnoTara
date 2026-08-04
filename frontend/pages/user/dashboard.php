@@ -1,8 +1,11 @@
 <?php
-require_once '../../../backend/controllers/user/cafeController.php';
+require '../../../backend/config/connection.php';
+require_once '../authentication/auth.php';
+require_once '../../../backend/controllers/cafeController.php';
 
 $controller = new cafeController($conn);
 $cafes = $controller->getTopCafes();
+$customer_id = $_SESSION['user_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,5 +63,4 @@ $cafes = $controller->getTopCafes();
     </section>
 </div>
 </body>
-
 </html>

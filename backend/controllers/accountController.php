@@ -4,7 +4,7 @@
 session_start();
 
 require_once '../../config/connection.php';
-require_once '../../models/user/accountModel.php';
+require_once '../../models/accountModel.php';
 
 
 // Check if user is logged in

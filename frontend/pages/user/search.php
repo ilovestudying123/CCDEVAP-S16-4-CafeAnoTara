@@ -1,7 +1,10 @@
 <?php
-require_once '../../../backend/controllers/user/cafeController.php';
+require '../../../backend/config/connection.php';
+require_once '../authentication/auth.php';
+require_once '../../../backend/controllers/cafeController.php';
 
 $controller = new cafeController($conn);
+$customer_id = $_SESSION['user_id'];
 $name = isset($_GET['name']) ? trim($_GET['name']) : '';
 $results = $controller->getSearchResults($name);
 ?>
