@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once __DIR__ . '/../../config/connection.php';
-require_once __DIR__ . '/../../models/user/cafeModel.php';
+require_once __DIR__ . '/../../models/cafeModel.php';
 
 class cafeController {
     private $model;

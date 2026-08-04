@@ -1,7 +1,7 @@
 <?php
 require '../../../backend/config/connection.php';
 require_once '../authentication/auth.php';
-require_once '../../../backend/controllers/user/bookmarkController.php';
+require_once '../../../backend/controllers/bookmarkController.php';
 
 $controller = new bookmarkController($conn);
 $customer_id = $_SESSION['user_id'];

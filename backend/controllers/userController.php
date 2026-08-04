@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once __DIR__ . "/../../config/connection.php";
-require_once __DIR__ . "/../../models/user/userModel.php";
+require_once __DIR__ . "/../../models/userModel.php";
 
 class UserController
 {

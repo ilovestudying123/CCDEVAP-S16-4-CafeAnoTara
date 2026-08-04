@@ -1,8 +1,8 @@
 <?php
 require '../../../backend/config/connection.php';
 require_once '../authentication/auth.php';
-require_once '../../../backend/controllers/user/cafeController.php';
-require_once '../../../backend/controllers/user/bookmarkController.php';
+require_once '../../../backend/controllers/cafeController.php';
+require_once '../../../backend/controllers/bookmarkController.php';
 
 $cafeCtrl = new cafeController($conn);
 $cafe_id = isset($_GET['id']) ? intval($_GET['id']) : 0;

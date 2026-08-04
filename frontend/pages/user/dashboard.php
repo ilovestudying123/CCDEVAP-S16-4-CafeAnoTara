@@ -1,7 +1,7 @@
 <?php
 require '../../../backend/config/connection.php';
 require_once '../authentication/auth.php';
-require_once '../../../backend/controllers/user/cafeController.php';
+require_once '../../../backend/controllers/cafeController.php';
 
 $controller = new cafeController($conn);
 $cafes = $controller->getTopCafes();

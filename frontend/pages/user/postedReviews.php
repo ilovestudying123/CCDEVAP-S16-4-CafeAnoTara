@@ -1,7 +1,7 @@
 <?php
 require '../../../backend/config/connection.php';
 require_once '../authentication/auth.php';
-require_once '../../../backend/controllers/user/reviewController.php';
+require_once '../../../backend/controllers/reviewController.php';
 
 $controller = new reviewController($conn);
 $customer_id = $_SESSION['user_id'];
