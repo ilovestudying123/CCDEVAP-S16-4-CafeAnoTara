@@ -72,7 +72,7 @@ $bookmarks = $controller->getBookmarks($customer_id);
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <form method="POST"
-                      action="../../../backend/controllers/user/bookmarkController.php?action=remove">
+                      action="bookmarks.php?action=remove">
                     <input type="hidden" name="cafe_id" id="modal-cafe-id" value="">
                     <button type="submit" class="btn btn-danger">Remove</button>
                 </form>

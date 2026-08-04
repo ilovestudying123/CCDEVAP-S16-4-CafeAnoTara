@@ -117,7 +117,7 @@
         $customer_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 4;
         $action = isset($_GET['action']) ? $_GET['action'] : '';
 
-        if ($action === 'add') {
+        if ($action === 'addReview') {
             $cafe_id = isset($_POST['cafe_id']) ? intval($_POST['cafe_id']) : 0;
             $rating = isset($_POST['rating']) ? intval($_POST['rating']) : 0;
             $comment = isset($_POST['comment']) ? trim($_POST['comment']) : '';
