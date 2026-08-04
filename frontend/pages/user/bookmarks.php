@@ -1,8 +1,10 @@
 <?php
+require '../../../backend/config/connection.php';
+require_once '../authentication/auth.php';
 require_once '../../../backend/controllers/user/bookmarkController.php';
 
 $controller = new bookmarkController($conn);
-$customer_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 4;
+$customer_id = $_SESSION['user_id'];
 $bookmarks = $controller->getBookmarks($customer_id);
 ?>
 <!DOCTYPE html>
@@ -28,18 +30,17 @@ $bookmarks = $controller->getBookmarks($customer_id);
             <p>You have no bookmarked cafes yet.</p>
         <?php else: ?>
             <?php foreach ($bookmarks as $bookmark): ?>
-            <div class="bookmark-card">
-                <!-- button triggers modal, passes cafe_id via data attribute -->
-                <button type="button" 
-                        class="remove-bookmark"
-                        data-bs-toggle="modal"
-                        data-bs-target="#removeModal"
-                        data-cafe-id="<?php echo $bookmark['cafe_id']; ?>">
-                    <i class="fa-solid fa-bookmark fa-3x"></i>
-                </button>
+                <div class="bookmark-card">
+                    <button type="button"
+                            class="remove-bookmark"
+                            data-bs-toggle="modal"
+                            data-bs-target="#removeModal"
+                            data-cafe-id="<?php echo $bookmark['cafe_id']; ?>">
+                        <i class="fa-solid fa-bookmark fa-3x"></i>
+                    </button>
 
-                <a href="cafeDetails.php?id=<?php echo $bookmark['cafe_id']; ?>"
-                    class="cafe-details">
+                    <a href="cafeDetails.php?id=<?php echo $bookmark['cafe_id']; ?>"
+                       class="cafe-details">
                         <div class="cafe-text">
                             <p class="cafe-name">
                                 <?php echo htmlspecialchars($bookmark['cafe_name']); ?>
@@ -53,34 +54,33 @@ $bookmarks = $controller->getBookmarks($customer_id);
                     </a>
                 </div>
             <?php endforeach; ?>
-
-            <!-- modal -->
-            <div class="modal fade" id="removeModal" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Remove Bookmark</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to remove this bookmark?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <form method="POST" 
-                                action="../../../backend/controllers/user/bookmarkController.php?action=remove">
-                                <input type="hidden" name="cafe_id" id="modal-cafe-id" value="">
-                                <button type="submit" class="btn btn-danger">Remove</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
         <?php endif; ?>
     </div>
 </section>
 
-<!-- fill cafe id when modal opens -->
+<!-- Remove Bookmark Modal -->
+<div class="modal fade" id="removeModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Remove Bookmark</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to remove this bookmark?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST"
+                      action="../../../backend/controllers/user/bookmarkController.php?action=remove">
+                    <input type="hidden" name="cafe_id" id="modal-cafe-id" value="">
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     const removeModal = document.getElementById('removeModal');
     removeModal.addEventListener('show.bs.modal', event => {
