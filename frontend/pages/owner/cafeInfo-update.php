@@ -1,11 +1,11 @@
 <?php
     require '../../../backend/config/connection.php';
-    require_once "../authentication/auth.php"; // ADD THIS ONE
+    require_once "../authentication/auth.php";
     require_once __DIR__ . "/../../../backend/controllers/user/cafeController.php";
 
     $controller = new cafeController($conn);
 
-    $user_ID = $_SESSION['user_id']; // CHANGE THIS ONE
+    $user_ID = $_SESSION['user_id'];
 
     $row = $controller->getCafeByOwnerId($user_ID);
     if (!$row) {
