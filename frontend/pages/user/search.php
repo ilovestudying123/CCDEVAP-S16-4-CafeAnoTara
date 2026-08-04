@@ -16,10 +16,11 @@ $results = $controller->getSearchResults($name);
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/user-search.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <div id="header"></div>
-    <script src="../../resources/js/script-header-user.js"></script>
+
 </head>
 <body>
+    <!-- header -->
+    <?php require "../../includes/header-user.php"; ?>
 <div class="search-filter-sort">
     <section class="search-section">
         <form method="GET" action="search.php">

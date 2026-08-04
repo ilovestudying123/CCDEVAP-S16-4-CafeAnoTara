@@ -6,8 +6,8 @@
         session_start();
     }
 
-    require_once __DIR__ . '/../../config/connection.php';
-    require_once __DIR__ . '/../../models/reviewModel.php';
+    require_once __DIR__ . '/../config/connection.php';
+    require_once __DIR__ . '/../models/reviewModel.php';
 
     class reviewController {
         private $model;
