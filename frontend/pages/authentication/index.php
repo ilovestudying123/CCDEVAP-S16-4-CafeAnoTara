@@ -60,8 +60,6 @@ if(isset($_SESSION['error'])){
         </div>
     </div>
 
-    <!-- RIGHT PANEL -->
-
     <div class="right-panel">
 
         <div class="header">
