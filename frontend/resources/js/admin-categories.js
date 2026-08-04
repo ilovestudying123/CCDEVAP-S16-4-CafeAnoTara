@@ -25,7 +25,7 @@ async function createCategory() {
     const report = document.getElementById("create-report").value.trim();
 
     if (report === "") {
-        alert("Please enter a category.");
+        Swal.fire("Missing info", "Please enter a category.", "warning");
         return;
     }
     const formData = new FormData();
@@ -39,18 +39,18 @@ async function createCategory() {
     );
     const result = await response.json();
     if (result.success) {
-        alert("Category added successfully.");
+        await Swal.fire("Added!", "Category added successfully.", "success");
         location.reload();
     }
     else {
-        alert("Failed to add category.");
+        Swal.fire("Failed", "Failed to add category.", "error");
     }
 }
 
 async function updateCategory(){
     const report = document.getElementById("edit-report").value.trim();
     if(report === ""){
-        alert("Please enter a category.");
+        Swal.fire("Missing info", "Please enter a category.", "warning");
         return;
     }
     const formData = new FormData();
@@ -67,20 +67,26 @@ async function updateCategory(){
     const result = await response.json();
 
     if(result.success){
-        alert("Category updated successfully.");
+        await Swal.fire("Updated!", "Category updated successfully.", "success");
         location.reload();
     }
     else{
-        alert("Failed to update category.");
+        Swal.fire("Failed", "Failed to update category.", "error");
     }
 }
 
 async function deleteCategory(reportCode) {
-    const proceed = confirm(
-        "Are you sure you want to delete this category?"
-    );
+    const proceed = await Swal.fire({
+        title: "Delete this category?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    });
 
-    if (!proceed) {
+    if (!proceed.isConfirmed) {
         return;
     }
 
@@ -99,12 +105,12 @@ async function deleteCategory(reportCode) {
     );
 
     const result = await response.json();
-    if (result.success) {
-        alert("Category deleted successfully.");
+   if (result.success) {
+        await Swal.fire("Deleted!", "Category deleted successfully.", "success");
         location.reload();
     } 
     else {
-        alert("Cannot delete this category because it is already used in reports.");
+        Swal.fire("Failed", "Cannot delete this category because it is already used in reports.", "error");
     }
 }
 window.deleteCategory = deleteCategory;
