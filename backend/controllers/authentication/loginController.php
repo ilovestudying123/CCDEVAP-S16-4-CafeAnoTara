@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         switch ($_SESSION['role']) {
             case 'customer':
-                header("Location: ../../../backend/controllers/user/cafeController.php?action=dashboard");
+                header("Location: ../../../frontend/pages/user/dashboard.php");
                 exit();
 
             case 'owner':

@@ -20,6 +20,8 @@ $customer_id = $_SESSION['user_id'];
     <script src="../../resources/js/script-header-user.js"></script>
 </head>
 <body>
+<?php require "../../includes/header-user.php"; ?>
+
 <div class="body">
     <div class="search-filter-sort">
         <section class="search-section">
