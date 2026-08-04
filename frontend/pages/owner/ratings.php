@@ -126,7 +126,7 @@
                                     </div>
                                 <?php else: ?>
                                     <!-- Submit Reply direct to the Controller file -->
-                                    <form action="../../../backend/controllers/owner/ratingsController.php" method="POST">
+                                    <form action="../../../backend/controllers/user/reviewController.php" method="POST">
                                         <input type="hidden" name="review_id" value="<?php echo $review['review_id']; ?>">
                                         <textarea id="reply-text" name="owner_reply" placeholder="Add reply" required></textarea>
                                         <button type="submit" id="submit-btn">Submit</button>
@@ -152,7 +152,7 @@
             <h3>Report Review</h3>
             <p>Select the reason for reporting this review:</p>
             
-            <form id="report-form" action="../../../backend/controllers/owner/ratingsController.php" method="POST">
+            <form id="report-form" action="../../../backend/controllers/user/reviewController.php" method="POST">
                 <input type="hidden" id="modal-review-id" name="review_id">
                 <input type="hidden" id="modal-reporter-id" name="reporter_id">
                 
