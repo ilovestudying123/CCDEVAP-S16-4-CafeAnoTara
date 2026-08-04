@@ -14,6 +14,7 @@ $categories = $categoriesController->getCategories();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../../resources/css/header-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../../resources/css/admin-categories.css">
 </head>
 

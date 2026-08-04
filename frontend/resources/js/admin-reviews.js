@@ -1,8 +1,18 @@
 async function approveReview(reportID) {
-    if (!confirm("Approve this review?")) {
+    // Show a confirmation dialog using SweetAlert2
+     const result = await Swal.fire({
+        title: "Approve this review?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Yes, approve",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#725420"
+    });
+
+    if (!result.isConfirmed) {
         return;
     }
-
+    
     const formData = new FormData();
     formData.append("report_id", reportID);
 
@@ -14,15 +24,25 @@ async function approveReview(reportID) {
         }
     );
 
-    const result = await response.json();
-    if(result.success){
-        alert("Review approved.");
+    const data = await response.json();
+    if (data.success) {
+        await Swal.fire("Approved!", "Review approved.", "success");
         location.reload();
-    }
+    } 
 }
 
 async function removeReview(reportID, reviewID){
-    if(!confirm("Remove this review?")){
+    const result = await Swal.fire({
+        title: "Remove this review?",
+        text: "This action cannot be undone.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, remove",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#d33"
+    });
+
+    if (!result.isConfirmed) {
         return;
     }
 
@@ -39,10 +59,10 @@ async function removeReview(reportID, reviewID){
         }
     );
 
-    const result = await response.json();
+    const data = await response.json();
 
-    if(result.success){
-        alert("Review removed.");
+    if(data.success){
+        await Swal.fire("Removed!", "Review removed.", "success");
         location.reload();
     }
 }

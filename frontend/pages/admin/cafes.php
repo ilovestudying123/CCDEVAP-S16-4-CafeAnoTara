@@ -24,6 +24,7 @@ $owners = $cafeController->getOwners();
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/admin-cafes.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../resources/js/cafe-verification.js"></script>
 </head>
 

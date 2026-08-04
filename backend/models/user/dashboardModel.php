@@ -11,9 +11,13 @@ class dashboardModel
     }
 
     public function getPendingReports() {
-        $stmt = $this->conn->prepare("
-        SELECT COUNT(report_id) AS total
-        FROM reports WHERE status = 'ongoing'
+    $stmt = $this->conn->prepare("
+        SELECT COUNT(rp.report_id) AS total
+        FROM Reports rp
+        INNER JOIN Users u ON rp.reporter_id = u.user_id
+        INNER JOIN Reviews rv ON rp.reported_review_id = rv.review_id
+        INNER JOIN ReportCode rc ON rp.report_code = rc.report_code
+        WHERE rp.status = 'ongoing'
     ");
 
     $stmt->execute();
