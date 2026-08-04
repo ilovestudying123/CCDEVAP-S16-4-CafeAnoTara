@@ -33,7 +33,7 @@
     <!-- header -->
     <?php require "../../includes/header-owner.php"; ?>
 
-    <form action="../../../backend/controllers/owner/cafeInfoController.php" method="POST">
+    <form action="../../../backend/controllers/user/cafeController.php?action=update_owner_cafe" method="POST">
         <div class="body-box">
             <h1 class="cafe-name"><?php echo htmlspecialchars($row['cafe_name']);?></h1>
 

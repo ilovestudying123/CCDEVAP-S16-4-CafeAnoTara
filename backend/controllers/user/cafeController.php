@@ -183,6 +183,77 @@ if (basename($_SERVER["SCRIPT_FILENAME"]) === basename(__FILE__)) {
             echo json_encode([
                 "success" => $result]);
             break;
+        case "update_owner_cafe":
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                $user_ID = $_SESSION['user_id'] ?? 2;
+
+                $row = $controller->getCafeByOwnerId($user_ID);
+                if (!$row) {
+                    die("Cafe not found.");
+                }
+                $cafe_id = $row['cafe_id'];
+
+                $wifi_speed = trim($_POST['wifi_speed'] ?? '');
+                $outlet_num = trim($_POST['outlet_num'] ?? '');
+                $price      = trim($_POST['price'] ?? '');
+                
+                $hours_input = $_POST['operating_hours'] ?? ''; 
+                $times = explode('-', $hours_input);
+                
+                if (count($times) == 2) {
+                    $opening_time = date("H:i:s", strtotime(trim($times[0])));
+                    $closing_time = date("H:i:s", strtotime(trim($times[1])));
+                } else {
+                    $opening_time = $row['opening_time'];
+                    $closing_time = $row['closing_time'];
+                }
+
+                // Update text details
+                $success = $controller->updateCafeDetails($cafe_id, $wifi_speed, $outlet_num, $opening_time, $closing_time, $price);
+
+                if ($success) {
+                    // Fetch all existing photo records dynamically
+                    $existing_photos = $controller->getCafePhotos($cafe_id);
+
+                    // 1. Process Cover Photo (Index 0)
+                    if (isset($_POST['cover_photo_url'])) {
+                        $new_cover = trim($_POST['cover_photo_url']);
+                        if (!empty($new_cover)) {
+                            if (isset($existing_photos[0])) {
+                                $controller->updatePhoto($existing_photos[0]['photo_id'], $new_cover);
+                            } else {
+                                $controller->addPhoto($cafe_id, $new_cover);
+                            }
+                        }
+                    }
+
+                    // Re-fetch to get accurate IDs after possible cover insert
+                    $existing_photos = $controller->getCafePhotos($cafe_id);
+
+                    // 2. Process Extra Photos (Indices 1 to N)
+                    if (isset($_POST['extra_photos']) && is_array($_POST['extra_photos'])) {
+                        foreach (array_values($_POST['extra_photos']) as $index => $url) {
+                            $url = trim($url);
+                            if (!empty($url)) {
+                                $db_target_index = $index + 1; // Cover photo is index 0
+                                if (isset($existing_photos[$db_target_index])) {
+                                    $target_id = $existing_photos[$db_target_index]['photo_id'];
+                                    $controller->updatePhoto($target_id, $url);
+                                } else {
+                                    $controller->addPhoto($cafe_id, $url);
+                                }
+                            }
+                        }
+                    }
+
+                    header("Location: ../../../frontend/pages/owner/cafeInfo.php");
+                    exit();
+                } else {
+                    echo "Error updating record.";
+                    exit();
+                }
+            }
+        break;
     }
 }
 ?>
