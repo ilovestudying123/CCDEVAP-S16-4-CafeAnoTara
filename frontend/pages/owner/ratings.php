@@ -3,6 +3,7 @@
     require_once "../authentication/auth.php";
     require_once __DIR__ . "/../../../backend/controllers/user/reviewController.php";
     require_once __DIR__ . '/../../../backend/models/user/cafeModel.php';
+    require_once __DIR__ . '/../../../backend/models/user/cafeModel.php';
 
     $controller = new reviewController($conn);
 
@@ -14,6 +15,11 @@
 
     // sets cafe id number
     $cafe_id = $ownerCafe ? $ownerCafe['cafe_id'] : 0;
+
+    // cafe name for the header 
+    $model = new cafeModel();
+
+    $row = $model->getCafeByOwnerId($conn, $current_user_id);
 
     $selected_star = $_GET['stars'] ?? '';
     $selected_sort = $_GET['sort']  ?? ($_GET['sort_by'] ?? '');
