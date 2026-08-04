@@ -1,6 +1,6 @@
 <?php
     require_once "../../../backend/config/connection.php";
-    require "../../../backend/models/admin/users-sql.php";
+    require "../../../backend/models/user/userModel.php";
 
     $userModel = new UserModel($conn);
 ?>
@@ -21,7 +21,7 @@
             <h1>Add User</h1>
         </div>
 
-        <form action="../../../backend/controllers/admin/user-add.php" method="POST">
+        <form action="../../../backend/controllers/user/userController.php?action=add" method="POST">
             <a href="users.php" class="back-link">Go Back</a>
 
             <div class="row">

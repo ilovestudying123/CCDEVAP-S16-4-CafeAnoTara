@@ -1,5 +1,5 @@
 <?php
-class CategoriesModel
+class reportModel
 {
     public function getCategories($conn) {
         $stmt = mysqli_prepare(
@@ -38,17 +38,45 @@ class CategoriesModel
         );
         return mysqli_stmt_execute($stmt);
         }
+
     public function deleteCategory($conn, $report_code) {
+        // Check if category is being used
+        $check = mysqli_prepare(
+            $conn,
+            "SELECT COUNT(*) AS total
+            FROM Reports
+            WHERE report_code = ?"
+        );
+
+        mysqli_stmt_bind_param(
+            $check,
+            "i",
+            $report_code
+        );
+
+        mysqli_stmt_execute($check);
+
+        $result = mysqli_stmt_get_result($check);
+        $row = mysqli_fetch_assoc($result);
+
+        // Category is still used
+        if ($row['total'] > 0) {
+            return false;
+        }
+
+        // Safe to delete
         $stmt = mysqli_prepare(
             $conn,
             "DELETE FROM ReportCode
             WHERE report_code = ?"
         );
+
         mysqli_stmt_bind_param(
             $stmt,
             "i",
             $report_code
         );
+
         return mysqli_stmt_execute($stmt);
     }
 }

@@ -6,13 +6,12 @@ function closeCreateModal(){
     document.getElementById("createModal").style.display = "none";
 }
 
-
 // loads and displays cafe details in the modal
 async function openCafe(cafeId){
-    const response = await fetch('/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/cafe-get.php?id=' + cafeId);   
+    const response = await fetch('/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/cafeController.php?action=get&id=' + cafeId);   
 
     if (!response.ok) {
-        alert("Unable to load cafe details.");
+        Swal.fire("Error", "Unable to load cafe details.", "error");
         return;
     }
 
@@ -57,13 +56,21 @@ async function openCafe(cafeId){
 }
 
 async function approveCafe(cafeId) {
-    const proceed = confirm("Are you sure you want to approve this cafe?");
-    if (!proceed) return;
+    const confirmResult = await Swal.fire({
+        title: "Approve this cafe?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Yes, approve",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#725420"
+    });
+
+    if (!confirmResult.isConfirmed) return;
 
     const formData = new FormData();
     formData.append("cafe_id", cafeId);
 
-    const response = await fetch("/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/cafe-approve.php",
+    const response = await fetch("/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/cafeController.php?action=approve",
         {
             method: "POST",
             body: formData
@@ -71,7 +78,6 @@ async function approveCafe(cafeId) {
     );
 
     const result = await response.json();
-    console.log(document.getElementById(`card-${cafeId}`));
 
     if (result.success) {
         // update status badge
@@ -82,7 +88,7 @@ async function approveCafe(cafeId) {
             status.className = "status approved";
         }
 
-        alert("Cafe has been approved.");
+        await Swal.fire("Approved!", "Cafe has been approved.", "success");
 
         // remove card after a short delay
         setTimeout(() => {
@@ -95,14 +101,23 @@ async function approveCafe(cafeId) {
 }
 
 async function rejectCafe(cafeId) {
-    const proceed = confirm("Are you sure you want to reject this cafe?");
-    if (!proceed) return;
+    const confirmResult = await Swal.fire({
+        title: "Reject this cafe?",
+        text: "This will remove the submission.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, reject",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#d33"
+    });
+
+    if (!confirmResult.isConfirmed) return;
 
     const formData = new FormData();
     formData.append("cafe_id", cafeId);
 
     const response = await fetch(
-        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/admin/cafe-reject.php",
+        "/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/user/cafeController.php?action=reject",
         {
             method: "POST",
             body: formData
@@ -116,9 +131,9 @@ async function rejectCafe(cafeId) {
         if (card) {
             card.remove();
         }
-        alert("Cafe submission rejected.");
+        await Swal.fire("Rejected", "Cafe submission rejected.", "success");
     } else {
-        alert("Failed to reject cafe.");
+        Swal.fire("Failed", "Failed to reject cafe.", "error");
     }
 }
 

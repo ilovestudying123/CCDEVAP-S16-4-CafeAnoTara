@@ -1,6 +1,6 @@
 <?php
     require_once "../../../backend/config/connection.php";
-    require "../../../backend/models/admin/users-sql.php";
+    require "../../../backend/models/user/userModel.php";
 
     $userModel = new UserModel($conn);
     $result = $userModel->getUsers();
@@ -18,6 +18,7 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="../../resources/js/admin-users.js"></script>
 </head>
@@ -73,7 +74,7 @@
                             </a>
 
                             <!-- Suspend / Activate -->
-                            <form action="../../../backend/controllers/admin/user-status.php" method="POST" onsubmit="return confirm('You are about to change this user\'s STATUS. Continue?');">
+                            <form class="status-form" action="../../../backend/controllers/user/userController.php?action=status" method="POST">
                                 <input type="hidden" name="user_id" value="<?= $row['user_id'] ?>">
 
                                 <?php if ($row['account_status'] == 'active'): ?>
@@ -90,10 +91,7 @@
                             </form>
 
                             <!-- Delete -->
-                            <form action="../../../backend/controllers/admin/user-delete.php"
-                                method="POST"
-                                onsubmit="return confirm('Are you sure you want to DELETE this user?');">
-
+                            <form class="delete-form" action="../../../backend/controllers/user/userController.php?action=delete" method="POST">
                                 <input type="hidden" name="user_id" value="<?= $row['user_id'] ?>">
 
                                 <button class="hidden-btn" type="submit">

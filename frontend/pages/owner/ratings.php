@@ -21,6 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Models extension -->
     <link rel="stylesheet" href="../../resources/css/header-style.css">
     <link rel="stylesheet" href="../../resources/css/owner-ratings.css?v=4">
     <title>Cafe Reviews</title>
@@ -85,11 +86,32 @@
                             <div class="review-header">
                                 <p class="review-title"><b><?php echo htmlspecialchars($review['firstname'] . ' ' . $review['lastname']); ?></b></p>
                                 
-                                <button type="button" 
-                                        class="report-btn"
-                                        data-review-id="<?php echo $review['review_id']; ?>" 
-                                        data-reporter-id="<?php echo $current_user_id; ?>">
-                                    Report
+                                <!-- Checks the status of the report to change text-->
+                                <?php
+                                    $text = "Report";
+                                    $disabled = "";
+
+                                    if (!empty($review['report_id'])) {
+
+                                        if ($review['status'] == "ongoing") {
+                                            $text = "Pending Report";
+                                            $disabled = "disabled";
+                                        }
+                                        elseif ($review['status'] == "resolved") {
+                                            $text = "Resolved";
+                                            $disabled = "disabled";
+                                        }
+                                    }
+                                ?>
+
+                                <!-- Changes the button text and disables button -->
+                                <button
+                                    type="button"
+                                    class="report-btn"
+                                    <?= $disabled ?>
+                                        data-review-id="<?= $review['review_id']; ?>"
+                                        data-reporter-id="<?= $current_user_id; ?>">
+                                    <?= $text ?>
                                 </button>
                             </div>
                             
@@ -104,7 +126,7 @@
                                     </div>
                                 <?php else: ?>
                                     <!-- Submit Reply direct to the Controller file -->
-                                    <form action="../../../backend/controllers/owner/ratingsController.php" method="POST">
+                                    <form action="../../../backend/controllers/user/reviewController.php" method="POST">
                                         <input type="hidden" name="review_id" value="<?php echo $review['review_id']; ?>">
                                         <textarea id="reply-text" name="owner_reply" placeholder="Add reply" required></textarea>
                                         <button type="submit" id="submit-btn">Submit</button>
@@ -130,7 +152,7 @@
             <h3>Report Review</h3>
             <p>Select the reason for reporting this review:</p>
             
-            <form id="report-form" action="../../../backend/controllers/owner/ratingsController.php" method="POST">
+            <form id="report-form" action="../../../backend/controllers/user/reviewController.php" method="POST">
                 <input type="hidden" id="modal-review-id" name="review_id">
                 <input type="hidden" id="modal-reporter-id" name="reporter_id">
                 

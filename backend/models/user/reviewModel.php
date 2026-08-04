@@ -150,27 +150,209 @@ class reviewModel {
             }
         }
 
-        $sql = "SELECT 
+        $sql = "SELECT
                     r.review_id,
                     r.rating,
                     r.comment,
                     r.owner_reply,
                     u.firstname,
-                    u.lastname
-                FROM 
-                    Reviews r
-                INNER JOIN 
-                    Users u ON r.customer_id = u.user_id
-                WHERE 
-                    r.cafe_id = ? 
+                    u.lastname,
+                    rp.report_id,
+                    rp.status
+                FROM Reviews r
+                INNER JOIN Users u
+                    ON r.customer_id = u.user_id
+                LEFT JOIN Reports rp
+                    ON r.review_id = rp.reported_review_id
+                WHERE
+                    r.cafe_id = ?
                     $filter_condition
-                ORDER BY 
+                ORDER BY
                     $sort_order";
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $cafe_id);
         $stmt->execute();
         return $stmt->get_result();
+    }
+
+    
+
+    // ================= ADMIN REVIEW REPORT FUNCTIONS =================
+
+    // Get all reported reviews
+    public function getAllReportedReviews($conn)
+    {
+        $sql = "
+            SELECT
+                rp.report_id,
+                CONCAT(u.firstname, ' ', u.lastname) AS reported_by,
+                rv.review_id,
+                rv.comment,
+                rc.report,
+                rp.created_on,
+                rp.status
+
+            FROM Reports rp
+
+            INNER JOIN Users u
+                ON rp.reporter_id = u.user_id
+
+            INNER JOIN Reviews rv
+                ON rp.reported_review_id = rv.review_id
+
+            INNER JOIN ReportCode rc
+                ON rp.report_code = rc.report_code
+
+            ORDER BY rp.created_on DESC
+        ";
+        $result = $conn->query($sql);
+        return $result;
+    }
+
+
+    // Get specific review report
+    public function getReviewReport($conn, $reportID)
+    {
+        $sql = "
+            SELECT
+                rp.report_id,
+                rp.status,
+                rp.created_on,
+                rp.report_code,
+
+                rv.review_id,
+                rv.comment
+
+            FROM Reports rp
+
+            JOIN Reviews rv
+                ON rp.reported_review_id = rv.review_id
+
+            WHERE rp.report_id = ?
+        ";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param(
+            "i",
+            $reportID
+        );
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
+    }
+
+
+    // Get report categories
+    public function getAdminReportCodes($conn)
+    {
+        $sql = "
+            SELECT *
+            FROM ReportCode
+            ORDER BY report
+        ";
+        return $conn->query($sql);
+    }
+
+
+    // Update report details
+    public function updateReviewReport(
+        $conn,
+        $reportID,
+        $status,
+        $reportCode,
+        $createdOn
+    )
+    {
+        $sql = "
+            UPDATE Reports
+            SET
+                status = ?,
+                report_code = ?,
+                created_on = ?
+            WHERE report_id = ?
+        ";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param(
+            "sisi",
+            $status,
+            $reportCode,
+            $createdOn,
+            $reportID
+        );
+        return $stmt->execute();
+    }
+
+    // Update review comment
+    public function updateReview(
+        $conn,
+        $reviewID,
+        $comment
+    )
+    {
+        $sql = "
+            UPDATE Reviews
+            SET comment = ?
+            WHERE review_id = ?
+        ";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param(
+            "si",
+            $comment,
+            $reviewID
+        );
+        return $stmt->execute();
+    }
+
+
+    // Approve report
+    public function approveReview(
+        $conn,
+        $reportID
+    )
+    {
+        $sql = "
+            UPDATE Reports
+            SET status='approved'
+            WHERE report_id=?
+        ";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param(
+            "i",
+            $reportID
+        );
+        return $stmt->execute();
+    }
+
+
+    // Remove review and resolve report
+    public function removeReview(
+        $conn,
+        $reportID,
+        $reviewID
+    )
+    {
+        // Delete review
+        $stmt = $conn->prepare(
+            "DELETE FROM Reviews
+            WHERE review_id=?"
+        );
+        $stmt->bind_param(
+            "i",
+            $reviewID
+        );
+        $stmt->execute();
+
+        // Resolve report
+        $stmt = $conn->prepare(
+            "UPDATE Reports
+            SET status='rejected'
+            WHERE report_id=?"
+        );
+        $stmt->bind_param(
+            "i",
+            $reportID
+        );
+        return $stmt->execute();
     }
 }
 ?>

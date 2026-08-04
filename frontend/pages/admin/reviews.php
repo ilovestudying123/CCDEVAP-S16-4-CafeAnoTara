@@ -1,9 +1,9 @@
 <?php
-    require "../../../backend/config/connection.php";
-    require "../../../backend/models/admin/reviews-sql.php";
+require "../../../backend/controllers/user/reviewController.php";
 
-    $ReviewModel = new ReviewModel($conn);
-    $reports = $ReviewModel->getAllReportedReviews();
+$controller = new reviewController($conn);
+
+$reports = $controller->getAllReportedReviews();
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +18,7 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../resources/js/admin-reviews.js"></script>
 </head>
 
