@@ -1,11 +1,25 @@
 <?php
     require '../../../backend/config/connection.php';   
+    require_once "../authentication/auth.php";
     require_once __DIR__ . "/../../../backend/controllers/user/reviewController.php";
+    require_once __DIR__ . '/../../../backend/models/user/cafeModel.php';
+    require_once __DIR__ . '/../../../backend/models/user/cafeModel.php';
 
     $controller = new reviewController($conn);
 
-    $current_user_id = $_SESSION['user_id'] ?? 2;
-    $cafe_id = 1; // change to SESSION
+    $current_user_id = $_SESSION['user_id'];
+    
+    // gets cafe id number
+    $cafeModel = new cafeModel();
+    $ownerCafe = $cafeModel->getCafeByOwnerId($conn, $current_user_id);
+
+    // sets cafe id number
+    $cafe_id = $ownerCafe ? $ownerCafe['cafe_id'] : 0;
+
+    // cafe name for the header 
+    $model = new cafeModel();
+
+    $row = $model->getCafeByOwnerId($conn, $current_user_id);
 
     $selected_star = $_GET['stars'] ?? '';
     $selected_sort = $_GET['sort']  ?? ($_GET['sort_by'] ?? '');
@@ -97,8 +111,12 @@
                                             $text = "Pending Report";
                                             $disabled = "disabled";
                                         }
-                                        elseif ($review['status'] == "resolved") {
-                                            $text = "Resolved";
+                                        elseif ($review['status'] == "approved") {
+                                            $text = "Approved";
+                                            $disabled = "disabled";
+                                        }
+                                        elseif ($review['status'] == "rejected") {
+                                            $text = "Rejected";
                                             $disabled = "disabled";
                                         }
                                     }

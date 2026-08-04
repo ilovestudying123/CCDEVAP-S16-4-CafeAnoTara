@@ -73,7 +73,7 @@ CREATE TABLE `cafeimg` (
 --
 
 INSERT INTO `cafeimg` (`photo_id`, `cafe_id`, `photo_url`) VALUES
-(1, 1, 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1080&q=80'),
+(1, 1, 'https://design-milk.com/images/2017/03/Fanaberia-Crepes-Cafe-PB-STUDIO-1.jpg'),
 (2, 1, 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1080&q=80'),
 (3, 2, 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1080&q=80'),
 (4, 3, 'https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1080&q=80'),
@@ -88,7 +88,14 @@ INSERT INTO `cafeimg` (`photo_id`, `cafe_id`, `photo_url`) VALUES
 (13, 12, 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=1080&q=80'),
 (14, 13, 'https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=1080&q=80'),
 (15, 14, 'https://images.unsplash.com/photo-1442550528053-c431ecb55509?w=1080&q=80'),
-(16, 15, 'https://static.vecteezy.com/system/resources/previews/060/506/482/large_2x/cozy-cafe-interior-with-vibrant-decor-and-plants-inviting-for-relaxation-and-socializing-photo.jpeg');
+(16, 15, 'https://static.vecteezy.com/system/resources/previews/060/506/482/large_2x/cozy-cafe-interior-with-vibrant-decor-and-plants-inviting-for-relaxation-and-socializing-photo.jpeg'),
+(17, 1, 'https://platform.austin.eater.com/wp-content/uploads/sites/22/chorus/uploads/chorus_asset/file/10286089/IMG_5407.jpg?quality=90&strip=all&crop=0%2C0%2C100%2C100&w=2400'),
+(18, 1, 'https://static.vecteezy.com/system/resources/previews/072/551/032/large_2x/bright-and-airy-cafe-interior-with-natural-light-and-modern-design-photo.jpeg'),
+(19, 1, 'https://images.pexels.com/photos/30748242/pexels-photo-30748242/free-photo-of-cozy-cafe-interior-with-vintage-decor-and-lighting.jpeg'),
+(20, 2, 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/34/4a/eb/riverdeck-cafe.jpg'),
+(21, 2, 'https://img.magnific.com/free-photo/interior-stylish-restaurant_1098-14471.jpg?semt=ais_hybrid&w=740&q=80'),
+(22, 2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCfDJ84qMA-mE6TaEpzPLuLOVP6P7WV6N26a2BwuOxMteBwtDitMADg4SO&s=10'),
+(23, 2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVSRY4EchkPKvwgsX2unULT5YsE_rMAPXGlUVNvhymSO6FGxISFCabPV8&s=10');
 
 -- --------------------------------------------------------
 
@@ -435,3 +442,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

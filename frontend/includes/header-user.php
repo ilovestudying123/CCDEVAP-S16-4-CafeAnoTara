@@ -14,5 +14,6 @@ $firstname = isset($_SESSION['firstname']) ? $_SESSION['firstname'] : '';
         <a href="bookmarks.php" class="bookmark">Bookmarks |</a>
         <a href="postedreviews.php" class="reviews">My Reviews |</a>
         <a href="accountSettings.php" class="accSetting">Account Settings</a>
+        <a href="../authentication/logout.php">Logout</a>
     </nav>
 </div>

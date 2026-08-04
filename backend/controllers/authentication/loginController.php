@@ -38,9 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        $_SESSION['user'] = $userData['username'];
-        $_SESSION['user_id'] = $userData['user_id'];
-        $_SESSION['role'] = $userData['role'];
+        $_SESSION['user_id']   = $userData['user_id'];
+        $_SESSION['user']      = $userData['username'];
+        $_SESSION['firstname'] = $userData['firstname'];
+        $_SESSION['lastname']  = $userData['lastname'];
+        $_SESSION['email']     = $userData['email'];
+        $_SESSION['role']      = $userData['role'];
 
         switch ($_SESSION['role']) {
             case 'customer':

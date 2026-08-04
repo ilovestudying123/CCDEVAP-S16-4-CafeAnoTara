@@ -134,7 +134,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 10px;
-    z-index: 100;
+    z-index: 20;
 }
 
 #filter-options.show {
@@ -171,7 +171,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 10px;
-    z-index: 100;
+    z-index: 20;
 }
 
 #sort-options.show {
@@ -348,7 +348,7 @@ section {
     background:rgba(0,0,0,.45);
     justify-content:center;
     align-items:center;
-    z-index:9999;
+    z-index:100;
 }
 
 .modal-content{
@@ -377,7 +377,7 @@ section {
     bottom: 0px;
     font-size: 32px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 110;
 }
 
 .image-section{
