@@ -7,6 +7,7 @@ $controller = new cafeController($conn);
 $cafes = $controller->getTopCafes();
 $customer_id = $_SESSION['user_id'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
