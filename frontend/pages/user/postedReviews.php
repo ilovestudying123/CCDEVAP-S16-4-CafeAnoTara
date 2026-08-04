@@ -74,7 +74,7 @@ $reviews = $controller->getUserReviews($customer_id);
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form method="POST"
-                              action="../../../backend/controllers/user/reviewController.php?action=update">
+                              action="postedReviews.php?action=update">
                             <input type="hidden" name="review_id" id="edit-review-id">
                             <div class="modal-header">
                                 <h5>Edit Review</h5>
@@ -100,7 +100,7 @@ $reviews = $controller->getUserReviews($customer_id);
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form method="POST"
-                              action="../../../backend/controllers/user/reviewController.php?action=delete">
+                              action="postedReviews.php?action=delete">
                             <input type="hidden" name="review_id" id="delete-review-id">
                             <div class="modal-body">Are you sure you want to delete this review?</div>
                             <div class="modal-footer">

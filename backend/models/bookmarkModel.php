@@ -10,7 +10,11 @@ public function getUserBookmarks ($conn, $customer_id) {
         LEFT JOIN Reviews r ON c.cafe_id = r.cafe_id
         LEFT JOIN CafeIMG ci ON c.cafe_id = ci.cafe_id
         WHERE b.customer_id = ?
-        GROUP BY c.cafe_id"
+        GROUP BY 
+        b.created_on,
+        c.cafe_id,
+        c.cafe_name,
+        c.location"
     );
     mysqli_stmt_bind_param($stmt, "i", $customer_id);
     mysqli_stmt_execute($stmt);
