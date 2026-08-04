@@ -97,8 +97,12 @@
                                             $text = "Pending Report";
                                             $disabled = "disabled";
                                         }
-                                        elseif ($review['status'] == "resolved") {
-                                            $text = "Resolved";
+                                        elseif ($review['status'] == "approved") {
+                                            $text = "Approved";
+                                            $disabled = "disabled";
+                                        }
+                                        elseif ($review['status'] == "rejected") {
+                                            $text = "Rejected";
                                             $disabled = "disabled";
                                         }
                                     }
