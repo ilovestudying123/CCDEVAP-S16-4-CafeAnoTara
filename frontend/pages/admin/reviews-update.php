@@ -1,5 +1,11 @@
 <?php
     require "../../../backend/controllers/user/reviewController.php";
+    require_once "../authentication/auth.php";
+
+    if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../../../frontend/pages/authentication/index.php");
+    exit();
+    }
 
     $controller = new reviewController($conn);
 

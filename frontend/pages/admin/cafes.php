@@ -1,7 +1,13 @@
 <?php
 // database connection and cafe controller
 require_once "../../../backend/config/connection.php";
+require_once "../authentication/auth.php";
 require_once "../../../backend/controllers/user/cafeController.php";
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../../../frontend/pages/authentication/index.php");
+    exit();
+}
 
 // retrieve search, filter, and sort values from the URL
 $search = $_GET['search'] ?? '';
