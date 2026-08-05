@@ -102,11 +102,19 @@
     height: 500px;
     margin: auto;
     overflow: auto;
+    padding: 20px;
     border: 1.2px solid black;
     box-sizing: border-box;
 
     background-color: #fdd6d6;
     border-radius: 15px;
+}
+
+#no-bookmarks {
+    font-size: 20px;
+    color: black;
+    font-family: "Montagu Slab", serif;
+    font-weight: 500;
 }
 
 .bookmark-card {

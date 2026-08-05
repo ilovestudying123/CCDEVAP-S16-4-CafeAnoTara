@@ -27,7 +27,7 @@ $bookmarks = $controller->getBookmarks($customer_id);
 
     <div class="bookmarked-cafes">
         <?php if (empty($bookmarks)): ?>
-            <p>You have no bookmarked cafes yet.</p>
+            <p id="no-bookmarks">You have no bookmarked cafes yet.</p>
         <?php else: ?>
             <?php foreach ($bookmarks as $bookmark): ?>
                 <div class="bookmark-card">

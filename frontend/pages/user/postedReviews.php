@@ -30,7 +30,7 @@ $reviews = $controller->getUserReviews($customer_id);
 <section>
     <div class="posted-reviews">
         <?php if (empty($reviews)): ?>
-            <p>You haven't posted any reviews yet.</p>
+            <p id="no-reviews">You haven't posted any reviews yet.</p>
         <?php else: ?>
             <?php foreach ($reviews as $review): ?>
                 <div class="review-box">
