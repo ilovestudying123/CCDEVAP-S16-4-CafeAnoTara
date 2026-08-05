@@ -6,9 +6,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// require_once __DIR__ . "/../../config/connection.php";
-// require_once __DIR__ . "/../../models/userModel.php";
-
 require_once __DIR__ . "/../config/connection.php";
 require_once __DIR__ . "/../models/userModel.php";
 
@@ -168,10 +165,10 @@ switch ($action) {
         
     case "viewAccount":
 
-    $user = $controller->getUser($_SESSION['user_id']);
+        $user = $controller->getUser($_SESSION['user_id']);
 
-    require "../../frontend/pages/user/accountSettings.php";
-    exit();
+        require "../../frontend/pages/user/accountSettings.php";
+        exit();
 
     case "editAccount":
 
