@@ -56,9 +56,9 @@ $trendingCafes = $cafeModel->getTopCafes($conn, 3);
 
         <div class="signUp">
 
-            <form action="../../../backend/controllers/authentication/signUpController.php"
-                  method="POST"
-                  id="signUpForm">
+            <form action="../../../backend/controllers/userController.php?action=signup"
+                method="POST"
+                id="signUpForm">
 
                 <label for="username">Username</label>
                 <input type="text"
