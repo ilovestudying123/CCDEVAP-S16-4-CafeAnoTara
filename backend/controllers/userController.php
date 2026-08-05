@@ -14,7 +14,6 @@ class UserController
     private $conn;
     private $model;
 
-    // constructor to initialize the database connection and model
     public function __construct($conn)
     {
         $this->conn = $conn;
@@ -118,12 +117,231 @@ class UserController
     {
         return $this->model->updateStatus($user_id, $status);
     }
+
+    /*  ==========================================================
+        UPDATE ACCOUNT STATUS
+        ========================================================== */
+    public function getUserByEmail($email)
+    {
+        return $this->model->getUserByEmail($email);
+    }
+
+    public function getUserByUsername($username)
+    {
+        return $this->model->getUserByUsername($username);
+    }
+
+    public function createUser(
+        $username,
+        $email,
+        $firstName,
+        $lastName,
+        $password,
+        $userType
+    ) {
+        return $this->model->createUser(
+            $username,
+            $email,
+            $firstName,
+            $lastName,
+            $password,
+            $userType
+        );
+    }
+
+    public function updatePassword($email, $password)
+    {
+        return $this->model->updatePassword($email, $password);
+    }
+
+    /* ==========================================================
+       LOGIN
+       ========================================================== */
+    public function login($data)
+    {
+        $email = trim($data["email"]);
+        $password = $data["password"];
+
+        if (empty($email) || empty($password)) {
+            $_SESSION['error'] = "Please fill in all fields.";
+            header("Location: ../../frontend/pages/authentication/index.php");
+            exit();
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $_SESSION['error'] = "Please input a correct email format.";
+            header("Location: ../../frontend/pages/authentication/index.php");
+            exit();
+        }
+
+        $userData = $this->model->getUserByEmail($email);
+
+        if (!$userData) {
+            $_SESSION['error'] = "Email does not exist.";
+            header("Location: ../../frontend/pages/authentication/index.php");
+            exit();
+        }
+
+        if (!password_verify($password, $userData['password'])) {
+            $_SESSION['error'] = "Invalid password.";
+            header("Location: ../../frontend/pages/authentication/index.php");
+            exit();
+        }
+
+        $_SESSION['user_id']   = $userData['user_id'];
+        $_SESSION['user']      = $userData['username'];
+        $_SESSION['firstname'] = $userData['firstname'];
+        $_SESSION['lastname']  = $userData['lastname'];
+        $_SESSION['email']     = $userData['email'];
+        $_SESSION['role']      = $userData['role'];
+
+        $_SESSION['success'] = "Login successful.";
+
+        switch ($_SESSION['role']) {
+
+            case 'customer':
+                header("Location: ../../frontend/pages/user/dashboard.php");
+                break;
+
+            case 'owner':
+                header("Location: ../../frontend/pages/owner/dashboard.php");
+                break;
+
+            case 'admin':
+                header("Location: ../../frontend/pages/admin/dashboard.php");
+                break;
+
+            default:
+                echo "Unknown role.";
+                exit();
+        }
+
+        exit();
+    }
+
+    /* ==========================================================
+       SIGN UP
+       ========================================================== */
+    public function signup($data)
+    {
+        $username = trim($data["username"]);
+        $email = trim($data["email"]);
+        $firstName = trim($data["firstName"]);
+        $lastName = trim($data["lastName"]);
+        $password = $data["password"];
+        $confirmPassword = $data["confirmPassword"];
+        $userType = $data["userType"];
+
+        if (
+            empty($username) ||
+            empty($email) ||
+            empty($firstName) ||
+            empty($lastName) ||
+            empty($password) ||
+            empty($confirmPassword) ||
+            empty($userType)
+        ) {
+            $_SESSION["error"] = "Please fill in all fields.";
+            header("Location: ../../frontend/pages/authentication/signUp.php");
+            exit();
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $_SESSION["error"] = "Please enter a valid email.";
+            header("Location: ../../frontend/pages/authentication/signUp.php");
+            exit();
+        }
+
+        if ($password !== $confirmPassword) {
+            $_SESSION["error"] = "Passwords do not match.";
+            header("Location: ../../frontend/pages/authentication/signUp.php");
+            exit();
+        }
+
+        if ($this->model->getUserByUsername($username)) {
+            $_SESSION["error"] = "Username already exists.";
+            header("Location: ../../frontend/pages/authentication/signUp.php");
+            exit();
+        }
+
+
+        if ($this->model->getUserByEmail($email)) {
+            $_SESSION["error"] = "Email already exists.";
+            header("Location: ../../frontend/pages/authentication/signUp.php");
+            exit();
+        }
+
+        if ($this->model->createUser(
+            $username,
+            $email,
+            $firstName,
+            $lastName,
+            $password,
+            $userType
+        )) {
+
+            $_SESSION["success"] = "Account created successfully! Please log in using your new account.";
+            header("Location: ../../frontend/pages/authentication/index.php");
+            exit();
+
+        } else {
+
+            $_SESSION["error"] = "Failed to create account.";
+            header("Location: ../../frontend/pages/authentication/signUp.php");
+            exit();
+        }
+    }
+
+    /* ==========================================================
+       FORGOT PASSWORD
+       ========================================================== */
+    public function forgotPassword($data)
+    {
+        $email = trim($data["email"]);
+        $newPassword = $data["newpassword"];
+        $confirmPassword = $data["confnewpassword"];
+
+        if (
+            empty($email) ||
+            empty($newPassword) ||
+            empty($confirmPassword)
+        ) {
+            $_SESSION['error'] = "Please fill in all fields.";
+            header("Location: ../../frontend/pages/authentication/forgotPassword.php");
+            exit();
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $_SESSION['error'] = "Please input a valid email.";
+            header("Location: ../../frontend/pages/authentication/forgotPassword.php");
+            exit();
+        }
+
+        if ($newPassword !== $confirmPassword) {
+            $_SESSION['error'] = "Passwords do not match.";
+            header("Location: ../../frontend/pages/authentication/forgotPassword.php");
+            exit();
+        }
+
+        $userData = $this->model->getUserByEmail($email);
+
+        if (!$userData) {
+            $_SESSION['error'] = "Email does not exist.";
+            header("Location: ../../frontend/pages/authentication/forgotPassword.php");
+            exit();
+        }
+
+        $this->model->updatePassword($email, $newPassword);
+
+        $_SESSION['success'] = "Password Updated!";
+        header("Location: ../../frontend/pages/authentication/index.php");
+        exit();
+    }
 }
 
 $controller = new UserController($conn);
 $action = $_REQUEST["action"] ?? "";
 
-// Handle actions based on the 'action' parameter
 switch ($action) {
 
     case "add":
@@ -198,8 +416,32 @@ switch ($action) {
         header("Location: ../../frontend/pages/user/accountSettings.php");
         exit();
 
+    case "login":
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->login($_POST);
+        } else {
+            header("Location: ../../frontend/pages/authentication/index.php");
+        }
+    exit();
+
+    case "signup":
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->signup($_POST);
+        } else {
+            header("Location: ../../frontend/pages/authentication/signUp.php");
+        }
+    exit();
+
+    case "forgotPassword":
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->forgotPassword($_POST);
+        } else {
+            header("Location: ../../frontend/pages/authentication/forgotPassword.php");
+        }
+    exit();
+
     default:
         http_response_code(400);
         echo "Invalid action.";
         exit();
-}
+    }
