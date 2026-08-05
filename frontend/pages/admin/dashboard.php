@@ -42,6 +42,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     <!-- header -->
     <?php require "../../includes/header-admin.php"; ?>
 
+    <!-- Dashboard Preview Cards -->
     <div class="body-box">
         <div class="card-holder">
             <div class="preview-box">
@@ -61,17 +62,22 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
             </div>
         </div>
         
+        <!-- Dashboard Charts -->
         <div class="chart-container">
+
+            <!-- Line Chart -->
             <div class="chart">
                 <h3>Monthly Sign Ups</h3>
                 <canvas id="lineChart"></canvas>
             </div>
 
+            <!-- Pie Chart -->
             <div class="chart">
                 <h3>Users Per Role</h3>
                 <canvas id="pieChart"></canvas>
             </div>
 
+            <!-- Cafe Rankings Table -->
             <div class="chart">
             <h3>Cafe Rankings</h3>
             <table id="rankedCafesTable">
@@ -98,6 +104,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
             </table>
         </div>
 
+        <!-- Most Bookmarked Cafes -->
             <div class="chart">
                 <h3>Most Bookmarked Cafes</h3>
                 <canvas id="barGraph2"></canvas>
@@ -106,17 +113,18 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- Login Success Message -->
 <?php if (isset($_SESSION['success'])): ?>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    Swal.fire({
-        icon: "success",
-        title: "Success!",
-        text: <?= json_encode($_SESSION['success']) ?>,
-        confirmButtonColor: "#725420"
-    });
-});
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            Swal.fire({
+                icon: "success",
+                title: "Success!",
+                text: <?= json_encode($_SESSION['success']) ?>,
+                confirmButtonColor: "#725420"
+            });
+        });
+    </script>
 <?php unset($_SESSION['success']); ?>
 <?php endif; ?>    
 </body>

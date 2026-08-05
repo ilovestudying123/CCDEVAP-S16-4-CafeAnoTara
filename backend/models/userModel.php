@@ -9,6 +9,8 @@ class userModel
         $this->conn = $conn;
     }
 
+    // ================= ADMIN FUNCTIONS =================
+
     // Add a new user to the users table
     public function addUser(
         $firstname,
@@ -119,6 +121,9 @@ class userModel
         return $stmt->execute();
     }
 
+    // ================= USER FUNCTIONS =================
+    
+    // Get a specific user by ID
     public function getUser($user_id)
     {
         $sql = "SELECT * FROM Users WHERE user_id = ?";
@@ -130,6 +135,7 @@ class userModel
         return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
     }
 
+    // Update user profile (user)
     public function updateProfile($user_id, $username, $firstname, $lastname, $mobilenumber)
     {
         $sql = "UPDATE users
@@ -156,6 +162,132 @@ class userModel
         mysqli_stmt_close($stmt);
 
         return $success;
+    }
+
+    public function getUserByEmail($email)
+    {
+        $query = "SELECT
+                    user_id,
+                    username,
+                    firstname,
+                    lastname,
+                    email,
+                    password,
+                    role
+                FROM users
+                WHERE email = ?
+                LIMIT 1";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        if ($stmt) {
+
+            mysqli_stmt_bind_param($stmt, "s", $email);
+            mysqli_stmt_execute($stmt);
+
+            $result = mysqli_stmt_get_result($stmt);
+            $user = mysqli_fetch_assoc($result);
+
+            mysqli_stmt_close($stmt);
+
+            return $user;
+        }
+
+        return null;
+    }
+
+    public function getUserByUsername($username)
+    {
+        $query = "SELECT user_id
+                FROM users
+                WHERE username = ?
+                LIMIT 1";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        if ($stmt) {
+
+            mysqli_stmt_bind_param($stmt, "s", $username);
+            mysqli_stmt_execute($stmt);
+
+            $result = mysqli_stmt_get_result($stmt);
+            $user = mysqli_fetch_assoc($result);
+
+            mysqli_stmt_close($stmt);
+
+            return $user;
+        }
+
+        return null;
+    }
+
+    public function createUser(
+        $username,
+        $email,
+        $firstName,
+        $lastName,
+        $password,
+        $userType
+    )
+    {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = "INSERT INTO Users
+                (username, email, firstname, lastname, password, role)
+                VALUES (?, ?, ?, ?, ?, ?)";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        if ($stmt) {
+
+            mysqli_stmt_bind_param(
+                $stmt,
+                "ssssss",
+                $username,
+                $email,
+                $firstName,
+                $lastName,
+                $hashedPassword,
+                $userType
+            );
+
+            $success = mysqli_stmt_execute($stmt);
+
+            mysqli_stmt_close($stmt);
+
+            return $success;
+        }
+
+        return false;
+    }
+
+    public function updatePassword($email, $newPassword)
+    {
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+        $query = "UPDATE users
+                SET password = ?
+                WHERE email = ?";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        if ($stmt) {
+
+            mysqli_stmt_bind_param(
+                $stmt,
+                "ss",
+                $hashedPassword,
+                $email
+            );
+
+            $success = mysqli_stmt_execute($stmt);
+
+            mysqli_stmt_close($stmt);
+
+            return $success;
+        }
+
+        return false;
     }
 }
 ?>

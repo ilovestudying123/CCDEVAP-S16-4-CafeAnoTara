@@ -40,7 +40,10 @@ $owners = $cafeController->getOwners();
 
     <div class="body-box">
         <div class="search-section">
+
             <h1>Cafe Verification</h1>
+
+            <!-- search bar -->
                 <form method="GET" class="search-box">
                     <div class="search-input">
                         <img src="../../resources/imgs/magnifying-glass-solid.png" alt="search icon">
@@ -49,6 +52,7 @@ $owners = $cafeController->getOwners();
 
                     <button type="submit">Search</button>
 
+                    <!-- filters -->
                     <div class="filter">
                         <button type="button" id="filter-button" onclick="toggleFilter()">
                         <img src="../../resources/imgs/sliders-solid.png" class="sort-icon">Filter</button>
@@ -69,6 +73,7 @@ $owners = $cafeController->getOwners();
                         </div>
                     </div>
 
+                    <!-- sorting -->
                     <div class="sort">
                         <button type="button" id="sort-button" onclick="toggleSort()">
                             <img src="../../resources/imgs/sort-solid.png" class="sort-icon">Sort</button>
@@ -88,6 +93,7 @@ $owners = $cafeController->getOwners();
             <button class="add-btn" onclick="openCreateModal()">Add Cafe</button>
         </div>
 
+        <!-- Cafe Cards -->
         <div class="card-holder">
             <?php 
             if ($pendingCafes) {
@@ -109,6 +115,7 @@ $owners = $cafeController->getOwners();
                           $statusText = ($cafe['is_verified'] == 1) ? "Approved" : "Pending";?>
 
                     <div>
+                        <!-- Displays Status Badge -->
                         <span
                             id="status-<?= $cafe['cafe_id'] ?>"
                             class="status <?= $statusClass ?>">
@@ -116,6 +123,7 @@ $owners = $cafeController->getOwners();
                         </span>
                     </div>
 
+                    <!-- Action Buttons -->
                     <div class="button-holder">
                             <button class="reject-btn" onclick="rejectCafe(<?= $cafe['cafe_id'] ?>)">Reject</button>
                         <?php if ($cafe['is_verified'] == 0): ?>
@@ -133,6 +141,7 @@ $owners = $cafeController->getOwners();
         </div>
     </div>
 
+    <!-- View Details Modal -->
     <div id="detailsModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -193,6 +202,7 @@ $owners = $cafeController->getOwners();
         </div>
     </div>
 
+    <!-- Create Cafe Modal -->
     <div id="createModal" class="modal">
         <div class="create-modal-content">
             <span class="close" onclick="closeCreateModal()">&times;</span>
@@ -265,11 +275,7 @@ $owners = $cafeController->getOwners();
                     </div>
                 </div><br>
 
-                <!-- <div class="field">
-                    <label for="create-image">Cafe Image</label>
-                    <input type="file" id="create-image" name="cafe_images[]" accept="image/*" multiple>
-                </div> -->
-
+                <!-- Image URLs -->
                 <div class="row">
                     <div class="field">
                         <label>Image URL 1</label>

@@ -36,6 +36,7 @@ $categories = $categoriesController->getCategories();
             </button>
         </div>
 
+        <!-- Categories Table -->
         <div class="table-wrapper">
             <table id="categoriesTable">
                 <thead>
@@ -64,6 +65,7 @@ $categories = $categoriesController->getCategories();
             </table>
         </div>
 
+        <!-- Create Category Modal -->
         <div id="createModal" class="modal">
             <div class="create-modal-content">
                 <span class="close" onclick="closeCreateModal()">&times;</span>
@@ -81,6 +83,7 @@ $categories = $categoriesController->getCategories();
             </div>
         </div>
         
+        <!-- Edit Category Modal -->
         <div id="editModal" class="modal">
             <div class="create-modal-content">
                 <span class="close" onclick="closeEditModal()">&times;</span>

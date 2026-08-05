@@ -1,6 +1,9 @@
 <?php
 class reportModel
 {
+    // ================= ADMIN FUNCTIONS =================
+    
+    // Get all report categories
     public function getCategories($conn) {
         $stmt = mysqli_prepare(
             $conn,
@@ -13,6 +16,7 @@ class reportModel
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 
+    // Create a new report category
     public function createCategory($conn, $report) {
         $stmt = mysqli_prepare(
             $conn,
@@ -23,6 +27,7 @@ class reportModel
         return mysqli_stmt_execute($stmt);
     }
 
+    // Update an existing report category
     public function updateCategory($conn, $report_code, $report) {
         $stmt = mysqli_prepare(
             $conn,
@@ -39,6 +44,7 @@ class reportModel
         return mysqli_stmt_execute($stmt);
         }
 
+    // Delete a report category if it is not being used in the Reports table
     public function deleteCategory($conn, $report_code) {
         // Check if category is being used
         $check = mysqli_prepare(

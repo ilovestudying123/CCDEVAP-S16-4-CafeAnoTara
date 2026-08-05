@@ -16,7 +16,6 @@ public function getCafeId ($conn, $cafe_id) {
     return mysqli_fetch_assoc($result);
 }
 
-
 // get cafe images from cafeimg table
 public function getCafeImages ($conn, $cafe_id) {
     $stmt = mysqli_prepare ($conn, 
@@ -28,6 +27,7 @@ public function getCafeImages ($conn, $cafe_id) {
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+// retrieves the top cafes based on average rating and returns 4 results
 public function getTopCafes ($conn, $limit = 4) {
     $stmt = mysqli_prepare ($conn, 
         "SELECT c.*, AVG(r.rating) as average_rating,
@@ -46,6 +46,7 @@ public function getTopCafes ($conn, $limit = 4) {
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+// retrieves cafes based on search, verification status, and sort order
 public function searchCafe ($conn, $name) {
     $stmt = mysqli_prepare ($conn, 
         "SELECT c.*, AVG(r.rating) as average_rating,
@@ -62,6 +63,7 @@ public function searchCafe ($conn, $name) {
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+// retrieves reviews for a specific cafe, including the username of the reviewer
 public function getCafeReviews ($conn, $cafe_id) {
     $stmt = mysqli_prepare ($conn, 
         "SELECT r.*, u.username
@@ -77,6 +79,7 @@ public function getCafeReviews ($conn, $cafe_id) {
 
 }
 
+// retrieves a cafe by its owner ID, including average rating and total reviews
 public function getCafeByOwnerId($conn, $owner_id) {
     $stmt = mysqli_prepare($conn,
         "SELECT 
@@ -102,6 +105,7 @@ public function getCafeByOwnerId($conn, $owner_id) {
     return mysqli_fetch_assoc($result);
 }
 
+// retrieves cafe images ordered by photo_id for a specific cafe
 public function getCafeImagesOrdered($conn, $cafe_id) {
     $stmt = mysqli_prepare($conn, 
         "SELECT photo_url FROM CafeIMG WHERE cafe_id = ? ORDER BY photo_id ASC"
@@ -112,6 +116,7 @@ public function getCafeImagesOrdered($conn, $cafe_id) {
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+// retrieves a cafe by its ID, including owner details, average rating, main image, and all images
 public function getCafeById ($conn, $cafe_id) {
     $stmt = mysqli_prepare ($conn,
         "SELECT
