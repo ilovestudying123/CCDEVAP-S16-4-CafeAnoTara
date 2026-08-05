@@ -129,6 +129,12 @@ body{
     font-size:1rem;
 }
 
+.cafe-info p{
+    color:white;
+    margin-bottom:5px;
+    font-size:1rem;
+}
+
 /* ===========================
    RIGHT PANEL
 =========================== */
