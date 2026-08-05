@@ -12,11 +12,11 @@ Type in your desired password and skip the details
 ii. Allow SSH traffic using the command: sudo ufw allow ssh 
 iii. Enable the firewall: sudo ufw enable 
 iv. And verify the status, should now display ‘active’: 
-a. sudo ufw status 
-v. Now, use your own computer’s command line and type the command - change the username to the one you created and the port 604## to the assigned SSH port to you: 
-a. ssh -p 604## user_name@ccscloud.dlsu.edu.ph 
+ssh -p 604## user_name@ccscloud.dlsu.edu.ph 
 b. Then type the user_name’s password that you set. 
-vi. The name on your command line (displayed on the left) should be 
+vi. a. sudo ufw status 
+v. Now, use your own computer’s command line and type the command - change the username to the one you created and the port 604## to the assigned SSH port to you: 
+a. The name on your command line (displayed on the left) should be 
 user_name@CCDEVAP##-Server and you should be able to run commands on your command line. 
 vii. To close connection, type: 
 a. logout 
