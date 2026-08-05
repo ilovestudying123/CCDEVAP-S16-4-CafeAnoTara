@@ -9,6 +9,7 @@
 
     $controller = new reviewController($conn);
 
+    // Get the report ID and die if it's NULL
     $reportID = $_GET['id'] ?? null;
         if (!$reportID) {
             die("Missing report ID.");
@@ -34,6 +35,7 @@
             <h1>Update Review</h1>
         </div>
 
+        <!-- Update Review Form -->
         <form action="../../../backend/controllers/reviewController.php?action=updateReview" method="POST">
             <input type="hidden" name="reportID" value="<?= $report['report_id'] ?>">
             <input type="hidden" name="reviewID" value="<?= $report['review_id'] ?>">
@@ -74,6 +76,7 @@
                 <div class="field">
                     <label for="reason">Reason</label>
                     <select name="reason">
+                        <!-- Report Reasons -->
                         <?php while($code = $reportCodes->fetch_assoc()): ?>
 
                         <option

@@ -38,6 +38,7 @@ $reports = $controller->getAllReportedReviews();
             <h1>Reports & Content Moderation</h1>
         </div>
 
+        <!--  -->
         <div class="table-wrapper">
             <table id="reviewsTable" class="display">
                 
