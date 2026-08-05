@@ -16,16 +16,26 @@ $trendingCafes = $cafeModel->getTopCafes($conn, 3);
     <link rel="stylesheet" href="../../resources/css/forgotPassword.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="../../resources/js/forgotPassword.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+<?php if (isset($_SESSION['success'])): ?>
 
-<?php
-if (isset($_SESSION['error'])) {
-    echo "<script>alert('" . addslashes($_SESSION['error']) . "');</script>";
-    unset($_SESSION['error']);
-}
-?>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    Swal.fire({
+        title: "Success!",
+        text: <?= json_encode($_SESSION['success']) ?>,
+        icon: "success",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#725420"
+    });
+});
+</script>
 
+<?php unset($_SESSION['success']); ?>
+
+<?php endif; ?>
 <div class="container">
 
     <div class="left-panel">
@@ -86,6 +96,15 @@ if (isset($_SESSION['error'])) {
                         <i class="fa-solid fa-eye"></i>
                     </button>
                 </div>
+
+                <?php if (isset($_SESSION['error'])): ?>
+                    <p class="forgot-error">
+                        <?= htmlspecialchars($_SESSION['error']) ?>
+                    </p>
+                    <?php unset($_SESSION['error']); ?>
+                <?php else: ?>
+                    <p class="forgot-error" id="forgotError"></p>
+                <?php endif; ?>
 
                 <button type="submit" class="submit-btn">Submit</button>
 

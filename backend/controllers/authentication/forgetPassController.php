@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $forgotPassModel->updatePassword($email, $newPassword);
 
-    $_SESSION['success'] = "Password updated successfully.";
+    $_SESSION['success'] = "Password Updated!";
     header("Location: ../../../frontend/pages/authentication/index.php");
     exit();
 
