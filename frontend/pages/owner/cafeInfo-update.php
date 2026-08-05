@@ -1,7 +1,7 @@
 <?php
     require '../../../backend/config/connection.php';
     require_once "../authentication/auth.php";
-    require_once __DIR__ . "/../../../backend/controllers/user/cafeController.php";
+    require_once __DIR__ . "/../../../backend/controllers/cafeController.php";
 
     $controller = new cafeController($conn);
 
@@ -34,7 +34,7 @@
     <!-- header -->
     <?php require "../../includes/header-owner.php"; ?>
 
-    <form action="../../../backend/controllers/user/cafeController.php?action=update_owner_cafe" method="POST">
+    <form action="../../../backend/controllers/cafeController.php?action=update_owner_cafe" method="POST">
         <div class="body-box">
             <h1 class="cafe-name"><?php echo htmlspecialchars($row['cafe_name']);?></h1>
 
