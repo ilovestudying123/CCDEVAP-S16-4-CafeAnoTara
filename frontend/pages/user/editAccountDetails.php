@@ -1,3 +1,21 @@
+<?php
+session_start();
+require '../../../backend/config/connection.php';
+require_once '../authentication/auth.php';
+
+$user_id = $_SESSION['user_id'];
+
+$sql = "SELECT * FROM users WHERE user_id = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "i", $user_id);
+mysqli_stmt_execute($stmt);
+
+$user = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+
+if (!$user) {
+    die("User not found.");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +30,7 @@
 
 <body>
 
-<?php require "../../includes/header-user.php"; ?>
+<?php require __DIR__ . "/../../includes/header-user.php"; ?>
 
 <div class="editDetails">
 
@@ -21,7 +39,7 @@
 <form
     class="form"
     method="POST"
-    action="../../../backend/controllers/admin/userController.php?action=updateAccount">
+    action="../../../backend/controllers/userController.php?action=updateAccount">
 
         <div class="form-row">
             <div class="form-group button-group">

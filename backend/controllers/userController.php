@@ -167,16 +167,16 @@ switch ($action) {
         
     case "viewAccount":
 
-    $user = $controller->getUser($_SESSION['user_id']);
+        $user = $controller->getUser($_SESSION['user_id']);
 
-    require "../../../frontend/pages/user/accountSettings.php";
-    exit();
+        require "../../frontend/pages/user/accountSettings.php";
+        exit();
 
     case "editAccount":
 
         $user = $controller->getUser($_SESSION['user_id']);
 
-        require "../../../frontend/pages/user/editAccountDetails.php";
+        require "../../frontend/pages/user/editAccountDetails.php";
         exit();
 
     case "updateAccount":
@@ -188,7 +188,7 @@ switch ($action) {
             trim($_POST['mobilenumber'])
         );
 
-        header("Location: userController.php?action=viewAccount");
+        header("Location: ../../frontend/pages/user/accountSettings.php");
         exit();
 
     default:
