@@ -1,6 +1,6 @@
 <?php
     require_once "../../../backend/config/connection.php";
-    require "../../../backend/models/user/userModel.php";
+    require "../../../backend/models/userModel.php";
     require_once "../authentication/auth.php";
 
     if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -32,7 +32,7 @@
             <h1>Edit Record</h1>
         </div>
 
-        <form action="../../../backend/controllers/user/userController.php?action=update" method="POST">
+        <form action="../../../backend/controllers/userController.php?action=update" method="POST">
 
         <!-- Hidden user ID -->
         <input type="hidden" name="user_id" value="<?= $user['user_id'] ?>">

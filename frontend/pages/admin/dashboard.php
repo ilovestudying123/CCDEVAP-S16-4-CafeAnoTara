@@ -1,5 +1,5 @@
 <?php
-require "../../../backend/controllers/user/dashboardController.php";
+require "../../../backend/controllers/dashboardController.php";
 require_once "../authentication/auth.php";
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
