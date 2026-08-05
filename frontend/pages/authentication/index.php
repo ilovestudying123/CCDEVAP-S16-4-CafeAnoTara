@@ -83,15 +83,15 @@ $trendingCafes = $cafeModel->getTopCafes($conn, 3);
                     <button type="button" class="toggle-password" onclick="togglePassword()">
                         <i class="fa-solid fa-eye"></i>
                     </button>
-                    
-                    <div class="login-error">
+                </div>
+
+                <div class="login-error">
                         <?php
-                        if (isset($_SESSION['error'])) {
-                            echo htmlspecialchars($_SESSION['error']);
-                            unset($_SESSION['error']);
-                        }
+                            if (isset($_SESSION['error'])) {
+                                echo htmlspecialchars($_SESSION['error']);
+                                unset($_SESSION['error']);
+                            }
                         ?>
-                    </div>
                 </div>
 
                 <div class="forgot">
