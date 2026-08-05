@@ -26,9 +26,39 @@ if (!$user) {
 
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/accountSettings.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
+<?php if (isset($_SESSION['success'])): ?>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: <?= json_encode($_SESSION['success']) ?>,
+        confirmButtonColor: "#725420",
+        confirmButtonText: "OK"
+    });
+});
+</script>
+<?php unset($_SESSION['success']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['error'])): ?>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: <?= json_encode($_SESSION['error']) ?>,
+        confirmButtonColor: "#725420",
+        confirmButtonText: "OK"
+    });
+});
+</script>
+<?php unset($_SESSION['error']); ?>
+<?php endif; ?>
 
 <?php require "../../includes/header-user.php"; ?>
 
