@@ -1,5 +1,10 @@
 <?php
 session_start();
+require '../../../backend/config/connection.php';
+require '../../../backend/models/cafeModel.php';
+
+$cafeModel = new cafeModel();
+$trendingCafes = $cafeModel->getTopCafes($conn, 3);
 ?>
 
 <!DOCTYPE html>
@@ -31,31 +36,23 @@ if(isset($_SESSION['error'])){
         <img src="../../resources/imgs/login.jpg" alt="Cafe">
 
         <div class="image-overlay"></div>
-
         <div class="trending-overlay">
             <h2>Trending Cafés</h2>
         
             <div class="photo-row">
+            <?php foreach($trendingCafes as $cafe): ?>
                 <div class="photo-group">
-                    <img src="../../resources/imgs/yardstick.jpg" alt="">
-                    <div class="cafe-info">
-                        <h4>Yardstick Coffee</h4>
-                    </div>
-                </div>
+                    <img src="<?= htmlspecialchars($cafe['main_image']) ?>"
+                        alt="<?= htmlspecialchars($cafe['cafe_name']) ?>">
 
-                <div class="photo-group">
-                    <img src="../../resources/imgs/starbucks.jpg" alt="">
                     <div class="cafe-info">
-                        <h4>Starbucks</h4>
+                        <h4><?= htmlspecialchars($cafe['cafe_name']) ?></h4>
+                        <p>
+                            ⭐ <?= number_format($cafe['average_rating'],1) ?>
+                        </p>
                     </div>
                 </div>
-
-                <div class="photo-group">
-                    <img src="../../resources/imgs/cbtl.jpg" alt="">
-                    <div class="cafe-info">
-                        <h4>Coffee Bean & Tea Leaf</h4>
-                    </div>
-                </div>
+            <?php endforeach; ?>
             </div>
         </div>
     </div>
