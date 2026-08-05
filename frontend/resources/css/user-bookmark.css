@@ -82,6 +82,19 @@
 .bookmark-icon {
     width: 50px;
     height: 60px;
+    background-color: transparent;
+    color: transparent;
+}
+
+.remove-bookmark {
+    font-size: 18px;
+    width: 50px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid transparent;
 }
 
 .bookmarked-cafes {
