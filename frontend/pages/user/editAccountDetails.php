@@ -1,5 +1,25 @@
 <?php
 session_start();
+require '../../../backend/config/connection.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../authentication/index.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+$sql = "SELECT * FROM users WHERE user_id = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "i", $user_id);
+mysqli_stmt_execute($stmt);
+
+$result = mysqli_stmt_get_result($stmt);
+$user = mysqli_fetch_assoc($result);
+
+if (!$user) {
+    die("User not found.");
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,17 +35,16 @@ session_start();
 
 <body>
 
-<!-- header -->
-    <?php require "../../includes/header-user.php"; ?>
+<?php require "../../includes/header-user.php"; ?>
 
 <div class="editDetails">
 
     <h1 class="editTitle">Edit Account Details</h1>
 
-    <form
-        class="form"
-        method="POST"
-        action="../../../backend/controllers/user/accountController.php?action=update">
+<form
+    class="form"
+    method="POST"
+    action="/CCDEVAP-S16-4-CafeAnoTara/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/userController.php?action=updateAccount">
 
         <div class="form-row">
             <div class="form-group button-group">

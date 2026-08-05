@@ -1,7 +1,7 @@
 <?php
 require '../../../backend/config/connection.php';
 require_once "../authentication/auth.php";
-require_once __DIR__ . '/../../../backend/models/user/cafeModel.php';
+require_once __DIR__ . '/../../../backend/models/cafeModel.php';
 
 $model = new cafeModel();
 

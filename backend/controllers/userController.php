@@ -6,8 +6,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . "/../../config/connection.php";
-require_once __DIR__ . "/../../models/userModel.php";
+// require_once __DIR__ . "/../../config/connection.php";
+// require_once __DIR__ . "/../../models/userModel.php";
+
+require_once __DIR__ . "/../config/connection.php";
+require_once __DIR__ . "/../models/userModel.php";
 
 class UserController
 {
@@ -19,6 +22,27 @@ class UserController
         $this->conn = $conn;
         $this->model = new userModel($conn);
     }
+
+    /*  ==========================================================
+        GET CURRENT USER
+        ========================================================== */
+        public function getUser($user_id)
+        {
+            return $this->model->getUser($user_id);
+        }
+
+    /*  ==========================================================
+        UPDATE PROFILE
+        ========================================================== */
+        public function updateProfile($user_id, $firstname, $lastname, $mobilenumber)
+        {
+            return $this->model->updateProfile(
+                $user_id,
+                $firstname,
+                $lastname,
+                $mobilenumber
+            );
+        }
 
     /* ==========================================================
        ADD USER
@@ -139,6 +163,32 @@ switch ($action) {
         } else {
             header("Location: ../../../frontend/pages/admin/users.php?error=statusfailed");
         }
+        exit();
+        
+    case "viewAccount":
+
+    $user = $controller->getUser($_SESSION['user_id']);
+
+    require "../../../frontend/pages/user/accountSettings.php";
+    exit();
+
+    case "editAccount":
+
+        $user = $controller->getUser($_SESSION['user_id']);
+
+        require "../../../frontend/pages/user/editAccountDetails.php";
+        exit();
+
+    case "updateAccount":
+
+        $controller->updateProfile(
+            $_SESSION['user_id'],
+            trim($_POST['firstname']),
+            trim($_POST['lastname']),
+            trim($_POST['mobilenumber'])
+        );
+
+        header("Location: userController.php?action=viewAccount");
         exit();
 
     default:
