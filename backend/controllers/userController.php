@@ -280,7 +280,9 @@ class UserController
             $userType
         )) {
 
-            $_SESSION["success"] = "Account created successfully! Please log in using your new account.";
+            // $_SESSION["success"] = "Account created successfully! Please log in using your new account.";
+            $_SESSION["success_title"] = "Account Created!";
+            $_SESSION["success"] = "Please log in using your new account.";
             header("Location: ../../frontend/pages/authentication/index.php");
             exit();
 
@@ -333,7 +335,9 @@ class UserController
 
         $this->model->updatePassword($email, $newPassword);
 
-        $_SESSION['success'] = "Password Updated!";
+        // $_SESSION['success'] = "Password Updated!";
+        $_SESSION['success_title'] = "Password Changed!";
+        $_SESSION['success'] = "Your password has been updated successfully.";
         header("Location: ../../frontend/pages/authentication/index.php");
         exit();
     }
