@@ -1,6 +1,6 @@
 <?php
     require_once "../../../backend/config/connection.php";
-    require "../../../backend/models/user/userModel.php";
+    require "../../../backend/models/userModel.php";
     require_once "../authentication/auth.php";
 
     if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -27,7 +27,7 @@
             <h1>Add User</h1>
         </div>
 
-        <form action="../../../backend/controllers/user/userController.php?action=add" method="POST">
+        <form action="../../../backend/controllers/userController.php?action=add" method="POST">
             <a href="users.php" class="back-link">Go Back</a>
 
             <div class="row">

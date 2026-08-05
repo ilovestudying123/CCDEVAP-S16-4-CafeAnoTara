@@ -129,27 +129,27 @@ switch ($action) {
     case "add":
         $success = $controller->addUser($_POST);
         if ($success) {
-            header("Location: ../../../frontend/pages/admin/users.php");
+            header("Location: ../../frontend/pages/admin/users.php");
         } else {
-            header("Location: ../../../frontend/pages/admin/users.php?error=validation");
+            header("Location: ../../frontend/pages/admin/users.php?error=validation");
         }
         exit();
 
     case "update":
         $success = $controller->updateUser($_POST);
         if ($success) {
-            header("Location: ../../../frontend/pages/admin/users.php");
+            header("Location: ../../frontend/pages/admin/users.php");
         } else {
-            header("Location: ../../../frontend/pages/admin/users.php?error=update");
+            header("Location: ../../frontend/pages/admin/users.php?error=update");
         }
         exit();
 
     case "delete":
         $success = $controller->deleteUser($_POST["user_id"]);
         if ($success) {
-            header("Location: ../../../frontend/pages/admin/users.php?success=deleted");
+            header("Location: ../../frontend/pages/admin/users.php?success=deleted");
         } else {
-            header("Location: ../../../frontend/pages/admin/users.php?error=deletefailed");
+            header("Location: ../../frontend/pages/admin/users.php?error=deletefailed");
         }
         exit();
 
@@ -159,12 +159,26 @@ switch ($action) {
             $_POST["status"]
         );
         if ($success) {
-            header("Location: ../../../frontend/pages/admin/users.php?success=statusupdated");
+            header("Location: ../../frontend/pages/admin/users.php?success=statusupdated");
         } else {
-            header("Location: ../../../frontend/pages/admin/users.php?error=statusfailed");
+            header("Location: ../../frontend/pages/admin/users.php?error=statusfailed");
         }
         exit();
         
+    case "viewAccount":
+
+    $user = $controller->getUser($_SESSION['user_id']);
+
+    require "../../frontend/pages/user/accountSettings.php";
+    exit();
+
+    case "editAccount":
+
+        $user = $controller->getUser($_SESSION['user_id']);
+
+        require "../../frontend/pages/user/editAccountDetails.php";
+        exit();
+
     case "updateAccount":
 
         $controller->updateProfile(

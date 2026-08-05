@@ -1,7 +1,7 @@
 <?php
 require_once "../../../backend/config/connection.php";
 require_once "../authentication/auth.php";
-require_once "../../../backend/controllers/user/reportController.php";
+require_once "../../../backend/controllers/reportController.php";
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../../../frontend/pages/authentication/index.php");

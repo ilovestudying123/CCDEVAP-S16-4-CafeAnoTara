@@ -162,7 +162,7 @@ if (basename($_SERVER["SCRIPT_FILENAME"]) === basename(__FILE__)) {
                         }
                     }
                 }
-                header("Location: ../../../frontend/pages/admin/cafes.php");
+                header("Location: ../../frontend/pages/admin/cafes.php");
                 exit();
             }
             echo "Failed to create cafe.";
@@ -246,7 +246,7 @@ if (basename($_SERVER["SCRIPT_FILENAME"]) === basename(__FILE__)) {
                         }
                     }
 
-                    header("Location: ../../../frontend/pages/owner/cafeInfo.php");
+                    header("Location: ../../frontend/pages/owner/cafeInfo.php");
                     exit();
                 } else {
                     echo "Error updating record.";

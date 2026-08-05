@@ -1,5 +1,5 @@
 <?php
-    require "../../../backend/controllers/user/reviewController.php";
+    require "../../../backend/controllers/reviewController.php";
     require_once "../authentication/auth.php";
 
     if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -34,7 +34,7 @@
             <h1>Update Review</h1>
         </div>
 
-        <form action="../../../backend/controllers/user/reviewController.php?action=updateReview" method="POST">
+        <form action="../../../backend/controllers/reviewController.php?action=updateReview" method="POST">
             <input type="hidden" name="reportID" value="<?= $report['report_id'] ?>">
             <input type="hidden" name="reviewID" value="<?= $report['review_id'] ?>">
             
