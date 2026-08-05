@@ -85,6 +85,7 @@ if ($row) {
                 </div>
             </div>
 
+            <!-- The box that shows the average rating and reviews -->
             <div class="box pad rating-box">
                 <p class="header-text">Average Rating</p>
                 <div class="rating"><span class="star">★</span> <?php echo $row['average_rating'];?>/5</div>
@@ -95,6 +96,7 @@ if ($row) {
                     <p class="header-text">Cafe Reviews</p>
                     <div class="count"><?php echo $row['total_reviews'];?></div>
                 </div>
+                <!-- Redirects to reviews -->
                 <div class="review-redirect">
                     <a href="ratings.php" class="arrow-btn"><img src="../../resources/imgs/arrow-btn.png" alt="arrow"></a>
                 </div>
@@ -110,6 +112,7 @@ if ($row) {
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- Modal when cafe owner logs in -->
 <?php if (isset($_SESSION['success'])): ?>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
