@@ -65,5 +65,20 @@ $customer_id = $_SESSION['user_id'];
         </div>
     </section>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<?php if (isset($_SESSION['success'])): ?>
+<script>
+window.addEventListener("load", function () {
+    Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: <?= json_encode($_SESSION['success']) ?>,
+        confirmButtonColor: "#725420"
+    });
+});
+</script>
+<?php unset($_SESSION['success']); ?>
+<?php endif; ?>
 </body>
 </html>
