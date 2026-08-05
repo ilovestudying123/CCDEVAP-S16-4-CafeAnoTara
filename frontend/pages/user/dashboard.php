@@ -69,7 +69,7 @@ $customer_id = $_SESSION['user_id'];
 
 <?php if (isset($_SESSION['success'])): ?>
 <script>
-window.addEventListener("load", function () {
+document.addEventListener("DOMContentLoaded", function () {
     Swal.fire({
         icon: "success",
         title: "Success!",

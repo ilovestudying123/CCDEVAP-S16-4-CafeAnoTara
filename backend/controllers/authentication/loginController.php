@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['email']     = $userData['email'];
         $_SESSION['role']      = $userData['role'];
 
-        $_SESSION['success'] = "Login successful!";
+        $_SESSION['success'] = "Login successful.";
 
         switch ($_SESSION['role']) {
             case 'customer':
