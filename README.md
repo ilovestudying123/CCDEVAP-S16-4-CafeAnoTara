@@ -1,10 +1,10 @@
-1. Access your virtual machine (VM) 
-Access the virtual machine in CCS Cloud using a browser in the link https://ccscloud.dlsu.edu.ph and log in using the username (CCDEVAP##) and password given. Ensure that the ‘Realm’ chosen is ‘Proxmox VE authentication server’. 
-Click on each ‘Datacenter’ until you find a machine (lxc) listed in the right part then double-click on that listing. 
-It will now display a new tab with options where you can click on the ‘Start’ button at the top to start the machine and a ‘Console’ to access the command line. You can login to the machine using the username root and the same password given to you.
-In the command line, start with updating the machine repository using two commands: 
-sudo apt upgrade 
-sudo full-upgrade
+1. Access your virtual machine (VM) \
+Access the virtual machine in CCS Cloud using a browser in the link https://ccscloud.dlsu.edu.ph and log in using the username (CCDEVAP##) and password given. Ensure that the ‘Realm’ chosen is ‘Proxmox VE authentication server’. \
+Click on each ‘Datacenter’ until you find a machine (lxc) listed in the right part then double-click on that listing. \
+It will now display a new tab with options where you can click on the ‘Start’ button at the top to start the machine and a ‘Console’ to access the command line. You can login to the machine using the username root and the same password given to you.\
+In the command line, start with updating the machine repository using two commands: \
+sudo apt upgrade \
+sudo full-upgrade \
 
 2. Enable SSH to access the VM remotely 
 i. Create a new user, using the command and change the user_name: 
