@@ -1,6 +1,7 @@
 <?php
 class bookmarkModel {
 
+// get user bookmark from database
 public function getUserBookmarks ($conn, $customer_id) {
     $stmt = mysqli_prepare ($conn, 
         "SELECT b.created_on, c.cafe_id, c.cafe_name, c.location, AVG(r.rating) as average_rating,
@@ -22,6 +23,7 @@ public function getUserBookmarks ($conn, $customer_id) {
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+// add bookmark to database
 public function addBookmark ($conn, $customer_id, $cafe_id) {
     $stmt = mysqli_prepare ($conn, 
         "INSERT INTO Bookmarks (customer_id, cafe_id) VALUES (?, ?)"
@@ -30,6 +32,7 @@ public function addBookmark ($conn, $customer_id, $cafe_id) {
     return mysqli_stmt_execute($stmt);
 }
 
+// remove bookmark from database
 public function removeBookmark ($conn, $customer_id, $cafe_id) {
     $stmt = mysqli_prepare ($conn, 
         "DELETE FROM Bookmarks WHERE customer_id = ? AND cafe_id = ?"
@@ -38,6 +41,7 @@ public function removeBookmark ($conn, $customer_id, $cafe_id) {
     return mysqli_stmt_execute($stmt);
 }
 
+// checks the database if bookmark is already bookmarked by a specific user
 public function isBookmarked ($conn, $customer_id, $cafe_id) {
     $stmt = mysqli_prepare ($conn, 
         "SELECT bookmark_id 

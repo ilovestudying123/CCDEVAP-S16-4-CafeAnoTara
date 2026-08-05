@@ -52,8 +52,9 @@ if (!$user) {
                 <label>Username</label>
                 <input
                     type="text"
+                    name="username"
                     value="<?= htmlspecialchars($user['username']) ?>"
-                    disabled>
+                    required>
             </div>
         </div>
 

@@ -18,10 +18,12 @@
             $this->model = new reviewModel();
         }
 
+        // get user reviews for a specific user
         public function getUserReviews($customer_id) {
             return $this->model->getUserReviews($this->conn, $customer_id);
         }
 
+        // get cafe ratings data for a specific cafe
         public function getCafeRatingsData($cafe_id, $selected_star = '', $selected_sort = '') {
             return [
                 'cafe_name'      => $this->model->getCafeName($this->conn, $cafe_id),

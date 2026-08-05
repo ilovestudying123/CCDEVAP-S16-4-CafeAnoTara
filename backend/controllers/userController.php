@@ -6,9 +6,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// require_once __DIR__ . "/../../config/connection.php";
-// require_once __DIR__ . "/../../models/userModel.php";
-
 require_once __DIR__ . "/../config/connection.php";
 require_once __DIR__ . "/../models/userModel.php";
 
@@ -34,10 +31,11 @@ class UserController
     /*  ==========================================================
         UPDATE PROFILE
         ========================================================== */
-        public function updateProfile($user_id, $firstname, $lastname, $mobilenumber)
+        public function updateProfile($user_id, $username, $firstname, $lastname, $mobilenumber)
         {
             return $this->model->updateProfile(
                 $user_id,
+                $username,
                 $firstname,
                 $lastname,
                 $mobilenumber
@@ -167,10 +165,10 @@ switch ($action) {
         
     case "viewAccount":
 
-    $user = $controller->getUser($_SESSION['user_id']);
+        $user = $controller->getUser($_SESSION['user_id']);
 
-    require "../../frontend/pages/user/accountSettings.php";
-    exit();
+        require "../../frontend/pages/user/accountSettings.php";
+        exit();
 
     case "editAccount":
 
@@ -181,12 +179,19 @@ switch ($action) {
 
     case "updateAccount":
 
-        $controller->updateProfile(
+        $success = $controller->updateProfile(
             $_SESSION['user_id'],
+            trim($_POST['username']),
             trim($_POST['firstname']),
             trim($_POST['lastname']),
             trim($_POST['mobilenumber'])
         );
+
+        if ($success) {
+            $_SESSION['success'] = "Account details updated successfully.";
+        } else {
+            $_SESSION['error'] = "Failed to update account details.";
+        }
 
         header("Location: ../../frontend/pages/user/accountSettings.php");
         exit();

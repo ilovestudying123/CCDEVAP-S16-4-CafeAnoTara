@@ -21,28 +21,38 @@ class accountModel{
 
     }
 
-    public function updateUser($user_id, $firstname, $lastname, $mobilenumber)
+    public function updateUser(
+        $user_id,
+        $username,
+        $firstname,
+        $lastname,
+        $mobilenumber
+    )
     {
-            $query = "UPDATE Users
-                    SET firstname = ?,
-                        lastname = ?,
-                        mobilenumber = ?
-                    WHERE user_id = ?";
+        $query = "UPDATE Users
+                SET username = ?,
+                    firstname = ?,
+                    lastname = ?,
+                    mobilenumber = ?
+                WHERE user_id = ?";
 
-            $stmt = mysqli_prepare($this->conn, $query);
+        $stmt = mysqli_prepare($this->conn, $query);
 
-            mysqli_stmt_bind_param(
-                $stmt,
-                "sssi",
-                $firstname,
-                $lastname,
-                $mobilenumber,
-                $user_id
-            );
+        mysqli_stmt_bind_param(
+            $stmt,
+            "ssssi",
+            $username,
+            $firstname,
+            $lastname,
+            $mobilenumber,
+            $user_id
+        );
 
-            mysqli_stmt_execute($stmt);
+        $success = mysqli_stmt_execute($stmt);
 
-            mysqli_stmt_close($stmt);
+        mysqli_stmt_close($stmt);
+
+        return $success;
     }
 
 }

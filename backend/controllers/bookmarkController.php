@@ -18,10 +18,12 @@ class bookmarkController {
         $this->model = new bookmarkModel();
     }
 
+    // get bookmarks for a specific user
     public function getBookmarks($customer_id) {
         return $this->model->getUserBookmarks($this->conn, $customer_id);
     }
 
+    // add bookmark for a specific user and cafe
     public function addBookmark($customer_id, $cafe_id) {
         $bookmarks = $this->model->getUserBookmarks($this->conn, $customer_id);
         if (count($bookmarks) >= 10) {
@@ -35,10 +37,12 @@ class bookmarkController {
         return $this->model->addBookmark($this->conn, $customer_id, $cafe_id);
     }
 
+    // remove bookmark for a specific user and cafe
     public function removeBookmark($customer_id, $cafe_id) {
         return $this->model->removeBookmark($this->conn, $customer_id, $cafe_id);
     }
 
+    // checks if a specific cafe is bookmarked by a specific user
     public function isBookmarked($customer_id, $cafe_id) {
         return $this->model->isBookmarked($this->conn, $customer_id, $cafe_id);
     }
