@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../../../backend/config/connection.php';
 require_once '../authentication/auth.php';
 
@@ -9,8 +10,7 @@ $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
 mysqli_stmt_execute($stmt);
 
-$result = mysqli_stmt_get_result($stmt);
-$user = mysqli_fetch_assoc($result);
+$user = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
 if (!$user) {
     die("User not found.");
@@ -88,10 +88,8 @@ if (!$user) {
 
     <script>
         function goToEditPage() {
-            window.location.href =
-                "../../../backend/controllers/admin/userController.php?action=editAccount";
+            window.location.href = "editAccountDetails.php";
         }
     </script>
-
 </body>
 </html>

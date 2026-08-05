@@ -188,7 +188,7 @@ switch ($action) {
             trim($_POST['mobilenumber'])
         );
 
-        header("Location: userController.php?action=viewAccount");
+        header("Location: ../../frontend/pages/user/accountSettings.php");
         exit();
 
     default:
