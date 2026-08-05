@@ -114,7 +114,10 @@ $trendingCafes = $cafeModel->getTopCafes($conn, 3);
 window.addEventListener("load", function () {
     Swal.fire({
         icon: "success",
-        title: "Account Created!",
+        // title: "Account Created!",
+        // text:,
+        //NEW
+        title: <?= json_encode($_SESSION['success_title']) ?>,
         text: <?= json_encode($_SESSION['success']) ?>,
         confirmButtonText: "Login",
         confirmButtonColor: "#725420"
