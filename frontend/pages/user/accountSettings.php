@@ -91,6 +91,5 @@ if (!$user) {
             window.location.href = "editAccountDetails.php";
         }
     </script>
-
 </body>
 </html>
