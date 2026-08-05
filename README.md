@@ -1,35 +1,35 @@
 1. Access your virtual machine (VM) \
-i. Access the virtual machine in CCS Cloud using a browser in the link https://ccscloud.dlsu.edu.ph and log in using the username (CCDEVAP##) and password given. Ensure that the ‘Realm’ chosen is ‘Proxmox VE authentication server’. \
-ii. Click on each ‘Datacenter’ until you find a machine (lxc) listed in the right part then double-click on that listing. \
-iii. It will now display a new tab with options where you can click on the ‘Start’ button at the top to start the machine and a ‘Console’ to access the command line. You can login to the machine using the username root and the same password given to you.\
-iv. In the command line, start with updating the machine repository using two commands: \
+Access the virtual machine in CCS Cloud using a browser in the link https://ccscloud.dlsu.edu.ph and log in using the username (CCDEVAP##) and password given. Ensure that the ‘Realm’ chosen is ‘Proxmox VE authentication server’. \
+Click on each ‘Datacenter’ until you find a machine (lxc) listed in the right part then double-click on that listing. \
+It will now display a new tab with options where you can click on the ‘Start’ button at the top to start the machine and a ‘Console’ to access the command line. You can login to the machine using the username root and the same password given to you.\
+In the command line, start with updating the machine repository using two commands: \
 sudo apt upgrade \
 sudo full-upgrade
 
-2. Enable SSH to access the VM remotely 
-i. Create a new user, using the command and change the user_name: 
-sudo adduser user_name 
-Type in your desired password and skip the details 
-ii. Allow SSH traffic using the command: 
-sudo ufw allow ssh 
-iii. Enable the firewall: 
-sudo ufw enable 
-iv. And verify the status, should now display ‘active’: 
-sudo ufw status 
-v. Now, use your own computer’s command line and type the command - change the username to the one you created and the port 604## to the assigned SSH port to you: 
-ssh -p 604## user_name@ccscloud.dlsu.edu.ph 
-Then type the user_name’s password that you set. 
-vi. The name on your command line (displayed on the left) should be 
-user_name@CCDEVAP##-Server and you should be able to run commands on your command line. 
-vii. To close connection, type: 
-logout 
+2. Enable SSH to access the VM remotely \
+i. Create a new user, using the command and change the user_name: \
+sudo adduser user_name \
+Type in your desired password and skip the details \
+ii. Allow SSH traffic using the command: \
+sudo ufw allow ssh \
+iii. Enable the firewall: \
+sudo ufw enable \
+iv. And verify the status, should now display ‘active’: \
+sudo ufw status \
+v. Now, use your own computer’s command line and type the command - change the username to the one you created and the port 604## to the assigned SSH port to you: \
+ssh -p 604## user_name@ccscloud.dlsu.edu.ph \
+Then type the user_name’s password that you set. \
+vi. The name on your command line (displayed on the left) should be \
+user_name@CCDEVAP##-Server and you should be able to run commands on your command line. \
+vii. To close connection, type: \
+logout \
+
 3. Setup GitHub and Upload Files
 i. Install the necessary libraries: 
 sudo apt install apache2 php libapache2-mod-php php-mysql mariadb-server sqlite3 php-sqlite3 php-gd php-mbstring php-dom
 ii. To check if Apache is successfully installed, access the homepage in the link: ‘ccscloud.dlsu.edu.ph:601##’
 iii. Next, go to the /var/www/html/ directory and create your web app folder. This will contain all your web app files. 
 cd /var/www/html 
-
 iv. Using GitHub 
 sudo apt update 
 sudo apt install git -y 
@@ -38,7 +38,7 @@ v. Update the password in CCDEVAP-S16-4-CafeAnoTara/backend/config/connection.ph
 nano connection.php
 $password   = "your_password";
 
-3. Setup a Database
+4. Setup a Database
 i. To setup the MySQL, run the command: mysql_secure_installation 
 Enter your preferred password
 Switch to unix_socket authentication [Y/n] n
