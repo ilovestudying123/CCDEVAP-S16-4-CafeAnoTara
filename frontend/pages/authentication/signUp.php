@@ -20,13 +20,6 @@ $trendingCafes = $cafeModel->getTopCafes($conn, 3);
 </head>
 <body>
 
-<?php
-if (isset($_SESSION['error'])) {
-    echo "<script>alert('" . addslashes($_SESSION['error']) . "');</script>";
-    unset($_SESSION['error']);
-}
-?>
-
 <div class="container">
 
     <div class="left-panel">
@@ -142,6 +135,15 @@ if (isset($_SESSION['error'])) {
                     </div>
 
                 </div>
+                
+                <p id="signupError" class="signup-error">
+                    <?php
+                    if (isset($_SESSION['error'])) {
+                        echo htmlspecialchars($_SESSION['error']);
+                        unset($_SESSION['error']);
+                    }
+                    ?>
+                </p>
 
                 <div class="user-type">
 
