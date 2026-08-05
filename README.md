@@ -86,7 +86,7 @@ lower_case_table_names = 1 \
 v. Reset MariaDB \
 sudo systemctl restart mariadb
 
-6. Access the Website \
+5. Access the Website \
 i. Replace the link with the HTTP port, and open the link at: “http://ccscloud.dlsu.edu.ph:601##/CCDEVAP-S16-4-CafeAnoTara/” \
 ii. Enter the FF credentials: \
 Customer: \
