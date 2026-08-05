@@ -165,20 +165,6 @@ switch ($action) {
         }
         exit();
         
-    case "viewAccount":
-
-        $user = $controller->getUser($_SESSION['user_id']);
-
-        require "../../frontend/pages/user/accountSettings.php";
-        exit();
-
-    case "editAccount":
-
-        $user = $controller->getUser($_SESSION['user_id']);
-
-        require "../../frontend/pages/user/editAccountDetails.php";
-        exit();
-
     case "updateAccount":
 
         $controller->updateProfile(
