@@ -13,6 +13,7 @@ class bookmarkController {
     private $model;
     private $conn;
 
+    // constructor to initialize the database connection and model
     public function __construct($conn) {
         $this->conn = $conn;
         $this->model = new bookmarkModel();

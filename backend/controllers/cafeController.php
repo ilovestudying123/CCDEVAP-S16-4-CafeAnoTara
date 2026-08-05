@@ -13,6 +13,7 @@ class cafeController {
     private $model;
     private $conn;
 
+    // constructor to initialize the database connection and model
     public function __construct($conn) {
         $this->conn = $conn;
     
@@ -47,6 +48,7 @@ class cafeController {
         );
     }
 
+    // get the pending cafes based on search, status, and sort order
     public function getPendingCafes($search, $status, $sort)
     {
         return $this->model->getPendingCafes(
@@ -57,11 +59,13 @@ class cafeController {
         );
     }
 
+    // get the list of cafe owners
     public function getOwners()
     {
         return $this->model->getOwners($this->conn);
     }
 
+    // create a new cafe with the provided data
     public function createCafe($data)
     {
         return $this->model->createCafe(
@@ -70,6 +74,7 @@ class cafeController {
         );
     }
 
+    // add a new image for a specific cafe
     public function addCafeImage($cafe_id, $photo_url)
     {
         return $this->model->addCafeImage(
@@ -79,6 +84,7 @@ class cafeController {
         );
     }
 
+    // approve a specific cafe based on its ID
     public function approveCafe($cafe_id)
     {
         return $this->model->approveCafe(
@@ -87,6 +93,7 @@ class cafeController {
         );
     }
 
+    // reject a specific cafe based on its ID
     public function rejectCafe($cafe_id)
     {
         return $this->model->rejectCafe(
@@ -95,30 +102,35 @@ class cafeController {
         );
     }
 
+    // get the cafe based on the owner ID
     public function getCafeByOwnerId($owner_id) {
         return $this->model->getCafeByOwnerId(
             $this->conn, $owner_id
         );
     }
 
+    // get the photos of a specific cafe
     public function getCafePhotos($cafe_id) {
         return $this->model->getCafePhotos(
             $this->conn, $cafe_id
         );
     }
 
+    // update the details of a specific cafe
     public function updateCafeDetails($cafe_id, $wifi, $outlet, $open, $close, $price) {
         return $this->model->updateCafeDetails(
             $this->conn, $cafe_id, $wifi, $outlet, $open, $close, $price
         );
     }
 
+    // update the photo of a specific cafe
     public function updatePhoto($photo_id, $url) {
         return $this->model->updatePhoto(
             $this->conn, $photo_id, $url
         );
     }
 
+    // add a new photo for a specific cafe
     public function addPhoto($cafe_id, $url) {
         return $this->model->addPhoto(
             $this->conn, $cafe_id, $url
@@ -126,6 +138,7 @@ class cafeController {
     }
 }
 
+// if the script is accessed directly, handle the request based on the action parameter
 if (basename($_SERVER["SCRIPT_FILENAME"]) === basename(__FILE__)) {
     
     $controller = new cafeController($conn);

@@ -1,7 +1,6 @@
 <?php
 // connection to db
 // REMINDER: change information according to your own settings!
-// TO DO: include 'db.php' in all of the files that needs db connection
 
 $host = "localhost";
 $dbname = "cafeanotara";

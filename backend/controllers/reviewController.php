@@ -13,6 +13,7 @@
         private $model;
         private $conn;
 
+        // constructor to initialize the database connection and model
         public function __construct($conn) {
             $this->conn = $conn;
             $this->model = new reviewModel();
@@ -32,7 +33,7 @@
             ];
         }
 
-        /** Processes report submission */
+        // Processes report submission
         public function submitReport($reporter_id, $review_id, $report_code) {
             if ($review_id <= 0 || $reporter_id <= 0 || $report_code <= 0) {
                 return false;
@@ -56,7 +57,7 @@
             );
         }
 
-        /** Processes owner reply submission */
+        // Processes owner reply submission
         public function submitReply($review_id, $reply) {
             if ($review_id <= 0 || empty($reply)) {
                 return false;
@@ -65,24 +66,29 @@
             return $this->model->saveOwnerReply($this->conn, $review_id, $reply);
         }
 
-        // ADMIN REVIEW FUNCTIONS
+        // ================= ADMIN FUNCTIONS =================
 
+        // Get all reported reviews
         public function getAllReportedReviews() {
             return $this->model->getAllReportedReviews($this->conn);
         }
 
+        // Get the details of a specific reported review
         public function getReviewReport($reportID) {
             return $this->model->getReviewReport($this->conn, $reportID);
         }
 
+        // Get all report codes
         public function getReportCodes() {
             return $this->model->getAdminReportCodes($this->conn);
         }
 
+        // Approve a reported review
         public function approveReview($reportID) {
             return $this->model->approveReview($this->conn, $reportID);
         }
 
+        // Remove a reported review
         public function removeReview($reportID, $reviewID) {
             return $this->model->removeReview(
                 $this->conn,
@@ -91,6 +97,7 @@
             );
         }
 
+        // Update a reported review and its report
         public function updateReviewReport($data) {
 
             $result1 = $this->model->updateReviewReport(

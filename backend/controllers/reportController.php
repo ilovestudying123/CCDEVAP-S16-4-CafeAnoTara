@@ -8,23 +8,28 @@ class reportController
     private $conn;
     private $reportModel;
 
+    // constructor to initialize the database connection and model
     public function __construct($conn) {
         $this->conn = $conn;
         $this->reportModel = new reportModel();
     }
 
+    // get all report categories
     public function getCategories() {
         return $this->reportModel->getCategories($this->conn);
     }
 
+    // create a new report category
     public function createCategory($report) {
         return $this->reportModel->createCategory($this->conn, $report);
     }
 
+    // update an existing report category
     public function updateCategory($report_code, $report) {
         return $this->reportModel->updateCategory($this->conn, $report_code, $report );
     }
 
+    // delete a report category if it is not being used in the Reports table
     public function deleteCategory($report_code) {
         return $this->reportModel
             ->deleteCategory(
@@ -34,6 +39,7 @@ class reportController
     }
 }
 
+// if the script is accessed directly, handle the request based on the action parameter
 if (basename($_SERVER["SCRIPT_FILENAME"]) === basename(__FILE__)) {
 
     $controller = new reportController($conn);

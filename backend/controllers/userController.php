@@ -14,6 +14,7 @@ class UserController
     private $conn;
     private $model;
 
+    // constructor to initialize the database connection and model
     public function __construct($conn)
     {
         $this->conn = $conn;
@@ -122,6 +123,7 @@ class UserController
 $controller = new UserController($conn);
 $action = $_REQUEST["action"] ?? "";
 
+// Handle actions based on the 'action' parameter
 switch ($action) {
 
     case "add":

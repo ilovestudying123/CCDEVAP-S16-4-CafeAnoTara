@@ -1,13 +1,9 @@
 <?php
-// Include the database connection file
 require_once __DIR__ . "/../config/connection.php";
-
-// Include the dashboard model that contains all SQL queries
 require_once __DIR__ . "/../models/dashboardModel.php";
 
 // Create an object of the UserDashboard class
 $dashboardModel = new dashboardModel($conn);
-
 
 /* ============================================================
    DASHBOARD CARDS
@@ -18,7 +14,6 @@ $pendingReports = $dashboardModel->getPendingReports();
 
 // Get the number of cafes waiting for approval
 $pendingCafes = $dashboardModel->getPendingCafes();
-
 
 /* ============================================================
    LINE CHART - MONTHLY USER SIGN UPS
@@ -75,7 +70,6 @@ $roles = [];
 // Stores total users for each role
 $roleTotals = [];
 
-// Read every row from the SQL query
 while ($row = $roleResult->fetch_assoc()) {
 
     // Save the role name
@@ -98,7 +92,6 @@ $bookmarkCafe = [];
 // Stores bookmark counts
 $bookmarkCount = [];
 
-// Read every row from the SQL query
 while ($row = $bookmarkResult->fetch_assoc()) {
 
     // Save the cafe name
@@ -121,9 +114,7 @@ $cafeNames = [];
 $ratings = [];
 
 foreach ($rankedCafes as $cafe) {
-
     $cafeNames[] = $cafe['cafe_name'];
-
     $ratings[] = $cafe['weighted_rating'];
 }
 ?>
