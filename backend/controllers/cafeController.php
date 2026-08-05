@@ -19,10 +19,12 @@ class cafeController {
         $this->model = new cafeModel();
     }
 
+    // gets the top 4 cafes based on rating
     public function getTopCafes() {
         return $this->model->getTopCafes($this->conn, 4);
     }
 
+    // gets the details of a specific cafe
     public function getCafeDetails($cafe_id) {
         $cafe = $this->model->getCafeId($this->conn, $cafe_id);
         $images = $this->model->getCafeImages($this->conn, $cafe_id);
@@ -30,11 +32,13 @@ class cafeController {
         return ['cafe' => $cafe, 'images' => $images, 'reviews' => $reviews];
     }
 
+    // get cafe based on the search query
     public function getSearchResults($name) {
         if ($name === '') return [];
         return $this->model->searchCafe($this->conn, $name);
     }
 
+    // get the cafe based on cafe id
     public function getCafeById($cafe_id)
     {
         return $this->model->getCafeById(
