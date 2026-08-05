@@ -22,13 +22,6 @@ $trendingCafes = $cafeModel->getTopCafes($conn, 3);
 </head>
 <body>
 
-<?php
-if(isset($_SESSION['error'])){
-    echo "<script>alert('" . addslashes($_SESSION['error']) . "');</script>";
-    unset($_SESSION['error']);
-}
-?>
-
 <div class="container">
     <!-- LEFT PANEL -->
     <div class="left-panel">
@@ -90,6 +83,15 @@ if(isset($_SESSION['error'])){
                     <button type="button" class="toggle-password" onclick="togglePassword()">
                         <i class="fa-solid fa-eye"></i>
                     </button>
+                    
+                    <div class="login-error">
+                        <?php
+                        if (isset($_SESSION['error'])) {
+                            echo htmlspecialchars($_SESSION['error']);
+                            unset($_SESSION['error']);
+                        }
+                        ?>
+                    </div>
                 </div>
 
                 <div class="forgot">
@@ -106,6 +108,20 @@ if(isset($_SESSION['error'])){
         </aside>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php if (isset($_SESSION['success'])): ?>
+<script>
+window.addEventListener("load", function () {
+    Swal.fire({
+        icon: "success",
+        title: "Account Created!",
+        text: <?= json_encode($_SESSION['success']) ?>,
+        confirmButtonText: "Login",
+        confirmButtonColor: "#725420"
+    });
+});
+</script>
+<?php unset($_SESSION['success']); ?>
+<?php endif; ?>
 </body>
 </html>

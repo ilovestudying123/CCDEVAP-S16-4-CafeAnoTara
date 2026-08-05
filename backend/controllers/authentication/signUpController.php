@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userType
     )) {
 
-        $_SESSION["success"] = "Account created successfully!";
+        $_SESSION["success"] = "Account created successfully! Please log in using your new account.";
         header("Location: ../../../frontend/pages/authentication/index.php");
         exit();
 
