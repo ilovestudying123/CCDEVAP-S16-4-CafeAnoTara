@@ -19,6 +19,7 @@
         }
     }
 
+    // Sets the cafe images and gives default emply image if there are none
     $cover_img = isset($db_photos[0]) ? $db_photos[0] : '../../resources/imgs/default.png';
     $thumb_1   = isset($db_photos[1]) ? $db_photos[1] : '../../resources/imgs/default.png';
     $thumb_2   = isset($db_photos[2]) ? $db_photos[2] : '../../resources/imgs/default.png';
@@ -43,6 +44,7 @@
         <?php if ($row): ?>
             <h1 class="cafe-name"><?php echo htmlspecialchars($row['cafe_name']); ?></h1>
             
+            <!-- Redirects to edit the cafe information -->
             <a href="cafeInfo-update.php" class="update-btn">Update Profile</a>
 
             <section class="info-box">
@@ -52,6 +54,7 @@
                     </div>
                 </div>
 
+                <!-- Displays the cafe information details-->
                 <div class="info-column">
                     <div class="grid-container">
                         <div class="grid-item">
@@ -72,6 +75,7 @@
                         </div>
                     </div>
 
+                    <!-- Displays the images -->
                     <div class="thumbnails-row">
                         <img src="<?php echo htmlspecialchars($thumb_1); ?>" class="thumb">
                         <img src="<?php echo htmlspecialchars($thumb_2); ?>" class="thumb">

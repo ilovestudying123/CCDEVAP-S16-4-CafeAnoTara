@@ -38,6 +38,7 @@
         <div class="body-box">
             <h1 class="cafe-name"><?php echo htmlspecialchars($row['cafe_name']);?></h1>
 
+            <!-- Saves the updated information -->
             <button type="submit" id="save-btn" class="update-btn">Update</button>
 
             <section class="info-box">
@@ -52,6 +53,7 @@
                 <div class="info-column">
                     <button type="button" id="edit-photos-btn" class="form-btn edit-btn">Edit Photos</button>
                     
+                    <!-- Sets the 5 photos, including the Cover photo -->
                     <?php for($i = 0; $i < 4; $i++): ?>
                         <input type="hidden" name="extra_photos[<?php echo $i; ?>]" id="extra-photo-<?php echo $i; ?>" value="<?php echo isset($extra_photos[$i]) ? htmlspecialchars($extra_photos[$i]['photo_url']) : ''; ?>">
                     <?php endfor; ?>
@@ -87,6 +89,7 @@
         </div>
     </div>
 
+    <!-- Where cafe owner will insert image URLs -->
     <div id="photoModal" class="modal">
         <div class="modal-content">
             <h3>Edit Cafe Photos</h3>

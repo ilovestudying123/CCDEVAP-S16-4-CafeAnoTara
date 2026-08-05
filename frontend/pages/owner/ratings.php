@@ -50,6 +50,7 @@
     <div class="body-box">
         <h1 class="cafe-name"><?php echo htmlspecialchars($cafe_name); ?></h1>
 
+        <!-- Dropdown filter that allows filtering by stars given -->
         <div class="grid-btn">
             <div class="dropdown">
                 <button id="filter-btn" class="filter-btn" onclick="toggleFilter()">
@@ -69,6 +70,7 @@
                 </div>
             </div>
 
+            <!-- Dropdown sort that sorts by date -->
             <div class="dropdown">
                 <button id="sort-btn" class="sort-btn" onclick="toggleSort()">
                     <img src="../../resources/imgs/sort-solid.png" class="sort-img" alt="sort"> Sort
@@ -90,6 +92,7 @@
             if ($reviews_result && $reviews_result->num_rows > 0): 
                 while($review = $reviews_result->fetch_assoc()): 
             ?>
+                <!-- The card that displays each review -->
                 <section class="rating-box">
                     <div class="review-card">
                         <div class="review-img">
@@ -136,6 +139,7 @@
                             <p class="rating"><span class="star">★</span> <?php echo number_format($review['rating'], 1); ?>/5</p>
                             <p class="review-body"><?php echo htmlspecialchars($review['comment']); ?></p>
                             
+                            <!-- Allows cafe owner to leave a reply -->
                             <div class="review-reply">
                                 <?php if (!empty($review['owner_reply'])): ?>
                                     <div class="saved-reply-box">
