@@ -77,6 +77,7 @@ class reviewModel {
     return mysqli_fetch_assoc($result);
     }
 
+    // get the cafe name by its ID
     public function getCafeName($conn, $cafe_id) {
         $sql = "SELECT cafe_name FROM Cafes WHERE cafe_id = ?";
         $stmt = $conn->prepare($sql);
@@ -141,6 +142,7 @@ class reviewModel {
             }
         }
 
+        // Set default sort order to descending by created_on, but allow for ascending if selected_sort is "old"
         $sort_order = " r.created_on DESC "; 
         if (!empty($selected_sort)) {
             if ($selected_sort === "old") {
@@ -175,8 +177,6 @@ class reviewModel {
         $stmt->execute();
         return $stmt->get_result();
     }
-
-    
 
     // ================= ADMIN REVIEW REPORT FUNCTIONS =================
 
@@ -240,7 +240,6 @@ class reviewModel {
         return $stmt->get_result()->fetch_assoc();
     }
 
-
     // Get report categories
     public function getAdminReportCodes($conn)
     {
@@ -251,7 +250,6 @@ class reviewModel {
         ";
         return $conn->query($sql);
     }
-
 
     // Update report details
     public function updateReviewReport(
@@ -303,7 +301,6 @@ class reviewModel {
         return $stmt->execute();
     }
 
-
     // Approve report
     public function approveReview(
         $conn,
@@ -322,7 +319,6 @@ class reviewModel {
         );
         return $stmt->execute();
     }
-
 
     // Remove review and resolve report
     public function removeReview(

@@ -9,6 +9,8 @@ class userModel
         $this->conn = $conn;
     }
 
+    // ================= ADMIN FUNCTIONS =================
+
     // Add a new user to the users table
     public function addUser(
         $firstname,
@@ -119,6 +121,9 @@ class userModel
         return $stmt->execute();
     }
 
+    // ================= USER FUNCTIONS =================
+    
+    // Get a specific user by ID
     public function getUser($user_id)
     {
         $sql = "SELECT * FROM Users WHERE user_id = ?";
@@ -130,6 +135,7 @@ class userModel
         return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
     }
 
+    // Update user profile (user)
     public function updateProfile($user_id, $username, $firstname, $lastname, $mobilenumber)
     {
         $sql = "UPDATE users

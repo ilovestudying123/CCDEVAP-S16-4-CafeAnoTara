@@ -10,6 +10,9 @@ class dashboardModel
         $this->conn = $conn;
     }
 
+    // ================= ADMIN FUNCTIONS =================
+
+    // Get the total number of pending reports
     public function getPendingReports() {
     $stmt = $this->conn->prepare("
         SELECT COUNT(rp.report_id) AS total
@@ -27,6 +30,7 @@ class dashboardModel
     return $row['total'];
     }
 
+    // Get the total number of pending cafes
     public function getPendingCafes() {
         $stmt = $this->conn->prepare("
         SELECT COUNT(cafe_id) AS total
@@ -39,7 +43,9 @@ class dashboardModel
     return $row['total'];
     }
 
-    //Chart getters
+    // ================= ADMIN CHART GETTERS =================
+
+    // Get the number of users registered per month
     public function getUsersPerMonth() {
     $stmt = $this->conn->prepare("
         SELECT
@@ -56,6 +62,7 @@ class dashboardModel
     return $stmt->get_result();
     }
 
+    // Get the number of users per role 
     public function getUserPerRole() {
         $stmt = $this->conn->prepare("
         SELECT role, COUNT(*) AS total
@@ -66,6 +73,7 @@ class dashboardModel
         return $stmt->get_result();
     }
 
+    // Calculate the weighted rating for each cafe based on the number of reviews and average rating
     public function getRankedCafes($minReviews = 5) {
         // C = average rating across all cafes (with at least 1 review)
         $stmt = $this->conn->prepare("
@@ -92,6 +100,7 @@ class dashboardModel
             $C = (float) $row['overall_avg'];
             $m = $minReviews;
 
+            // Calculate the weighted rating using the average formula
             $row['weighted_rating'] = $v > 0
                 ? round((($v / ($v + $m)) * $R) + (($m / ($v + $m)) * $C), 2)
                 : 0;
@@ -105,6 +114,7 @@ class dashboardModel
         return $cafes;
     }
 
+    // Get the top 10 most bookmarked cafes
     public function getMostBookmarkedCafes() {
          $stmt = $this->conn->prepare("
         SELECT
