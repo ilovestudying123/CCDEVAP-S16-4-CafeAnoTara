@@ -74,7 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <h2>Reset Password</h2>
 
-            <form action="../../../backend/controllers/authentication/forgetPassController.php" id="loginForm" method="POST" onsubmit="return validateForm()">
+            <form action="../../../backend/controllers/userController.php?action=forgotPassword"
+                id="loginForm"
+                method="POST"
+                onsubmit="return validateForm()">
 
                 <p>Enter your email to reset your password.</p>
 

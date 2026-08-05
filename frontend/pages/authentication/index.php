@@ -66,7 +66,7 @@ $trendingCafes = $cafeModel->getTopCafes($conn, 3);
             <h2>Welcome Back!</h2>
 
             <form
-                action="../../../backend/controllers/authentication/loginController.php"
+                action="../../../backend/controllers/userController.php?action=login"
                 method="POST"
                 id="loginCntrlr"
                 onsubmit="return validateForm()">
