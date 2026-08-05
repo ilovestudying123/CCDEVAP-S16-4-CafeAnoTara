@@ -421,8 +421,8 @@ input:focus{
 .signup-error{
     min-height:22px;
     color:#d32f2f;
-    text-align:left;
+    text-align:center;
     font-size:14px;
     font-weight:600;
-    margin-bottom:15px;
+    margin-top:20px;
 }
