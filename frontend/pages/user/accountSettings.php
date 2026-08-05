@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../../../backend/config/connection.php';
 require_once '../authentication/auth.php';
 
@@ -9,8 +10,7 @@ $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
 mysqli_stmt_execute($stmt);
 
-$result = mysqli_stmt_get_result($stmt);
-$user = mysqli_fetch_assoc($result);
+$user = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
 if (!$user) {
     die("User not found.");
@@ -26,9 +26,39 @@ if (!$user) {
 
     <link rel="stylesheet" href="../../resources/css/header-style.css?v=2">
     <link rel="stylesheet" href="../../resources/css/accountSettings.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
+<?php if (isset($_SESSION['success'])): ?>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: <?= json_encode($_SESSION['success']) ?>,
+        confirmButtonColor: "#725420",
+        confirmButtonText: "OK"
+    });
+});
+</script>
+<?php unset($_SESSION['success']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['error'])): ?>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: <?= json_encode($_SESSION['error']) ?>,
+        confirmButtonColor: "#725420",
+        confirmButtonText: "OK"
+    });
+});
+</script>
+<?php unset($_SESSION['error']); ?>
+<?php endif; ?>
 
 <?php require "../../includes/header-user.php"; ?>
 
@@ -88,10 +118,8 @@ if (!$user) {
 
     <script>
         function goToEditPage() {
-            window.location.href =
-                "../../../backend/controllers/admin/userController.php?action=editAccount";
+            window.location.href = "editAccountDetails.php";
         }
     </script>
-
 </body>
 </html>

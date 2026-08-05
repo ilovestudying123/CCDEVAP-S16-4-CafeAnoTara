@@ -130,10 +130,11 @@ class userModel
         return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
     }
 
-    public function updateProfile($user_id, $firstname, $lastname, $mobilenumber)
+    public function updateProfile($user_id, $username, $firstname, $lastname, $mobilenumber)
     {
-        $sql = "UPDATE Users
-                SET firstname = ?,
+        $sql = "UPDATE users
+                SET username = ?,
+                    firstname = ?,
                     lastname = ?,
                     mobilenumber = ?
                 WHERE user_id = ?";
@@ -142,14 +143,19 @@ class userModel
 
         mysqli_stmt_bind_param(
             $stmt,
-            "sssi",
+            "ssssi",
+            $username,
             $firstname,
             $lastname,
             $mobilenumber,
             $user_id
         );
 
-        return mysqli_stmt_execute($stmt);
+        $success = mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_close($stmt);
+
+        return $success;
     }
 }
 ?>

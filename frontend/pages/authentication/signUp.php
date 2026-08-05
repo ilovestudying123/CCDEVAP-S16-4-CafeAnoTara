@@ -1,5 +1,10 @@
 <?php
 session_start();
+require '../../../backend/config/connection.php';
+require '../../../backend/models/cafeModel.php';
+
+$cafeModel = new cafeModel();
+$trendingCafes = $cafeModel->getTopCafes($conn, 3);
 ?>
 
 <!DOCTYPE html>
@@ -15,43 +20,29 @@ session_start();
 </head>
 <body>
 
-<?php
-if (isset($_SESSION['error'])) {
-    echo "<script>alert('" . addslashes($_SESSION['error']) . "');</script>";
-    unset($_SESSION['error']);
-}
-?>
-
 <div class="container">
 
     <div class="left-panel">
         <img src="../../resources/imgs/login.jpg" alt="Background Image">
         <div class="image-overlay"></div>
 
-        <div class="trending-overlay">
+                <div class="trending-overlay">
             <h2>Trending Cafés</h2>
-
+        
             <div class="photo-row">
+            <?php foreach($trendingCafes as $cafe): ?>
                 <div class="photo-group">
-                    <img src="../../resources/imgs/yardstick.jpg" alt="Top 1">
-                    <div class="cafe-info">
-                        <h4>Yardstick Coffee</h4>
-                    </div>
-                </div>
+                    <img src="<?= htmlspecialchars($cafe['main_image']) ?>"
+                        alt="<?= htmlspecialchars($cafe['cafe_name']) ?>">
 
-                <div class="photo-group">
-                    <img src="../../resources/imgs/starbucks.jpg" alt="Top 2">
                     <div class="cafe-info">
-                        <h4>Starbucks</h4>
+                        <h4><?= htmlspecialchars($cafe['cafe_name']) ?></h4>
+                        <p>
+                            ⭐ <?= number_format($cafe['average_rating'],1) ?>
+                        </p>
                     </div>
                 </div>
-
-                <div class="photo-group">
-                    <img src="../../resources/imgs/cbtl.jpg" alt="Top 3">
-                    <div class="cafe-info">
-                        <h4>Coffee Bean & Tea Leaf</h4>
-                    </div>
-                </div>
+            <?php endforeach; ?>
             </div>
         </div>
     </div>
@@ -144,6 +135,15 @@ if (isset($_SESSION['error'])) {
                     </div>
 
                 </div>
+                
+                <p id="signupError" class="signup-error">
+                    <?php
+                    if (isset($_SESSION['error'])) {
+                        echo htmlspecialchars($_SESSION['error']);
+                        unset($_SESSION['error']);
+                    }
+                    ?>
+                </p>
 
                 <div class="user-type">
 

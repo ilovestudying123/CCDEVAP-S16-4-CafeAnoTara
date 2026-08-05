@@ -1,11 +1,7 @@
 <?php
 session_start();
 require '../../../backend/config/connection.php';
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ../authentication/index.php");
-    exit();
-}
+require_once '../authentication/auth.php';
 
 $user_id = $_SESSION['user_id'];
 
@@ -14,8 +10,7 @@ $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
 mysqli_stmt_execute($stmt);
 
-$result = mysqli_stmt_get_result($stmt);
-$user = mysqli_fetch_assoc($result);
+$user = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
 if (!$user) {
     die("User not found.");
@@ -35,7 +30,7 @@ if (!$user) {
 
 <body>
 
-<?php require "../../includes/header-user.php"; ?>
+<?php require __DIR__ . "/../../includes/header-user.php"; ?>
 
 <div class="editDetails">
 
@@ -44,7 +39,7 @@ if (!$user) {
 <form
     class="form"
     method="POST"
-    action="/CCDEVAP-S16-4-CafeAnoTara/CCDEVAP-S16-4-CafeAnoTara/backend/controllers/userController.php?action=updateAccount">
+    action="../../../backend/controllers/userController.php?action=updateAccount">
 
         <div class="form-row">
             <div class="form-group button-group">
@@ -57,8 +52,9 @@ if (!$user) {
                 <label>Username</label>
                 <input
                     type="text"
+                    name="username"
                     value="<?= htmlspecialchars($user['username']) ?>"
-                    disabled>
+                    required>
             </div>
         </div>
 

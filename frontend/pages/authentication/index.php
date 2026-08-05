@@ -1,5 +1,10 @@
 <?php
 session_start();
+require '../../../backend/config/connection.php';
+require '../../../backend/models/cafeModel.php';
+
+$cafeModel = new cafeModel();
+$trendingCafes = $cafeModel->getTopCafes($conn, 3);
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +22,6 @@ session_start();
 </head>
 <body>
 
-<?php
-if(isset($_SESSION['error'])){
-    echo "<script>alert('" . addslashes($_SESSION['error']) . "');</script>";
-    unset($_SESSION['error']);
-}
-?>
-
 <div class="container">
     <!-- LEFT PANEL -->
     <div class="left-panel">
@@ -31,31 +29,23 @@ if(isset($_SESSION['error'])){
         <img src="../../resources/imgs/login.jpg" alt="Cafe">
 
         <div class="image-overlay"></div>
-
         <div class="trending-overlay">
             <h2>Trending Cafés</h2>
         
             <div class="photo-row">
+            <?php foreach($trendingCafes as $cafe): ?>
                 <div class="photo-group">
-                    <img src="../../resources/imgs/yardstick.jpg" alt="">
-                    <div class="cafe-info">
-                        <h4>Yardstick Coffee</h4>
-                    </div>
-                </div>
+                    <img src="<?= htmlspecialchars($cafe['main_image']) ?>"
+                        alt="<?= htmlspecialchars($cafe['cafe_name']) ?>">
 
-                <div class="photo-group">
-                    <img src="../../resources/imgs/starbucks.jpg" alt="">
                     <div class="cafe-info">
-                        <h4>Starbucks</h4>
+                        <h4><?= htmlspecialchars($cafe['cafe_name']) ?></h4>
+                        <p>
+                            ⭐ <?= number_format($cafe['average_rating'],1) ?>
+                        </p>
                     </div>
                 </div>
-
-                <div class="photo-group">
-                    <img src="../../resources/imgs/cbtl.jpg" alt="">
-                    <div class="cafe-info">
-                        <h4>Coffee Bean & Tea Leaf</h4>
-                    </div>
-                </div>
+            <?php endforeach; ?>
             </div>
         </div>
     </div>
@@ -95,6 +85,15 @@ if(isset($_SESSION['error'])){
                     </button>
                 </div>
 
+                <div class="login-error">
+                        <?php
+                            if (isset($_SESSION['error'])) {
+                                echo htmlspecialchars($_SESSION['error']);
+                                unset($_SESSION['error']);
+                            }
+                        ?>
+                </div>
+
                 <div class="forgot">
                     <a href="forgotPassword.php">Forgot Password?</a>
                 </div>
@@ -109,6 +108,20 @@ if(isset($_SESSION['error'])){
         </aside>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php if (isset($_SESSION['success'])): ?>
+<script>
+window.addEventListener("load", function () {
+    Swal.fire({
+        icon: "success",
+        title: "Account Created!",
+        text: <?= json_encode($_SESSION['success']) ?>,
+        confirmButtonText: "Login",
+        confirmButtonColor: "#725420"
+    });
+});
+</script>
+<?php unset($_SESSION['success']); ?>
+<?php endif; ?>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
     require_once "../../../backend/config/connection.php";
-    require "../../../backend/models/user/userModel.php";
+    require "../../../backend/models/userModel.php";
     require_once "../authentication/auth.php";
 
     if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -80,7 +80,7 @@
                             </a>
 
                             <!-- Suspend / Activate -->
-                            <form class="status-form" action="../../../backend/controllers/user/userController.php?action=status" method="POST">
+                            <form class="status-form" action="../../../backend/controllers/userController.php?action=status" method="POST">
                                 <input type="hidden" name="user_id" value="<?= $row['user_id'] ?>">
 
                                 <?php if ($row['account_status'] == 'active'): ?>
@@ -97,7 +97,7 @@
                             </form>
 
                             <!-- Delete -->
-                            <form class="delete-form" action="../../../backend/controllers/user/userController.php?action=delete" method="POST">
+                            <form class="delete-form" action="../../../backend/controllers/userController.php?action=delete" method="POST">
                                 <input type="hidden" name="user_id" value="<?= $row['user_id'] ?>">
 
                                 <button class="hidden-btn" type="submit">

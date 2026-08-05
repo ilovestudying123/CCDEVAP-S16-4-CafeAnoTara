@@ -1,5 +1,5 @@
 <?php
-require "../../../backend/controllers/user/dashboardController.php";
+require "../../../backend/controllers/dashboardController.php";
 require_once "../authentication/auth.php";
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -104,5 +104,20 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
             </div>
         </div>
     </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<?php if (isset($_SESSION['success'])): ?>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: <?= json_encode($_SESSION['success']) ?>,
+        confirmButtonColor: "#725420"
+    });
+});
+</script>
+<?php unset($_SESSION['success']); ?>
+<?php endif; ?>    
 </body>
 </html>

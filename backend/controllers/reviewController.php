@@ -164,7 +164,7 @@
             $success = $controller->submitReport($reporter_id, $review_id, $report_code);
 
             $status = $success ? 'success' : 'error';
-            header("Location: ../../../frontend/pages/owner/ratings.php?report=" . $status);
+            header("Location: ../../frontend/pages/owner/ratings.php?report=" . $status);
             exit();
         }
 
@@ -175,7 +175,7 @@
 
             $controller->submitReply($review_id, $owner_reply);
 
-            $redirectUrl = $_SERVER['HTTP_REFERER'] ?? '../../../frontend/pages/owner/ratings.php';
+            $redirectUrl = $_SERVER['HTTP_REFERER'] ?? '../../frontend/pages/owner/ratings.php';
             header("Location: " . $redirectUrl);
             exit();
         }
@@ -211,11 +211,11 @@
                 $success = $controller->updateReviewReport($_POST);
                 if($success){
                     header(
-                        "Location: ../../../frontend/pages/admin/reviews.php"
+                        "Location: ../../frontend/pages/admin/reviews.php"
                     );
                 } else {
                     header(
-                        "Location: ../../../frontend/pages/admin/reviews.php?error=update"
+                        "Location: ../../frontend/pages/admin/reviews.php?error=update"
                     );
                 }
 

@@ -34,10 +34,11 @@ class UserController
     /*  ==========================================================
         UPDATE PROFILE
         ========================================================== */
-        public function updateProfile($user_id, $firstname, $lastname, $mobilenumber)
+        public function updateProfile($user_id, $username, $firstname, $lastname, $mobilenumber)
         {
             return $this->model->updateProfile(
                 $user_id,
+                $username,
                 $firstname,
                 $lastname,
                 $mobilenumber
@@ -129,27 +130,27 @@ switch ($action) {
     case "add":
         $success = $controller->addUser($_POST);
         if ($success) {
-            header("Location: ../../../frontend/pages/admin/users.php");
+            header("Location: ../../frontend/pages/admin/users.php");
         } else {
-            header("Location: ../../../frontend/pages/admin/users.php?error=validation");
+            header("Location: ../../frontend/pages/admin/users.php?error=validation");
         }
         exit();
 
     case "update":
         $success = $controller->updateUser($_POST);
         if ($success) {
-            header("Location: ../../../frontend/pages/admin/users.php");
+            header("Location: ../../frontend/pages/admin/users.php");
         } else {
-            header("Location: ../../../frontend/pages/admin/users.php?error=update");
+            header("Location: ../../frontend/pages/admin/users.php?error=update");
         }
         exit();
 
     case "delete":
         $success = $controller->deleteUser($_POST["user_id"]);
         if ($success) {
-            header("Location: ../../../frontend/pages/admin/users.php?success=deleted");
+            header("Location: ../../frontend/pages/admin/users.php?success=deleted");
         } else {
-            header("Location: ../../../frontend/pages/admin/users.php?error=deletefailed");
+            header("Location: ../../frontend/pages/admin/users.php?error=deletefailed");
         }
         exit();
 
@@ -159,9 +160,9 @@ switch ($action) {
             $_POST["status"]
         );
         if ($success) {
-            header("Location: ../../../frontend/pages/admin/users.php?success=statusupdated");
+            header("Location: ../../frontend/pages/admin/users.php?success=statusupdated");
         } else {
-            header("Location: ../../../frontend/pages/admin/users.php?error=statusfailed");
+            header("Location: ../../frontend/pages/admin/users.php?error=statusfailed");
         }
         exit();
         
@@ -169,26 +170,33 @@ switch ($action) {
 
     $user = $controller->getUser($_SESSION['user_id']);
 
-    require "../../../frontend/pages/user/accountSettings.php";
+    require "../../frontend/pages/user/accountSettings.php";
     exit();
 
     case "editAccount":
 
         $user = $controller->getUser($_SESSION['user_id']);
 
-        require "../../../frontend/pages/user/editAccountDetails.php";
+        require "../../frontend/pages/user/editAccountDetails.php";
         exit();
 
     case "updateAccount":
 
-        $controller->updateProfile(
+        $success = $controller->updateProfile(
             $_SESSION['user_id'],
+            trim($_POST['username']),
             trim($_POST['firstname']),
             trim($_POST['lastname']),
             trim($_POST['mobilenumber'])
         );
 
-        header("Location: userController.php?action=viewAccount");
+        if ($success) {
+            $_SESSION['success'] = "Account details updated successfully.";
+        } else {
+            $_SESSION['error'] = "Failed to update account details.";
+        }
+
+        header("Location: ../../frontend/pages/user/accountSettings.php");
         exit();
 
     default:

@@ -1,5 +1,5 @@
 <?php
-require "../../../backend/controllers/user/reviewController.php";
+require "../../../backend/controllers/reviewController.php";
 require_once "../authentication/auth.php";
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {

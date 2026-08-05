@@ -1,9 +1,9 @@
 <?php
 // Include the database connection file
-require_once __DIR__ . "/../../config/connection.php";
+require_once __DIR__ . "/../config/connection.php";
 
 // Include the dashboard model that contains all SQL queries
-require_once __DIR__ . "/../../models/dashboardModel.php";
+require_once __DIR__ . "/../models/dashboardModel.php";
 
 // Create an object of the UserDashboard class
 $dashboardModel = new dashboardModel($conn);

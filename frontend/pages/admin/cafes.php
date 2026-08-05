@@ -2,7 +2,7 @@
 // database connection and cafe controller
 require_once "../../../backend/config/connection.php";
 require_once "../authentication/auth.php";
-require_once "../../../backend/controllers/user/cafeController.php";
+require_once "../../../backend/controllers/cafeController.php";
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../../../frontend/pages/authentication/index.php");
@@ -197,7 +197,7 @@ $owners = $cafeController->getOwners();
         <div class="create-modal-content">
             <span class="close" onclick="closeCreateModal()">&times;</span>
             <h2>Add Cafe</h2>
-            <form class="create-form" action="../../../backend/controllers/user/cafeController.php?action=create" method="POST" enctype="multipart/form-data">
+            <form class="create-form" action="../../../backend/controllers/cafeController.php?action=create" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="field">
                         <label for="create-name">Cafe Name</label>
