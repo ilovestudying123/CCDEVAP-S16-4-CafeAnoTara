@@ -199,17 +199,16 @@ INSERT INTO `reports` (`report_id`, `reporter_id`, `reported_user_id`, `reported
 (2, 3, 5, 1, 2, 1, 'approved', '2026-05-17 23:47:25'),
 (3, 2, 6, 2, 3, 4, 'ongoing', '2026-05-22 12:13:47'),
 (4, 3, 4, 3, 4, 5, 'approved', '2026-05-27 00:40:08'),
-(5, 2, 5, 4, 5, 2, 'ongoing', '2026-05-31 13:06:29'),
-(6, 3, 6, 5, 6, 3, 'approved', '2026-06-05 01:32:50'),
-(7, 7, NULL, NULL, 7, 6, 'ongoing', '2026-06-09 13:59:11'),
-(8, 8, 10, NULL, NULL, 7, 'approved', '2026-06-14 02:25:32'),
-(9, 9, NULL, 6, NULL, 8, 'ongoing', '2026-06-18 14:51:53'),
-(10, 10, NULL, NULL, 9, 9, 'approved', '2026-06-23 03:18:14'),
-(11, 11, 12, NULL, NULL, 10, 'ongoing', '2026-06-27 15:44:35'),
-(12, 12, NULL, 10, NULL, 11, 'approved', '2026-07-02 04:10:56'),
-(13, 13, NULL, NULL, 13, 12, 'ongoing', '2026-07-06 16:37:17'),
-(14, 14, 9, NULL, NULL, 13, 'approved', '2026-07-11 05:03:38'),
-(15, 15, NULL, 14, NULL, 14, 'ongoing', '2026-07-15 17:29:59');
+(5, 3, 6, 5, 6, 3, 'approved', '2026-06-05 01:32:50'),
+(6, 7, NULL, NULL, 7, 6, 'ongoing', '2026-06-09 13:59:11'),
+(7, 8, 10, NULL, NULL, 7, 'approved', '2026-06-14 02:25:32'),
+(8, 9, NULL, 6, NULL, 8, 'ongoing', '2026-06-18 14:51:53'),
+(9, 10, NULL, NULL, 9, 9, 'approved', '2026-06-23 03:18:14'),
+(10, 11, 12, NULL, NULL, 10, 'ongoing', '2026-06-27 15:44:35'),
+(11, 12, NULL, 10, NULL, 11, 'approved', '2026-07-02 04:10:56'),
+(12, 13, NULL, NULL, 13, 12, 'ongoing', '2026-07-06 16:37:17'),
+(13, 14, 9, NULL, NULL, 13, 'approved', '2026-07-11 05:03:38'),
+(14, 15, NULL, 14, NULL, 14, 'ongoing', '2026-07-15 17:29:59');
 
 -- --------------------------------------------------------
 
@@ -234,7 +233,7 @@ CREATE TABLE `reviews` (
 
 INSERT INTO `reviews` (`review_id`, `customer_id`, `cafe_id`, `rating`, `comment`, `owner_reply`, `is_inappropriate`, `created_on`) VALUES
 (1, 4, 1, 5, 'Fast WiFi with many outlets. Highly recommended!', 'Thank you for visiting!', 0, '2026-03-06 16:45:48'),
-(2, 5, 1, 3, 'It is louder than I expected during peak hours.', 'We appreciate the feedback.', 0, '2026-03-11 05:12:09'),
+(2, 5, 1, 3, 'It is louder than I expected during peak hours.', NULL, 0, '2026-03-11 05:12:09'),
 (3, 6, 2, 4, 'Coffee tastes great and the staff are friendly.', 'Glad you enjoyed!', 0, '2026-03-15 17:38:30'),
 (4, 4, 3, 5, 'Very quiet place to study for exams.', 'Hope to see you again!', 0, '2026-03-20 06:04:51'),
 (5, 5, 4, 4, 'Lots of charging outlets and comfortable seats.', 'Thank you!', 0, '2026-03-24 18:31:12'),
